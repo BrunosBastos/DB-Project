@@ -1,0 +1,21 @@
+
+
+
+INSERT INTO Project.Genre(GenName,Description) VALUES('Action','Action games are just that—games where the player is in control of and at the center of the action, which is mainly comprised of physical challenges players must overcome.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Platformer','Platformer games get their name from the fact that the game’s character interacts with platforms throughout the gameplay.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Shooter','Shooters let players use weapons to engage in the action, with the goal usually being to take out enemies or opposing players.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Fighting','Fighting games like Mortal Kombat and Street Fighter II focus the action on combat, and in most cases, hand-to-hand combat.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Adventure','Adventure games are categorized by the style of gameplay, not the story or content. And while technology has given developers new options to explore storytelling in the genre, at a basic level, adventure games haven’t evolved much from their text-based origins.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Role-Playing','Probably the second-most popular game genre, role-playing games, or RPGs, mostly feature medieval or fantasy settings. ');
+INSERT INTO Project.Genre(GenName,Description) VALUES('MMORPG','MMORPGs involve hundreds of players actively interacting with each other in the same world, and typically, all players share the same or a similar objective.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Strategy','With gameplay is based on traditional strategy board games, strategy games give players a godlike access to the world and its resources. ');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Battle Royale','A battle royale game is a genre that blends the survival, exploration and scavenging elements of a survival game with last man standing gameplay g to stay in safe playable area which shrinks as the time passes, with the winner being the last competitor in the game');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Sports','Sports games simulate sports like golf, football, basketball, baseball, and soccer. They can also include Olympic sports like skiing, and even pub sports like darts and pool.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Puzzle','Puzzle or logic games usually take place on a single screen or playfield and require the player to solve a problem to advance the action.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Idle','Idle games are simplified games that involve minimal player involvement, such as clicking on an icon over and over. Idle games keep players engaged by rewarding those who complete simple objectives.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Racing','Racing simulator series like Forza and Gran Turismo are some of the most popular games in this category, but arcade classics like Pole Position are included here too. In these games, players race against another opponent or the clock.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('MOBA','This category combines action games, role-playing games, and real-time strategy games. In this subgenre of strategy games, players usually do not build resources such as bases or combat units.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Simulation','Games in the simulation genre have one thing in common—they are all designed to emulate real or fictional reality, to simulate a real situation or event.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Side-Scrolling','A side-scrolling game is a video game in which the gameplay action is viewed from a side-view camera angle, and as the players character moves left or right, the screen scrolls with them. These games make use of scrolling computer display technology.');
+INSERT INTO Project.Genre(GenName,Description) VALUES('Survival','The survival horror game Resident Evil was one of the earliest (though a linear game), while more modern survival games like Fortnite take place in open-world game environments and give players access to resources to craft tools, weapons, and shelter to survive as long as possible.');
+
