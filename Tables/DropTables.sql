@@ -1,4 +1,4 @@
-use Projeto;
+use LocalDB;
 
 ALTER TABLE Project.[Admin] DROP CONSTRAINT AdminID;
 ALTER TABLE Project.Credit  DROP CONSTRAINT CredClient;

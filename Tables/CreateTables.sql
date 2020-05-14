@@ -3,10 +3,9 @@ go
 
 CREATE TABLE Project.[User](
     UserID          INT IDENTITY(1,1) ,
-    Email           VARCHAR(50)     NOT NULL,
+    Email           VARCHAR(50) UNIQUE    NOT NULL,
     Password        VARCHAR(20)     NOT NULL,
     RegisterDate    DATE            NOT NULL,
-    AccType         CHAR            NOT NULL,
     PRIMARY KEY (USERID)
 );
 
@@ -17,11 +16,11 @@ CREATE TABLE Project.[Admin](
 
 CREATE TABLE Project.Client(
     UserID          INT,
-    Username        VARCHAR(20)     NOT NULL,
-    FullName        VARCHAR(50),
+    Username        VARCHAR(50)   UNIQUE   NOT NULL,
+    FullName        VARCHAR(max),
     Sex             CHAR,
     Birth           DATE,
-    Balance         DECIMAL(5,2),
+    Balance         DECIMAL(5,2) CHECK (Balance >=0),
     PRIMARY KEY (USERID)
 );
 
@@ -37,7 +36,7 @@ CREATE TABLE Project.Credit(
 
     NumCredit     INT             NOT NULL,
     MetCredit     VARCHAR(20)     NOT NULL,
-    DataCredit    DATE            NOT NULL,
+    DateCredit    DATE            NOT NULL,
     ValueCredit   Decimal(4,2)    NOT NULL,
     IDClient      INT             NOT NULL,
     PRIMARY KEY (NumCredit)
@@ -46,10 +45,10 @@ CREATE TABLE Project.Credit(
 
 CREATE TABLE Project.Reviews(
     IDReview        INT                 IDENTITY(1,1),
-    Title           VARCHAR(50)         NOT NULL,
-    Text            VARCHAR(280)        NOT NULL,
+    Title           VARCHAR(50)      CHECK(len(Title) > 0)   NOT NULL,
+    Text            VARCHAR(280)     CHECK(len(Text) > 0) NOT NULL,
     Rating          DECIMAL(2,1)        NOT NULL,  
-    DataReview      DATE                NOT NULL,
+    DateReview      DATE                NOT NULL,
     UserID          INT                 NOT NULL,
     IDGame          INT                 NOT NULL,
     PRIMARY KEY (IDReview),
@@ -58,9 +57,9 @@ CREATE TABLE Project.Reviews(
 
 CREATE TABLE Project.Purchase(
     NumPurchase         INT IDENTITY(1,1) ,
-    Price               DECIMAL (5,2)       NOT NULL,
+    Price               DECIMAL (5,2)      CHECK(Price >= 0) NOT NULL,
     PurchaseDate        DATE                NOT NULL,
-    ClientID            INT                 NOT NULL,
+    IDClient            INT                 NOT NULL,
     SerialNum           INT                 NOT NULL,
     PRIMARY KEY(NumPurchase)
 );
@@ -73,7 +72,7 @@ CREATE TABLE Project.Game(
     ReleaseDate     DATE            NOT NULL,
     AgeRestriction  INT             NOT NUll,
     CoverImg        VARBINARY(MAX),
-    Price           Decimal(5,2)    NOT NULL,
+    Price           Decimal(5,2)   CHECK(Price >= 0)  NOT NULL,
 	IDCompany       INT             NOT NULL,
 	IDFranchise    INT,
     CONSTRAINT chk_AgeRestrict CHECK (AgeRestriction >= 1 AND AgeRestriction <= 18),
@@ -170,7 +169,7 @@ ALTER TABLE Project.[Admin] ADD CONSTRAINT AdminID FOREIGN KEY (UserID) REFERENC
 ALTER TABLE Project.Credit  ADD CONSTRAINT CredClient FOREIGN KEY(IDClient) REFERENCES Project.Client(UserID);
 ALTER TABLE Project.Reviews ADD CONSTRAINT RevClient FOREIGN KEY(UserID) REFERENCES Project.Client(UserID);
 ALTER TABLE Project.Reviews ADD CONSTRAINT RevGame FOREIGN KEY(IDGame) REFERENCES Project.Game(IDGame);
-ALTER TABLE Project.Purchase ADD CONSTRAINT ClientPurchase FOREIGN KEY(ClientID) REFERENCES Project.Client(UserID);
+ALTER TABLE Project.Purchase ADD CONSTRAINT ClientPurchase FOREIGN KEY(IDClient) REFERENCES Project.Client(UserID);
 ALTER TABLE Project.Purchase ADD CONSTRAINT GamePurchase FOREIGN KEY(SerialNum) REFERENCES Project.[Copy](SerialNum);
 ALTER TABLE Project.Client ADD CONSTRAINT ClientID FOREIGN KEY(UserID) REFERENCES Project.[User](UserID);
 ALTER TABLE Project.Game ADD CONSTRAINT   IDCompanyGame  FOREIGN KEY (IDCompany) REFERENCES Project.Company(IDCompany);

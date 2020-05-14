@@ -1,16 +1,16 @@
-use Projeto;
+
 -- insert users
 
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('brunobastos@gmail.com','password', '2018-04-04','A')
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('johnsmith@gmail.com', 'Iamsmithjohn123', '2018-11-02','C')
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('NancyKim@gmail.com', 'HelloWorld', '2019-11-02','C')
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('timcarrey@outlook.com', 'notjimcarrey?', '2019-12-10','C')
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('KareemCorbett@gmail.com', '8gMxBJMube', '2018-10-23','C')
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('CocoNava@gmail.com', 'yFxeZXdcaX', '2018-11-11','C')
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('dominik_stokes@gmail.com', 'jDeTicDbvf', '2018-09-22','C')
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('Wesley_Shields@gmail.com', '65bdSkgCqe', '2019-01-20','C')
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('leandrocoelhom@gmail.com', 'BxjthfZPFX', '2020-01-01','C')
-INSERT INTO Project.[User](Email,Password,RegisterDate,AccType) VALUES('procsplayerdaubi@gmail.com', 'sLMfQeyTT6', '2019-12-02','C')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('brunobastos@gmail.com','password', '2018-04-04')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('johnsmith@gmail.com', 'Iamsmithjohn123', '2018-11-02')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('NancyKim@gmail.com', 'HelloWorld', '2019-11-02')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('timcarrey@outlook.com', 'notjimcarrey?', '2019-12-10')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('KareemCorbett@gmail.com', '8gMxBJMube', '2018-10-23')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('CocoNava@gmail.com', 'yFxeZXdcaX', '2018-11-11')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('dominik_stokes@gmail.com', 'jDeTicDbvf', '2018-09-22')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('Wesley_Shields@gmail.com', '65bdSkgCqe', '2019-01-20')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('leandrocoelhom@gmail.com', 'BxjthfZPFX', '2020-01-01')
+INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('procsplayerdaubi@gmail.com', 'sLMfQeyTT6', '2019-12-02')
 
 
 -- insert admin
@@ -28,3 +28,4 @@ INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance) Values(8,
 INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance) Values(9,'Leav0n','Leandro Leonardo Lionel Silva','M','2000-09-19',0.00)
 INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance) Values(10,'AceDestiny','Chico Carry Me Silva','M','2000-06-27',0.00)
 
+SELECT * FROM Project.Game
