@@ -16,25 +16,12 @@ namespace App
     public partial class Register : Form
     {
 
-        SqlConnection cn = null;
+        
         public Register()
         {
             InitializeComponent();
         }
-        private SqlConnection getSGBDConnection()
-        {
-
-            return new SqlConnection("data source= DESKTOP-F2O68HA;integrated security=true;initial catalog=Projeto");
-        }
-        private bool verifySGBDConnection()
-        {
-            if (this.cn == null)
-                this.cn = getSGBDConnection();
-
-            if (cn.State != ConnectionState.Open)
-                cn.Open();
-            return cn.State == ConnectionState.Open;
-        }
+        
         public bool ValidateDate(String date)
         {
             if (!string.IsNullOrEmpty(date))
@@ -96,10 +83,10 @@ namespace App
                 MessageBox.Show("Not a valid birth date.");
                 return;
             }
-            if (verifySGBDConnection()) 
+            if (Program.verifySGBDConnection()) 
             { 
 
-                SqlCommand ve = new SqlCommand("select Project.udf_check_email('" + email + "')", cn);
+                SqlCommand ve = new SqlCommand("select Project.udf_check_email('" + email + "')", Program.cn);
                 int value = (int)ve.ExecuteScalar();
                 if(value == 0)
                 {
@@ -107,7 +94,7 @@ namespace App
                     return;
                 }
 
-                SqlCommand vu = new SqlCommand("select Project.udf_check_username('" + username + "')", cn);
+                SqlCommand vu = new SqlCommand("select Project.udf_check_username('" + username + "')", Program.cn);
                 value = (int)vu.ExecuteScalar();
                 if (value == 0)
                 {
@@ -127,7 +114,7 @@ namespace App
                 cm.Parameters.AddWithValue("@birth", SqlDbType.Date).Value = DateTime.Parse(birth);
                 cm.Parameters.Add(new SqlParameter("@response", SqlDbType.Int, 10));
                 cm.Parameters["@response"].Direction = ParameterDirection.Output;
-                cm.Connection = cn;
+                cm.Connection = Program.cn;
                 cm.ExecuteNonQuery();
 
                 Console.WriteLine(cm.Parameters["@response"].Value);

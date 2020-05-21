@@ -13,17 +13,14 @@ namespace App
 {
     public partial class Login : Form
     {
-        private SqlConnection cn =null;
-
         public Login()
         {
             InitializeComponent();
         }
-
         private void login(object sender, EventArgs e)
         {
 
-            if (verifySGBDConnection())
+            if (Program.verifySGBDConnection())
             {
 
                 String Email = LoginEmailBox.Text;
@@ -36,7 +33,7 @@ namespace App
                 cm.Parameters["@LoginEmail"].Value = Email;
                 cm.Parameters["@password"].Value = Password;
                 cm.Parameters["@response"].Direction = ParameterDirection.Output;
-                cm.Connection = cn;
+                cm.Connection = Program.cn;
                 cm.ExecuteNonQuery();
                 Console.WriteLine(cm.Parameters[0].Value);
                 Console.WriteLine(cm.Parameters[1].Value);
@@ -45,8 +42,9 @@ namespace App
                 {
                     //check admin
 
-                    SqlCommand comand = new SqlCommand("select Project.udf_isadmin ('" + Email + "')", cn);
+                    SqlCommand comand = new SqlCommand("select Project.udf_isadmin ('" + Email + "')", Program.cn);
                     int value = (int)comand.ExecuteScalar();
+                    Console.WriteLine(value);
                     if (value > 0)
                     {
                         Program.currentUser = value;
@@ -57,7 +55,7 @@ namespace App
                     }
                     else
                     {
-                        SqlCommand cmd = new SqlCommand("select Project.udf_isclient ('" + Email + "')", cn);
+                        SqlCommand cmd = new SqlCommand("select Project.udf_isclient ('" + Email + "')", Program.cn);
                         value = (int)comand.ExecuteScalar();
                         Program.currentUser = value;
                         this.Hide();
@@ -74,25 +72,12 @@ namespace App
                 {
                     MessageBox.Show("Incorrent Login"); 
                 }
-                cn.Close();
+                Program.cn.Close();
             }
         }
 
-        private SqlConnection getSGBDConnection()
-        {
-           
-            return new SqlConnection("data source= DESKTOP-F2O68HA;integrated security=true;initial catalog=Projeto");
-        }
-        private bool verifySGBDConnection()
-        {
-            if (this.cn == null)
-                this.cn = getSGBDConnection();
-
-            if (cn.State != ConnectionState.Open)
-                cn.Open();
-
-            return cn.State == ConnectionState.Open;
-        }
+       
+        
 
         private void goToRegister(object sender, LinkLabelLinkClickedEventArgs e)
         {

@@ -48,14 +48,14 @@
             this.textBox22 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox23 = new System.Windows.Forms.TextBox();
+            this.MGDName = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.textBox25 = new System.Windows.Forms.TextBox();
             this.textBox26 = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
+            this.MGDCompany = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.textBox28 = new System.Windows.Forms.TextBox();
+            this.MGDFranchise = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.listBox6 = new System.Windows.Forms.ListBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -63,7 +63,7 @@
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox31 = new System.Windows.Forms.TextBox();
+            this.MGDYear = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.button16 = new System.Windows.Forms.Button();
@@ -201,6 +201,7 @@
             this.Game = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DatePurchase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PricePurchase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button21 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -245,7 +246,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 9);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 658);
+            this.tabControl1.Size = new System.Drawing.Size(747, 658);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -258,7 +259,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 632);
+            this.tabPage1.Size = new System.Drawing.Size(739, 632);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Your Games";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -367,14 +368,14 @@
             this.groupBox3.Controls.Add(this.textBox22);
             this.groupBox3.Controls.Add(this.pictureBox2);
             this.groupBox3.Controls.Add(this.label26);
-            this.groupBox3.Controls.Add(this.textBox23);
+            this.groupBox3.Controls.Add(this.MGDName);
             this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Controls.Add(this.label28);
             this.groupBox3.Controls.Add(this.textBox25);
             this.groupBox3.Controls.Add(this.textBox26);
-            this.groupBox3.Controls.Add(this.textBox27);
+            this.groupBox3.Controls.Add(this.MGDCompany);
             this.groupBox3.Controls.Add(this.label30);
-            this.groupBox3.Controls.Add(this.textBox28);
+            this.groupBox3.Controls.Add(this.MGDFranchise);
             this.groupBox3.Controls.Add(this.label31);
             this.groupBox3.Controls.Add(this.listBox6);
             this.groupBox3.Controls.Add(this.label32);
@@ -382,7 +383,7 @@
             this.groupBox3.Controls.Add(this.textBox29);
             this.groupBox3.Controls.Add(this.label34);
             this.groupBox3.Controls.Add(this.textBox30);
-            this.groupBox3.Controls.Add(this.textBox31);
+            this.groupBox3.Controls.Add(this.MGDYear);
             this.groupBox3.Location = new System.Drawing.Point(195, 23);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(329, 501);
@@ -444,12 +445,12 @@
             this.label26.TabIndex = 58;
             this.label26.Text = "Name";
             // 
-            // textBox23
+            // MGDName
             // 
-            this.textBox23.Location = new System.Drawing.Point(20, 61);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(270, 20);
-            this.textBox23.TabIndex = 57;
+            this.MGDName.Location = new System.Drawing.Point(20, 61);
+            this.MGDName.Name = "MGDName";
+            this.MGDName.Size = new System.Drawing.Size(270, 20);
+            this.MGDName.TabIndex = 57;
             // 
             // label27
             // 
@@ -484,12 +485,12 @@
             this.textBox26.Size = new System.Drawing.Size(51, 20);
             this.textBox26.TabIndex = 80;
             // 
-            // textBox27
+            // MGDCompany
             // 
-            this.textBox27.Location = new System.Drawing.Point(20, 111);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(100, 20);
-            this.textBox27.TabIndex = 61;
+            this.MGDCompany.Location = new System.Drawing.Point(20, 111);
+            this.MGDCompany.Name = "MGDCompany";
+            this.MGDCompany.Size = new System.Drawing.Size(100, 20);
+            this.MGDCompany.TabIndex = 61;
             // 
             // label30
             // 
@@ -500,12 +501,12 @@
             this.label30.TabIndex = 62;
             this.label30.Text = "Company";
             // 
-            // textBox28
+            // MGDFranchise
             // 
-            this.textBox28.Location = new System.Drawing.Point(21, 155);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(100, 20);
-            this.textBox28.TabIndex = 63;
+            this.MGDFranchise.Location = new System.Drawing.Point(21, 155);
+            this.MGDFranchise.Name = "MGDFranchise";
+            this.MGDFranchise.Size = new System.Drawing.Size(100, 20);
+            this.MGDFranchise.TabIndex = 63;
             // 
             // label31
             // 
@@ -565,12 +566,12 @@
             this.textBox30.Size = new System.Drawing.Size(46, 20);
             this.textBox30.TabIndex = 73;
             // 
-            // textBox31
+            // MGDYear
             // 
-            this.textBox31.Location = new System.Drawing.Point(22, 236);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(61, 20);
-            this.textBox31.TabIndex = 72;
+            this.MGDYear.Location = new System.Drawing.Point(22, 236);
+            this.MGDYear.Name = "MGDYear";
+            this.MGDYear.Size = new System.Drawing.Size(61, 20);
+            this.MGDYear.TabIndex = 72;
             // 
             // tabPage2
             // 
@@ -582,7 +583,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 632);
+            this.tabPage2.Size = new System.Drawing.Size(739, 632);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Store";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1007,7 +1008,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(768, 632);
+            this.tabPage3.Size = new System.Drawing.Size(739, 632);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Profile";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1204,7 +1205,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(768, 632);
+            this.tabPage4.Size = new System.Drawing.Size(739, 632);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Follows";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1369,7 +1370,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(768, 632);
+            this.tabPage5.Size = new System.Drawing.Size(739, 632);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Transactions";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1864,11 +1865,22 @@
             this.PricePurchase.ReadOnly = true;
             this.PricePurchase.Width = 75;
             // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(765, 9);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(71, 29);
+            this.button21.TabIndex = 2;
+            this.button21.Text = "Log Out";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.LogOut);
+            // 
             // ClientMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 570);
+            this.ClientSize = new System.Drawing.Size(840, 570);
+            this.Controls.Add(this.button21);
             this.Controls.Add(this.tabControl1);
             this.Name = "ClientMain";
             this.Text = "Client";
@@ -1940,14 +1952,14 @@
         private System.Windows.Forms.TextBox textBox22;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox23;
+        private System.Windows.Forms.TextBox MGDName;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox textBox25;
         private System.Windows.Forms.TextBox textBox26;
-        private System.Windows.Forms.TextBox textBox27;
+        private System.Windows.Forms.TextBox MGDCompany;
         private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.TextBox textBox28;
+        private System.Windows.Forms.TextBox MGDFranchise;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.ListBox listBox6;
         private System.Windows.Forms.Label label32;
@@ -1955,7 +1967,7 @@
         private System.Windows.Forms.TextBox textBox29;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox31;
+        private System.Windows.Forms.TextBox MGDYear;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button button16;
@@ -2093,5 +2105,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Game;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatePurchase;
         private System.Windows.Forms.DataGridViewTextBoxColumn PricePurchase;
+        private System.Windows.Forms.Button button21;
     }
 }
