@@ -122,6 +122,7 @@ namespace App
                 
                 if ((int)cm.Parameters["@response"].Value == 1)
                 {
+
                     MessageBox.Show("You have been registered!");
                 }
                 else

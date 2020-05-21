@@ -13,6 +13,7 @@ namespace App
 {
     public partial class ClientMain : Form
     {
+        private int current_game = 0;
         public ClientMain()
         {
             InitializeComponent();
@@ -33,8 +34,17 @@ namespace App
             while (reader.Read())
             {
                 Game g = new Game();
-                g.SetName(reader["Name"].ToString());
+                g.IDGame = reader["IDGame"].ToString();
+                g.Name=reader["Name"].ToString();
+                g.Description = reader["Description"].ToString();
+                g.ReleaseDate = reader["ReleaseDate"].ToString();
+                g.Price = reader["Price"].ToString();
+                g.IDCompany = reader["IDCompany"].ToString();
+                g.IDFranchise = reader["IDFranchise"].ToString();
+                g.AgeRestriction = reader["AgeRestriction"].ToString();
+                g.CoverImg = reader["CoverImg"].ToString();
                 listBox1.Items.Add(g);
+                ShowGame();
             }
 
             Program.cn.Close();
@@ -42,10 +52,21 @@ namespace App
         }
 
 
-        private void ShowContact()
+        private void ShowGame()
         {
-            Game g = (Game)listBox1.SelectedItem;
-
+            if (listBox1.Items.Count == 0 | current_game < 0)
+                return;
+            Game g = new Game();
+            g = (Game)listBox1.Items[current_game];
+            MGDName.Text = g.Name;
+            MGDDescription.Text = g.Description;
+            MGDCompany.Text = g.IDCompany;
+            MGDFranchise.Text = g.IDFranchise;
+            MGDAgeRestriction.Text = g.AgeRestriction;
+            MGDAcquireYear.Text = g.ReleaseDate.Split('-').ToArray()[0];
+            MGDAcquireMonth.Text = g.ReleaseDate.Split('-').ToArray()[1];
+            MGDAcquireDay.Text = g.ReleaseDate.Split('-').ToArray()[2];
+            MGD
 
         }
 
