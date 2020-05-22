@@ -63,10 +63,13 @@ namespace App
             MGDCompany.Text = g.IDCompany;
             MGDFranchise.Text = g.IDFranchise;
             MGDAgeRestriction.Text = g.AgeRestriction;
-            MGDAcquireYear.Text = g.ReleaseDate.Split('-').ToArray()[0];
-            MGDAcquireMonth.Text = g.ReleaseDate.Split('-').ToArray()[1];
-            MGDAcquireDay.Text = g.ReleaseDate.Split('-').ToArray()[2];
-            MGD
+            MGDDay.Text = g.ReleaseDate.Split('/').ToArray()[0];
+            MGDMonth.Text = g.ReleaseDate.Split('/').ToArray()[1];
+            MGDYear.Text = g.ReleaseDate.Split('/').ToArray()[2].Split(' ').ToArray()[0];
+            // querys para meter o genero, plataforma e aquire date
+
+
+
 
         }
 

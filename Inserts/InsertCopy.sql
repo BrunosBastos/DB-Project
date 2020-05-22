@@ -1,164 +1,162 @@
 
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90010001,1);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90010002,1);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90010003,1);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90010004,1);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90010005,1);
+INSERT INTO Project.[Copy](IDGame) VALUES(1,'Nintendo 64');
+INSERT INTO Project.[Copy](IDGame) VALUES(1,'Nintendo 64');
+INSERT INTO Project.[Copy](IDGame) VALUES(1,'Nintendo 64');
+INSERT INTO Project.[Copy](IDGame) VALUES(1,'Nintendo 64');
+INSERT INTO Project.[Copy](IDGame) VALUES(1,'Nintendo 64');
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90020001,2);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90020002,2);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90020003,2);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90020004,2);
+INSERT INTO Project.[Copy](IDGame) VALUES(2,'Nintendo DS');
+INSERT INTO Project.[Copy](IDGame) VALUES(2,'Nintendo DS');
+INSERT INTO Project.[Copy](IDGame) VALUES(2,'Nintendo DS');
+INSERT INTO Project.[Copy](IDGame) VALUES(2,'Nintendo DS');
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90030001,3);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90030002,3);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90030003,3);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90030004,3);
+INSERT INTO Project.[Copy](IDGame) VALUES(3,'Android');
+INSERT INTO Project.[Copy](IDGame) VALUES(3,'Android');
+INSERT INTO Project.[Copy](IDGame) VALUES(3,'Android');
+INSERT INTO Project.[Copy](IDGame) VALUES(3,'iOS');
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90040001,4);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90040002,4);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90040003,4);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90040004,4);
+INSERT INTO Project.[Copy](IDGame) VALUES(4,'Nintendo DS');
+INSERT INTO Project.[Copy](IDGame) VALUES(4,'Nintendo DS');
+INSERT INTO Project.[Copy](IDGame) VALUES(4,'Nintendo DS');
+INSERT INTO Project.[Copy](IDGame) VALUES(4,'Nintendo DS');
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90050001,5);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90050002,5);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90050003,5);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90050004,5);
+INSERT INTO Project.[Copy](IDGame) VALUES(5,'Nintendo Switch');
+INSERT INTO Project.[Copy](IDGame) VALUES(5,'Nintendo Switch');
+INSERT INTO Project.[Copy](IDGame) VALUES(5,'Nintendo Switch');
+INSERT INTO Project.[Copy](IDGame) VALUES(5,'Nintendo Switch')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90060001,6);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90060002,6);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90060003,6);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90060004,6);
+INSERT INTO Project.[Copy](IDGame) VALUES(6,'Windows 10');
+INSERT INTO Project.[Copy](IDGame) VALUES(6,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(6,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(6,'Xbox One')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90070001,7);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90070002,7);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90070003,7);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90070004,7);
+INSERT INTO Project.[Copy](IDGame) VALUES(7,'PlayStation 2');
+INSERT INTO Project.[Copy](IDGame) VALUES(7,'GameCube');
+INSERT INTO Project.[Copy](IDGame) VALUES(7,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame) VALUES(7,'PlayStation');
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90080001,8);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90080002,8);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90080003,8);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90080004,8);
+INSERT INTO Project.[Copy](IDGame) VALUES(8,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(8,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(8,'Windows 10');
+INSERT INTO Project.[Copy](IDGame) VALUES(8,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90090001,9);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90090002,9);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90090003,9);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90090004,9);
+INSERT INTO Project.[Copy](IDGame) VALUES(9,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame) VALUES(9,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(9,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(9,'Windows 7')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90100001,10);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90100002,10);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90100003,10);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90100004,10);
+INSERT INTO Project.[Copy](IDGame) VALUES(10,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame) VALUES(10,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(10,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(10,'Wii')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90110001,11);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90110002,11);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90110003,11);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90110004,11);
+INSERT INTO Project.[Copy](IDGame) VALUES(11,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(11,'MacOS');
+INSERT INTO Project.[Copy](IDGame) VALUES(11,'Linux');
+INSERT INTO Project.[Copy](IDGame) VALUES(11,'Xbox 360')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90120001,12);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90120002,12);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90120003,12);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90120004,12);
+INSERT INTO Project.[Copy](IDGame) VALUES(12,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame) VALUES(12,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(12,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(12,'PlayStation Vita')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90130001,13);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90130002,13);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90130003,13);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90130004,13);
+INSERT INTO Project.[Copy](IDGame) VALUES(13,'PlayStation Portable');
+INSERT INTO Project.[Copy](IDGame) VALUES(13,'PlayStation Portable');
+INSERT INTO Project.[Copy](IDGame) VALUES(13,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame) VALUES(13,'Android')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90140001,14);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90140002,14);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90140003,14);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90140004,14);
+INSERT INTO Project.[Copy](IDGame) VALUES(14,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(14,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame) VALUES(14,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(14,'PlayStation 3')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90150001,15);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90150002,15);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90150003,15);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90150004,15);
+INSERT INTO Project.[Copy](IDGame) VALUES(15,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(15,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(15,'Windows 10');
+INSERT INTO Project.[Copy](IDGame) VALUES(15,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90160001,16);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90160002,16);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90160003,16);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90160004,16);
+INSERT INTO Project.[Copy](IDGame) VALUES(16,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(16,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(16,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(16,'Xbox 360')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90170001,17);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90170002,17);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90170003,17);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90170004,17);
+INSERT INTO Project.[Copy](IDGame) VALUES(17,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(17,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(17,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(17,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90180001,18);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90180002,18);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90180003,18);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90180004,18);
+INSERT INTO Project.[Copy](IDGame) VALUES(18,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(18,'Nintendo Switch');
+INSERT INTO Project.[Copy](IDGame) VALUES(18,'Windows 10');
+INSERT INTO Project.[Copy](IDGame) VALUES(18,'Xbox 360')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90190001,19);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90190002,19);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90190003,19);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90190004,19);
+INSERT INTO Project.[Copy](IDGame) VALUES(19,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(19,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(19,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame) VALUES(19,'PlayStation 3')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90200001,20);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90200002,20);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90200003,20);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90200004,20);
+INSERT INTO Project.[Copy](IDGame) VALUES(20,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(20,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(20,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(20,'PlayStation 4')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90210001,21);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90210002,21);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90210003,21);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90210004,21);
+INSERT INTO Project.[Copy](IDGame) VALUES(21,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(21,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(21,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(21,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90220001,22);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90220002,22);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90220003,22);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90220004,22);
+INSERT INTO Project.[Copy](IDGame) VALUES(22,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(22,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(22,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(22,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90230001,23);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90230002,23);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90230003,23);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90230004,23);
+INSERT INTO Project.[Copy](IDGame) VALUES(23,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(23,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(23,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame) VALUES(23,'Windows 7')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90240001,24);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90240002,24);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90240003,24);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90240004,24);
+INSERT INTO Project.[Copy](IDGame) VALUES(24,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(24,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(24,'Windows 10');
+INSERT INTO Project.[Copy](IDGame) VALUES(24,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90250001,25);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90250002,25);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90250003,25);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90250004,25);
+INSERT INTO Project.[Copy](IDGame) VALUES(25,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(25,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame) VALUES(25,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame) VALUES(25,'PlayStation 3')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90260001,26);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90260002,26);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90260003,26);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90260004,26);
+INSERT INTO Project.[Copy](IDGame) VALUES(26,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(26,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(26,'Windows 10');
+INSERT INTO Project.[Copy](IDGame) VALUES(26,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90270001,27);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90270002,27);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90270003,27);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90270004,27);
+INSERT INTO Project.[Copy](IDGame) VALUES(27,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(27,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(27,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(27,'PlayStation 4')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90280001,28);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90280002,28);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90280003,28);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90280004,28);
+INSERT INTO Project.[Copy](IDGame) VALUES(28,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(28,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(28,'Windows 7');
+INSERT INTO Project.[Copy](IDGame) VALUES(28,'Windows 7')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90290001,29);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90290002,29);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90290003,29);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90290004,29);
+INSERT INTO Project.[Copy](IDGame) VALUES(29,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(29,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(29,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(29,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90300001,30);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90300002,30);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90300003,30);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90300004,30);
+INSERT INTO Project.[Copy](IDGame) VALUES(30,'Xbox One');
+INSERT INTO Project.[Copy](IDGame) VALUES(30,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(30,'Windows 10');
+INSERT INTO Project.[Copy](IDGame) VALUES(30,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90340001,31);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90340002,31);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90340003,31);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90340004,31);
+INSERT INTO Project.[Copy](IDGame) VALUES(31,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(31,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(31,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(31,'Windows 10')
 
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90600001,32);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90600002,32);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90600003,32);
-INSERT INTO Project.[Copy](SerialNum,IDGame) VALUES(90600004,32);
-
-
+INSERT INTO Project.[Copy](IDGame) VALUES(32,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame) VALUES(32,'Windows 10');
+INSERT INTO Project.[Copy](IDGame) VALUES(32,'Windows 10');
+INSERT INTO Project.[Copy](IDGame) VALUES(32,'Windows 10')
