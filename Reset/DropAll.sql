@@ -60,5 +60,6 @@ DROP FUNCTION Project.[udf_checkGameofFollows]
 DROP FUNCTION Project.[udf_checkAllGamesinCommon];
 DROP FUNCTION Project.[udf_getGameGenres];
 DROP FUNCTION Project.[udf_getGamePlataforms];
-
+DROP FUNCTION Project.[udf_getPurchaseInfo];
+DROP FUNCTION Project.[udf_getGameDetails];
 DROP SCHEMA Project;

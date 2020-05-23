@@ -71,7 +71,7 @@ CREATE TABLE Project.Game(
     Description     VARCHAR(MAX),
     ReleaseDate     DATE            NOT NULL,
     AgeRestriction  INT             NOT NUll,
-    CoverImg        VARBINARY(MAX),
+    CoverImg        VARCHAR(MAX),
     Price           Decimal(5,2)   CHECK(Price >= 0)  NOT NULL,
 	IDCompany       INT             NOT NULL,
 	IDFranchise    INT,
@@ -80,7 +80,7 @@ CREATE TABLE Project.Game(
 );
 
 CREATE TABLE Project.[Copy](
-    SerialNum       INT IDENTITY(1,1)   NOT NULL,
+    SerialNum       INT IDENTITY(100000,1)   NOT NULL,
     IDGame          INT					NOT NULL,
 	PlatformName	VARCHAR(30)			NOT NULL,
     PRIMARY KEY(SerialNum)
@@ -369,50 +369,50 @@ INSERT INTO Project.Follows(IDFollowed,IDFollower) VALUES(5,6);
 -- insert games
 
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Super Mario 64','Super Mario 64 is a 1996 platform video game for the Nintendo 64.','1996-06-23',3,3.99, 12 ,1)
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Super Mario 64','Super Mario 64 is a 1996 platform video game for the Nintendo 64.','1996-06-23',3,3.99, 12 ,1,'i.ya-webdesign.com/images/super-mario-64-png-8.png')
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany, IDFranchise) 
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany, IDFranchise,CoverImg) 
 VALUES('New Super Mario Bros.','New Super Mario Bros. is a side-scrolling video game.',
-'2006-05-01',3, 3.99, 12 , 1 )
+'2006-05-01',3, 3.99, 12 , 1, 'yuzu-emu.org/images/game/boxart/new-super-mario-bros-u-deluxe.png' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany, IDFranchise) 
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany, IDFranchise,CoverImg) 
 VALUES('Super Mario Run','Super Mario Run is a 2016 side-scrolling platform mobile game developed and published by Nintendo.',
-'2016-12-15',3,1.99,12, 1)
+'2016-12-15',3,1.99,12, 1,'a.thumbs.redditmedia.com/N9gGTwEaZJ3D2iGF13A-RRNgeqgPbkNr1jetwhXIVQ0.png')
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Pokemon Red','Pok�mon Red Version is role-playing video game developed by Game Freak and published by Nintendo.'
-,'1996-03-27', 3 ,9.99, 12 , 2 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Pokemon Red','Pokemon Red Version is role-playing video game developed by Game Freak and published by Nintendo.'
+,'1996-03-27', 3 ,9.99, 12 , 2,'tecnoblog.net/wp-content/uploads/2011/08/ruby-saphire.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Pokemon Sword','Pok�mon Sword is a role-playing video game developed by Game Freak and published by Nintendo.','2019-11-15', 3 ,59.99, 12 , 2 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Pokemon Sword','Pokemon Sword is a role-playing video game developed by Game Freak and published by Nintendo.','2019-11-15', 3 ,59.99, 12 , 2,'www.speedrun.com/themes/pkmnswordshield/cover-256.png' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Grand Theft Auto V','Grand Theft Auto V is a 2013 action-adventure game published by Rockstar Games.','2013-09-17', 18 ,59.99, 4 , 3 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Grand Theft Auto V','Grand Theft Auto V is a 2013 action-adventure game published by Rockstar Games.','2013-09-17', 18 ,59.99, 4 , 3,'pngimage.net/wp-content/uploads/2018/06/gta-v-icon-png-2.png' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('FIFA Football 2004','FIFA Football 2004 is a football video game developed and published by Electronic Arts','2003-10-24', 3 ,59.99, 6 , 4 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('FIFA Football 2004','FIFA Football 2004 is a football video game developed and published by Electronic Arts','2003-10-24', 3 ,59.99, 6 , 4,'upload.wikimedia.org/wikipedia/en/thumb/e/e3/FIFA_Football_2004_cover.jpg/250px-FIFA_Football_2004_cover.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('FIFA 20','FIFA 20 is a football simulation video game published by Electronic Arts as part of the FIFA series.','2019-07-19', 3 ,59.99, 6 , 4 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise, CoverImg) 
+VALUES('FIFA 20','FIFA 20 is a football simulation video game published by Electronic Arts as part of the FIFA series.','2019-07-19', 3 ,59.99, 6 , 4,'1.bp.blogspot.com/-rD96Hu8rAyw/XYeClZZIlWI/AAAAAAAABD0/Uocets3DupIJNQgFFAe8l0Hq8Vi5RFOtgCEwYBhgL/s1600/fifa20.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Call of Duty : Black Ops 2','Call of Duty: Black Ops II is a 2012 first-person shooter published by Activision.','2012-11-12', 18 ,11.99, 10 , 5 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Call of Duty : Black Ops 2','Call of Duty: Black Ops II is a 2012 first-person shooter published by Activision.','2012-11-12', 18 ,11.99, 10 ,5,'pbs.twimg.com/profile_images/2772600693/ca93f6313b2310cfb4dfdb6c11366775.jpeg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Call of Duty : World at War','Call of Duty: World at War is a 2008 first-person shooter video game published by Activision. ','2008-11-11', 18 ,4.99, 10 , 5 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Call of Duty : World at War','Call of Duty: World at War is a 2008 first-person shooter video game published by Activision. ','2008-11-11', 18 ,4.99, 10 , 5,'p1.hiclipart.com/preview/850/213/205/the-call-of-duty-series-icon-2003-2011-world-at-war-call-of-duty-world-at-war-illustration-png-clipart.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Left 4 Dead 2','Left 4 Dead 2 is a 2009 multiplayer survival horror game developed and published by Valve.','2009-11-17', 18 ,5.99, 19 , 6 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Left 4 Dead 2','Left 4 Dead 2 is a 2009 multiplayer survival horror game developed and published by Valve.','2009-11-17', 18 ,5.99, 19 , 6,'steamuserimages-a.akamaihd.net/ugc/845968188390814023/37674AD466665B9F4E540AAE7128C51D0C59A1D1/' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Need For Speed : Most Wanted','Need for Speed: Most Wanted is an open world racing game published by Electronic Arts.','2012-10-30', 3 ,10.99, 2 , 7 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Need For Speed : Most Wanted','Need for Speed: Most Wanted is an open world racing game published by Electronic Arts.','2012-10-30', 3 ,10.99, 2 , 7,'cdn6.aptoide.com/imgs/0/e/4/0e492e0ec8a53fa7c3c1fbf5e58c6322_icon.png?w=256' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Need For Speed : Shift','Need for Speed: Shift is the 13th installment of the racing video game franchise Need for Speed.','2009-07-15', 3 ,4.99, 2 , 7 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Need For Speed : Shift','Need for Speed: Shift is the 13th installment of the racing video game franchise Need for Speed.','2009-07-15', 3 ,4.99, 2 , 7,'images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/8dd91536-f09a-487f-838f-140f69ff9d8a/d5reyzt-658a6e08-0dd5-458a-8227-46ed76d956fa.png/v1/fill/w_256,h_256,q_80,strp/need_for_speed_shift_icon_for_obly_tile_by_enigmaxg2_d5reyzt-fullview.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Assassins Creed II','Assassins Creed II is a 2009 action-adventure video game developed published by Ubisoft.','2009-11-17', 18 ,9.99, 16 , 8 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Assassins Creed II','Assassins Creed II is a 2009 action-adventure video game developed published by Ubisoft.','2009-11-17', 18 ,9.99, 16 , 8, 'images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/8dd91536-f09a-487f-838f-140f69ff9d8a/d5ws6i1-1fb4c643-f683-4f93-9f23-bd20f0535403.png/v1/fill/w_256,h_256,q_80,strp/assassin_s_creed_2_icon_for_obly_tile_by_enigmaxg2_d5ws6i1-fullview.jpg' )
 
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
 VALUES('Assassins Creed IV: Black Flag','Assassins Creed IV: Black Flag is an action-adventure video game published by Ubisoft.','2013-10-29', 18 ,19.99, 16 , 8 )
@@ -840,7 +840,6 @@ INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(1,'Nintendo 64');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(1,'Nintendo 64');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(1,'Nintendo 64');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(1,'Nintendo 64');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(1,'Nintendo 64');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(2,'Nintendo DS');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(2,'Nintendo DS');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(2,'Nintendo DS');
@@ -970,28 +969,28 @@ INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'Windows 10')
 -- insert purchases
 
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
-VALUES(3.99,'2020-05-01',2,1);
+VALUES(3.99,'2020-05-01',2,100001);
 
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
-VALUES(3.99,'2020-03-04',3,2);
+VALUES(3.99,'2020-03-04',3,100002);
 
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
-VALUES(3.99,'2020-01-02',5,3);
+VALUES(3.99,'2020-01-02',5,100003);
 
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
-VALUES(19.99,'2020-05-01',2,5);
+VALUES(19.99,'2020-05-01',2,100005);
 
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
-VALUES(19.99,'2020-05-01',3,6);
+VALUES(19.99,'2020-05-01',3,100006);
 
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
-VALUES(3.99,'2020-03-22',3,9);
+VALUES(3.99,'2020-03-22',3,100009);
 
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
-VALUES(3.99,'2020-01-21',5,10);
+VALUES(3.99,'2020-01-21',5,100010);
 
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
-VALUES(3.99,'2020-03-03',4,11);
+VALUES(3.99,'2020-03-03',4,100011);
 
 
 
@@ -1055,8 +1054,7 @@ AS
 		JOIN  Project.Game ON [Copy].IDGame = Game.IDGame ) 
 		WHERE Purchase.IDClient = @IDClient )
 GO
-SELECT * FROM Project.[udf_checkusersgames] (5)
-SELECT * FROM Project.[udf_checkusersgames] (10)
+
 
 GO
 CREATE FUNCTION Project.[udf_countuserGames] (@IDClient INT) RETURNS INT
@@ -1145,11 +1143,17 @@ go
 
 
 
+CREATE FUNCTION Project.[udf_getGameDetails] (@IDGame INT) RETURNS TABLE 
+AS
+	RETURN ( SELECT * FROM Game WHERE Game.IDGame = @IDGame)
+
+go
+SELECT * FROM Project.udf_getGameDetails (30)
+
+
 
 
 ---- PROCEDURES---
-GO
-use LocalDB
 go
 create procedure Project.pd_Login(
 	@Loginemail varchar(50),
@@ -1165,8 +1169,6 @@ create procedure Project.pd_Login(
 	  set @response=1
 	end		
 go
-
-
 
 go
 create procedure Project.pd_sign_up
