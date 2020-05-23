@@ -35,9 +35,7 @@ namespace App
                 cm.Parameters["@response"].Direction = ParameterDirection.Output;
                 cm.Connection = Program.cn;
                 cm.ExecuteNonQuery();
-                Console.WriteLine(cm.Parameters[0].Value);
-                Console.WriteLine(cm.Parameters[1].Value);
-                Console.WriteLine(""+cm.Parameters[2].Value);
+                
                 if (""+cm.Parameters["@response"].Value=="1")
                 {
                     //check admin

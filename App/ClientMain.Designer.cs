@@ -31,6 +31,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.button23 = new System.Windows.Forms.Button();
+            this.button22 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -246,8 +248,10 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 9);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(747, 658);
+            this.tabControl1.Size = new System.Drawing.Size(889, 685);
             this.tabControl1.TabIndex = 1;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.Change_tabs);
+            this.tabControl1.TabIndexChanged += new System.EventHandler(this.Change_tabs);
             // 
             // tabPage1
             // 
@@ -259,21 +263,41 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(739, 632);
+            this.tabPage1.Size = new System.Drawing.Size(881, 659);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Your Games";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox18
             // 
+            this.groupBox18.Controls.Add(this.button23);
+            this.groupBox18.Controls.Add(this.button22);
             this.groupBox18.Controls.Add(this.button20);
             this.groupBox18.Controls.Add(this.button19);
-            this.groupBox18.Location = new System.Drawing.Point(545, 278);
+            this.groupBox18.Location = new System.Drawing.Point(667, 278);
             this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(187, 100);
+            this.groupBox18.Size = new System.Drawing.Size(187, 178);
             this.groupBox18.TabIndex = 91;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "More Details";
+            // 
+            // button23
+            // 
+            this.button23.Location = new System.Drawing.Point(34, 140);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(132, 23);
+            this.button23.TabIndex = 3;
+            this.button23.Text = "View Platform Details";
+            this.button23.UseVisualStyleBackColor = true;
+            // 
+            // button22
+            // 
+            this.button22.Location = new System.Drawing.Point(34, 101);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(132, 23);
+            this.button22.TabIndex = 2;
+            this.button22.Text = "View Genre Details";
+            this.button22.UseVisualStyleBackColor = true;
             // 
             // button20
             // 
@@ -298,7 +322,7 @@
             this.groupBox6.Controls.Add(this.listBox1);
             this.groupBox6.Location = new System.Drawing.Point(22, 23);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(153, 501);
+            this.groupBox6.Size = new System.Drawing.Size(153, 620);
             this.groupBox6.TabIndex = 90;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Games List";
@@ -308,13 +332,14 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(6, 19);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(141, 472);
+            this.listBox1.Size = new System.Drawing.Size(141, 589);
             this.listBox1.TabIndex = 0;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.UpdateCurrentGame);
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.button8);
-            this.groupBox5.Location = new System.Drawing.Point(545, 179);
+            this.groupBox5.Location = new System.Drawing.Point(667, 179);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(187, 76);
             this.groupBox5.TabIndex = 89;
@@ -334,7 +359,7 @@
             // 
             this.groupBox4.Controls.Add(this.button7);
             this.groupBox4.Controls.Add(this.button4);
-            this.groupBox4.Location = new System.Drawing.Point(545, 23);
+            this.groupBox4.Location = new System.Drawing.Point(667, 24);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(187, 130);
             this.groupBox4.TabIndex = 88;
@@ -358,6 +383,7 @@
             this.button4.TabIndex = 0;
             this.button4.Text = "Add Review";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.AddReview);
             // 
             // groupBox3
             // 
@@ -386,7 +412,7 @@
             this.groupBox3.Controls.Add(this.MGDYear);
             this.groupBox3.Location = new System.Drawing.Point(195, 23);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(329, 501);
+            this.groupBox3.Size = new System.Drawing.Size(449, 620);
             this.groupBox3.TabIndex = 87;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Details";
@@ -394,7 +420,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(138, 329);
+            this.label25.Location = new System.Drawing.Point(141, 352);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(69, 13);
             this.label25.TabIndex = 86;
@@ -402,22 +428,25 @@
             // 
             // MGDAcquireDay
             // 
-            this.MGDAcquireDay.Location = new System.Drawing.Point(260, 346);
+            this.MGDAcquireDay.Location = new System.Drawing.Point(263, 369);
             this.MGDAcquireDay.Name = "MGDAcquireDay";
+            this.MGDAcquireDay.ReadOnly = true;
             this.MGDAcquireDay.Size = new System.Drawing.Size(43, 20);
             this.MGDAcquireDay.TabIndex = 85;
             // 
             // MGDAcquireMonth
             // 
-            this.MGDAcquireMonth.Location = new System.Drawing.Point(208, 345);
+            this.MGDAcquireMonth.Location = new System.Drawing.Point(211, 368);
             this.MGDAcquireMonth.Name = "MGDAcquireMonth";
+            this.MGDAcquireMonth.ReadOnly = true;
             this.MGDAcquireMonth.Size = new System.Drawing.Size(46, 20);
             this.MGDAcquireMonth.TabIndex = 84;
             // 
             // MGDAcquireYear
             // 
-            this.MGDAcquireYear.Location = new System.Drawing.Point(141, 346);
+            this.MGDAcquireYear.Location = new System.Drawing.Point(144, 369);
             this.MGDAcquireYear.Name = "MGDAcquireYear";
+            this.MGDAcquireYear.ReadOnly = true;
             this.MGDAcquireYear.Size = new System.Drawing.Size(61, 20);
             this.MGDAcquireYear.TabIndex = 83;
             // 
@@ -425,14 +454,15 @@
             // 
             this.MGDPlatform.Location = new System.Drawing.Point(141, 294);
             this.MGDPlatform.Name = "MGDPlatform";
+            this.MGDPlatform.ReadOnly = true;
             this.MGDPlatform.Size = new System.Drawing.Size(100, 20);
             this.MGDPlatform.TabIndex = 82;
             // 
             // MGDImage
             // 
-            this.MGDImage.Location = new System.Drawing.Point(141, 92);
+            this.MGDImage.Location = new System.Drawing.Point(263, 29);
             this.MGDImage.Name = "MGDImage";
-            this.MGDImage.Size = new System.Drawing.Size(149, 102);
+            this.MGDImage.Size = new System.Drawing.Size(180, 146);
             this.MGDImage.TabIndex = 65;
             this.MGDImage.TabStop = false;
             // 
@@ -449,7 +479,8 @@
             // 
             this.MGDName.Location = new System.Drawing.Point(20, 61);
             this.MGDName.Name = "MGDName";
-            this.MGDName.Size = new System.Drawing.Size(270, 20);
+            this.MGDName.ReadOnly = true;
+            this.MGDName.Size = new System.Drawing.Size(237, 20);
             this.MGDName.TabIndex = 57;
             // 
             // label27
@@ -464,7 +495,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(201, 219);
+            this.label28.Location = new System.Drawing.Point(260, 219);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(79, 13);
             this.label28.TabIndex = 81;
@@ -475,13 +506,15 @@
             this.MGDDescription.Location = new System.Drawing.Point(20, 421);
             this.MGDDescription.Multiline = true;
             this.MGDDescription.Name = "MGDDescription";
-            this.MGDDescription.Size = new System.Drawing.Size(255, 74);
+            this.MGDDescription.ReadOnly = true;
+            this.MGDDescription.Size = new System.Drawing.Size(397, 156);
             this.MGDDescription.TabIndex = 78;
             // 
             // MGDAgeRestriction
             // 
-            this.MGDAgeRestriction.Location = new System.Drawing.Point(206, 239);
+            this.MGDAgeRestriction.Location = new System.Drawing.Point(265, 239);
             this.MGDAgeRestriction.Name = "MGDAgeRestriction";
+            this.MGDAgeRestriction.ReadOnly = true;
             this.MGDAgeRestriction.Size = new System.Drawing.Size(51, 20);
             this.MGDAgeRestriction.TabIndex = 80;
             // 
@@ -489,6 +522,7 @@
             // 
             this.MGDCompany.Location = new System.Drawing.Point(20, 111);
             this.MGDCompany.Name = "MGDCompany";
+            this.MGDCompany.ReadOnly = true;
             this.MGDCompany.Size = new System.Drawing.Size(100, 20);
             this.MGDCompany.TabIndex = 61;
             // 
@@ -503,15 +537,16 @@
             // 
             // MGDFranchise
             // 
-            this.MGDFranchise.Location = new System.Drawing.Point(21, 155);
+            this.MGDFranchise.Location = new System.Drawing.Point(20, 166);
             this.MGDFranchise.Name = "MGDFranchise";
+            this.MGDFranchise.ReadOnly = true;
             this.MGDFranchise.Size = new System.Drawing.Size(100, 20);
             this.MGDFranchise.TabIndex = 63;
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(18, 139);
+            this.label31.Location = new System.Drawing.Point(17, 150);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(53, 13);
             this.label31.TabIndex = 64;
@@ -547,6 +582,7 @@
             // 
             this.MGDDay.Location = new System.Drawing.Point(141, 236);
             this.MGDDay.Name = "MGDDay";
+            this.MGDDay.ReadOnly = true;
             this.MGDDay.Size = new System.Drawing.Size(43, 20);
             this.MGDDay.TabIndex = 74;
             // 
@@ -563,6 +599,7 @@
             // 
             this.MGDMonth.Location = new System.Drawing.Point(89, 235);
             this.MGDMonth.Name = "MGDMonth";
+            this.MGDMonth.ReadOnly = true;
             this.MGDMonth.Size = new System.Drawing.Size(46, 20);
             this.MGDMonth.TabIndex = 73;
             // 
@@ -570,6 +607,7 @@
             // 
             this.MGDYear.Location = new System.Drawing.Point(22, 236);
             this.MGDYear.Name = "MGDYear";
+            this.MGDYear.ReadOnly = true;
             this.MGDYear.Size = new System.Drawing.Size(61, 20);
             this.MGDYear.TabIndex = 72;
             // 
@@ -583,7 +621,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(739, 632);
+            this.tabPage2.Size = new System.Drawing.Size(881, 659);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Store";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -596,14 +634,14 @@
             this.groupBox9.Controls.Add(this.button2);
             this.groupBox9.Location = new System.Drawing.Point(482, 336);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(280, 237);
+            this.groupBox9.Size = new System.Drawing.Size(393, 317);
             this.groupBox9.TabIndex = 90;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Options";
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(50, 172);
+            this.button16.Location = new System.Drawing.Point(98, 172);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(198, 48);
             this.button16.TabIndex = 89;
@@ -612,7 +650,7 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(50, 118);
+            this.button15.Location = new System.Drawing.Point(98, 118);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(198, 48);
             this.button15.TabIndex = 88;
@@ -621,7 +659,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(50, 19);
+            this.button6.Location = new System.Drawing.Point(98, 19);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(198, 45);
             this.button6.TabIndex = 82;
@@ -630,7 +668,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(50, 70);
+            this.button2.Location = new System.Drawing.Point(98, 70);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(198, 42);
             this.button2.TabIndex = 87;
@@ -642,7 +680,7 @@
             this.groupBox8.Controls.Add(this.listBox2);
             this.groupBox8.Location = new System.Drawing.Point(6, 101);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(153, 472);
+            this.groupBox8.Size = new System.Drawing.Size(153, 552);
             this.groupBox8.TabIndex = 89;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Game List";
@@ -652,7 +690,7 @@
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(6, 19);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(141, 433);
+            this.listBox2.Size = new System.Drawing.Size(141, 524);
             this.listBox2.TabIndex = 48;
             // 
             // groupBox7
@@ -699,7 +737,7 @@
             this.groupBox2.Controls.Add(this.textBox5);
             this.groupBox2.Location = new System.Drawing.Point(174, 18);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(302, 555);
+            this.groupBox2.Size = new System.Drawing.Size(302, 635);
             this.groupBox2.TabIndex = 86;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Details";
@@ -708,6 +746,7 @@
             // 
             this.textBox12.Location = new System.Drawing.Point(243, 61);
             this.textBox12.Name = "textBox12";
+            this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(38, 20);
             this.textBox12.TabIndex = 83;
             // 
@@ -733,6 +772,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(20, 61);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(149, 20);
             this.textBox2.TabIndex = 57;
             // 
@@ -740,6 +780,7 @@
             // 
             this.textBox8.Location = new System.Drawing.Point(183, 61);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(40, 20);
             this.textBox8.TabIndex = 59;
             // 
@@ -766,6 +807,7 @@
             this.textBox9.Location = new System.Drawing.Point(20, 421);
             this.textBox9.Multiline = true;
             this.textBox9.Name = "textBox9";
+            this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(255, 74);
             this.textBox9.TabIndex = 78;
             // 
@@ -782,6 +824,7 @@
             // 
             this.textBox10.Location = new System.Drawing.Point(206, 239);
             this.textBox10.Name = "textBox10";
+            this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(51, 20);
             this.textBox10.TabIndex = 80;
             // 
@@ -789,6 +832,7 @@
             // 
             this.textBox3.Location = new System.Drawing.Point(180, 110);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 61;
             // 
@@ -805,6 +849,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(181, 154);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 63;
             // 
@@ -863,6 +908,7 @@
             // 
             this.textBox7.Location = new System.Drawing.Point(141, 236);
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(43, 20);
             this.textBox7.TabIndex = 74;
             // 
@@ -879,6 +925,7 @@
             // 
             this.textBox6.Location = new System.Drawing.Point(89, 235);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(46, 20);
             this.textBox6.TabIndex = 73;
             // 
@@ -886,6 +933,7 @@
             // 
             this.textBox5.Location = new System.Drawing.Point(22, 236);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(61, 20);
             this.textBox5.TabIndex = 72;
             // 
@@ -904,7 +952,7 @@
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Location = new System.Drawing.Point(482, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(280, 303);
+            this.groupBox1.Size = new System.Drawing.Size(393, 303);
             this.groupBox1.TabIndex = 85;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
@@ -1008,7 +1056,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(739, 632);
+            this.tabPage3.Size = new System.Drawing.Size(881, 659);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Profile";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1205,7 +1253,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(739, 632);
+            this.tabPage4.Size = new System.Drawing.Size(881, 659);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Follows";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1370,7 +1418,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(739, 632);
+            this.tabPage5.Size = new System.Drawing.Size(881, 659);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Transactions";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1867,7 +1915,7 @@
             // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(765, 9);
+            this.button21.Location = new System.Drawing.Point(907, 12);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(71, 29);
             this.button21.TabIndex = 2;
@@ -1879,7 +1927,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(840, 619);
+            this.ClientSize = new System.Drawing.Size(990, 686);
             this.Controls.Add(this.button21);
             this.Controls.Add(this.tabControl1);
             this.Name = "ClientMain";
@@ -2106,5 +2154,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DatePurchase;
         private System.Windows.Forms.DataGridViewTextBoxColumn PricePurchase;
         private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button button22;
     }
 }

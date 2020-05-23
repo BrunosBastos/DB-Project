@@ -51,11 +51,14 @@ drop proc Project.pd_getGameGenres;
 Drop function Project.udf_check_email;
 Drop function Project.udf_check_username;
 Drop function Project.udf_isadmin;
---Drop function Project.udf_isclient;
+Drop function Project.udf_isclient;
 Drop function Project.[udf_checkusersgames];
 Drop function Project.[udf_countuserGames];
 DROP FUNCTION Project.[udf_userfollowers]
 DROP FUNCTION Project.[udf_countuserFollwers];
 DROP FUNCTION Project.[udf_checkGameofFollows]
 DROP FUNCTION Project.[udf_checkAllGamesinCommon];
+DROP FUNCTION Project.[udf_getGameGenres];
+DROP FUNCTION Project.[udf_getGamePlataforms];
+
 DROP SCHEMA Project;

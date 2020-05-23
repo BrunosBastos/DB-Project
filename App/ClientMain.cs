@@ -27,6 +27,7 @@ namespace App
             if (!Program.verifySGBDConnection())
                 return;
 
+
             SqlCommand cmd = new SqlCommand("SELECT * FROM Project.Game", Program.cn);
             SqlDataReader reader = cmd.ExecuteReader();
             listBox1.Items.Clear();
@@ -46,6 +47,12 @@ namespace App
                 listBox1.Items.Add(g);
                 ShowGame();
             }
+
+
+            // fazer query para saber se ele ja tem uma review neste jogo ou n
+            // e mudar o texto do botao para Edit Review caso ele tenha
+            // assim como o conteudo do add review ja devia estar preenchido com
+            // as cenas da review antiga
 
             Program.cn.Close();
 
@@ -82,6 +89,42 @@ namespace App
             this.Close();
         }
 
-        
+        private void Change_tabs(object sender, EventArgs e)
+        {
+
+            Console.WriteLine("selected index" + tabControl1.SelectedIndex);
+            if (tabControl1.SelectedIndex == 0)
+            {
+                Console.WriteLine("Inside tab Your games");
+                LoadGames();
+            }else if(tabControl1.SelectedIndex == 1)
+            {
+                Console.WriteLine("Inside tab Store");
+                
+            }else if(tabControl1.SelectedIndex == 2)
+            {
+                Console.WriteLine("Inside tab Profile");
+
+            }else if(tabControl1.SelectedIndex == 3)
+            {
+                Console.WriteLine("Inside tab Follows");
+            }else if(tabControl1.SelectedIndex == 4)
+            {
+                Console.WriteLine("Inside tab Transactions");
+            }
+
+        }
+
+        private void UpdateCurrentGame(object sender, EventArgs e)
+        {
+            current_game = listBox1.SelectedIndex;
+            ShowGame();
+        }
+
+        private void AddReview(object sender, EventArgs e)
+        {
+            CreateReview cr = new CreateReview(current_game);
+            cr.ShowDialog();
+        }
     }
 }

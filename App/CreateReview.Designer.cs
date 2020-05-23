@@ -29,25 +29,25 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.ContentReview = new System.Windows.Forms.TextBox();
+            this.RatingReview = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TitleReview = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatingReview)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
+            this.groupBox1.Controls.Add(this.ContentReview);
+            this.groupBox1.Controls.Add(this.RatingReview);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.TitleReview);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(22, 22);
             this.groupBox1.Name = "groupBox1";
@@ -56,31 +56,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Review";
             // 
-            // textBox2
+            // ContentReview
             // 
-            this.textBox2.Location = new System.Drawing.Point(48, 99);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(485, 120);
-            this.textBox2.TabIndex = 17;
+            this.ContentReview.Location = new System.Drawing.Point(48, 99);
+            this.ContentReview.Multiline = true;
+            this.ContentReview.Name = "ContentReview";
+            this.ContentReview.Size = new System.Drawing.Size(485, 120);
+            this.ContentReview.TabIndex = 17;
             // 
-            // numericUpDown1
+            // RatingReview
             // 
-            this.numericUpDown1.DecimalPlaces = 1;
-            this.numericUpDown1.Increment = new decimal(new int[] {
+            this.RatingReview.DecimalPlaces = 1;
+            this.RatingReview.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.numericUpDown1.Location = new System.Drawing.Point(181, 48);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.RatingReview.Location = new System.Drawing.Point(181, 48);
+            this.RatingReview.Maximum = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(45, 20);
-            this.numericUpDown1.TabIndex = 31;
+            this.RatingReview.Name = "RatingReview";
+            this.RatingReview.Size = new System.Drawing.Size(45, 20);
+            this.RatingReview.TabIndex = 31;
             // 
             // label3
             // 
@@ -100,12 +100,12 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Content";
             // 
-            // textBox1
+            // TitleReview
             // 
-            this.textBox1.Location = new System.Drawing.Point(48, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 15;
+            this.TitleReview.Location = new System.Drawing.Point(48, 49);
+            this.TitleReview.Name = "TitleReview";
+            this.TitleReview.Size = new System.Drawing.Size(100, 20);
+            this.TitleReview.TabIndex = 15;
             // 
             // label1
             // 
@@ -124,6 +124,7 @@
             this.button2.TabIndex = 34;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.CancelReview);
             // 
             // button1
             // 
@@ -133,6 +134,7 @@
             this.button1.TabIndex = 33;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.ConfirmReview);
             // 
             // CreateReview
             // 
@@ -146,7 +148,7 @@
             this.Text = "CreateReview";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RatingReview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -154,11 +156,11 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.TextBox ContentReview;
+        private System.Windows.Forms.NumericUpDown RatingReview;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TitleReview;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
