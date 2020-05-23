@@ -994,7 +994,6 @@ INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum)
 VALUES(3.99,'2020-03-03',4,11);
 
 
-
 ---UDFS-----
 go 
 CREATE FUNCTION Project.[udf_check_email](@email VARCHAR(50)) RETURNS INT
@@ -1121,7 +1120,7 @@ GO
 
 ---- PROCEDURES---
 
-use LocalDB
+
 go
 create procedure Project.pd_Login(
 	@Loginemail varchar(50),
