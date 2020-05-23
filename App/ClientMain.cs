@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Web;
+using System.Net;
+
 
 namespace App
 {
@@ -43,6 +46,7 @@ namespace App
                 g.IDCompany = reader["IDCompany"].ToString();
                 g.IDFranchise = reader["IDFranchise"].ToString();
                 g.AgeRestriction = reader["AgeRestriction"].ToString();
+
                 g.CoverImg = reader["CoverImg"].ToString();
                 listBox1.Items.Add(g);
                 ShowGame();
@@ -73,6 +77,9 @@ namespace App
             MGDDay.Text = g.ReleaseDate.Split('/').ToArray()[0];
             MGDMonth.Text = g.ReleaseDate.Split('/').ToArray()[1];
             MGDYear.Text = g.ReleaseDate.Split('/').ToArray()[2].Split(' ').ToArray()[0];
+            MGDImage.LoadAsync("https://"+g.CoverImg);
+            
+            
             // querys para meter o genero, plataforma e aquire date
 
 

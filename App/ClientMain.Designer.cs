@@ -248,7 +248,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 9);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(889, 685);
+            this.tabControl1.Size = new System.Drawing.Size(1230, 685);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.Change_tabs);
             this.tabControl1.TabIndexChanged += new System.EventHandler(this.Change_tabs);
@@ -263,7 +263,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(881, 659);
+            this.tabPage1.Size = new System.Drawing.Size(1222, 659);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Your Games";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -274,7 +274,7 @@
             this.groupBox18.Controls.Add(this.button22);
             this.groupBox18.Controls.Add(this.button20);
             this.groupBox18.Controls.Add(this.button19);
-            this.groupBox18.Location = new System.Drawing.Point(667, 278);
+            this.groupBox18.Location = new System.Drawing.Point(862, 277);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(187, 178);
             this.groupBox18.TabIndex = 91;
@@ -339,7 +339,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.button8);
-            this.groupBox5.Location = new System.Drawing.Point(667, 179);
+            this.groupBox5.Location = new System.Drawing.Point(862, 178);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(187, 76);
             this.groupBox5.TabIndex = 89;
@@ -359,7 +359,7 @@
             // 
             this.groupBox4.Controls.Add(this.button7);
             this.groupBox4.Controls.Add(this.button4);
-            this.groupBox4.Location = new System.Drawing.Point(667, 24);
+            this.groupBox4.Location = new System.Drawing.Point(862, 23);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(187, 130);
             this.groupBox4.TabIndex = 88;
@@ -412,7 +412,7 @@
             this.groupBox3.Controls.Add(this.MGDYear);
             this.groupBox3.Location = new System.Drawing.Point(195, 23);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(449, 620);
+            this.groupBox3.Size = new System.Drawing.Size(626, 620);
             this.groupBox3.TabIndex = 87;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Details";
@@ -460,9 +460,9 @@
             // 
             // MGDImage
             // 
-            this.MGDImage.Location = new System.Drawing.Point(263, 29);
+            this.MGDImage.Location = new System.Drawing.Point(346, 19);
             this.MGDImage.Name = "MGDImage";
-            this.MGDImage.Size = new System.Drawing.Size(180, 146);
+            this.MGDImage.Size = new System.Drawing.Size(256, 256);
             this.MGDImage.TabIndex = 65;
             this.MGDImage.TabStop = false;
             // 
@@ -1915,7 +1915,7 @@
             // 
             // button21
             // 
-            this.button21.Location = new System.Drawing.Point(907, 12);
+            this.button21.Location = new System.Drawing.Point(1248, 12);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(71, 29);
             this.button21.TabIndex = 2;
@@ -1927,7 +1927,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(990, 686);
+            this.ClientSize = new System.Drawing.Size(1331, 686);
             this.Controls.Add(this.button21);
             this.Controls.Add(this.tabControl1);
             this.Name = "ClientMain";
