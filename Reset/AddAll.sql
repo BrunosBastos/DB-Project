@@ -4,7 +4,7 @@ go
 CREATE TABLE Project.[User](
     UserID          INT IDENTITY(1,1) ,
     Email           VARCHAR(50) UNIQUE    NOT NULL,
-    Password        VARCHAR(20)     NOT NULL,
+    [Password]        VARBINARY(64)     NOT NULL,
     RegisterDate    DATE            NOT NULL,
     PRIMARY KEY (USERID)
 );
@@ -192,16 +192,16 @@ ALTER TABLE Project.CompFranchise ADD CONSTRAINT ProducesFranchise FOREIGN KEY(I
 
 -- insert users
 
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('brunobastos@gmail.com','password', '2018-04-04')
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('client@gmail.com', 'client', '2018-11-02')
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('NancyKim@gmail.com', 'HelloWorld', '2019-11-02')
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('timcarrey@outlook.com', 'notjimcarrey?', '2019-12-10')
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('KareemCorbett@gmail.com', '8gMxBJMube', '2018-10-23')
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('CocoNava@gmail.com', 'yFxeZXdcaX', '2018-11-11')
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('dominik_stokes@gmail.com', 'jDeTicDbvf', '2018-09-22')
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('Wesley_Shields@gmail.com', '65bdSkgCqe', '2019-01-20')
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('leandrocoelhom@gmail.com', 'BxjthfZPFX', '2020-01-01')
-INSERT INTO Project.[User](Email,Password,RegisterDate) VALUES('procsplayerdaubi@gmail.com', 'sLMfQeyTT6', '2019-12-02')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('brunobastos@gmail.com',ENCRYPTBYPASSPHRASE('**********','password'), '2018-04-04')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('client@gmail.com', ENCRYPTBYPASSPHRASE('**********','client'), '2018-11-02')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('NancyKim@gmail.com', ENCRYPTBYPASSPHRASE('**********','HelloWorld'), '2019-11-02')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('timcarrey@outlook.com', ENCRYPTBYPASSPHRASE('**********','notjimcarrey?'), '2019-12-10')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('KareemCorbett@gmail.com', ENCRYPTBYPASSPHRASE('**********', '8gMxBJMube'), '2018-10-23')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('CocoNava@gmail.com', ENCRYPTBYPASSPHRASE('**********', 'yFxeZXdcaX'), '2018-11-11')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('dominik_stokes@gmail.com', ENCRYPTBYPASSPHRASE('**********','jDeTicDbvf'), '2018-09-22')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('Wesley_Shields@gmail.com', ENCRYPTBYPASSPHRASE('**********','65bdSkgCqe'), '2019-01-20')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('leandrocoelhom@gmail.com', ENCRYPTBYPASSPHRASE('**********','BxjthfZPFX'), '2020-01-01')
+INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('procsplayerdaubi@gmail.com', ENCRYPTBYPASSPHRASE('**********','sLMfQeyTT6'), '2019-12-02')
 
 
 -- insert admin
@@ -1118,6 +1118,24 @@ AS
 		GROUP BY Game.IDGame,Game.[Name] HAVING COUNT(Game.IDGame) > 1 )
 GO
 
+CREATE FUNCTION Project.[udf_getGameGenres] (@IDGame INT) RETURNS TABLE 
+AS
+	RETURN (SELECT Genre.* FROM Project.GameGenre 
+	JOIN Project.Game ON Game.IDGame = GameGenre.IDGame 
+	JOIN Project.Genre ON Genre.GenName = GameGenre.GenName
+	WHERE Game.IDGame = @IDGame ) 
+GO
+
+CREATE FUNCTION Project.[udf_getGamePlataforms] (@IDGame INT) RETURNS TABLE
+AS
+	RETURN (SELECT [Platform].* FROM Project.PlatformReleasesGame 
+	JOIN Project.Game ON Game.IDGame = PlatformReleasesGame.IDGame 
+	JOIN Project.[Platform] ON [Platform].PlatformName = PlatformReleasesGame.PlatformName
+	WHERE Game.IDGame = @IDGame)
+
+-- CREATE FUNCTION Project.[udf_getPurchaseInfo) (@IDGame INT) RETURNS TABLE
+--AS	
+	--RETURN (SELECT * FROM Purchase JOIN Copy) 
 
 ---- PROCEDURES---
 
@@ -1130,7 +1148,7 @@ create procedure Project.pd_Login(
 	as
 	begin
 	  declare @temp varchar(50)
-	  set @temp= (select Email FROM Project.[User] where Email=@Loginemail and @password = [Password] )
+	  set @temp= (select Email FROM Project.[User] where Email=@Loginemail and @password = CONVERT(varchar(20),DECRYPTBYPASSPHRASE('**********',[Password])) )
 	  if  (@temp is null)
 		set @response=0
 	  else
@@ -1154,7 +1172,7 @@ as
 begin
     begin try
 
-        insert into Project.[User](Email,[Password], RegisterDate) values (@email, @password,@registerDate)
+        insert into Project.[User](Email,[Password], RegisterDate) values (@email,ENCRYPTBYPASSPHRASE('**********',@password) ,@registerDate)
         DECLARE @client_id AS INT;
         SELECT @client_id = UserID from Project.[User] where [User].Email=@email
         INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance)  VALUES(@client_id,@userName,@fullName,@sex, @birth,0.0)
@@ -1185,5 +1203,4 @@ CREATE PROCEDURE Project.pd_getGameGenres(@IDGame int)
 AS
 	SELECT  Distinct Genre.* FROM (Project.Genre JOIN  Project.GameGenre ON Genre.GenName = GameGenre.GenName ) WHERE GameGenre.IDGame = @IDGame
 go
-
 
