@@ -1,4 +1,4 @@
-use Projeto;
+use LocalDB;
 
 ALTER TABLE Project.[Admin] DROP CONSTRAINT AdminID;
 ALTER TABLE Project.Credit  DROP CONSTRAINT CredClient;
@@ -42,12 +42,20 @@ DROP TABLE Project.Credit;
 --Procedures
 Drop Proc Project.pd_Login;
 Drop Proc Project.pd_sign_up;
+DROP PROC Project.pd_getFranchiseData;
+DROP PROC Project.pd_getCompData;
+drop proc Project.pd_getCompFranchise;
+drop proc Project.pd_getGameGenres;
 
 --udfs
 Drop function Project.udf_check_email;
 Drop function Project.udf_check_username;
 Drop function Project.udf_isadmin;
-Drop function Project.udf_isclient;
-
-
+--Drop function Project.udf_isclient;
+Drop function Project.[udf_checkusersgames];
+Drop function Project.[udf_countuserGames];
+DROP FUNCTION Project.[udf_userfollowers]
+DROP FUNCTION Project.[udf_countuserFollwers];
+DROP FUNCTION Project.[udf_checkGameofFollows]
+DROP FUNCTION Project.[udf_checkAllGamesinCommon];
 DROP SCHEMA Project;
