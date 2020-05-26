@@ -1148,13 +1148,27 @@ AS
 	RETURN ( SELECT * FROM Game WHERE Game.IDGame = @IDGame)
 
 go
+
 SELECT * FROM Project.udf_getGameDetails (30)
 
-
-
-
+go
+CREATE FUNCTION Project.[udf_getCompanyDetails] (@IDCompany INT) RETURNS TABLE
+AS
+	RETURN ( SELECT * FROM Company WHERE Company.IDCompany = @IDCompany)
 ---- PROCEDURES---
 go
+
+CREATE FUNCTION Project.[udf_getFranchiseDetails] (@IDFranchise INT) RETURNS TABLE
+AS
+	RETURN ( SELECT * FROM Franchise WHERE Franchise.IDFranchise =@IDFranchise)
+go
+
+CREATE FUNCTION Project.[udf_getFranchisesComp] (@IDCompany INT) RETURNS TABLE
+AS
+	RETURN (SELECT Franchise.IDFranchise,Franchise.Name FROM Company JOIN CompFranchise ON CompFranchise.IDCompany = Company.IDCompany JOIN Franchise ON Franchise.IDFranchise = CompFranchise.IDFranchise WHERE Company.IDCompany = @IDCompany)
+
+go
+
 create procedure Project.pd_Login(
 	@Loginemail varchar(50),
 	@password varchar(20),

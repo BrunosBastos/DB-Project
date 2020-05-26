@@ -62,4 +62,7 @@ DROP FUNCTION Project.[udf_getGameGenres];
 DROP FUNCTION Project.[udf_getGamePlataforms];
 DROP FUNCTION Project.[udf_getPurchaseInfo];
 DROP FUNCTION Project.[udf_getGameDetails];
+DROP FUNCTION Project.udf_getCompanyDetails;
+DROP FUNCTION Project.udf_getFranchiseDetails;
+DROP FUNCTION Project.udf_getFranchisesComp;
 DROP SCHEMA Project;
