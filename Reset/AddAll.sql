@@ -1243,25 +1243,6 @@ begin
 end
 go
 
-CREATE PROCEDURE Project.pd_getFranchiseData(@IDFranchise INT) 
-AS
-	SELECT * FROM Project.Franchise WHERE Franchise.IDFranchise = @IDFranchise
-GO
-
-CREATE Procedure Project.pd_getCompData(@IDCompany INT)
-AS
-	SELECT * FROM Project.Company WHERE Company.IDCompany = @IDCompany
-GO
-
-CREATE PROCEDURE Project.pd_getCompFranchise (@IDFranchise INT, @IDCompany INT)
-AS 
-	SELECT Company.* FROM ( Company JOIN CompFranchise ON CompFranchise.IDCompany = Company.IDCompany ) WHERE  CompFranchise.IDCompany = @IDCompany AND CompFranchise.IDFranchise = @IDFranchise
-go
-
-CREATE PROCEDURE Project.pd_getGameGenres(@IDGame int)
-AS
-	SELECT  Distinct Genre.* FROM (Project.Genre JOIN  Project.GameGenre ON Genre.GenName = GameGenre.GenName ) WHERE GameGenre.IDGame = @IDGame
-go
 
 CREATE PROCEDURE Project.pd_insertReview(
 	@Title VARCHAR(50),
@@ -1269,8 +1250,7 @@ CREATE PROCEDURE Project.pd_insertReview(
 	@Rating DECIMAL (2,1),
 	@DateReview DATE,
 	@UserID INT ,
-	@IDGame INT,
-	@response INT OUTPUT
+	@IDGame INT
 	)
 	AS
 		BEGIN
@@ -1307,3 +1287,4 @@ AS
 	END CATCH
 	END
 go
+select * from Project.[User]
