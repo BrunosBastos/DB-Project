@@ -1153,8 +1153,29 @@ GO
 CREATE FUNCTION Project.[udf_getCompanyDetails] (@IDCompany INT) RETURNS TABLE
 AS
 	RETURN ( SELECT * FROM Company WHERE Company.IDCompany = @IDCompany)
----- PROCEDURES---
 GO
+
+go 
+CREATE FUNCTION Project.[udf_getReviewsList] (@IDGame INT) RETURNS TABLE
+AS
+	RETURN ( SELECT Username,Title,Rating,[Text], Game.[Name],DateReview
+	FROM (Project.Reviews JOIN Project.Client ON Reviews.UserID=Client.UserID) JOIN Project.Game ON Reviews.IDGame=Game.IDGame
+	where Reviews.IDGame=@IDGame);
+go
+
+go
+CREATE FUNCTION Project.[udf_getNumberOfReviews] (@IDGame INT) RETURNS INT
+AS
+	Begin
+		DECLARE @ret as int;
+		SELECT @ret=COUNT(IDReview) From Project.Reviews where Reviews.IDGame=@IDGame;
+		return @ret;
+	end
+go
+SELECT * FROM Project.[udf_getReviewsList](1);
+SELECT Project.[udf_getNumberOfReviews](1);
+
+---- PROCEDURES---
 
 CREATE FUNCTION Project.[udf_getFranchiseDetails] (@IDFranchise INT) RETURNS TABLE
 AS
@@ -1166,13 +1187,18 @@ AS
 	RETURN (SELECT Franchise.IDFranchise,Franchise.Name FROM Company JOIN CompFranchise ON CompFranchise.IDCompany = Company.IDCompany JOIN Franchise ON Franchise.IDFranchise = CompFranchise.IDFranchise WHERE Company.IDCompany = @IDCompany)
 
 GO
-
+GO
 CREATE FUNCTION Project.[udf_checkReview] (@IDClient INT, @IDGame INT) RETURNS INT
 AS
 BEGIN
-		IF EXISTS( SELECT Reviews.* FROM Project.Reviews JOIN Project.Game ON Game.IDGame = Reviews.IDGame  WHERE Reviews.UserID = @IDClient AND Game.IDGame = @IDGame) 
-			RETURN 1;
-		RETURN 0;	
+		DECLARE @id as INT;
+		DECLARE @temp as VARCHAR(50);
+		set @temp = (SELECT IDReview FROM Project.Reviews JOIN Project.Game ON Game.IDGame = Reviews.IDGame  WHERE Reviews.UserID = @IDClient AND Game.IDGame = @IDGame)
+		IF (@temp is null)  
+			set @id=0;
+		ELSE
+			set @id=@temp;
+		RETURN @id;
 END
 GO
 
