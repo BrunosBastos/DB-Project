@@ -10,23 +10,23 @@ using System.Windows.Forms;
 
 namespace App
 {
-    public partial class PlatformDetails : Form
+    public partial class GenreDetails : Form
     {
 
-        private string platform;
-        public PlatformDetails(string platform)
+        private string genre;
+        public GenreDetails(string genre)
         {
-            this.platform = platform;
+            this.genre = genre;
             InitializeComponent();
-            LoadPlatformDetails();
+            LoadGenreDetails();
         }
 
-        private void LoadPlatformDetails()
+        private void LoadGenreDetails()
         {
-
+            // query para dar load aos campos do genero
         }
 
-        private void Close(object sender, EventArgs e)
+        private void CloseDetails(object sender, EventArgs e)
         {
             this.Close();
         }
