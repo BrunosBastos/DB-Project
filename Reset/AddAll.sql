@@ -1175,7 +1175,7 @@ go
 SELECT * FROM Project.[udf_getReviewsList](1);
 SELECT Project.[udf_getNumberOfReviews](1);
 
----- PROCEDURES---
+
 
 CREATE FUNCTION Project.[udf_getFranchiseDetails] (@IDFranchise INT) RETURNS TABLE
 AS
@@ -1201,7 +1201,7 @@ BEGIN
 		RETURN @id;
 END
 GO
-
+---- PROCEDURES---
 create procedure Project.pd_Login(
 	@Loginemail varchar(50),
 	@password varchar(20),
@@ -1261,4 +1261,49 @@ go
 CREATE PROCEDURE Project.pd_getGameGenres(@IDGame int)
 AS
 	SELECT  Distinct Genre.* FROM (Project.Genre JOIN  Project.GameGenre ON Genre.GenName = GameGenre.GenName ) WHERE GameGenre.IDGame = @IDGame
+go
+
+CREATE PROCEDURE Project.pd_insertReview(
+	@Title VARCHAR(50),
+	@Text VARCHAR(280),
+	@Rating DECIMAL (2,1),
+	@DateReview DATE,
+	@UserID INT ,
+	@IDGame INT,
+	@response INT OUTPUT
+	)
+	AS
+		BEGIN
+				INSERT INTO Project.Reviews(Title,[Text],Rating,DateReview,UserID,IDGame) VALUES (@Title,@Text,@Rating,@DateReview,@UserID,@IDGame)
+		END
+go
+
+
+CREATE TRIGGER Project.trigger_review ON Project.[Reviews]
+instead of insert
+AS
+	BEGIN
+	BEGIN TRY
+		DECLARE @Title AS VARCHAR(50);
+		DECLARE @Text  AS VARCHAR(280);
+		DECLARE @Rating AS DECIMAL (2,1);
+		DECLARE @DateReview AS DATE;
+		DECLARE @UserID AS INT;
+		DECLARE @IDGame AS INT;
+		DECLARE  @temp AS INT;
+		SELECT @Title = Title, @Text = [Text] , @Rating = Rating, @DateReview = DateReview, @UserID = UserID, @IDGame = IDGame FROM INSERTED;
+		SET @temp = (SELECT Project.[udf_checkReview](@UserID,@IDGame));
+		if @temp = 0 
+			INSERT INTO Project.Reviews(Title,[Text],Rating,DateReview,UserID,IDGame) VALUES (@Title,@Text,@Rating,@DateReview,@UserID,@IDGame)
+		else
+		 UPDATE Project.Reviews
+
+		 SET Title=@Title,[Text]=@Text, Rating=@Rating, DateReview=@DateReview
+		 WHERE Project.Reviews.IDGame = @IDGame AND Project.Reviews.UserID=@UserID
+	END TRY
+	BEGIN CATCH
+		 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
+		 PRINT ERROR_MESSAGE()
+	END CATCH
+	END
 go
