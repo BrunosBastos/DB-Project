@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App
 {
-    class Review
+    public class Review
     {
 
 

@@ -12,9 +12,30 @@ namespace App
 {
     public partial class ReviewDetails : Form
     {
-        public ReviewDetails()
+        public Review r;
+
+        public ReviewDetails(Review r)
         {
+            this.r = r;
             InitializeComponent();
+            Load();
+        }
+
+
+        private void Load()
+        {
+            Title.Text = r.title;
+            Rating.Text = r.rating;
+            User.Text = r.username;
+            Game.Text = r.game;
+            Content.Text = r.text;
+            Date.Text = r.dateReview.Split(' ').ToArray()[0];
+
+        }
+
+        private void Close(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

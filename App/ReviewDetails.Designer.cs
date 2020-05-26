@@ -29,61 +29,50 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Title = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.Content = new System.Windows.Forms.TextBox();
+            this.Rating = new System.Windows.Forms.TextBox();
+            this.Game = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.Date = new System.Windows.Forms.TextBox();
+            this.User = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.Title);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox8);
+            this.groupBox1.Controls.Add(this.Content);
+            this.groupBox1.Controls.Add(this.Rating);
+            this.groupBox1.Controls.Add(this.Game);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.Date);
+            this.groupBox1.Controls.Add(this.User);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(538, 335);
+            this.groupBox1.Size = new System.Drawing.Size(538, 319);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Review Details";
             // 
-            // textBox6
+            // Title
             // 
-            this.textBox6.Location = new System.Drawing.Point(457, 135);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(45, 20);
-            this.textBox6.TabIndex = 8;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(17, 59);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.Title.Location = new System.Drawing.Point(17, 59);
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            this.Title.Size = new System.Drawing.Size(100, 20);
+            this.Title.TabIndex = 0;
             // 
             // label1
             // 
@@ -112,27 +101,30 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Game";
             // 
-            // textBox2
+            // Content
             // 
-            this.textBox2.Location = new System.Drawing.Point(17, 177);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(485, 116);
-            this.textBox2.TabIndex = 2;
+            this.Content.Location = new System.Drawing.Point(17, 177);
+            this.Content.Multiline = true;
+            this.Content.Name = "Content";
+            this.Content.ReadOnly = true;
+            this.Content.Size = new System.Drawing.Size(485, 116);
+            this.Content.TabIndex = 2;
             // 
-            // textBox3
+            // Rating
             // 
-            this.textBox3.Location = new System.Drawing.Point(268, 135);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(38, 20);
-            this.textBox3.TabIndex = 4;
+            this.Rating.Location = new System.Drawing.Point(268, 135);
+            this.Rating.Name = "Rating";
+            this.Rating.ReadOnly = true;
+            this.Rating.Size = new System.Drawing.Size(38, 20);
+            this.Rating.TabIndex = 4;
             // 
-            // textBox8
+            // Game
             // 
-            this.textBox8.Location = new System.Drawing.Point(140, 135);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 12;
+            this.Game.Location = new System.Drawing.Point(140, 135);
+            this.Game.Name = "Game";
+            this.Game.ReadOnly = true;
+            this.Game.Size = new System.Drawing.Size(100, 20);
+            this.Game.TabIndex = 12;
             // 
             // label3
             // 
@@ -152,26 +144,21 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "User";
             // 
-            // textBox4
+            // Date
             // 
-            this.textBox4.Location = new System.Drawing.Point(349, 136);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(50, 20);
-            this.textBox4.TabIndex = 6;
+            this.Date.Location = new System.Drawing.Point(349, 136);
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            this.Date.Size = new System.Drawing.Size(88, 20);
+            this.Date.TabIndex = 6;
             // 
-            // textBox7
+            // User
             // 
-            this.textBox7.Location = new System.Drawing.Point(17, 135);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 10;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(406, 135);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(44, 20);
-            this.textBox5.TabIndex = 7;
+            this.User.Location = new System.Drawing.Point(17, 135);
+            this.User.Name = "User";
+            this.User.ReadOnly = true;
+            this.User.Size = new System.Drawing.Size(100, 20);
+            this.User.TabIndex = 10;
             // 
             // label4
             // 
@@ -182,24 +169,15 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Date";
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(177, 353);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 19);
-            this.button2.TabIndex = 18;
-            this.button2.Text = "Edit Review";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(290, 353);
+            this.button1.Location = new System.Drawing.Point(243, 337);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 19);
             this.button1.TabIndex = 17;
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Close);
             // 
             // ReviewDetails
             // 
@@ -207,7 +185,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(571, 378);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "ReviewDetails";
             this.Text = "ReviewDetails";
@@ -220,21 +197,18 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Title;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox Content;
+        private System.Windows.Forms.TextBox Rating;
+        private System.Windows.Forms.TextBox Game;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox Date;
+        private System.Windows.Forms.TextBox User;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
     }
 }

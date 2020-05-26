@@ -73,11 +73,10 @@ namespace App
 
         private void goToReviewDetails(object sender, EventArgs e)
         {
+            Review r = (Review)listBox1.Items[listBox1.SelectedIndex];
 
-            ReviewDetails rd = new ReviewDetails();
-
-
-
+            ReviewDetails rd = new ReviewDetails(r);
+            rd.ShowDialog();
         }
     }
 }
