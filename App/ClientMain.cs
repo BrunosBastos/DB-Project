@@ -210,16 +210,20 @@ namespace App
         {
             if (MGDGenre.Items.Count == 0)
             {
-                MessageBox.Show("There are not Genres for this game.");
+                MessageBox.Show("There are no Genres for this game.");
+                return;
             }
             if (MGDGenre.SelectedIndex == -1)
             {
                 MessageBox.Show("Please Select a Genre from the list.");
+                return;
             }
 
-            string genre = MGDGenre.Items[MGDGenre.SelectedIndex].ToString(); 
+            string genre = MGDGenre.Items[MGDGenre.SelectedIndex].ToString();
             // Create Genre Details;
-
+            GenreDetails gd = new GenreDetails(genre);
+            Console.WriteLine(genre);
+            gd.ShowDialog();
 
 
         }
@@ -228,6 +232,18 @@ namespace App
         {
             string platform = MGDPlatform.Text;
             // Create PlatformDetails
+
+            PlatformDetails gd = new PlatformDetails(platform);
+            Console.WriteLine(platform);
+            gd.ShowDialog();
+
+        }
+
+        private void goToViewReviews(object sender, EventArgs e)
+        {
+            Game g = (Game)listBox1.Items[current_game];
+            ViewReviews vr = new ViewReviews(Int32.Parse(g.IDGame));
+            vr.ShowDialog();
 
 
         }

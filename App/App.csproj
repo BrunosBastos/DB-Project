@@ -115,6 +115,12 @@
     <Compile Include="ViewProfile.Designer.cs">
       <DependentUpon>ViewProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewReviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewReviews.Designer.cs">
+      <DependentUpon>ViewReviews.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminMain.resx">
       <DependentUpon>AdminMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewProfile.resx">
       <DependentUpon>ViewProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewReviews.resx">
+      <DependentUpon>ViewReviews.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
