@@ -54,8 +54,10 @@ namespace App
                     else
                     {
                         SqlCommand cmd = new SqlCommand("select Project.udf_isclient ('" + Email + "')", Program.cn);
-                        value = (int)comand.ExecuteScalar();
-                        Program.currentUser = value;
+                        int value2 = (int)cmd.ExecuteScalar();
+                        Console.WriteLine(Email);
+                        Console.WriteLine("Login:" +value2);
+                        Program.currentUser = value2;
                         this.Hide();
                         ClientMain client = new ClientMain();
                         client.ShowDialog();

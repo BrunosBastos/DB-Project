@@ -44,9 +44,7 @@
             this.MCAddReview = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.MGDAcquireDay = new System.Windows.Forms.TextBox();
-            this.MGDAcquireMonth = new System.Windows.Forms.TextBox();
-            this.MGDAcquireYear = new System.Windows.Forms.TextBox();
+            this.MGDAcquireDate = new System.Windows.Forms.TextBox();
             this.MGDPlatform = new System.Windows.Forms.TextBox();
             this.MGDImage = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
@@ -62,10 +60,8 @@
             this.MGDGenre = new System.Windows.Forms.ListBox();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
-            this.MGDDay = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.MGDMonth = new System.Windows.Forms.TextBox();
-            this.MGDYear = new System.Windows.Forms.TextBox();
+            this.MGDReleaseDate = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.button16 = new System.Windows.Forms.Button();
@@ -388,9 +384,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label25);
-            this.groupBox3.Controls.Add(this.MGDAcquireDay);
-            this.groupBox3.Controls.Add(this.MGDAcquireMonth);
-            this.groupBox3.Controls.Add(this.MGDAcquireYear);
+            this.groupBox3.Controls.Add(this.MGDAcquireDate);
             this.groupBox3.Controls.Add(this.MGDPlatform);
             this.groupBox3.Controls.Add(this.MGDImage);
             this.groupBox3.Controls.Add(this.label26);
@@ -406,10 +400,8 @@
             this.groupBox3.Controls.Add(this.MGDGenre);
             this.groupBox3.Controls.Add(this.label32);
             this.groupBox3.Controls.Add(this.label33);
-            this.groupBox3.Controls.Add(this.MGDDay);
             this.groupBox3.Controls.Add(this.label34);
-            this.groupBox3.Controls.Add(this.MGDMonth);
-            this.groupBox3.Controls.Add(this.MGDYear);
+            this.groupBox3.Controls.Add(this.MGDReleaseDate);
             this.groupBox3.Location = new System.Drawing.Point(195, 23);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(626, 620);
@@ -426,29 +418,13 @@
             this.label25.TabIndex = 86;
             this.label25.Text = "Acquire Date";
             // 
-            // MGDAcquireDay
+            // MGDAcquireDate
             // 
-            this.MGDAcquireDay.Location = new System.Drawing.Point(263, 369);
-            this.MGDAcquireDay.Name = "MGDAcquireDay";
-            this.MGDAcquireDay.ReadOnly = true;
-            this.MGDAcquireDay.Size = new System.Drawing.Size(43, 20);
-            this.MGDAcquireDay.TabIndex = 85;
-            // 
-            // MGDAcquireMonth
-            // 
-            this.MGDAcquireMonth.Location = new System.Drawing.Point(211, 368);
-            this.MGDAcquireMonth.Name = "MGDAcquireMonth";
-            this.MGDAcquireMonth.ReadOnly = true;
-            this.MGDAcquireMonth.Size = new System.Drawing.Size(46, 20);
-            this.MGDAcquireMonth.TabIndex = 84;
-            // 
-            // MGDAcquireYear
-            // 
-            this.MGDAcquireYear.Location = new System.Drawing.Point(144, 369);
-            this.MGDAcquireYear.Name = "MGDAcquireYear";
-            this.MGDAcquireYear.ReadOnly = true;
-            this.MGDAcquireYear.Size = new System.Drawing.Size(61, 20);
-            this.MGDAcquireYear.TabIndex = 83;
+            this.MGDAcquireDate.Location = new System.Drawing.Point(144, 369);
+            this.MGDAcquireDate.Name = "MGDAcquireDate";
+            this.MGDAcquireDate.ReadOnly = true;
+            this.MGDAcquireDate.Size = new System.Drawing.Size(82, 20);
+            this.MGDAcquireDate.TabIndex = 83;
             // 
             // MGDPlatform
             // 
@@ -495,7 +471,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(260, 219);
+            this.label28.Location = new System.Drawing.Point(198, 218);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(79, 13);
             this.label28.TabIndex = 81;
@@ -512,7 +488,7 @@
             // 
             // MGDAgeRestriction
             // 
-            this.MGDAgeRestriction.Location = new System.Drawing.Point(265, 239);
+            this.MGDAgeRestriction.Location = new System.Drawing.Point(203, 238);
             this.MGDAgeRestriction.Name = "MGDAgeRestriction";
             this.MGDAgeRestriction.ReadOnly = true;
             this.MGDAgeRestriction.Size = new System.Drawing.Size(51, 20);
@@ -578,14 +554,6 @@
             this.label33.TabIndex = 70;
             this.label33.Text = "Genre";
             // 
-            // MGDDay
-            // 
-            this.MGDDay.Location = new System.Drawing.Point(141, 236);
-            this.MGDDay.Name = "MGDDay";
-            this.MGDDay.ReadOnly = true;
-            this.MGDDay.Size = new System.Drawing.Size(43, 20);
-            this.MGDDay.TabIndex = 74;
-            // 
             // label34
             // 
             this.label34.AutoSize = true;
@@ -595,21 +563,13 @@
             this.label34.TabIndex = 71;
             this.label34.Text = "Platform";
             // 
-            // MGDMonth
+            // MGDReleaseDate
             // 
-            this.MGDMonth.Location = new System.Drawing.Point(89, 235);
-            this.MGDMonth.Name = "MGDMonth";
-            this.MGDMonth.ReadOnly = true;
-            this.MGDMonth.Size = new System.Drawing.Size(46, 20);
-            this.MGDMonth.TabIndex = 73;
-            // 
-            // MGDYear
-            // 
-            this.MGDYear.Location = new System.Drawing.Point(22, 236);
-            this.MGDYear.Name = "MGDYear";
-            this.MGDYear.ReadOnly = true;
-            this.MGDYear.Size = new System.Drawing.Size(61, 20);
-            this.MGDYear.TabIndex = 72;
+            this.MGDReleaseDate.Location = new System.Drawing.Point(22, 236);
+            this.MGDReleaseDate.Name = "MGDReleaseDate";
+            this.MGDReleaseDate.ReadOnly = true;
+            this.MGDReleaseDate.Size = new System.Drawing.Size(98, 20);
+            this.MGDReleaseDate.TabIndex = 72;
             // 
             // tabPage2
             // 
@@ -1994,9 +1954,7 @@
         private System.Windows.Forms.Button MCAddReview;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox MGDAcquireDay;
-        private System.Windows.Forms.TextBox MGDAcquireMonth;
-        private System.Windows.Forms.TextBox MGDAcquireYear;
+        private System.Windows.Forms.TextBox MGDAcquireDate;
         private System.Windows.Forms.TextBox MGDPlatform;
         private System.Windows.Forms.PictureBox MGDImage;
         private System.Windows.Forms.Label label26;
@@ -2012,10 +1970,8 @@
         private System.Windows.Forms.ListBox MGDGenre;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.TextBox MGDDay;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.TextBox MGDMonth;
-        private System.Windows.Forms.TextBox MGDYear;
+        private System.Windows.Forms.TextBox MGDReleaseDate;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Button button16;

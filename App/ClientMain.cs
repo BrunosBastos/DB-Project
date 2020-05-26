@@ -31,7 +31,7 @@ namespace App
                 return;
 
 
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Project.Game", Program.cn);
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Project.[udf_checkusersgames](" + Program.currentUser + ")", Program.cn);
             SqlDataReader reader = cmd.ExecuteReader();
             listBox1.Items.Clear();
 
@@ -47,21 +47,21 @@ namespace App
                 g.IDFranchise = reader["IDFranchise"].ToString();
                 g.AgeRestriction = reader["AgeRestriction"].ToString();
 
-                g.CoverImg = reader["CoverImg"].ToString();
+                g.CoverImg = "https://" + reader["CoverImg"].ToString();
                 listBox1.Items.Add(g);
                 
             }
 
 
-            // fazer query para saber se ele ja tem uma review neste jogo ou n
-            // e mudar o texto do botao para Edit Review caso ele tenha
+            
             // assim como o conteudo do add review ja devia estar preenchido com
             // as cenas da review antiga
             current_game = 0;
-            ShowGame();
             Program.cn.Close();
+            ShowGame();
 
         }
+ 
 
 
         private void ShowGame()
@@ -70,20 +70,52 @@ namespace App
                 return;
             Game g = new Game();
             g = (Game)listBox1.Items[current_game];
+
+            // Change Review Button
             updateInterface(Program.currentUser,Int32.Parse(g.IDGame));
+
             MGDName.Text = g.Name;
             MGDDescription.Text = g.Description;
-            MGDCompany.Text = g.IDCompany;
-            MGDFranchise.Text = g.IDFranchise;
             MGDAgeRestriction.Text = g.AgeRestriction;
-            MGDDay.Text = g.ReleaseDate.Split('/').ToArray()[0];
-            MGDMonth.Text = g.ReleaseDate.Split('/').ToArray()[1];
-            MGDYear.Text = g.ReleaseDate.Split('/').ToArray()[2].Split(' ').ToArray()[0];
-            Console.WriteLine("https://"+g.CoverImg);
-            MGDImage.LoadAsync("https://"+g.CoverImg);
+            MGDReleaseDate.Text = g.ReleaseDate.ToString().Split(' ').ToArray()[0];
+            Console.WriteLine(g.CoverImg);
+            if (g.CoverImg != "https://")
+            {
+                MGDImage.LoadAsync(g.CoverImg);
+            }
+
+
+            // Franchise and Company name
+            if (Program.verifySGBDConnection())
+            {
+                // perguntar stor
+                SqlCommand cmd = new SqlCommand("Select Company.CompanyName From Project.Company where IDCompany=" + g.IDCompany, Program.cn);
+                string name = (string)cmd.ExecuteScalar();
+                MGDCompany.Text = name;
+                cmd = new SqlCommand("Select Franchise.Name From Project.Franchise where IDFranchise=" + g.IDFranchise, Program.cn);
+                string franchise = (string)cmd.ExecuteScalar();
+
+                MGDFranchise.Text = franchise;
+
+                cmd = new SqlCommand("Select PlatformName,PurchaseDate from Project.[udf_getPurchaseInfo](" + g.IDGame + "," +Program.currentUser  + ")",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                MGDPlatform.Text = reader["PlatformName"].ToString();
+                MGDAcquireDate.Text= reader["PurchaseDate"].ToString().Split(' ').ToArray()[0];
+                reader.Close();
+                cmd = new SqlCommand("Select * From Project.[udf_getGameGenres](" + g.IDGame + ")", Program.cn);
+                reader = cmd.ExecuteReader();
+                MGDGenre.Items.Clear();
+                while (reader.Read())
+                {
+                    MGDGenre.Items.Add(reader["GenName"].ToString());
+                }
+                reader.Close();
+            }
             
             
-            // querys para meter o genero, plataforma e aquire date
+            
+            
         }
 
         private void updateInterface(int UserID, int IDGame)
@@ -94,8 +126,11 @@ namespace App
             {
                 return;
             }
+            Console.WriteLine("Dentro do updateInterface");
+            Console.WriteLine(""+UserID + IDGame);
             SqlCommand comand = new SqlCommand("select Project.udf_checkReview (" + UserID + ","+IDGame+")", Program.cn);
             int value = (int)comand.ExecuteScalar();
+            Console.WriteLine("return value:"+value);
             if (value > 0)
             {
                 MCAddReview.Text = "Edit Review";
@@ -144,7 +179,7 @@ namespace App
         }
 
         private void UpdateCurrentGame(object sender, EventArgs e)
-        {
+        {   
             current_game = listBox1.SelectedIndex;
             ShowGame();
         }
