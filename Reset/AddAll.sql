@@ -414,20 +414,20 @@ VALUES('Need For Speed : Shift','Need for Speed: Shift is the 13th installment o
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
 VALUES('Assassins Creed II','Assassins Creed II is a 2009 action-adventure video game developed published by Ubisoft.','2009-11-17', 18 ,9.99, 16 , 8, 'images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/8dd91536-f09a-487f-838f-140f69ff9d8a/d5ws6i1-1fb4c643-f683-4f93-9f23-bd20f0535403.png/v1/fill/w_256,h_256,q_80,strp/assassin_s_creed_2_icon_for_obly_tile_by_enigmaxg2_d5ws6i1-fullview.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Assassins Creed IV: Black Flag','Assassins Creed IV: Black Flag is an action-adventure video game published by Ubisoft.','2013-10-29', 18 ,19.99, 16 , 8 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Assassins Creed IV: Black Flag','Assassins Creed IV: Black Flag is an action-adventure video game published by Ubisoft.','2013-10-29', 18 ,19.99, 16 , 8,'pbs.twimg.com/profile_images/3321242353/74d0589d590170d9a6c914496ffb81d2.jpeg' )
+
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Far Cry 3','Far Cry 3 is a 2012 first-person shooter developed by Ubisoft Montreal and published by Ubisoft.','2012-11-29', 18 ,19.99, 16 , 9,'c-sf.smule.com/sf/s34/arr/6e/75/11178429-7c20-4335-8c8e-7771de9945b9.jpg' )
+
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Far Cry 5','Far Cry 5 is a first-person shooter game published by Ubisoft, the 5th game in the Far Cry series.','2018-03-27', 18 ,49.99, 16 , 9,'turkce-yama.com/wp-content/uploads/FarCry-5-Simge-256x256.png' )
 
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Far Cry 3','Far Cry 3 is a 2012 first-person shooter developed by Ubisoft Montreal and published by Ubisoft.','2012-11-29', 18 ,19.99, 16 , 9 )
+VALUES('Pro Evolution Soccer 2019','Pro Evolution Soccer 2019 is a football simulation video game published by Konami','2019-08-08', 3 ,39.99, 7 , 10,'i.pinimg.com/474x/15/e8/fa/15e8fa57c4588318250d2676c9f40a56.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Far Cry 5','Far Cry 5 is a first-person shooter game published by Ubisoft, the 5th game in the Far Cry series.','2018-03-27', 18 ,49.99, 16 , 9 )
-
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Pro Evolution Soccer 2019','Pro Evolution Soccer 2019 is a football simulation video game published by Konami','2019-08-08', 3 ,39.99, 7 , 10 )
-
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('The Legend of Zelda: Breath of the Wild','The Legend of Zelda: Breath of the Wild is an action-adventure game developed and published by Nintendo','2017-03-03', 3 ,59.99, 12 , 11 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise, CoverImg) 
+VALUES('The Legend of Zelda: Breath of the Wild','The Legend of Zelda: Breath of the Wild is an action-adventure game developed and published by Nintendo','2017-03-03', 3 ,59.99, 12 , 11, 'i.pinimg.com/474x/15/e8/fa/15e8fa57c4588318250d2676c9f40a56.jpg' )
 
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
 VALUES('Uncharted: Drakes Fortune', 'Uncharted: Drakes Fortune is a 2007 action-adventure game published by Sony Computer Entertainment. It is the first game in the Uncharted series.','2007-1-20', 3 ,9.99, 1 , 13 )
@@ -1046,7 +1046,6 @@ BEGIN
 END
 GO
 
-
 CREATE FUNCTION Project.[udf_checkusersgames](@IDClient INT) RETURNS TABLE
 AS 
 		RETURN ( SELECT Game.*  
@@ -1074,7 +1073,7 @@ GO
 
 SELECT * FROM Project.[udf_userfollowers] (2)
 
-go
+GO
 
 CREATE FUNCTION Project.[udf_countuserFollwers] (@IDClient INT) RETURNS INT
 AS 
@@ -1101,12 +1100,11 @@ AS
 	WHERE Follows.IDFollower = @IDClient)
 
 
-go
-
+GO
 
 
 --Get all Games that two users have in common 
-go
+GO
 CREATE FUNCTION Project.[udf_checkAllGamesinCommon] (@IDClient INT, @IDPerson INT ) RETURNS TABLE
 AS
 	   RETURN (SELECT  Game.IDGame,Game.[Name] FROM  Project.Purchase 
@@ -1130,7 +1128,7 @@ AS
 	JOIN Project.Game ON Game.IDGame = PlatformReleasesGame.IDGame 
 	JOIN Project.[Platform] ON [Platform].PlatformName = PlatformReleasesGame.PlatformName
 	WHERE Game.IDGame = @IDGame)
-go
+GO
 
 
 CREATE FUNCTION Project.[udf_getPurchaseInfo] (@IDGame INT,@IDClient INT) RETURNS TABLE
@@ -1139,7 +1137,7 @@ AS
 	JOIN Project.[Copy] ON  Purchase.SerialNum = [Copy].SerialNum
 	JOIN Project.Game ON Game.IDGame = [Copy].IDGame
 	WHERE Purchase.IDClient = @IDClient) 
-go
+GO
 
 
 
@@ -1147,27 +1145,36 @@ CREATE FUNCTION Project.[udf_getGameDetails] (@IDGame INT) RETURNS TABLE
 AS
 	RETURN ( SELECT * FROM Game WHERE Game.IDGame = @IDGame)
 
-go
+GO
 
 SELECT * FROM Project.udf_getGameDetails (30)
 
-go
+GO
 CREATE FUNCTION Project.[udf_getCompanyDetails] (@IDCompany INT) RETURNS TABLE
 AS
 	RETURN ( SELECT * FROM Company WHERE Company.IDCompany = @IDCompany)
 ---- PROCEDURES---
-go
+GO
 
 CREATE FUNCTION Project.[udf_getFranchiseDetails] (@IDFranchise INT) RETURNS TABLE
 AS
 	RETURN ( SELECT * FROM Franchise WHERE Franchise.IDFranchise =@IDFranchise)
-go
+GO
 
 CREATE FUNCTION Project.[udf_getFranchisesComp] (@IDCompany INT) RETURNS TABLE
 AS
 	RETURN (SELECT Franchise.IDFranchise,Franchise.Name FROM Company JOIN CompFranchise ON CompFranchise.IDCompany = Company.IDCompany JOIN Franchise ON Franchise.IDFranchise = CompFranchise.IDFranchise WHERE Company.IDCompany = @IDCompany)
 
-go
+GO
+
+CREATE FUNCTION Project.[udf_checkReview] (@IDClient INT, @IDGame INT) RETURNS INT
+AS
+BEGIN
+		IF EXISTS( SELECT Reviews.* FROM Project.Reviews JOIN Project.Game ON Game.IDGame = Reviews.IDGame  WHERE Reviews.UserID = @IDClient) 
+			RETURN 1;
+		RETURN 0;	
+END
+GO
 
 create procedure Project.pd_Login(
 	@Loginemail varchar(50),
