@@ -423,7 +423,7 @@ VALUES('Far Cry 3','Far Cry 3 is a 2012 first-person shooter developed by Ubisof
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
 VALUES('Far Cry 5','Far Cry 5 is a first-person shooter game published by Ubisoft, the 5th game in the Far Cry series.','2018-03-27', 18 ,49.99, 16 , 9,'turkce-yama.com/wp-content/uploads/FarCry-5-Simge-256x256.png' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
 VALUES('Pro Evolution Soccer 2019','Pro Evolution Soccer 2019 is a football simulation video game published by Konami','2019-08-08', 3 ,39.99, 7 , 10,'i.pinimg.com/474x/15/e8/fa/15e8fa57c4588318250d2676c9f40a56.jpg' )
 
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise, CoverImg) 
@@ -432,41 +432,41 @@ VALUES('The Legend of Zelda: Breath of the Wild','The Legend of Zelda: Breath of
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
 VALUES('Uncharted: Drakes Fortune', 'Uncharted: Drakes Fortune is a 2007 action-adventure game published by Sony Computer Entertainment. It is the first game in the Uncharted series.','2007-1-20', 3 ,9.99, 1 , 13,'static.truetrophies.com/boxart/Game_986.png' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Uncharted 4: A Thiefs End' , 'Uncharted 4: A Thiefs End is a 2016 action-adventure game published by Sony Computer Entertainment.','2007-1-20', 3 ,9.99, 1 , 13 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Uncharted 4: A Thiefs End' , 'Uncharted 4: A Thiefs End is a 2016 action-adventure game published by Sony Computer Entertainment.','2007-1-20', 3 ,9.99, 1 , 13,'www.truetrophies.com/boxart/Game_4209.png' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Battlefield 4','Battlefield 4 is a first-person shooter video game developed by video game developer EA DICE and published by Electronic Arts','2013-10-29', 18 ,39.99, 2 , 12 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Battlefield 4','Battlefield 4 is a first-person shooter video game developed by video game developer EA DICE and published by Electronic Arts','2013-10-29', 18 ,39.99, 2 , 12,'vectorified.com/images/battlefield-4-icon-16x16-33.png' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Resident Evil 2','Resident Evil 2 is a survival horror game developed and published by Capcom.','2019-01-25', 18 ,39.99, 14 , 14 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Resident Evil 2','Resident Evil 2 is a survival horror game developed and published by Capcom.','2019-01-25', 18 ,39.99, 14 , 14,'static.truetrophies.com/boxart/Game_8024.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Halo 5 : Guardian','Halo 5: Guardians is a first-person shooter video game developed by 343 Industries and published by Microsoft Studios','2015-10-17', 16 ,39.99, 9 , 15 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Halo 5 : Guardian','Halo 5: Guardians is a first-person shooter video game developed by 343 Industries and published by Microsoft Studios','2015-10-17', 16 ,39.99, 9 , 15,'avatarfiles.alphacoders.com/123/123823.png' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Shadow of the Tomb Raider','Shadow of the Tomb Raider is an action-adventure video game published by Square Enix.','2018-09-12', 18 ,20.00, 3 , 16 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Shadow of the Tomb Raider','Shadow of the Tomb Raider is an action-adventure video game published by Square Enix.','2018-09-12', 18 ,20.00, 3 , 16,'www.truetrophies.com/boxart/Game_7519.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('The Elder Scrolls V: Skyrim','The Elder Scrolls V: Skyrim is an action role-playing video game published by Bethesda Softworks.','2011-11-11', 12, 19.99, 1 , 17 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('The Elder Scrolls V: Skyrim','The Elder Scrolls V: Skyrim is an action role-playing video game published by Bethesda Softworks.','2011-11-11', 12, 19.99, 1 , 17,'images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/78aa3687-9f6e-45cc-9450-47d0978a810d/d39n68b-07b03bff-a1c3-4417-be06-a228a0ab0cff.png/v1/fill/w_256,h_256,q_80,strp/elder_scrolls_v___skyrim_icon_by_bonscha_d39n68b-fullview.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Counter Strike Global Offensive','Counter-Strike: Global Offensive is a multiplayer first-person shooter video game developed by Valve and Hidden Path Entertainment.','2012-08-21', 18 ,10.00, 19 , 18 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Counter Strike Global Offensive','Counter-Strike: Global Offensive is a multiplayer first-person shooter video game developed by Valve and Hidden Path Entertainment.','2012-08-21', 18 ,10.00, 19 , 18,'p1.hiclipart.com/preview/915/443/598/counter-strike-go-game-icon-pack-cs-go-6-png-icon.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('God Of War','God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment.','2018-04-20', 18 ,40.00, 8 , 19 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('God Of War','God of War is an action-adventure game developed by Santa Monica Studio and published by Sony Interactive Entertainment.','2018-04-20', 18 ,40.00, 8 , 19,'avatarfiles.alphacoders.com/222/222728.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Warcraft III: Reign of Chaos','Warcraft III: Reign of Chaos is a high fantasy real-time strategy computer video game developed and published by Blizzard Entertainment released in July 2002. It is the second sequel to Warcraft: Orcs & Humans','2002-07-03', 16 ,5.00, 11 , 20 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Warcraft III: Reign of Chaos','Warcraft III: Reign of Chaos is a high fantasy real-time strategy computer video game developed and published by Blizzard Entertainment released in July 2002. It is the second sequel to Warcraft: Orcs & Humans','2002-07-03', 16 ,5.00, 11 , 20,'dl1.cbsistatic.com/i/2016/07/12/f3f4e353-38aa-4de9-8c87-a6ad905ce9e9/d900d0e88d0f97b1464494805baac237/imgingest-6030158764582817665.png' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Mass Effect: Andromeda','Mass Effect: Andromeda is an action role-playing video game developed by BioWare and published by Electronic Arts.','2017-03-21', 16 ,45.00, 2 , 22 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Mass Effect: Andromeda','Mass Effect: Andromeda is an action role-playing video game developed by BioWare and published by Electronic Arts.','2017-03-21', 16 ,45.00, 2 , 22,'m.media-amazon.com/images/I/51zkf-kP5yL._AA256_.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Tekken 7','Tekken 7 is a fighting game developed and published by Bandai Namco Entertainment.','2015-03-18', 18 ,49.99, 13 , 23)
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Tekken 7','Tekken 7 is a fighting game developed and published by Bandai Namco Entertainment.','2015-03-18', 18 ,49.99, 13 , 23,'static.truetrophies.com/boxart/Game_5497.png')
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Street Fighter','Street Fighter V is a fighting game developed by Capcom','2016-02-16', 3 ,15.00, 14 , 24 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Street Fighter','Street Fighter V is a fighting game developed by Capcom','2016-02-16', 3 ,15.00, 14 , 24,'pbs.twimg.com/profile_images/697220635198689285/T34coLzR_400x400.png' )
 
 -- insert CompFranchise
 
