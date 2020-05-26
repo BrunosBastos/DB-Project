@@ -26,7 +26,7 @@ namespace App
         private static SqlConnection getSGBDConnection()
         {
 
-            return new SqlConnection("data source= DESKTOP-F2O68HA; integrated security=true;initial catalog=Projeto; password=BaXSq8AZt");
+            return new SqlConnection("data source= DESKTOP-F2O68HA; integrated security=true;initial catalog=LocalDB; password=BaXSq8AZt");
         }
 
         public static bool verifySGBDConnection()

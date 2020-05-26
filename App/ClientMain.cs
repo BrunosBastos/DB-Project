@@ -49,7 +49,7 @@ namespace App
 
                 g.CoverImg = reader["CoverImg"].ToString();
                 listBox1.Items.Add(g);
-                ShowGame();
+                
             }
 
 
@@ -57,7 +57,8 @@ namespace App
             // e mudar o texto do botao para Edit Review caso ele tenha
             // assim como o conteudo do add review ja devia estar preenchido com
             // as cenas da review antiga
-
+            current_game = 0;
+            ShowGame();
             Program.cn.Close();
 
         }
@@ -69,6 +70,7 @@ namespace App
                 return;
             Game g = new Game();
             g = (Game)listBox1.Items[current_game];
+            updateInterface(Program.currentUser,Int32.Parse(g.IDGame));
             MGDName.Text = g.Name;
             MGDDescription.Text = g.Description;
             MGDCompany.Text = g.IDCompany;
@@ -77,13 +79,32 @@ namespace App
             MGDDay.Text = g.ReleaseDate.Split('/').ToArray()[0];
             MGDMonth.Text = g.ReleaseDate.Split('/').ToArray()[1];
             MGDYear.Text = g.ReleaseDate.Split('/').ToArray()[2].Split(' ').ToArray()[0];
+            Console.WriteLine("https://"+g.CoverImg);
             MGDImage.LoadAsync("https://"+g.CoverImg);
             
             
             // querys para meter o genero, plataforma e aquire date
+        }
 
-
-
+        private void updateInterface(int UserID, int IDGame)
+        {
+            //fazer função para mudar o botao de add Review para edit review
+            //quando ja tiver sido feita uma 
+            if (!Program.verifySGBDConnection())
+            {
+                return;
+            }
+            SqlCommand comand = new SqlCommand("select Project.udf_checkReview (" + UserID + ","+IDGame+")", Program.cn);
+            int value = (int)comand.ExecuteScalar();
+            if (value > 0)
+            {
+                MCAddReview.Text = "Edit Review";
+            }
+            else
+            {
+                MCAddReview.Text = "Add Review";
+            }
+            Program.cn.Close();
 
         }
 

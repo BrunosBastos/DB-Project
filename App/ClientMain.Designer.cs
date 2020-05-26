@@ -41,7 +41,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.MCAddReview = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
             this.MGDAcquireDay = new System.Windows.Forms.TextBox();
@@ -358,7 +358,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button7);
-            this.groupBox4.Controls.Add(this.button4);
+            this.groupBox4.Controls.Add(this.MCAddReview);
             this.groupBox4.Location = new System.Drawing.Point(862, 23);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(187, 130);
@@ -375,15 +375,15 @@
             this.button7.Text = "View Reviews";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // MCAddReview
             // 
-            this.button4.Location = new System.Drawing.Point(43, 36);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(89, 23);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Add Review";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.AddReview);
+            this.MCAddReview.Location = new System.Drawing.Point(43, 36);
+            this.MCAddReview.Name = "MCAddReview";
+            this.MCAddReview.Size = new System.Drawing.Size(89, 23);
+            this.MCAddReview.TabIndex = 0;
+            this.MCAddReview.Text = "Add Review";
+            this.MCAddReview.UseVisualStyleBackColor = true;
+            this.MCAddReview.Click += new System.EventHandler(this.AddReview);
             // 
             // groupBox3
             // 
@@ -621,7 +621,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(881, 659);
+            this.tabPage2.Size = new System.Drawing.Size(1222, 659);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Store";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1056,7 +1056,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(881, 659);
+            this.tabPage3.Size = new System.Drawing.Size(1222, 659);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Profile";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1253,7 +1253,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(881, 659);
+            this.tabPage4.Size = new System.Drawing.Size(1222, 659);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Follows";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1418,7 +1418,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(881, 659);
+            this.tabPage5.Size = new System.Drawing.Size(1222, 659);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Transactions";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1991,7 +1991,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button MCAddReview;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox MGDAcquireDay;
