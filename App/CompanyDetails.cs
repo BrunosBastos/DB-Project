@@ -12,9 +12,19 @@ namespace App
 {
     public partial class CompanyDetails : Form
     {
-        public CompanyDetails()
+        private int IDCompany;
+        public CompanyDetails(int IDCompany)
         {
+            this.IDCompany = IDCompany;
             InitializeComponent();
+            LoadCompanyDetails();
         }
+
+        private void LoadCompanyDetails()
+        {
+            // query to get the details of the company
+
+        }
+
     }
 }

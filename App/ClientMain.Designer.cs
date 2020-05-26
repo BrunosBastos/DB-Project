@@ -285,6 +285,7 @@
             this.button23.TabIndex = 3;
             this.button23.Text = "View Platform Details";
             this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.goToPlatformDetails);
             // 
             // button22
             // 
@@ -294,6 +295,7 @@
             this.button22.TabIndex = 2;
             this.button22.Text = "View Genre Details";
             this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.goToGenreDetails);
             // 
             // button20
             // 
@@ -303,6 +305,7 @@
             this.button20.TabIndex = 1;
             this.button20.Text = "View Franchise Details";
             this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.goToFranchiseDetails);
             // 
             // button19
             // 
@@ -312,6 +315,7 @@
             this.button19.TabIndex = 0;
             this.button19.Text = "View Company Details";
             this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.goToCompanyDetails);
             // 
             // groupBox6
             // 

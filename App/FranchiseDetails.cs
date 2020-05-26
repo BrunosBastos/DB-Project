@@ -12,9 +12,17 @@ namespace App
 {
     public partial class FranchiseDetails : Form
     {
-        public FranchiseDetails()
+        private int IDFranchise;
+        public FranchiseDetails(int IDFranchise)
         {
+            this.IDFranchise = IDFranchise;
             InitializeComponent();
+            LoadFranchiseDetails();
+        }
+        private void LoadFranchiseDetails()
+        {
+            // query to get the franchise details
+
         }
     }
 }

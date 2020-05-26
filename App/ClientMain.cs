@@ -57,7 +57,7 @@ namespace App
             // assim como o conteudo do add review ja devia estar preenchido com
             // as cenas da review antiga
             current_game = 0;
-            Program.cn.Close();
+            reader.Close();
             ShowGame();
 
         }
@@ -186,8 +186,50 @@ namespace App
 
         private void AddReview(object sender, EventArgs e)
         {
-            CreateReview cr = new CreateReview(current_game);
+            Game g = (Game)listBox1.Items[current_game];
+            CreateReview cr = new CreateReview(Int32.Parse(g.IDGame));
             cr.ShowDialog();
+        }
+
+        private void goToCompanyDetails(object sender, EventArgs e)
+        {
+            Game g = (Game)listBox1.Items[current_game];
+            CompanyDetails cd = new CompanyDetails(Int32.Parse(g.IDCompany));
+            cd.ShowDialog();
+
+        }
+
+        private void goToFranchiseDetails(object sender, EventArgs e)
+        {
+            Game g = (Game)listBox1.Items[current_game];
+            FranchiseDetails cd = new FranchiseDetails(Int32.Parse(g.IDFranchise));
+            cd.ShowDialog();
+        }
+
+        private void goToGenreDetails(object sender, EventArgs e)
+        {
+            if (MGDGenre.Items.Count == 0)
+            {
+                MessageBox.Show("There are not Genres for this game.");
+            }
+            if (MGDGenre.SelectedIndex == -1)
+            {
+                MessageBox.Show("Please Select a Genre from the list.");
+            }
+
+            string genre = MGDGenre.Items[MGDGenre.SelectedIndex].ToString(); 
+            // Create Genre Details;
+
+
+
+        }
+
+        private void goToPlatformDetails(object sender, EventArgs e)
+        {
+            string platform = MGDPlatform.Text;
+            // Create PlatformDetails
+
+
         }
     }
 }
