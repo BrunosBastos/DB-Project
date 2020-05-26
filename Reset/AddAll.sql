@@ -429,8 +429,8 @@ VALUES('Pro Evolution Soccer 2019','Pro Evolution Soccer 2019 is a football simu
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise, CoverImg) 
 VALUES('The Legend of Zelda: Breath of the Wild','The Legend of Zelda: Breath of the Wild is an action-adventure game developed and published by Nintendo','2017-03-03', 3 ,59.99, 12 , 11, 'i.pinimg.com/474x/15/e8/fa/15e8fa57c4588318250d2676c9f40a56.jpg' )
 
-INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
-VALUES('Uncharted: Drakes Fortune', 'Uncharted: Drakes Fortune is a 2007 action-adventure game published by Sony Computer Entertainment. It is the first game in the Uncharted series.','2007-1-20', 3 ,9.99, 1 , 13 )
+INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
+VALUES('Uncharted: Drakes Fortune', 'Uncharted: Drakes Fortune is a 2007 action-adventure game published by Sony Computer Entertainment. It is the first game in the Uncharted series.','2007-1-20', 3 ,9.99, 1 , 13,'static.truetrophies.com/boxart/Game_986.png' )
 
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise) 
 VALUES('Uncharted 4: A Thiefs End' , 'Uncharted 4: A Thiefs End is a 2016 action-adventure game published by Sony Computer Entertainment.','2007-1-20', 3 ,9.99, 1 , 13 )
@@ -1170,7 +1170,7 @@ GO
 CREATE FUNCTION Project.[udf_checkReview] (@IDClient INT, @IDGame INT) RETURNS INT
 AS
 BEGIN
-		IF EXISTS( SELECT Reviews.* FROM Project.Reviews JOIN Project.Game ON Game.IDGame = Reviews.IDGame  WHERE Reviews.UserID = @IDClient) 
+		IF EXISTS( SELECT Reviews.* FROM Project.Reviews JOIN Project.Game ON Game.IDGame = Reviews.IDGame  WHERE Reviews.UserID = @IDClient AND Game.IDGame = @IDGame) 
 			RETURN 1;
 		RETURN 0;	
 END
