@@ -33,21 +33,19 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.NGames = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.NFranchises = new System.Windows.Forms.TextBox();
+            this.FoundationDate = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
+            this.Website = new System.Windows.Forms.TextBox();
+            this.Country = new System.Windows.Forms.TextBox();
+            this.Contact = new System.Windows.Forms.TextBox();
+            this.City = new System.Windows.Forms.TextBox();
+            this.CName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,7 +54,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -67,21 +65,20 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Close Details";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Close);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.FoundationDate);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.Logo);
+            this.groupBox1.Controls.Add(this.Website);
+            this.groupBox1.Controls.Add(this.Country);
+            this.groupBox1.Controls.Add(this.Contact);
+            this.groupBox1.Controls.Add(this.City);
+            this.groupBox1.Controls.Add(this.CName);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -98,7 +95,7 @@
             // 
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.listBox2);
-            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.Controls.Add(this.NGames);
             this.groupBox3.Location = new System.Drawing.Point(28, 242);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(312, 150);
@@ -123,18 +120,18 @@
             this.listBox2.Size = new System.Drawing.Size(167, 121);
             this.listBox2.TabIndex = 16;
             // 
-            // textBox10
+            // NGames
             // 
-            this.textBox10.Location = new System.Drawing.Point(6, 53);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 15;
+            this.NGames.Location = new System.Drawing.Point(6, 53);
+            this.NGames.Name = "NGames";
+            this.NGames.Size = new System.Drawing.Size(100, 20);
+            this.NGames.TabIndex = 15;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Controls.Add(this.textBox9);
+            this.groupBox2.Controls.Add(this.NFranchises);
             this.groupBox2.Location = new System.Drawing.Point(419, 242);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(304, 150);
@@ -159,33 +156,19 @@
             this.listBox1.Size = new System.Drawing.Size(169, 121);
             this.listBox1.TabIndex = 16;
             // 
-            // textBox9
+            // NFranchises
             // 
-            this.textBox9.Location = new System.Drawing.Point(6, 53);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 15;
+            this.NFranchises.Location = new System.Drawing.Point(6, 53);
+            this.NFranchises.Name = "NFranchises";
+            this.NFranchises.Size = new System.Drawing.Size(100, 20);
+            this.NFranchises.TabIndex = 15;
             // 
-            // textBox8
+            // FoundationDate
             // 
-            this.textBox8.Location = new System.Drawing.Point(419, 194);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(38, 20);
-            this.textBox8.TabIndex = 14;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(375, 194);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(38, 20);
-            this.textBox7.TabIndex = 13;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(314, 194);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(55, 20);
-            this.textBox6.TabIndex = 12;
+            this.FoundationDate.Location = new System.Drawing.Point(314, 194);
+            this.FoundationDate.Name = "FoundationDate";
+            this.FoundationDate.Size = new System.Drawing.Size(86, 20);
+            this.FoundationDate.TabIndex = 12;
             // 
             // label6
             // 
@@ -196,48 +179,48 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Foundation Date";
             // 
-            // pictureBox1
+            // Logo
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(490, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(206, 140);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.Logo.Location = new System.Drawing.Point(490, 33);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(206, 140);
+            this.Logo.TabIndex = 10;
+            this.Logo.TabStop = false;
             // 
-            // textBox5
+            // Website
             // 
-            this.textBox5.Location = new System.Drawing.Point(41, 127);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(359, 20);
-            this.textBox5.TabIndex = 9;
+            this.Website.Location = new System.Drawing.Point(41, 127);
+            this.Website.Name = "Website";
+            this.Website.Size = new System.Drawing.Size(359, 20);
+            this.Website.TabIndex = 9;
             // 
-            // textBox4
+            // Country
             // 
-            this.textBox4.Location = new System.Drawing.Point(42, 194);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 8;
+            this.Country.Location = new System.Drawing.Point(42, 194);
+            this.Country.Name = "Country";
+            this.Country.Size = new System.Drawing.Size(100, 20);
+            this.Country.TabIndex = 8;
             // 
-            // textBox3
+            // Contact
             // 
-            this.textBox3.Location = new System.Drawing.Point(179, 56);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(221, 20);
-            this.textBox3.TabIndex = 7;
+            this.Contact.Location = new System.Drawing.Point(179, 56);
+            this.Contact.Name = "Contact";
+            this.Contact.Size = new System.Drawing.Size(221, 20);
+            this.Contact.TabIndex = 7;
             // 
-            // textBox2
+            // City
             // 
-            this.textBox2.Location = new System.Drawing.Point(179, 194);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
+            this.City.Location = new System.Drawing.Point(179, 194);
+            this.City.Name = "City";
+            this.City.Size = new System.Drawing.Size(100, 20);
+            this.City.TabIndex = 6;
             // 
-            // textBox1
+            // CName
             // 
-            this.textBox1.Location = new System.Drawing.Point(41, 56);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
+            this.CName.Location = new System.Drawing.Point(41, 56);
+            this.CName.Name = "CName";
+            this.CName.Size = new System.Drawing.Size(100, 20);
+            this.CName.TabIndex = 5;
             // 
             // label5
             // 
@@ -299,7 +282,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,21 +294,19 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox NGames;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox NFranchises;
+        private System.Windows.Forms.TextBox FoundationDate;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.PictureBox Logo;
+        private System.Windows.Forms.TextBox Website;
+        private System.Windows.Forms.TextBox Country;
+        private System.Windows.Forms.TextBox Contact;
+        private System.Windows.Forms.TextBox City;
+        private System.Windows.Forms.TextBox CName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
