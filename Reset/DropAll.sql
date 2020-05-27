@@ -42,11 +42,8 @@ DROP TABLE Project.Credit;
 --Procedures
 Drop Proc Project.pd_Login;
 Drop Proc Project.pd_sign_up;
-DROP PROC Project.pd_getFranchiseData;
-DROP PROC Project.pd_getCompData;
-drop proc Project.pd_getCompFranchise;
-drop proc Project.pd_getGameGenres;
-
+DROP PROC Project.pd_insertCredit;
+DROP PROC Project.pd_insertReview;
 --udfs
 Drop function Project.udf_check_email;
 Drop function Project.udf_check_username;
@@ -65,4 +62,5 @@ DROP FUNCTION Project.[udf_getGameDetails];
 DROP FUNCTION Project.udf_getCompanyDetails;
 DROP FUNCTION Project.udf_getFranchiseDetails;
 DROP FUNCTION Project.udf_getFranchisesComp;
+DROP FUNCTION Project.udf_checkReview;
 DROP SCHEMA Project;

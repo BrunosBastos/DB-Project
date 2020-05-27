@@ -34,7 +34,7 @@ CREATE TABLE Project.Follows(
 
 CREATE TABLE Project.Credit(
 
-    NumCredit     INT             NOT NULL,
+    NumCredit     INT      IDENTITY(1,1)       NOT NULL,
     MetCredit     VARCHAR(20)     NOT NULL,
     DateCredit    DATE            NOT NULL,
     ValueCredit   Decimal(4,2)    NOT NULL,
@@ -498,35 +498,35 @@ INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(8,25);
 
 -- insert credit
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(1,'PayPal','2020-05-01',3.99,2);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('PayPal','2020-05-01',3.99,2);
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(2,'MBWay','2020-05-01',19.99,2);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('MBWay','2020-05-01',19.99,2);
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(3,'PayPal','2020-05-01',12.00,2);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('PayPal','2020-05-01',12.00,2);
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(4,'VISA','2020-03-04', 3.99,3);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('VISA','2020-03-04', 3.99,3);
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(5,'PayPal','2020-01-01',19.99,3);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('PayPal','2020-01-01',19.99,3);
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(6,'VISA','2020-03-22',1.99,3);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('VISA','2020-03-22',1.99,3);
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(7,'PayPal','2020-03-03',1.99,4);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('PayPal','2020-03-03',1.99,4);
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(8,'MasterCard','2020-05-01',32.56,4);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('MasterCard','2020-05-01',32.56,4);
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(9,'PayPal','2020-01-21',1.99,5);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('PayPal','2020-01-21',1.99,5);
 
-INSERT INTO Project.Credit(NumCredit,MetCredit,DateCredit,ValueCredit,IDClient)
-VALUES(10,'PayPal','2020-05-01',9.99,5);
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient)
+VALUES('PayPal','2020-05-01',9.99,5);
 
 
 -- insert discount
@@ -1176,12 +1176,12 @@ SELECT * FROM Project.[udf_getReviewsList](1);
 SELECT Project.[udf_getNumberOfReviews](1);
 
 
-
+GO
 CREATE FUNCTION Project.[udf_getFranchiseDetails] (@IDFranchise INT) RETURNS TABLE
 AS
 	RETURN ( SELECT * FROM Franchise WHERE Franchise.IDFranchise =@IDFranchise)
 GO
-
+GO
 CREATE FUNCTION Project.[udf_getFranchisesComp] (@IDCompany INT) RETURNS TABLE
 AS
 	RETURN (SELECT Franchise.IDFranchise,Franchise.Name FROM Company JOIN CompFranchise ON CompFranchise.IDCompany = Company.IDCompany JOIN Franchise ON Franchise.IDFranchise = CompFranchise.IDFranchise WHERE Company.IDCompany = @IDCompany)
@@ -1201,6 +1201,7 @@ BEGIN
 		RETURN @id;
 END
 GO
+
 ---- PROCEDURES---
 create procedure Project.pd_Login(
 	@Loginemail varchar(50),
@@ -1258,7 +1259,45 @@ CREATE PROCEDURE Project.pd_insertReview(
 		END
 go
 
+CREATE PROCEDURE Project.pd_insertCredit(
+	@MetCredit varchar(20),
+	@DateCredit DATE,
+	@ValueCredit DECIMAL (4,2),
+	@IDClient INT)
+	AS
+		BEGIN
+			INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient) VALUES (@MetCredit,@DateCredit,@ValueCredit,@IDClient)
+		END
 
+GO
+
+
+CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
+		@MinValue INT,
+		@MaxValue INT,
+		@MinDate  DATE,
+		@MaxDate DATE,
+		@GameName VARCHAR(max) -- user input
+		)
+	AS
+		BEGIN
+			declare @tempPurchaseTable TABLE (
+				NumPurchase INT,
+				Price DECIMAL(5,2),
+				PurchaseDate DATE,
+				IDClient INT,
+				SerialNum INT
+			)
+
+
+
+		END
+
+
+
+
+
+--TRIGGERS
 CREATE TRIGGER Project.trigger_review ON Project.[Reviews]
 instead of insert
 AS
@@ -1284,7 +1323,37 @@ AS
 	BEGIN CATCH
 		 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
 		 PRINT ERROR_MESSAGE()
+		 raiserror ('Insertion Error', 16, 1);
 	END CATCH
 	END
 go
 select * from Project.[User]
+
+go
+CREATE TRIGGER Project.trigger_credit ON Project.Credit
+INSTEAD OF INSERT
+AS
+	BEGIN
+		BEGIN TRAN
+			DECLARE @MetCredit as VARCHAR(20);
+			DECLARE @DateCredit as DATE;
+			DECLARE @ValueCredit as DECIMAL(4,2);
+			DECLARE @IDClient AS INT;
+			SELECT @MetCredit = MetCredit,@DateCredit = DateCredit, @ValueCredit = ValueCredit,@IDClient = IDClient FROM INSERTED;
+			BEGIN TRY
+					INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient) VALUES (@MetCredit,@DateCredit,@ValueCredit,@IDClient)
+					UPDATE Project.Client
+						SET Balance+=@ValueCredit 
+						WHERE Project.Client.UserID=@IDClient
+			END TRY
+			BEGIN CATCH
+			 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
+			 PRINT ERROR_MESSAGE()
+			 raiserror ('Insertion Error', 16, 1);
+			END CATCH
+		PRINT 'Success on Transaction!'
+		COMMIT TRAN
+	END
+
+	GO
+	
