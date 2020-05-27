@@ -50,7 +50,7 @@
             // 
             // RegisterBDay
             // 
-            this.RegisterBDay.Location = new System.Drawing.Point(601, 94);
+            this.RegisterBDay.Location = new System.Drawing.Point(535, 84);
             this.RegisterBDay.Name = "RegisterBDay";
             this.RegisterBDay.Size = new System.Drawing.Size(51, 20);
             this.RegisterBDay.TabIndex = 36;
@@ -58,7 +58,7 @@
             // 
             // RegisterBMonth
             // 
-            this.RegisterBMonth.Location = new System.Drawing.Point(545, 95);
+            this.RegisterBMonth.Location = new System.Drawing.Point(479, 85);
             this.RegisterBMonth.Name = "RegisterBMonth";
             this.RegisterBMonth.Size = new System.Drawing.Size(49, 20);
             this.RegisterBMonth.TabIndex = 35;
@@ -66,7 +66,7 @@
             // 
             // RegisterBYear
             // 
-            this.RegisterBYear.Location = new System.Drawing.Point(469, 95);
+            this.RegisterBYear.Location = new System.Drawing.Point(403, 85);
             this.RegisterBYear.Name = "RegisterBYear";
             this.RegisterBYear.Size = new System.Drawing.Size(70, 20);
             this.RegisterBYear.TabIndex = 34;
@@ -75,7 +75,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(107, 240);
+            this.label7.Location = new System.Drawing.Point(45, 228);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(25, 13);
             this.label7.TabIndex = 33;
@@ -84,7 +84,7 @@
             // RegisterSFemale
             // 
             this.RegisterSFemale.AutoSize = true;
-            this.RegisterSFemale.Location = new System.Drawing.Point(201, 272);
+            this.RegisterSFemale.Location = new System.Drawing.Point(135, 262);
             this.RegisterSFemale.Name = "RegisterSFemale";
             this.RegisterSFemale.Size = new System.Drawing.Size(59, 17);
             this.RegisterSFemale.TabIndex = 32;
@@ -95,7 +95,7 @@
             // RegisterSMale
             // 
             this.RegisterSMale.AutoSize = true;
-            this.RegisterSMale.Location = new System.Drawing.Point(201, 238);
+            this.RegisterSMale.Location = new System.Drawing.Point(135, 228);
             this.RegisterSMale.Name = "RegisterSMale";
             this.RegisterSMale.Size = new System.Drawing.Size(48, 17);
             this.RegisterSMale.TabIndex = 31;
@@ -105,7 +105,7 @@
             // 
             // RegisterFullName
             // 
-            this.RegisterFullName.Location = new System.Drawing.Point(469, 42);
+            this.RegisterFullName.Location = new System.Drawing.Point(403, 32);
             this.RegisterFullName.MaxLength = 50;
             this.RegisterFullName.Name = "RegisterFullName";
             this.RegisterFullName.Size = new System.Drawing.Size(227, 20);
@@ -113,7 +113,7 @@
             // 
             // RegisterUsername
             // 
-            this.RegisterUsername.Location = new System.Drawing.Point(201, 170);
+            this.RegisterUsername.Location = new System.Drawing.Point(135, 160);
             this.RegisterUsername.MaxLength = 50;
             this.RegisterUsername.Name = "RegisterUsername";
             this.RegisterUsername.Size = new System.Drawing.Size(179, 20);
@@ -122,7 +122,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(409, 93);
+            this.label6.Location = new System.Drawing.Point(343, 83);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(28, 13);
             this.label6.TabIndex = 28;
@@ -131,7 +131,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(409, 45);
+            this.label5.Location = new System.Drawing.Point(343, 35);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 27;
@@ -140,7 +140,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(107, 177);
+            this.label4.Location = new System.Drawing.Point(41, 167);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 26;
@@ -148,7 +148,7 @@
             // 
             // RegisterButton
             // 
-            this.RegisterButton.Location = new System.Drawing.Point(362, 350);
+            this.RegisterButton.Location = new System.Drawing.Point(286, 308);
             this.RegisterButton.Name = "RegisterButton";
             this.RegisterButton.Size = new System.Drawing.Size(75, 23);
             this.RegisterButton.TabIndex = 25;
@@ -158,21 +158,21 @@
             // 
             // RegisterCPassword
             // 
-            this.RegisterCPassword.Location = new System.Drawing.Point(201, 131);
+            this.RegisterCPassword.Location = new System.Drawing.Point(135, 121);
             this.RegisterCPassword.Name = "RegisterCPassword";
             this.RegisterCPassword.Size = new System.Drawing.Size(100, 20);
             this.RegisterCPassword.TabIndex = 24;
             // 
             // RegisterPassword
             // 
-            this.RegisterPassword.Location = new System.Drawing.Point(201, 88);
+            this.RegisterPassword.Location = new System.Drawing.Point(135, 78);
             this.RegisterPassword.Name = "RegisterPassword";
             this.RegisterPassword.Size = new System.Drawing.Size(100, 20);
             this.RegisterPassword.TabIndex = 23;
             // 
             // RegisterEmail
             // 
-            this.RegisterEmail.Location = new System.Drawing.Point(201, 42);
+            this.RegisterEmail.Location = new System.Drawing.Point(135, 32);
             this.RegisterEmail.MaxLength = 50;
             this.RegisterEmail.Name = "RegisterEmail";
             this.RegisterEmail.Size = new System.Drawing.Size(179, 20);
@@ -181,7 +181,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(104, 138);
+            this.label3.Location = new System.Drawing.Point(38, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 21;
@@ -190,7 +190,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 95);
+            this.label2.Location = new System.Drawing.Point(38, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 20;
@@ -199,7 +199,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(104, 49);
+            this.label1.Location = new System.Drawing.Point(38, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 13);
             this.label1.TabIndex = 19;
@@ -209,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(651, 353);
             this.Controls.Add(this.RegisterBDay);
             this.Controls.Add(this.RegisterBMonth);
             this.Controls.Add(this.RegisterBYear);

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace App
 {
@@ -19,6 +20,29 @@ namespace App
         {
             this.IDGame = IDGame;
             InitializeComponent();
+            LoadReview();
+        }
+
+
+        private void LoadReview()
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Select Project.udf_checkReview("+Program.currentUser+","+IDGame+")",Program.cn);
+                int value = (int)cmd.ExecuteScalar();
+                if (value > 0)
+                {
+                    cmd = new SqlCommand("Select Title,[Text],Rating From Project.Reviews where IDGame="+IDGame+" and UserID="+Program.currentUser,Program.cn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    TitleReview.Text = reader["Title"].ToString();
+                    ContentReview.Text = reader["Text"].ToString();
+                    RatingReview.Value = Decimal.Parse(reader["Rating"].ToString());
+                    reader.Close();
+
+                }
+            }
         }
 
         private void ConfirmReview(object sender, EventArgs e)
@@ -46,6 +70,24 @@ namespace App
             }else if(content.Length>500)
             {
                 MessageBox.Show("Please write a smaller message");
+                return;
+            }
+
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Project.pd_insertReview");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Title", title);
+                cmd.Parameters.AddWithValue("@Text", content);
+                cmd.Parameters.AddWithValue("@Rating", Double.Parse(rating));
+                cmd.Parameters.AddWithValue("@DateReview", DateTime.Now);
+                cmd.Parameters.AddWithValue("@UserID", Program.currentUser);
+                cmd.Parameters.AddWithValue("@IDGame", IDGame);
+                cmd.Connection = Program.cn;
+                cmd.ExecuteNonQuery();
+            }
+            else
+            {
                 return;
             }
 

@@ -37,11 +37,17 @@ namespace App
             }
             return true;
         }
-        private static bool IsValidEmail(string email)
+        private bool IsValidEmail(string email)
         {
-            string pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
-            var regex = new Regex(pattern, RegexOptions.IgnoreCase);
-            return regex.IsMatch(email);
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         private void register(object sender, EventArgs e)
@@ -88,7 +94,7 @@ namespace App
 
                 SqlCommand ve = new SqlCommand("select Project.udf_check_email('" + email + "')", Program.cn);
                 int value = (int)ve.ExecuteScalar();
-                if(value == 0)
+                if(value != 0)
                 {
                     MessageBox.Show("Email is already in use");
                     return;
@@ -96,7 +102,7 @@ namespace App
 
                 SqlCommand vu = new SqlCommand("select Project.udf_check_username('" + username + "')", Program.cn);
                 value = (int)vu.ExecuteScalar();
-                if (value == 0)
+                if (value != 0)
                 {
                     MessageBox.Show("UserName is already in use");
                     return;
@@ -123,7 +129,21 @@ namespace App
                 if ((int)cm.Parameters["@response"].Value == 1)
                 {
 
-                    MessageBox.Show("You have been registered!");
+                    SqlCommand cmd = new SqlCommand("Select Project.udf_isclient ('"+ email +"')",Program.cn);
+                    int val = (int)cmd.ExecuteScalar();
+                    if (val>0)
+                    {
+                        Program.currentUser = val;
+                        MessageBox.Show("You have been registered!");
+                        this.Hide();
+                        ClientMain c = new ClientMain();
+                        c.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("An error has occurred");
+                    }
                 }
                 else
                 {

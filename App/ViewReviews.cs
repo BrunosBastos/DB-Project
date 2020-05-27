@@ -56,8 +56,12 @@ namespace App
 
         private void ShowReview()
         {
-            Review r = (Review)listBox1.Items[listBox1.SelectedIndex];
-            UsernameRev.Text = r.username;
+            if (listBox1.SelectedIndex > -1)
+            {
+
+                Review r = (Review)listBox1.Items[listBox1.SelectedIndex];
+                UsernameRev.Text = r.username;
+            }
 
         }
 
