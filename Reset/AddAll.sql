@@ -992,7 +992,12 @@ VALUES(3.99,'2020-01-21',5,100010);
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
 VALUES(3.99,'2020-03-03',4,100011);
 
-
+--Views
+GO
+CREATE VIEW Project.GamesPurchases  AS 
+SELECT Copy.PlatformName,Game.*,Purchase.NumPurchase,Purchase.PurchaseDate, Purchase.IDClient,Purchase.Price as FinalPrice FROM Project.Purchase
+INNER JOIN Project.[Copy] ON Purchase.SerialNum = [Copy].SerialNum 
+INNER JOIN Project.Game ON Game.IDGame = [Copy].IDGame
 
 ---UDFS-----
 go 
@@ -1257,7 +1262,7 @@ CREATE PROCEDURE Project.pd_insertReview(
 		BEGIN
 				INSERT INTO Project.Reviews(Title,[Text],Rating,DateReview,UserID,IDGame) VALUES (@Title,@Text,@Rating,@DateReview,@UserID,@IDGame)
 		END
-go
+GO
 
 CREATE PROCEDURE Project.pd_insertCredit(
 	@MetCredit varchar(20),
@@ -1281,14 +1286,27 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 		)
 	AS
 		BEGIN
-			declare @tempPurchaseTable TABLE (
+			declare @temp TABLE (
 				NumPurchase INT,
 				Price DECIMAL(5,2),
 				PurchaseDate DATE,
 				IDClient INT,
-				SerialNum INT
+				SerialNum INT,
+				GameName VARCHAR(50)
 			)
-
+			INSERT INTO @temp(NumPurchase,Price,PurchaseDate,IDClient,SerialNum,GameName) SELECT NumPurchase,Purchase.Price,PurchaseDate,IDClient,Purchase.SerialNum,[Name]
+			FROM  Project.Purchase JOIN Project.[Copy] ON Purchase.SerialNum=Copy.SerialNum
+			JOIN Project.Game ON Game.IDGame = [Copy].IDGame
+			IF @MinValue <> null
+				DELETE FROM @temp WHERE @MinValue>Price 
+			IF @MaxValue <> null 
+				DELETE FROM @temp WHERE @MaxValue<Price
+			IF @MinDate <> null
+				DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,PurchaseDate) < 0
+			IF @MaxDate <> null
+				DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,PurchaseDate) > 0
+            IF @GameName <> null
+				DELETE FROM @temp WHERE GameName NOT LIKE  @GameName + '%'
 
 
 		END
@@ -1296,7 +1314,7 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 
 
 
-
+GO
 --TRIGGERS
 CREATE TRIGGER Project.trigger_review ON Project.[Reviews]
 instead of insert
@@ -1357,3 +1375,4 @@ AS
 
 	GO
 	
+
