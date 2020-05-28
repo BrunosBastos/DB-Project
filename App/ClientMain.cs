@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Web;
 using System.Net;
+using System.Globalization;
 
 
 namespace App
@@ -244,7 +245,137 @@ namespace App
             Game g = (Game)listBox1.Items[current_game];
             ViewReviews vr = new ViewReviews(Int32.Parse(g.IDGame));
             vr.ShowDialog();
+        }
 
+        // Transactions
+
+
+
+
+        private void Change_transaction_tabs(object sender, EventArgs e)
+        {
+
+            if (tabControl2.SelectedIndex == 0) { 
+               Console.WriteLine("Add credit");
+            }else if(tabControl2.SelectedIndex == 1)
+            {
+                Console.WriteLine("Credit History");
+            }else if(tabControl2.SelectedIndex == 2)
+            {
+                LoadPurchaseHistory();
+                Console.WriteLine("Purchase History");
+            }
+
+        }
+
+        private void LoadPurchaseHistory()
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                Console.WriteLine("Load Purchase History");
+                DataTable dt = new DataTable();
+                SqlCommand cmd = new SqlCommand("Project.pd_filter_PurchaseHistory",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IDClient",Program.currentUser);
+                Console.WriteLine(PHGameName);
+                Console.WriteLine(PHMinPrice);
+                Console.WriteLine(PHMaxPrice);
+                
+                if (PHGameName.TextLength>0)
+                {
+                    cmd.Parameters.AddWithValue("@GameName", PHGameName.Text);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@GameName", null);
+                }
+
+                if (Decimal.TryParse(PHMaxPrice.Text,out decimal n1))
+                {
+                    cmd.Parameters.AddWithValue("@MaxValue",n1);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MaxValue",null);
+                }
+                
+                if (Decimal.TryParse(PHMinPrice.Text,out decimal n2))
+                {
+                    cmd.Parameters.AddWithValue("@MinValue", n2);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MinValue",null);
+                }
+                // PHStartDay
+                string startdate =PHStartYear.Text+ "-" +PHStartMonth.Text + "-" + PHStartDay.Text;
+                if(ValidateDate(startdate)){
+                    cmd.Parameters.AddWithValue("@MinDate", DateTime.Parse(startdate));
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MinDate", null);
+                }
+                Console.WriteLine(startdate);
+                string enddate = PHEndYear.Text + "-" + PHEndMonth + "-" + PHEndYear.Text;
+                if (ValidateDate(enddate)){
+                    cmd.Parameters.AddWithValue("@MaxDate", DateTime.Parse(enddate));
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MaxDate", null);
+                }
+                Console.WriteLine(enddate);
+
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+                dataGridView2.ReadOnly = true;
+                dataGridView2.DataSource = dt;
+
+                
+            }
+        }
+
+        private void ApplyFilter(object sender, EventArgs e)
+        {
+            LoadPurchaseHistory();
+        }
+
+
+        public bool ValidateDate(String date)
+        {
+            if (!string.IsNullOrEmpty(date))
+            {
+                string[] formats = { "yyyy-MM-dd", "dd-MM-yy" };
+                DateTime value;
+
+                if (!DateTime.TryParseExact(date, formats, new CultureInfo("en-UK"), DateTimeStyles.None, out value))
+                {
+                    Console.WriteLine(value);
+                    return false;
+                }
+            }
+            return true;
+         }
+
+        private void PHGameName_change(object sender, EventArgs e)
+        {
+            LoadPurchaseHistory();
+        }
+
+        private void ResetFilterPH(object sender, EventArgs e)
+        {
+            PHGameName.Text = "";
+            PHMaxPrice.Text = "";
+            PHMinPrice.Text = "";
+            PHStartDay.Text = "";
+            PHStartMonth.Text = "";
+            PHStartYear.Text = "";
+            PHEndDay.Text = "";
+            PHEndMonth.Text = "";
+            PHEndYear.Text = "";
 
         }
     }

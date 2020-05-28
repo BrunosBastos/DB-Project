@@ -182,24 +182,22 @@
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.button18 = new System.Windows.Forms.Button();
             this.label41 = new System.Windows.Forms.Label();
-            this.textBox45 = new System.Windows.Forms.TextBox();
+            this.PHGameName = new System.Windows.Forms.TextBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.textBox46 = new System.Windows.Forms.TextBox();
-            this.textBox47 = new System.Windows.Forms.TextBox();
-            this.textBox48 = new System.Windows.Forms.TextBox();
+            this.PHEndYear = new System.Windows.Forms.TextBox();
+            this.PHEndMonth = new System.Windows.Forms.TextBox();
+            this.PHEndDay = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.textBox49 = new System.Windows.Forms.TextBox();
-            this.textBox50 = new System.Windows.Forms.TextBox();
-            this.textBox51 = new System.Windows.Forms.TextBox();
+            this.PHStartYear = new System.Windows.Forms.TextBox();
+            this.PHStartMonth = new System.Windows.Forms.TextBox();
+            this.PHStartDay = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.textBox52 = new System.Windows.Forms.TextBox();
-            this.textBox53 = new System.Windows.Forms.TextBox();
+            this.PHMinPrice = new System.Windows.Forms.TextBox();
+            this.PHMaxPrice = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Game = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatePurchase = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PricePurchase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button21 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -1398,6 +1396,8 @@
             this.tabControl2.SelectedIndex = 0;
             this.tabControl2.Size = new System.Drawing.Size(759, 609);
             this.tabControl2.TabIndex = 12;
+            this.tabControl2.SelectedIndexChanged += new System.EventHandler(this.Change_transaction_tabs);
+            this.tabControl2.TabIndexChanged += new System.EventHandler(this.Change_transaction_tabs);
             // 
             // tabPage6
             // 
@@ -1701,36 +1701,38 @@
             // groupBox17
             // 
             this.groupBox17.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox17.Controls.Add(this.button4);
             this.groupBox17.Controls.Add(this.button18);
             this.groupBox17.Controls.Add(this.label41);
-            this.groupBox17.Controls.Add(this.textBox45);
+            this.groupBox17.Controls.Add(this.PHGameName);
             this.groupBox17.Controls.Add(this.label42);
-            this.groupBox17.Controls.Add(this.textBox46);
-            this.groupBox17.Controls.Add(this.textBox47);
-            this.groupBox17.Controls.Add(this.textBox48);
+            this.groupBox17.Controls.Add(this.PHEndYear);
+            this.groupBox17.Controls.Add(this.PHEndMonth);
+            this.groupBox17.Controls.Add(this.PHEndDay);
             this.groupBox17.Controls.Add(this.label43);
-            this.groupBox17.Controls.Add(this.textBox49);
-            this.groupBox17.Controls.Add(this.textBox50);
-            this.groupBox17.Controls.Add(this.textBox51);
+            this.groupBox17.Controls.Add(this.PHStartYear);
+            this.groupBox17.Controls.Add(this.PHStartMonth);
+            this.groupBox17.Controls.Add(this.PHStartDay);
             this.groupBox17.Controls.Add(this.label44);
             this.groupBox17.Controls.Add(this.label45);
-            this.groupBox17.Controls.Add(this.textBox52);
-            this.groupBox17.Controls.Add(this.textBox53);
-            this.groupBox17.Location = new System.Drawing.Point(453, 36);
+            this.groupBox17.Controls.Add(this.PHMinPrice);
+            this.groupBox17.Controls.Add(this.PHMaxPrice);
+            this.groupBox17.Location = new System.Drawing.Point(584, 36);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(149, 325);
+            this.groupBox17.Size = new System.Drawing.Size(149, 409);
             this.groupBox17.TabIndex = 2;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Filters";
             // 
             // button18
             // 
-            this.button18.Location = new System.Drawing.Point(34, 282);
+            this.button18.Location = new System.Drawing.Point(34, 301);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(75, 23);
             this.button18.TabIndex = 16;
             this.button18.Text = "Apply Filter";
             this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.ApplyFilter);
             // 
             // label41
             // 
@@ -1741,12 +1743,13 @@
             this.label41.TabIndex = 15;
             this.label41.Text = "Game Name";
             // 
-            // textBox45
+            // PHGameName
             // 
-            this.textBox45.Location = new System.Drawing.Point(12, 256);
-            this.textBox45.Name = "textBox45";
-            this.textBox45.Size = new System.Drawing.Size(130, 20);
-            this.textBox45.TabIndex = 14;
+            this.PHGameName.Location = new System.Drawing.Point(12, 256);
+            this.PHGameName.Name = "PHGameName";
+            this.PHGameName.Size = new System.Drawing.Size(130, 20);
+            this.PHGameName.TabIndex = 14;
+            this.PHGameName.TextChanged += new System.EventHandler(this.PHGameName_change);
             // 
             // label42
             // 
@@ -1757,26 +1760,26 @@
             this.label42.TabIndex = 13;
             this.label42.Text = "End  Date";
             // 
-            // textBox46
+            // PHEndYear
             // 
-            this.textBox46.Location = new System.Drawing.Point(98, 184);
-            this.textBox46.Name = "textBox46";
-            this.textBox46.Size = new System.Drawing.Size(44, 20);
-            this.textBox46.TabIndex = 12;
+            this.PHEndYear.Location = new System.Drawing.Point(98, 184);
+            this.PHEndYear.Name = "PHEndYear";
+            this.PHEndYear.Size = new System.Drawing.Size(44, 20);
+            this.PHEndYear.TabIndex = 12;
             // 
-            // textBox47
+            // PHEndMonth
             // 
-            this.textBox47.Location = new System.Drawing.Point(56, 184);
-            this.textBox47.Name = "textBox47";
-            this.textBox47.Size = new System.Drawing.Size(35, 20);
-            this.textBox47.TabIndex = 11;
+            this.PHEndMonth.Location = new System.Drawing.Point(56, 184);
+            this.PHEndMonth.Name = "PHEndMonth";
+            this.PHEndMonth.Size = new System.Drawing.Size(35, 20);
+            this.PHEndMonth.TabIndex = 11;
             // 
-            // textBox48
+            // PHEndDay
             // 
-            this.textBox48.Location = new System.Drawing.Point(9, 185);
-            this.textBox48.Name = "textBox48";
-            this.textBox48.Size = new System.Drawing.Size(40, 20);
-            this.textBox48.TabIndex = 10;
+            this.PHEndDay.Location = new System.Drawing.Point(9, 185);
+            this.PHEndDay.Name = "PHEndDay";
+            this.PHEndDay.Size = new System.Drawing.Size(40, 20);
+            this.PHEndDay.TabIndex = 10;
             // 
             // label43
             // 
@@ -1787,26 +1790,26 @@
             this.label43.TabIndex = 9;
             this.label43.Text = "Start Date";
             // 
-            // textBox49
+            // PHStartYear
             // 
-            this.textBox49.Location = new System.Drawing.Point(98, 132);
-            this.textBox49.Name = "textBox49";
-            this.textBox49.Size = new System.Drawing.Size(44, 20);
-            this.textBox49.TabIndex = 8;
+            this.PHStartYear.Location = new System.Drawing.Point(98, 132);
+            this.PHStartYear.Name = "PHStartYear";
+            this.PHStartYear.Size = new System.Drawing.Size(44, 20);
+            this.PHStartYear.TabIndex = 8;
             // 
-            // textBox50
+            // PHStartMonth
             // 
-            this.textBox50.Location = new System.Drawing.Point(56, 132);
-            this.textBox50.Name = "textBox50";
-            this.textBox50.Size = new System.Drawing.Size(35, 20);
-            this.textBox50.TabIndex = 7;
+            this.PHStartMonth.Location = new System.Drawing.Point(56, 132);
+            this.PHStartMonth.Name = "PHStartMonth";
+            this.PHStartMonth.Size = new System.Drawing.Size(35, 20);
+            this.PHStartMonth.TabIndex = 7;
             // 
-            // textBox51
+            // PHStartDay
             // 
-            this.textBox51.Location = new System.Drawing.Point(9, 133);
-            this.textBox51.Name = "textBox51";
-            this.textBox51.Size = new System.Drawing.Size(40, 20);
-            this.textBox51.TabIndex = 6;
+            this.PHStartDay.Location = new System.Drawing.Point(9, 133);
+            this.PHStartDay.Name = "PHStartDay";
+            this.PHStartDay.Size = new System.Drawing.Size(40, 20);
+            this.PHStartDay.TabIndex = 6;
             // 
             // label44
             // 
@@ -1826,19 +1829,19 @@
             this.label45.TabIndex = 4;
             this.label45.Text = "Min Price";
             // 
-            // textBox52
+            // PHMinPrice
             // 
-            this.textBox52.Location = new System.Drawing.Point(9, 35);
-            this.textBox52.Name = "textBox52";
-            this.textBox52.Size = new System.Drawing.Size(100, 20);
-            this.textBox52.TabIndex = 3;
+            this.PHMinPrice.Location = new System.Drawing.Point(9, 35);
+            this.PHMinPrice.Name = "PHMinPrice";
+            this.PHMinPrice.Size = new System.Drawing.Size(100, 20);
+            this.PHMinPrice.TabIndex = 3;
             // 
-            // textBox53
+            // PHMaxPrice
             // 
-            this.textBox53.Location = new System.Drawing.Point(9, 85);
-            this.textBox53.Name = "textBox53";
-            this.textBox53.Size = new System.Drawing.Size(100, 20);
-            this.textBox53.TabIndex = 2;
+            this.PHMaxPrice.Location = new System.Drawing.Point(9, 85);
+            this.PHMaxPrice.Name = "PHMaxPrice";
+            this.PHMaxPrice.Size = new System.Drawing.Size(100, 20);
+            this.PHMaxPrice.TabIndex = 2;
             // 
             // dataGridView2
             // 
@@ -1847,36 +1850,11 @@
             this.dataGridView2.AllowUserToOrderColumns = true;
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Game,
-            this.DatePurchase,
-            this.PricePurchase});
             this.dataGridView2.Location = new System.Drawing.Point(28, 46);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(419, 315);
+            this.dataGridView2.Size = new System.Drawing.Size(539, 399);
             this.dataGridView2.TabIndex = 0;
-            // 
-            // Game
-            // 
-            this.Game.HeaderText = "Game";
-            this.Game.Name = "Game";
-            this.Game.ReadOnly = true;
-            this.Game.Width = 150;
-            // 
-            // DatePurchase
-            // 
-            this.DatePurchase.HeaderText = "Date";
-            this.DatePurchase.Name = "DatePurchase";
-            this.DatePurchase.ReadOnly = true;
-            this.DatePurchase.Width = 150;
-            // 
-            // PricePurchase
-            // 
-            this.PricePurchase.HeaderText = "Price";
-            this.PricePurchase.Name = "PricePurchase";
-            this.PricePurchase.ReadOnly = true;
-            this.PricePurchase.Width = 75;
             // 
             // button21
             // 
@@ -1887,6 +1865,16 @@
             this.button21.Text = "Log Out";
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.LogOut);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(34, 349);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 17;
+            this.button4.Text = "Reset Filter";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.ResetFilterPH);
             // 
             // ClientMain
             // 
@@ -2097,25 +2085,23 @@
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox textBox45;
+        private System.Windows.Forms.TextBox PHGameName;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.TextBox textBox46;
-        private System.Windows.Forms.TextBox textBox47;
-        private System.Windows.Forms.TextBox textBox48;
+        private System.Windows.Forms.TextBox PHEndYear;
+        private System.Windows.Forms.TextBox PHEndMonth;
+        private System.Windows.Forms.TextBox PHEndDay;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.TextBox textBox49;
-        private System.Windows.Forms.TextBox textBox50;
-        private System.Windows.Forms.TextBox textBox51;
+        private System.Windows.Forms.TextBox PHStartYear;
+        private System.Windows.Forms.TextBox PHStartMonth;
+        private System.Windows.Forms.TextBox PHStartDay;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.TextBox textBox52;
-        private System.Windows.Forms.TextBox textBox53;
+        private System.Windows.Forms.TextBox PHMinPrice;
+        private System.Windows.Forms.TextBox PHMaxPrice;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Game;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DatePurchase;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PricePurchase;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button4;
     }
 }
