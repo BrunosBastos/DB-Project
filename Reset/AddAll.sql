@@ -1194,11 +1194,26 @@ AS
 
 GO
 
+CREATE FUNCTION Project.[udf_getGamesFranchise] (@IDFranchise INT) RETURNS TABLE
+AS
+	RETURN (SELECT Game.[Name] FROM Project.Franchise JOIN Project.Game ON Game.IDFranchise = Franchise.IDFranchise WHERE Franchise.IDFranchise=@IDFranchise) 
+GO
+
+CREATE FUNCTION Project.[udf_getNumberGameFranchises] (@IDFranchise INT) RETURNS INT
+AS
+	BEGIN
+		DECLARE @counter INT;
+		SElECT @counter = COUNT([Name]) FROM Project.[udf_getGamesFranchise] (@IDFranchise);
+		RETURN @counter;
+	END
+GO
+
+
 CREATE FUNCTION Project.[udf_getNumberFranchiseComp] (@IDCompany INT) RETURNS INT
 AS
 	BEGIN
 		DECLARE @counter INT;
-		SElECT @counter = COUNT([IDFranchise]) FROM Project.[udf_getFranchisesComp] (@IDCompany);
+		SElECT @counter = COUNT(IDFranchise) FROM Project.[udf_getFranchisesComp] (@IDCompany);
 		RETURN @counter;
 	END
 GO
