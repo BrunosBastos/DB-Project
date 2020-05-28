@@ -1318,13 +1318,12 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 	AS
 		BEGIN
 			declare @temp TABLE (
-				NumPurchase INT,
 				Price DECIMAL(5,2),
 				PurchaseDate DATE,
-				SerialNum INT,
+				SerialNumber INT,
 				GameName VARCHAR(50)
 			)
-			INSERT INTO @temp(NumPurchase,Price,PurchaseDate,SerialNum,GameName) SELECT NumPurchase,Purchase.Price,PurchaseDate,Purchase.SerialNum,[Name]
+			INSERT INTO @temp(Price,PurchaseDate,SerialNumber,GameName) SELECT Purchase.Price,PurchaseDate,Purchase.SerialNum,[Name]
 			FROM  Project.Purchase JOIN Project.[Copy] ON Purchase.SerialNum=Copy.SerialNum 
 			JOIN Project.Game ON Game.IDGame = [Copy].IDGame WHERE Purchase.IDClient=@IDClient
 			IF @MinValue <> null
