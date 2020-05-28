@@ -1,4 +1,4 @@
-CREATE SCHEMA Project;
+REATE SCHEMA Project;
 go
 
 CREATE TABLE Project.[User](
@@ -1341,21 +1341,21 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 			INSERT INTO @temp(Price,PurchaseDate,SerialNumber,GameName) SELECT Purchase.Price,PurchaseDate,Purchase.SerialNum,[Name]
 			FROM  Project.Purchase JOIN Project.[Copy] ON Purchase.SerialNum=Copy.SerialNum 
 			JOIN Project.Game ON Game.IDGame = [Copy].IDGame WHERE Purchase.IDClient=@IDClient
-			IF @MinValue <> null
+			IF @MinValue is not null
 				DELETE FROM @temp WHERE @MinValue>Price 
-			IF @MaxValue <> null 
+			IF @MaxValue is not null 
 				DELETE FROM @temp WHERE @MaxValue<Price
-			IF @MinDate <> null
+			IF @MinDate is not  null
 				DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,PurchaseDate) < 0
-			IF @MaxDate <> null
+			IF @MaxDate is not null
 				DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,PurchaseDate) > 0
-            IF @GameName <> null
+            IF @GameName is not  null
 				DELETE FROM @temp WHERE GameName NOT LIKE  @GameName + '%'
 					
 			SELECT * FROM @temp
 		END
-
 go
+	EXEC Project.pd_filter_PurchaseHistory 2,null,null,'2020-05-01','2020-05-01',null
 
 GO
 --TRIGGERS
