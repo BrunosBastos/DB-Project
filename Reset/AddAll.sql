@@ -1276,13 +1276,13 @@ CREATE PROCEDURE Project.pd_insertCredit(
 
 GO
 
-
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 		@MinValue INT,
 		@MaxValue INT,
 		@MinDate  DATE,
 		@MaxDate DATE,
-		@GameName VARCHAR(max) -- user input
+		@GameName VARCHAR(max), -- user input
+		@IDClient INT
 		)
 	AS
 		BEGIN
@@ -1290,13 +1290,12 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 				NumPurchase INT,
 				Price DECIMAL(5,2),
 				PurchaseDate DATE,
-				IDClient INT,
 				SerialNum INT,
 				GameName VARCHAR(50)
 			)
-			INSERT INTO @temp(NumPurchase,Price,PurchaseDate,IDClient,SerialNum,GameName) SELECT NumPurchase,Purchase.Price,PurchaseDate,IDClient,Purchase.SerialNum,[Name]
-			FROM  Project.Purchase JOIN Project.[Copy] ON Purchase.SerialNum=Copy.SerialNum
-			JOIN Project.Game ON Game.IDGame = [Copy].IDGame
+			INSERT INTO @temp(NumPurchase,Price,PurchaseDate,SerialNum,GameName) SELECT NumPurchase,Purchase.Price,PurchaseDate,Purchase.SerialNum,[Name]
+			FROM  Project.Purchase JOIN Project.[Copy] ON Purchase.SerialNum=Copy.SerialNum 
+			JOIN Project.Game ON Game.IDGame = [Copy].IDGame WHERE Purchase.IDClient=@IDClient
 			IF @MinValue <> null
 				DELETE FROM @temp WHERE @MinValue>Price 
 			IF @MaxValue <> null 
@@ -1307,8 +1306,8 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 				DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,PurchaseDate) > 0
             IF @GameName <> null
 				DELETE FROM @temp WHERE GameName NOT LIKE  @GameName + '%'
-
-
+					
+			SELECT * FROM @temp
 		END
 
 
@@ -1345,7 +1344,7 @@ AS
 	END CATCH
 	END
 go
-select * from Project.[User]
+
 
 go
 CREATE TRIGGER Project.trigger_credit ON Project.Credit
@@ -1376,3 +1375,4 @@ AS
 	GO
 	
 
+	
