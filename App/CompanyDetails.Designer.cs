@@ -124,6 +124,7 @@
             // 
             this.NGames.Location = new System.Drawing.Point(6, 53);
             this.NGames.Name = "NGames";
+            this.NGames.ReadOnly = true;
             this.NGames.Size = new System.Drawing.Size(100, 20);
             this.NGames.TabIndex = 15;
             // 
@@ -160,6 +161,7 @@
             // 
             this.NFranchises.Location = new System.Drawing.Point(6, 53);
             this.NFranchises.Name = "NFranchises";
+            this.NFranchises.ReadOnly = true;
             this.NFranchises.Size = new System.Drawing.Size(100, 20);
             this.NFranchises.TabIndex = 15;
             // 
@@ -167,6 +169,7 @@
             // 
             this.FoundationDate.Location = new System.Drawing.Point(314, 194);
             this.FoundationDate.Name = "FoundationDate";
+            this.FoundationDate.ReadOnly = true;
             this.FoundationDate.Size = new System.Drawing.Size(86, 20);
             this.FoundationDate.TabIndex = 12;
             // 
@@ -191,6 +194,7 @@
             // 
             this.Website.Location = new System.Drawing.Point(41, 127);
             this.Website.Name = "Website";
+            this.Website.ReadOnly = true;
             this.Website.Size = new System.Drawing.Size(359, 20);
             this.Website.TabIndex = 9;
             // 
@@ -198,6 +202,7 @@
             // 
             this.Country.Location = new System.Drawing.Point(42, 194);
             this.Country.Name = "Country";
+            this.Country.ReadOnly = true;
             this.Country.Size = new System.Drawing.Size(100, 20);
             this.Country.TabIndex = 8;
             // 
@@ -205,6 +210,7 @@
             // 
             this.Contact.Location = new System.Drawing.Point(179, 56);
             this.Contact.Name = "Contact";
+            this.Contact.ReadOnly = true;
             this.Contact.Size = new System.Drawing.Size(221, 20);
             this.Contact.TabIndex = 7;
             // 
@@ -212,6 +218,7 @@
             // 
             this.City.Location = new System.Drawing.Point(179, 194);
             this.City.Name = "City";
+            this.City.ReadOnly = true;
             this.City.Size = new System.Drawing.Size(100, 20);
             this.City.TabIndex = 6;
             // 
@@ -219,6 +226,7 @@
             // 
             this.CName.Location = new System.Drawing.Point(41, 56);
             this.CName.Name = "CName";
+            this.CName.ReadOnly = true;
             this.CName.Size = new System.Drawing.Size(100, 20);
             this.CName.TabIndex = 5;
             // 

@@ -30,17 +30,17 @@
         {
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Logo = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.NGames = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Company = new System.Windows.Forms.TextBox();
+            this.FranchiseName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,13 +52,14 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Close Details";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Close);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.Logo);
             this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.Company);
+            this.groupBox1.Controls.Add(this.FranchiseName);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -68,17 +69,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
             // 
-            // pictureBox1
+            // Logo
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(431, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(223, 209);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.Logo.Location = new System.Drawing.Point(431, 33);
+            this.Logo.Name = "Logo";
+            this.Logo.Size = new System.Drawing.Size(223, 209);
+            this.Logo.TabIndex = 8;
+            this.Logo.TabStop = false;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.NGames);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.listBox1);
             this.groupBox2.Location = new System.Drawing.Point(53, 137);
@@ -88,12 +89,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Games";
             // 
-            // textBox3
+            // NGames
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 36);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.NGames.Location = new System.Drawing.Point(6, 36);
+            this.NGames.Name = "NGames";
+            this.NGames.ReadOnly = true;
+            this.NGames.Size = new System.Drawing.Size(100, 20);
+            this.NGames.TabIndex = 2;
             // 
             // label6
             // 
@@ -112,19 +114,21 @@
             this.listBox1.Size = new System.Drawing.Size(184, 186);
             this.listBox1.TabIndex = 0;
             // 
-            // textBox2
+            // Company
             // 
-            this.textBox2.Location = new System.Drawing.Point(240, 82);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
+            this.Company.Location = new System.Drawing.Point(240, 82);
+            this.Company.Name = "Company";
+            this.Company.ReadOnly = true;
+            this.Company.Size = new System.Drawing.Size(100, 20);
+            this.Company.TabIndex = 6;
             // 
-            // textBox1
+            // FranchiseName
             // 
-            this.textBox1.Location = new System.Drawing.Point(53, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 5;
+            this.FranchiseName.Location = new System.Drawing.Point(53, 83);
+            this.FranchiseName.Name = "FranchiseName";
+            this.FranchiseName.ReadOnly = true;
+            this.FranchiseName.Size = new System.Drawing.Size(100, 20);
+            this.FranchiseName.TabIndex = 5;
             // 
             // label4
             // 
@@ -155,7 +159,7 @@
             this.Text = "FranchiseDetails";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Logo)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
@@ -166,13 +170,13 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox Logo;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox NGames;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Company;
+        private System.Windows.Forms.TextBox FranchiseName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
     }

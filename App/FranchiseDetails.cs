@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace App
 {
@@ -19,10 +20,43 @@ namespace App
             InitializeComponent();
             LoadFranchiseDetails();
         }
+
         private void LoadFranchiseDetails()
         {
-            // query to get the franchise details
+            // query to get the details of the company
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Select * From Project.udf_getFranchiseDetails(" + IDFranchise + ")", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
 
+                FranchiseName.Text = reader["Name"].ToString();
+                string idcomp = reader["IDCompany"].ToString();
+                if (!reader.IsDBNull(2))
+                {
+                    Logo.LoadAsync(reader["logo"].ToString());
+                }
+                reader.Close();
+                cmd = new SqlCommand("Select CompanyName from Project.Company where IDCompany=" + idcomp, Program.cn);
+                Company.Text = (string)cmd.ExecuteScalar();
+
+
+                cmd = new SqlCommand("Select Project.udf_getNumberGameFranchises(" + IDFranchise + ")", Program.cn);
+                int ngames = (int)cmd.ExecuteScalar();
+                NGames.Text = ngames.ToString();
+                cmd = new SqlCommand("Select * from Project.udf_getGamesFranchise (" + IDFranchise + ")", Program.cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    listBox1.Items.Add(reader["Name"].ToString());
+                }
+                reader.Close();
+            }
+        }
+
+        private void Close(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

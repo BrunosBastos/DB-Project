@@ -41,17 +41,30 @@ namespace App
                 {
                     Logo.LoadAsync(reader["logo"].ToString());
                 }
-
-
-
-
+                reader.Close();
+                cmd = new SqlCommand("Select Project.udf_getNumberCompGames(" + IDCompany + ")", Program.cn);
+                int ngames = (int)cmd.ExecuteScalar();
+                NGames.Text = ngames.ToString();
+                cmd = new SqlCommand("Select * from Project.udf_getCompGames (" + IDCompany + ")", Program.cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    listBox2.Items.Add(reader["Name"].ToString());
+                }
+                reader.Close();
+                cmd = new SqlCommand("Select Project.udf_getNumberFranchiseComp(" + IDCompany + ")", Program.cn);
+                int nfranchises = (int)cmd.ExecuteScalar();
+                NFranchises.Text = nfranchises.ToString();
+                cmd = new SqlCommand("Select * From Project.udf_getFranchisesComp("+IDCompany+")",Program.cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    listBox1.Items.Add(reader["Name"].ToString());
+                }
                 reader.Close();
 
             }
-
-
         }
-
         private void Close(object sender, EventArgs e)
         {
             this.Close();
