@@ -152,15 +152,11 @@ CREATE TABLE Project.GameGenre(
 CREATE TABLE Project.Franchise(
     IDFranchise    INT				IDENTITY(1,1),
     Name           VARCHAR(30)      NOT NULL,
-    Logo       VARBINARY(MAX), 
+    Logo       VARBINARY(MAX),
+	IDCompany INT NOT NULL, 
     PRIMARY KEY(IDFranchise)
 );
 
-CREATE TABLE Project.CompFranchise(
-    IDCompany       INT         NOT NULL,
-    IDFranchise     INT         NOT NULL,
-    PRIMARY KEY(IDCompany,IDFranchise)
-);
 
 
 
@@ -183,8 +179,8 @@ ALTER TABLE Project.DiscountGame ADD CONSTRAINT CodDiscount FOREIGN KEY (PromoCo
 ALTER TABLE Project.DiscountGame ADD CONSTRAINT CodGame FOREIGN KEY (IDGame) REFERENCES Project.Game(IDGame);
 ALTER TABLE Project.GameGenre ADD CONSTRAINT  GenGame FOREIGN KEY (IDGame) REFERENCES Project.Game(IDGame);
 ALTER TABLE Project.GameGenre ADD CONSTRAINT  GenName FOREIGN KEY (GenName) REFERENCES Project.Genre(GenName);
-ALTER TABLE Project.CompFranchise ADD CONSTRAINT ProducesCompany  FOREIGN KEY(IDCompany) REFERENCES Project.Company(IDCompany);
-ALTER TABLE Project.CompFranchise ADD CONSTRAINT ProducesFranchise FOREIGN KEY(IDFranchise) REFERENCES Project.Franchise(IDFranchise);
+ALTER TABLE Project.Franchise ADD CONSTRAINT  Comp FOREIGN KEY (IDCompany) REFERENCES Project.Company(IDCompany);
+
 
 
 -- Inserts
@@ -282,31 +278,31 @@ VALUES ('wbsf@warnerbros.com','Warner Bros Int. Entertainment','www.wbgames.com'
 
 -- insert franchise
 
-INSERT INTO Project.Franchise(Name) VALUES ('Mario');
-INSERT INTO Project.Franchise(Name) VALUES ('Pokemon');
-INSERT INTO Project.Franchise(Name) VALUES ('Grand Theft Auto');
-INSERT INTO Project.Franchise(Name) VALUES ('FIFA');
-INSERT INTO Project.Franchise(Name) VALUES ('Call of Duty');
-INSERT INTO Project.Franchise(Name) VALUES ('Left 4 Dead');
-INSERT INTO Project.Franchise(Name) VALUES ('Need For Speed');
-INSERT INTO Project.Franchise(Name) VALUES ('Assassins Creed');
-INSERT INTO Project.Franchise(Name) VALUES ('Far Cry');
-INSERT INTO Project.Franchise(Name) VALUES ('Pro Evolution Soccer');
-INSERT INTO Project.Franchise(Name) VALUES ('The Legend Of Zelda');
-INSERT INTO Project.Franchise(Name) VALUES ('Battlefield');
-INSERT INTO Project.Franchise(Name) VALUES ('Uncharted');
-INSERT INTO Project.Franchise(Name) VALUES ('Resident Evil');
-INSERT INTO Project.Franchise(Name) VALUES ('Halo');
-INSERT INTO Project.Franchise(Name) VALUES ('Tomb Raider');
-INSERT INTO Project.Franchise(Name) VALUES ('The Elder Scrolls');
-INSERT INTO Project.Franchise(Name) VALUES ('Counter Strike');
-INSERT INTO Project.Franchise(Name) VALUES ('God Of War');
-INSERT INTO Project.Franchise(Name) VALUES ('Warcraft');
-INSERT INTO Project.Franchise(Name) VALUES ('Forza');
-INSERT INTO Project.Franchise(Name) VALUES ('Mass Effect');
-INSERT INTO Project.Franchise(Name) VALUES ('Tekken');
-INSERT INTO Project.Franchise(Name) VALUES ('Street Fighter');
-INSERT INTO Project.Franchise(Name) VALUES ('Borderlands');
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Mario',12);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Pokemon',12);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Grand Theft Auto',4);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('FIFA',2);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Call of Duty',10);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Left 4 Dead',19);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Need For Speed',2);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Assassins Creed',16);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Far Cry',16);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Pro Evolution Soccer',7);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('The Legend Of Zelda',12);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Battlefield',2);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Uncharted',8);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Resident Evil',14);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Halo'),9;
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Tomb Raider',3);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('The Elder Scrolls',1);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Counter Strike',19);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('God Of War',8);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Warcraft',11);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Forza',9);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Mass Effect',9);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Tekken',13);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Street Fighter',14);
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Borderlands',8);
 
 
 -- insert genre
@@ -468,33 +464,6 @@ VALUES('Tekken 7','Tekken 7 is a fighting game developed and published by Bandai
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
 VALUES('Street Fighter','Street Fighter V is a fighting game developed by Capcom','2016-02-16', 3 ,15.00, 14 , 24,'pbs.twimg.com/profile_images/697220635198689285/T34coLzR_400x400.png' )
 
--- insert CompFranchise
-
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(12,1);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(12,2);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(4,3);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(2,4);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(10,5);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(19,6);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(2,7);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(16,8);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(16,9);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(7,10);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(12,11);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(2,12);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(8,13);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(14,14);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(9,15);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(3,16);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(1,17);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(19,18);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(8,19);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(11,20);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(9,21);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(9,22);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(13,23);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(14,24);
-INSERT INTO Project.CompFranchise(IDCompany,IDFranchise) VALUES(8,25);
 
 -- insert credit
 
@@ -1190,7 +1159,7 @@ GO
 
 CREATE FUNCTION Project.[udf_getFranchisesComp] (@IDCompany INT) RETURNS TABLE
 AS
-	RETURN (SELECT Franchise.IDFranchise,Franchise.[Name] FROM Company JOIN CompFranchise ON CompFranchise.IDCompany = Company.IDCompany JOIN Franchise ON Franchise.IDFranchise = CompFranchise.IDFranchise WHERE Company.IDCompany = @IDCompany)
+	RETURN (SELECT Franchise.IDFranchise,Franchise.[Name] FROM Project.Franchise  WHERE IDCompany = @IDCompany)
 
 GO
 
@@ -1249,9 +1218,18 @@ BEGIN
 		RETURN @id;
 END
 GO
+/*
+CREATE FUNCTION Project.[udf_checkGameCopies] (@IDGame INT, @PlatformName VARCHAR(30)) RETURNS TABLE
+AS
+		RETURN (SELECT [Copy].SerialNum,Purchase.SerialNum AS PurchaseSerialNum 
+		FROM Project.[Copy] LEFT OUTER JOIN Project.Purchase on [Copy].SerialNum = Purchase.SerialNum 
+		WHERE @IDGame = [Copy].IDGame AND @PlatformName = [Copy].PlatformName)
+GO
 
 
+SELECT * FROM Project.[udf_checkGameCopies] (3, 'iOS')
 
+*/
 GO
 ---- PROCEDURES---
 create procedure Project.pd_Login(
@@ -1355,7 +1333,6 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 			SELECT * FROM @temp
 		END
 go
-	EXEC Project.pd_filter_PurchaseHistory 2,null,null,'2020-05-01','2020-05-01',null
 
 GO
 --TRIGGERS
@@ -1412,6 +1389,7 @@ AS
 			 PRINT ERROR_MESSAGE()
 			 raiserror ('Insertion Error', 16, 1);
 			END CATCH
+
 		PRINT 'Success on Transaction!'
 		COMMIT TRAN
 	END
