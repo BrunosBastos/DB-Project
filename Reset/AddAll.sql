@@ -1,4 +1,5 @@
-REATE SCHEMA Project;
+--USE LocalDB
+CREATE SCHEMA Project;
 go
 
 CREATE TABLE Project.[User](
@@ -292,7 +293,7 @@ INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('The Legend Of Zelda',12);
 INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Battlefield',2);
 INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Uncharted',8);
 INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Resident Evil',14);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Halo'),9;
+INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Halo',9);
 INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Tomb Raider',3);
 INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('The Elder Scrolls',1);
 INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Counter Strike',19);
@@ -961,13 +962,6 @@ VALUES(3.99,'2020-01-21',5,100010);
 INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) 
 VALUES(3.99,'2020-03-03',4,100011);
 
---Views
-GO
-CREATE VIEW Project.GamesPurchases  AS 
-SELECT Copy.PlatformName,Game.*,Purchase.NumPurchase,Purchase.PurchaseDate, Purchase.IDClient,Purchase.Price as FinalPrice FROM Project.Purchase
-INNER JOIN Project.[Copy] ON Purchase.SerialNum = [Copy].SerialNum 
-INNER JOIN Project.Game ON Game.IDGame = [Copy].IDGame
-
 ---UDFS-----
 go 
 CREATE FUNCTION Project.[udf_check_email](@email VARCHAR(50)) RETURNS INT
@@ -1114,7 +1108,6 @@ AS
 GO
 
 
-
 CREATE FUNCTION Project.[udf_getGameDetails] (@IDGame INT) RETURNS TABLE 
 AS
 	RETURN ( SELECT * FROM Game WHERE Game.IDGame = @IDGame)
@@ -1218,18 +1211,21 @@ BEGIN
 		RETURN @id;
 END
 GO
-/*
-CREATE FUNCTION Project.[udf_checkGameCopies] (@IDGame INT, @PlatformName VARCHAR(30)) RETURNS TABLE
+
+
+CREATE FUNCTION Project.[udf_checkGameCopies] (@IDGame INT, @PlatformName VARCHAR(30)) RETURNS int
 AS
-		RETURN (SELECT [Copy].SerialNum,Purchase.SerialNum AS PurchaseSerialNum 
-		FROM Project.[Copy] LEFT OUTER JOIN Project.Purchase on [Copy].SerialNum = Purchase.SerialNum 
-		WHERE @IDGame = [Copy].IDGame AND @PlatformName = [Copy].PlatformName)
+		BEGIN
+			DECLARE @temp TABLE(
+			SerialNum INT
+			)
+			insert INTO @temp  SELECT Purchase.SerialNum FROM Project.[Copy] LEFT OUTER JOIN Project.Purchase on [Copy].SerialNum = Purchase.SerialNum 
+			WHERE @IDGame = [Copy].IDGame AND @PlatformName = [Copy].PlatformName
+			return ( select COUNT(*) from @temp WHERE SerialNum IS NULL)
+		END
 GO
 
 
-SELECT * FROM Project.[udf_checkGameCopies] (3, 'iOS')
-
-*/
 GO
 ---- PROCEDURES---
 create procedure Project.pd_Login(
@@ -1395,6 +1391,6 @@ AS
 	END
 
 	GO
-	
+
 
 	
