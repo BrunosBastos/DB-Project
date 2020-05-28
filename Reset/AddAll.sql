@@ -1308,12 +1308,12 @@ CREATE PROCEDURE Project.pd_insertCredit(
 GO
 
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
-		@MinValue DECIMAL (5,2),
-		@MaxValue DECIMAL (5,2),
-		@MinDate  DATE,
-		@MaxDate DATE,
-		@GameName VARCHAR(max), -- user input
-		@IDClient INT
+		@IDClient INT,
+		@MinValue DECIMAL (5,2) =NULL,
+		@MaxValue DECIMAL (5,2) = NULL,
+		@MinDate  DATE =NULL,
+		@MaxDate DATE =NULL,
+		@GameName VARCHAR(max) =NULL -- user input
 		)
 	AS
 		BEGIN
