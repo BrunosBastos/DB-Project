@@ -149,7 +149,7 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.textBox36 = new System.Windows.Forms.TextBox();
+            this.CreditAddAmount = new System.Windows.Forms.TextBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
@@ -175,11 +175,9 @@
             this.label40 = new System.Windows.Forms.Label();
             this.checkedListBox5 = new System.Windows.Forms.CheckedListBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.AmountCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MethodCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateCredit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.label41 = new System.Windows.Forms.Label();
             this.PHGameName = new System.Windows.Forms.TextBox();
@@ -197,7 +195,8 @@
             this.PHMaxPrice = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button21 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.AddCreditBalance = new System.Windows.Forms.TextBox();
+            this.label46 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -1401,7 +1400,9 @@
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.textBox36);
+            this.tabPage6.Controls.Add(this.label46);
+            this.tabPage6.Controls.Add(this.AddCreditBalance);
+            this.tabPage6.Controls.Add(this.CreditAddAmount);
             this.tabPage6.Controls.Add(this.groupBox15);
             this.tabPage6.Controls.Add(this.label35);
             this.tabPage6.Controls.Add(this.button5);
@@ -1413,12 +1414,12 @@
             this.tabPage6.Text = "Add Credit";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // textBox36
+            // CreditAddAmount
             // 
-            this.textBox36.Location = new System.Drawing.Point(249, 33);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(176, 20);
-            this.textBox36.TabIndex = 8;
+            this.CreditAddAmount.Location = new System.Drawing.Point(249, 33);
+            this.CreditAddAmount.Name = "CreditAddAmount";
+            this.CreditAddAmount.Size = new System.Drawing.Size(176, 20);
+            this.CreditAddAmount.TabIndex = 8;
             // 
             // groupBox15
             // 
@@ -1495,6 +1496,7 @@
             this.button5.TabIndex = 7;
             this.button5.Text = "Complete Transaction";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.AddCredit);
             // 
             // tabPage7
             // 
@@ -1656,36 +1658,11 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AmountCredit,
-            this.MethodCredit,
-            this.DateCredit});
             this.dataGridView1.Location = new System.Drawing.Point(26, 38);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(393, 364);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // AmountCredit
-            // 
-            this.AmountCredit.HeaderText = "Amount";
-            this.AmountCredit.Name = "AmountCredit";
-            this.AmountCredit.ReadOnly = true;
-            this.AmountCredit.Width = 50;
-            // 
-            // MethodCredit
-            // 
-            this.MethodCredit.HeaderText = "Method";
-            this.MethodCredit.Name = "MethodCredit";
-            this.MethodCredit.ReadOnly = true;
-            this.MethodCredit.Width = 150;
-            // 
-            // DateCredit
-            // 
-            this.DateCredit.HeaderText = "Date";
-            this.DateCredit.Name = "DateCredit";
-            this.DateCredit.ReadOnly = true;
-            this.DateCredit.Width = 150;
             // 
             // tabPage8
             // 
@@ -1723,6 +1700,16 @@
             this.groupBox17.TabIndex = 2;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Filters";
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(34, 349);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 17;
+            this.button4.Text = "Reset Filter";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.ResetFilterPH);
             // 
             // button18
             // 
@@ -1866,15 +1853,22 @@
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.LogOut);
             // 
-            // button4
+            // AddCreditBalance
             // 
-            this.button4.Location = new System.Drawing.Point(34, 349);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "Reset Filter";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.ResetFilterPH);
+            this.AddCreditBalance.Location = new System.Drawing.Point(29, 33);
+            this.AddCreditBalance.Name = "AddCreditBalance";
+            this.AddCreditBalance.ReadOnly = true;
+            this.AddCreditBalance.Size = new System.Drawing.Size(100, 20);
+            this.AddCreditBalance.TabIndex = 10;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(26, 14);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(68, 13);
+            this.label46.TabIndex = 11;
+            this.label46.Text = "You Balance";
             // 
             // ClientMain
             // 
@@ -2052,7 +2046,7 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.TextBox textBox36;
+        private System.Windows.Forms.TextBox CreditAddAmount;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton5;
@@ -2078,9 +2072,6 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.CheckedListBox checkedListBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AmountCredit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MethodCredit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateCredit;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.Button button18;
@@ -2103,5 +2094,7 @@
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.TextBox AddCreditBalance;
     }
 }

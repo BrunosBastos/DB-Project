@@ -174,6 +174,7 @@ namespace App
                 Console.WriteLine("Inside tab Follows");
             }else if(tabControl1.SelectedIndex == 4)
             {
+                LoadAddCredit();
                 Console.WriteLine("Inside tab Transactions");
             }
 
@@ -250,13 +251,12 @@ namespace App
         // Transactions
 
 
-
-
         private void Change_transaction_tabs(object sender, EventArgs e)
         {
 
             if (tabControl2.SelectedIndex == 0) { 
                Console.WriteLine("Add credit");
+               LoadAddCredit();
             }else if(tabControl2.SelectedIndex == 1)
             {
                 Console.WriteLine("Credit History");
@@ -267,6 +267,60 @@ namespace App
             }
 
         }
+        // Credit
+
+        private void LoadAddCredit()
+        {
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Select Balance From Project.Client where UserID="+Program.currentUser,Program.cn);
+                decimal balance = (decimal)cmd.ExecuteScalar();
+                AddCreditBalance.Text = balance.ToString();
+            }
+
+
+        }
+        private void AddCredit(object sender, EventArgs e)
+        {
+            // DateCredit , MetCredit, ValueCredit, IDClient
+            // Project.pd_inserCredit
+            var checkedButton = groupBox15.Controls.OfType<RadioButton>()
+                                      .FirstOrDefault(r => r.Checked);
+            string RadioCheck = "";
+            if (checkedButton != null)
+            {
+                RadioCheck = checkedButton.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please choose a payment method.");
+                return;
+            }
+
+            if (CreditAddAmount.TextLength == 0 || !Decimal.TryParse(CreditAddAmount.Text.Replace(".", ","), out decimal n) || CreditAddAmount.TextLength > 7)
+            {
+                MessageBox.Show("Please insert a valid amount");
+                return;
+            }
+
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Project.pd_insertCredit");
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@MetCredit", RadioCheck);
+                cmd.Parameters.AddWithValue("@DateCredit", DateTime.Now);
+                cmd.Parameters.AddWithValue("@ValueCredit", n);
+                cmd.Parameters.AddWithValue("@IDClient", Program.currentUser);
+                cmd.Connection = Program.cn;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Your Credit has been added to your account.");
+            }
+
+            CreditAddAmount.Text = "";
+            checkedButton.Checked = false;
+        }
+
+        // Purchase History
 
         private void LoadPurchaseHistory()
         {
@@ -378,5 +432,7 @@ namespace App
             PHEndYear.Text = "";
 
         }
+
+     
     }
 }
