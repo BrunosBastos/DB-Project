@@ -1182,17 +1182,45 @@ SELECT Project.[udf_getNumberOfReviews](1);
 
 
 GO
+
 CREATE FUNCTION Project.[udf_getFranchiseDetails] (@IDFranchise INT) RETURNS TABLE
 AS
 	RETURN ( SELECT * FROM Franchise WHERE Franchise.IDFranchise =@IDFranchise)
 GO
-GO
+
 CREATE FUNCTION Project.[udf_getFranchisesComp] (@IDCompany INT) RETURNS TABLE
 AS
-	RETURN (SELECT Franchise.IDFranchise,Franchise.Name FROM Company JOIN CompFranchise ON CompFranchise.IDCompany = Company.IDCompany JOIN Franchise ON Franchise.IDFranchise = CompFranchise.IDFranchise WHERE Company.IDCompany = @IDCompany)
+	RETURN (SELECT Franchise.IDFranchise,Franchise.[Name] FROM Company JOIN CompFranchise ON CompFranchise.IDCompany = Company.IDCompany JOIN Franchise ON Franchise.IDFranchise = CompFranchise.IDFranchise WHERE Company.IDCompany = @IDCompany)
 
 GO
+
+CREATE FUNCTION Project.[udf_getNumberFranchiseComp] (@IDCompany INT) RETURNS INT
+AS
+	BEGIN
+		DECLARE @counter INT;
+		SElECT @counter = COUNT([IDFranchise]) FROM Project.[udf_getFranchisesComp] (@IDCompany);
+		RETURN @counter;
+	END
 GO
+
+
+CREATE FUNCTION Project.[udf_getCompGames] (@IDCompany INT) RETURNS TABLE
+AS
+	RETURN ( SELECT Game.[Name] FROM Project.Game JOIN Project.Company ON Game.IDCompany = Company.IDCompany WHERE Company.IDCompany=@IDCompany)
+
+GO
+
+CREATE FUNCTION Project.[udf_getNumberCompGames] (@IDCompany INT) RETURNS INT
+AS
+	BEGIN
+		DECLARE @counter INT;
+		SElECT @counter = COUNT([Name]) FROM Project.udf_getCompGames (@IDCompany);
+		RETURN @counter;
+	END
+
+GO
+
+
 CREATE FUNCTION Project.[udf_checkReview] (@IDClient INT, @IDGame INT) RETURNS INT
 AS
 BEGIN
@@ -1207,6 +1235,9 @@ BEGIN
 END
 GO
 
+
+
+GO
 ---- PROCEDURES---
 create procedure Project.pd_Login(
 	@Loginemail varchar(50),
@@ -1277,8 +1308,8 @@ CREATE PROCEDURE Project.pd_insertCredit(
 GO
 
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
-		@MinValue INT,
-		@MaxValue INT,
+		@MinValue DECIMAL (5,2),
+		@MaxValue DECIMAL (5,2),
 		@MinDate  DATE,
 		@MaxDate DATE,
 		@GameName VARCHAR(max), -- user input
@@ -1310,8 +1341,7 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 			SELECT * FROM @temp
 		END
 
-
-
+go
 
 GO
 --TRIGGERS
