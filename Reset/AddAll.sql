@@ -1104,7 +1104,7 @@ AS
 	RETURN (SELECT Purchase.*,Copy.PlatformName FROM Project.Purchase
 	JOIN Project.[Copy] ON  Purchase.SerialNum = [Copy].SerialNum
 	JOIN Project.Game ON Game.IDGame = [Copy].IDGame
-	WHERE Purchase.IDClient = @IDClient) 
+	WHERE Purchase.IDClient = @IDClient AND Game.IDGame=@IDGame) 
 GO
 
 
@@ -1160,6 +1160,8 @@ CREATE FUNCTION Project.[udf_getGamesFranchise] (@IDFranchise INT) RETURNS TABLE
 AS
 	RETURN (SELECT Game.[Name] FROM Project.Franchise JOIN Project.Game ON Game.IDFranchise = Franchise.IDFranchise WHERE Franchise.IDFranchise=@IDFranchise) 
 GO
+
+
 
 CREATE FUNCTION Project.[udf_getNumberGameFranchises] (@IDFranchise INT) RETURNS INT
 AS
@@ -1224,7 +1226,15 @@ AS
 			return ( select COUNT(*) from @temp WHERE SerialNum IS NULL)
 		END
 GO
+/*
+CREATE FUNCTION Project.[udf_checkGameDiscount] (@IDGame INT) RETURNS TABLE
+AS
+	RETURN (SELECT PromoCode,[Percentage] FROM Project.Game 
+	JOIN Project.DiscountGame ON Game.IDGame =DiscountGame.IDGame 
+	JOIN Project.Discount ON Discount.PromoCode =DiscountGame.PromoCode
+	WHERE DATEDIFF(DAY,DateEnd
 go
+*/
 create Function Project.udf_getGenreDetails(@GenName Varchar(25)) Returns Table
 as
 	Return( Select * From Project.Genre where Genre.GenName=@GenName);
@@ -1337,6 +1347,8 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 
 
 go
+
+
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 		@IDClient INT,
 		@MinValue DECIMAL (5,2) =NULL,
@@ -1456,12 +1468,21 @@ AS
 			 PRINT ERROR_MESSAGE()
 			 raiserror ('Insertion Error', 16, 1);
 			END CATCH
-
-		PRINT 'Success on Transaction!'
 		COMMIT TRAN
 	END
 
 	GO
 
-
-	
+/*
+CREATE TRIGGER Project.trigger_purchase ON Project.Purchase
+INSTEAD OF INSERT
+AS
+	BEGIN
+		BEGIN TRAN
+				DECLARE @NumPurchase  AS INT;
+				DECLARE @Price  AS DECIMAL(5,2);
+				DECLARE @PurchaseDate AS DATE;
+				DECLARE	@IDClient AS INT;
+				DECLARE @SerialNum AS INT;
+				SELECT @NumPurchase=NumPurchase,@Price=Price,@PurchaseDate=PurchaseDate,@IDClient=IDClient,@SerialNum=SerialNum FROM INSERTED;
+*/
