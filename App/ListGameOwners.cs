@@ -57,5 +57,23 @@ namespace App
         {
             this.Close();
         }
+
+        private void goToViewProfile(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+                string clickeduser = listBox1.Items[listBox1.SelectedIndex].ToString();
+                SqlCommand cmd = new SqlCommand("Select Project.udf_check_username('" + clickeduser + "')", Program.cn);
+                int userid = (int)cmd.ExecuteScalar();
+                if (userid == 0)
+                {
+                    MessageBox.Show("Ops something strange just happened...");
+                    return;
+                }
+                Console.WriteLine(userid);
+                ViewProfile vp = new ViewProfile(userid);
+                vp.ShowDialog();
+            }
+        }
     }
 }

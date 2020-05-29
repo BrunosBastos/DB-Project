@@ -29,38 +29,38 @@
         private void InitializeComponent()
         {
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.NFollowers = new System.Windows.Forms.TextBox();
+            this.Username = new System.Windows.Forms.TextBox();
+            this.FullName = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.Sex = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.Birth = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.NGames = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox10
             // 
             this.groupBox10.Controls.Add(this.button1);
-            this.groupBox10.Controls.Add(this.textBox14);
-            this.groupBox10.Controls.Add(this.textBox21);
-            this.groupBox10.Controls.Add(this.textBox20);
+            this.groupBox10.Controls.Add(this.NFollowers);
+            this.groupBox10.Controls.Add(this.Username);
+            this.groupBox10.Controls.Add(this.FullName);
             this.groupBox10.Controls.Add(this.label19);
-            this.groupBox10.Controls.Add(this.textBox19);
+            this.groupBox10.Controls.Add(this.Sex);
             this.groupBox10.Controls.Add(this.label20);
-            this.groupBox10.Controls.Add(this.textBox18);
+            this.groupBox10.Controls.Add(this.Birth);
             this.groupBox10.Controls.Add(this.label21);
             this.groupBox10.Controls.Add(this.label22);
             this.groupBox10.Controls.Add(this.label23);
             this.groupBox10.Controls.Add(this.label24);
-            this.groupBox10.Controls.Add(this.textBox13);
+            this.groupBox10.Controls.Add(this.NGames);
             this.groupBox10.Location = new System.Drawing.Point(12, 12);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(335, 225);
@@ -68,26 +68,38 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "User Profile";
             // 
-            // textBox14
+            // button1
             // 
-            this.textBox14.Location = new System.Drawing.Point(221, 49);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 20);
-            this.textBox14.TabIndex = 43;
+            this.button1.Location = new System.Drawing.Point(221, 167);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "Follow";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // textBox21
+            // NFollowers
             // 
-            this.textBox21.Location = new System.Drawing.Point(16, 49);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(181, 20);
-            this.textBox21.TabIndex = 36;
+            this.NFollowers.Location = new System.Drawing.Point(221, 49);
+            this.NFollowers.Name = "NFollowers";
+            this.NFollowers.ReadOnly = true;
+            this.NFollowers.Size = new System.Drawing.Size(100, 20);
+            this.NFollowers.TabIndex = 43;
             // 
-            // textBox20
+            // Username
             // 
-            this.textBox20.Location = new System.Drawing.Point(16, 111);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(181, 20);
-            this.textBox20.TabIndex = 37;
+            this.Username.Location = new System.Drawing.Point(16, 49);
+            this.Username.Name = "Username";
+            this.Username.ReadOnly = true;
+            this.Username.Size = new System.Drawing.Size(181, 20);
+            this.Username.TabIndex = 36;
+            // 
+            // FullName
+            // 
+            this.FullName.Location = new System.Drawing.Point(16, 111);
+            this.FullName.Name = "FullName";
+            this.FullName.ReadOnly = true;
+            this.FullName.Size = new System.Drawing.Size(181, 20);
+            this.FullName.TabIndex = 37;
             // 
             // label19
             // 
@@ -98,12 +110,13 @@
             this.label19.TabIndex = 50;
             this.label19.Text = "Birth";
             // 
-            // textBox19
+            // Sex
             // 
-            this.textBox19.Location = new System.Drawing.Point(16, 170);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(54, 20);
-            this.textBox19.TabIndex = 38;
+            this.Sex.Location = new System.Drawing.Point(16, 170);
+            this.Sex.Name = "Sex";
+            this.Sex.ReadOnly = true;
+            this.Sex.Size = new System.Drawing.Size(54, 20);
+            this.Sex.TabIndex = 38;
             // 
             // label20
             // 
@@ -114,12 +127,13 @@
             this.label20.TabIndex = 49;
             this.label20.Text = "Sex";
             // 
-            // textBox18
+            // Birth
             // 
-            this.textBox18.Location = new System.Drawing.Point(85, 171);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(85, 20);
-            this.textBox18.TabIndex = 39;
+            this.Birth.Location = new System.Drawing.Point(85, 171);
+            this.Birth.Name = "Birth";
+            this.Birth.ReadOnly = true;
+            this.Birth.Size = new System.Drawing.Size(85, 20);
+            this.Birth.TabIndex = 39;
             // 
             // label21
             // 
@@ -157,12 +171,13 @@
             this.label24.TabIndex = 45;
             this.label24.Text = "Nº of Followers";
             // 
-            // textBox13
+            // NGames
             // 
-            this.textBox13.Location = new System.Drawing.Point(221, 109);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 44;
+            this.NGames.Location = new System.Drawing.Point(221, 109);
+            this.NGames.Name = "NGames";
+            this.NGames.ReadOnly = true;
+            this.NGames.Size = new System.Drawing.Size(100, 20);
+            this.NGames.TabIndex = 44;
             // 
             // button3
             // 
@@ -172,15 +187,6 @@
             this.button3.TabIndex = 55;
             this.button3.Text = "Close Profile";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(221, 167);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 51;
-            this.button1.Text = "Follow";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // ViewProfile
             // 
@@ -200,18 +206,18 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox NFollowers;
+        private System.Windows.Forms.TextBox Username;
+        private System.Windows.Forms.TextBox FullName;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox Sex;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.TextBox Birth;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox NGames;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
     }

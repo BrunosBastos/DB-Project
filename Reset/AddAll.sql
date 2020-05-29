@@ -978,12 +978,12 @@ BEGIN
 END
 GO
 
-CREATE FUNCTION Project.[udf_check_username](@username VARCHAR(50)) RETURNS INT
+create FUNCTION Project.[udf_check_username](@username VARCHAR(50)) RETURNS INT
 AS
 BEGIN
-	IF EXISTS(SELECT * FROM Project.Client AS C WHERE C.Username = @username)
-		RETURN 1;
-	RETURN 0;
+	declare @temp as int
+	set @temp = ( SELECT UserID FROM Project.Client AS C WHERE C.Username = @username);
+	return @temp;
 END
 GO
 
@@ -1048,7 +1048,7 @@ SELECT * FROM Project.[udf_userfollowers] (2)
 
 GO
 
-CREATE FUNCTION Project.[udf_countuserFollwers] (@IDClient INT) RETURNS INT
+create FUNCTION Project.[udf_countuserFollowers] (@IDClient INT) RETURNS INT
 AS 
 	begin
 			DECLARE @counter AS INT;
