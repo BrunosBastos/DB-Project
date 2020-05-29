@@ -1,4 +1,5 @@
 USE LocalDB
+go
 CREATE SCHEMA Project;
 go
 
@@ -1219,6 +1220,7 @@ END
 GO
 
 
+
 CREATE FUNCTION Project.[udf_checkGameCopies] (@IDGame INT, @PlatformName VARCHAR(30)) RETURNS int
 AS
 		BEGIN
@@ -1233,12 +1235,13 @@ GO
 
 CREATE FUNCTION Project.[udf_checkGameDiscount] (@IDGame INT) RETURNS TABLE
 AS
-	RETURN (SELECT PromoCode,[Percentage] FROM Project.Game 
+	RETURN (SELECT Discount.PromoCode,[Percentage] FROM Project.Game 
 	JOIN Project.DiscountGame ON Game.IDGame =DiscountGame.IDGame 
 	JOIN Project.Discount ON Discount.PromoCode =DiscountGame.PromoCode
-	WHERE DATEDIFF(DAY,DateEnd,GETDATE())
-GO
+	WHERE DATEDIFF(DAY,DateEnd,GETDATE()) <0 AND Game.IDGame=@IDGame)
 
+GO
+GO
 create Function Project.udf_getGenreDetails(@GenName Varchar(25)) Returns Table
 as
 	Return( Select * From Project.Genre where Genre.GenName=@GenName);
@@ -1345,7 +1348,7 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 	)
 	AS
 		BEGIN
-			INSERT INTO Project.Purchase(NumPurchase,Price,PurchaseDate,IDClient) VALUES (@NumPurchase,@Price,@IDClient,@SerialNum)
+			INSERT INTO Project.Purchase(NumPurchase,Price,PurchaseDate,IDClient) VALUES (@NumPurchase,@Price,@PurchaseDate,@SerialNum)
 --FAZER O TRIGGER!
 		END
 
