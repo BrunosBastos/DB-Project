@@ -35,3 +35,4 @@ C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug
 C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug\App.PlatformDetails.resources
 C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug\App.GenreDetails.resources
 C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug\App.ViewReviews.resources
+C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug\App.ListGameOwners.resources

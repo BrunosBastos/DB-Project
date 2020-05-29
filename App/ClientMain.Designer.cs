@@ -38,7 +38,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.listgameowner = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
             this.MCAddReview = new System.Windows.Forms.Button();
@@ -335,7 +335,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.button8);
+            this.groupBox5.Controls.Add(this.listgameowner);
             this.groupBox5.Location = new System.Drawing.Point(862, 178);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(187, 76);
@@ -343,14 +343,15 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Follows";
             // 
-            // button8
+            // listgameowner
             // 
-            this.button8.Location = new System.Drawing.Point(43, 28);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(105, 23);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "List Game Owners";
-            this.button8.UseVisualStyleBackColor = true;
+            this.listgameowner.Location = new System.Drawing.Point(43, 28);
+            this.listgameowner.Name = "listgameowner";
+            this.listgameowner.Size = new System.Drawing.Size(105, 23);
+            this.listgameowner.TabIndex = 0;
+            this.listgameowner.Text = "List Game Owners";
+            this.listgameowner.UseVisualStyleBackColor = true;
+            this.listgameowner.Click += new System.EventHandler(this.goToListGameOwner);
             // 
             // groupBox4
             // 
@@ -1935,7 +1936,7 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button listgameowner;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button MCAddReview;

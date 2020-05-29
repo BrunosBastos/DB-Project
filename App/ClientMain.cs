@@ -24,6 +24,53 @@ namespace App
             LoadGames();
         }
 
+
+        // ClientMain
+
+        private void LogOut(object sender, EventArgs e)
+        {
+            Program.currentUser = 0;
+            this.Hide();
+            Login l = new Login();
+            l.ShowDialog();
+            this.Close();
+        }
+
+        private void Change_tabs(object sender, EventArgs e)
+        {
+
+            Console.WriteLine("selected index" + tabControl1.SelectedIndex);
+            if (tabControl1.SelectedIndex == 0)
+            {
+                Console.WriteLine("Inside tab Your games");
+                LoadGames();
+            }
+            else if (tabControl1.SelectedIndex == 1)
+            {
+                Console.WriteLine("Inside tab Store");
+
+            }
+            else if (tabControl1.SelectedIndex == 2)
+            {
+                Console.WriteLine("Inside tab Profile");
+
+            }
+            else if (tabControl1.SelectedIndex == 3)
+            {
+                Console.WriteLine("Inside tab Follows");
+            }
+            else if (tabControl1.SelectedIndex == 4)
+            {
+                LoadAddCredit();
+                Console.WriteLine("Inside tab Transactions");
+            }
+
+        }
+
+
+
+
+        // Your Games
         private void LoadGames()
         {
 
@@ -53,10 +100,6 @@ namespace App
                 
             }
 
-
-            
-            // assim como o conteudo do add review ja devia estar preenchido com
-            // as cenas da review antiga
             current_game = 0;
             reader.Close();
             ShowGame();
@@ -89,7 +132,6 @@ namespace App
             // Franchise and Company name
             if (Program.verifySGBDConnection())
             {
-                // perguntar stor
                 SqlCommand cmd = new SqlCommand("Select Company.CompanyName From Project.Company where IDCompany=" + g.IDCompany, Program.cn);
                 string name = (string)cmd.ExecuteScalar();
                 MGDCompany.Text = name;
@@ -120,9 +162,7 @@ namespace App
         }
 
         private void updateInterface(int UserID, int IDGame)
-        {
-            //fazer função para mudar o botao de add Review para edit review
-            //quando ja tiver sido feita uma 
+        { 
             if (!Program.verifySGBDConnection())
             {
                 return;
@@ -141,42 +181,6 @@ namespace App
                 MCAddReview.Text = "Add Review";
             }
             Program.cn.Close();
-
-        }
-
-        private void LogOut(object sender, EventArgs e)
-        {
-            Program.currentUser = 0;
-            this.Hide();
-            Login l = new Login();
-            l.ShowDialog();
-            this.Close();
-        }
-
-        private void Change_tabs(object sender, EventArgs e)
-        {
-
-            Console.WriteLine("selected index" + tabControl1.SelectedIndex);
-            if (tabControl1.SelectedIndex == 0)
-            {
-                Console.WriteLine("Inside tab Your games");
-                LoadGames();
-            }else if(tabControl1.SelectedIndex == 1)
-            {
-                Console.WriteLine("Inside tab Store");
-                
-            }else if(tabControl1.SelectedIndex == 2)
-            {
-                Console.WriteLine("Inside tab Profile");
-
-            }else if(tabControl1.SelectedIndex == 3)
-            {
-                Console.WriteLine("Inside tab Follows");
-            }else if(tabControl1.SelectedIndex == 4)
-            {
-                LoadAddCredit();
-                Console.WriteLine("Inside tab Transactions");
-            }
 
         }
 
@@ -246,6 +250,18 @@ namespace App
             Game g = (Game)listBox1.Items[current_game];
             ViewReviews vr = new ViewReviews(Int32.Parse(g.IDGame));
             vr.ShowDialog();
+        }
+
+        private void goToListGameOwner(object sender, EventArgs e)
+        {
+            if (listBox1.Items.Count==0)
+            {
+                return;
+            }
+            Game g = (Game)listBox1.Items[current_game];
+            ListGameOwners lg = new ListGameOwners(int.Parse(g.IDGame));
+            lg.ShowDialog();
+
         }
 
         // Transactions
@@ -433,6 +449,6 @@ namespace App
 
         }
 
-     
+       
     }
 }
