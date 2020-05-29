@@ -1262,6 +1262,30 @@ as
 	end
 go
 
+create FUNCTION Project.udf_getPlatformDetails(@platformName Varchar(30)) returns table
+as
+	RETURN( SELECT * FROM Project.[Platform] where [Platform].PlatformName=@platformName);
+
+go
+go
+Create Function Project.udf_getPlatformGames(@platformName Varchar(30)) returns table
+as
+	Return ( Select Game.Name from Project.PlatformReleasesGame 
+	JOIN Project.Game ON Game.IDGame=PlatformReleasesGame.IDGame
+	where PlatformReleasesGame.PlatformName=@platformName)
+
+go
+
+go
+Create Function Project.udf_getNumberPlatformGames(@platformName Varchar(30)) returns int
+as
+begin
+	Declare @temp as int
+	Select @temp = COUNT(Name) From Project.udf_getPlatformGames(@platformName);
+	return @temp;
+end
+go
+
 
 
 
