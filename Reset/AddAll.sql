@@ -1060,17 +1060,17 @@ SELECT  Project.[udf_countuserFollwers] (2)
 
 GO
 
-
+go
 --Check the people that we follow that have a  specific game in common with the client itself 
-CREATE FUNCTION Project.[udf_checkGameofFollows] (@IDGame INT, @IDClient INT ) RETURNS TABLE
+create FUNCTION Project.[udf_checkGameofFollows] (@IDGame INT, @IDClient INT ) RETURNS TABLE
 AS
 	RETURN (SELECT  DISTINCT Client.UserID,Client.Username 
 	FROM ( (Project.Follows
 	JOIN Project.Purchase ON Purchase.IDClient = Follows.IDFollowed) 
 	JOIN Project.Client ON Client.UserID = Follows.IDFollowed 
 	JOIN Project.[Copy] ON ([Copy].SerialNum = Purchase.SerialNum) 
-	JOIN Project.Game ON Game.IDGame= @IDGame)
-	WHERE Follows.IDFollower = @IDClient)
+	JOIN Project.Game ON Game.IDGame= [Copy].IDGame)
+	WHERE Follows.IDFollower = @IDClient and Game.IDGame=@IDGame)
 
 
 GO
