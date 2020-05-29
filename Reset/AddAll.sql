@@ -724,52 +724,52 @@ INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (18,'Window
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (18,'Xbox One');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (18,'PlayStation 4');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (18,'Windows 10');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (18,'Nintendo Switch');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (19,'Nintendo Switch');
 
 
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (19,'PlayStation 3');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (20,'PlayStation 4');
-
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (21,'Xbox One');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (20,'PlayStation 3');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (21,'PlayStation 4');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (21,'Windows 10');
 
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (22,'Xbox One');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (22,'PlayStation 4');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (22,'Windows 10');
 
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (23,'Xbox One');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (23,'Xbox 360');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (23,'Windows 7');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (23,'PlayStation 4');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (23,'Windows 10');
 
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (24,'Xbox One');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (24,'PlayStation 4');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (24,'Windows 10');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (24,'Xbox 360');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (24,'Windows 7');
 
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (25,'Xbox 360');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (25,'PlayStation 3');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (25,'Windows 7');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (25,'Xbox One');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (25,'PlayStation 4');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (25,'Windows 10');
 
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (26,'Xbox 360');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (26,'PlayStation 3');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (26,'Windows 7');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (26,'Windows 10');
 
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (27,'PlayStation 4');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (27,'Windows 7');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (27,'Windows 10');
 
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (28,'Windows 7');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (28,'PlayStation 4');
 
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (29,'Xbox One');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (29,'PlayStation 4');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (29,'Windows 10');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (29,'Windows 7');
 
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (30,'Xbox One');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (30,'PlayStation 4');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (30,'Windows 10');
 
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (31,'Xbox One');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (31,'PlayStation 4');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (31,'Windows 10');
 
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (32,'PlayStation 4');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (32,'Windows 10');
+
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (33,'PlayStation 4');
+INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (33,'Windows 10');
 
 
 -- insert Reviews
@@ -875,65 +875,69 @@ INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(17,'Xbox One');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(17,'PlayStation 4');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(17,'Windows 10')
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(18,'PlayStation 3');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(18,'Nintendo Switch');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(18,'PlayStation 3');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(18,'Windows 10');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(18,'Xbox 360')
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(19,'PlayStation 3');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(19,'PlayStation 3');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(19,'PlayStation 3');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(19,'PlayStation 3')
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(20,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(20,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(20,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(20,'PlayStation 4')
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(21,'Xbox One');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(21,'Xbox One');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(19,'Nintendo Switch');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(19,'Nintendo Switch');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(19,'Nintendo Switch');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(19,'Nintendo Switch');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(20,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(20,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(20,'PlayStation 3');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(20,'PlayStation 3')
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(21,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(21,'Windows 10')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(21,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(21,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(21,'PlayStation 4')
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(22,'Xbox One');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(22,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(22,'Xbox One');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(22,'PlayStation 4');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(22,'Windows 10')
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(23,'Xbox One');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(23,'Xbox One');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(23,'Xbox 360');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(23,'Windows 7')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(23,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(23,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(23,'Windows 10')
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(24,'Xbox One');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(24,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(24,'Windows 10');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(24,'Windows 10')
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(25,'Windows 7');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(25,'Xbox 360');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(25,'Xbox 360');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(25,'PlayStation 3')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(24,'Xbox One');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(24,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(24,'Windows 7')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(25,'Xbox One');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(25,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(25,'Windows 10');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(25,'Windows 10')
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(26,'Windows 7');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(26,'Windows 7');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(26,'Windows 10');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(26,'Windows 10')
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(27,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(27,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(27,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(27,'PlayStation 4')
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(28,'Windows 7');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(28,'Windows 7');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(28,'Windows 7');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(28,'Windows 7')
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(29,'Xbox One');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(29,'Xbox One');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(29,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(29,'Windows 10')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(26,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(26,'Xbox 360');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(26,'PlayStation 3')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(27,'Windows 7');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(27,'Windows 7');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(27,'Windows 10');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(27,'Windows 10')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(28,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(28,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(28,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(28,'PlayStation 4')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(29,'Windows 7');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(29,'Windows 7');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(29,'Windows 7');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(29,'Windows 7')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(30,'Xbox One');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(30,'Xbox One');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(30,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(30,'Windows 10');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(30,'Windows 10')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(31,'Xbox One');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(31,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(31,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(31,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(31,'Windows 10');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(31,'Windows 10')
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'Windows 10');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'Windows 10');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'PlayStation 4');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'Windows 10')
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(33,'PlayStation 4');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(33,'Windows 10');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(33,'Windows 10');
+INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(33,'Windows 10')
 
 
 -- insert purchases
@@ -1226,15 +1230,15 @@ AS
 			return ( select COUNT(*) from @temp WHERE SerialNum IS NULL)
 		END
 GO
-/*
+
 CREATE FUNCTION Project.[udf_checkGameDiscount] (@IDGame INT) RETURNS TABLE
 AS
 	RETURN (SELECT PromoCode,[Percentage] FROM Project.Game 
 	JOIN Project.DiscountGame ON Game.IDGame =DiscountGame.IDGame 
 	JOIN Project.Discount ON Discount.PromoCode =DiscountGame.PromoCode
-	WHERE DATEDIFF(DAY,DateEnd
-go
-*/
+	WHERE DATEDIFF(DAY,DateEnd,GETDATE())
+GO
+
 create Function Project.udf_getGenreDetails(@GenName Varchar(25)) Returns Table
 as
 	Return( Select * From Project.Genre where Genre.GenName=@GenName);
