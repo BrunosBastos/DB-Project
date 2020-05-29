@@ -1296,6 +1296,23 @@ CREATE PROCEDURE Project.pd_insertCredit(
 
 GO
 
+
+
+CREATE PROCEDURE Project.pd_insertPurchase(
+	@NumPurchase INT,
+	@Price DECIMAL (5,2),
+	@PurchaseDate DATE,
+	@IDClient INT,
+	@SerialNum INT
+	)
+	AS
+		BEGIN
+			INSERT INTO Project.Purchase(NumPurchase,Price,PurchaseDate,IDClient) VALUES (@NumPurchase,@Price,@IDClient,@SerialNum)
+--FAZER O TRIGGER!
+		END
+
+
+go
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 		@IDClient INT,
 		@MinValue DECIMAL (5,2) =NULL,
@@ -1329,6 +1346,36 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 			SELECT * FROM @temp
 		END
 go
+
+CREATE PROCEDURE Project.pd_filter_CreditHistory(
+	@IDClient INT,
+	@MinValue DECIMAL(5,2),
+	@MaxValue DECIMAL(5,2),
+	@MinDate DATE,
+	@MaxDate DATE,
+	@selectedMets VARCHAR(max) -- selected payment methods in the app checkbox
+	)
+	AS
+		BEGIN
+			   DECLARE @temp TABLE (
+				MetCredit VARCHAR(20), 
+				ValueCredit DECIMAL(5,2),
+				DateCredit DATE)
+				INSERT INTO @temp SELECT MetCredit,ValueCredit,DateCredit FROM Project.Credit where Project.Credit.IDClient =@IDClient
+				IF @MinValue is not null
+					DELETE FROM @temp WHERE @MinValue>ValueCredit 
+				IF @MaxValue is not null 
+					DELETE FROM @temp WHERE @MaxValue<ValueCredit
+				IF @MinDate is not  null
+					DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,DateCredit) < 0
+				IF @MaxDate is not null
+					DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,DateCredit) > 0
+				IF @selectedMets is not null	
+					DELETE FROM @temp WHERE  MetCredit NOT  IN (SELECT value FROM STRING_SPLIT(@selectedMets, ','));
+
+				SELECT * FROM @temp
+		END
+GO
 
 GO
 --TRIGGERS
