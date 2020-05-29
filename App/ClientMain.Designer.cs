@@ -149,6 +149,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label46 = new System.Windows.Forms.Label();
+            this.AddCreditBalance = new System.Windows.Forms.TextBox();
             this.CreditAddAmount = new System.Windows.Forms.TextBox();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
@@ -195,8 +197,6 @@
             this.PHMaxPrice = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button21 = new System.Windows.Forms.Button();
-            this.AddCreditBalance = new System.Windows.Forms.TextBox();
-            this.label46 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -473,7 +473,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(198, 218);
+            this.label28.Location = new System.Drawing.Point(138, 218);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(79, 13);
             this.label28.TabIndex = 81;
@@ -490,7 +490,7 @@
             // 
             // MGDAgeRestriction
             // 
-            this.MGDAgeRestriction.Location = new System.Drawing.Point(203, 238);
+            this.MGDAgeRestriction.Location = new System.Drawing.Point(143, 238);
             this.MGDAgeRestriction.Name = "MGDAgeRestriction";
             this.MGDAgeRestriction.ReadOnly = true;
             this.MGDAgeRestriction.Size = new System.Drawing.Size(51, 20);
@@ -1414,6 +1414,23 @@
             this.tabPage6.Text = "Add Credit";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(26, 14);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(68, 13);
+            this.label46.TabIndex = 11;
+            this.label46.Text = "You Balance";
+            // 
+            // AddCreditBalance
+            // 
+            this.AddCreditBalance.Location = new System.Drawing.Point(29, 33);
+            this.AddCreditBalance.Name = "AddCreditBalance";
+            this.AddCreditBalance.ReadOnly = true;
+            this.AddCreditBalance.Size = new System.Drawing.Size(100, 20);
+            this.AddCreditBalance.TabIndex = 10;
+            // 
             // CreditAddAmount
             // 
             this.CreditAddAmount.Location = new System.Drawing.Point(249, 33);
@@ -1852,23 +1869,6 @@
             this.button21.Text = "Log Out";
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.LogOut);
-            // 
-            // AddCreditBalance
-            // 
-            this.AddCreditBalance.Location = new System.Drawing.Point(29, 33);
-            this.AddCreditBalance.Name = "AddCreditBalance";
-            this.AddCreditBalance.ReadOnly = true;
-            this.AddCreditBalance.Size = new System.Drawing.Size(100, 20);
-            this.AddCreditBalance.TabIndex = 10;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(26, 14);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(68, 13);
-            this.label46.TabIndex = 11;
-            this.label46.Text = "You Balance";
             // 
             // ClientMain
             // 
