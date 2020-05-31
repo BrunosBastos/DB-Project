@@ -769,10 +769,6 @@ INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (31,'Window
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (32,'PlayStation 4');
 INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (32,'Windows 10');
 
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (33,'PlayStation 4');
-INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (33,'Windows 10');
-
-
 -- insert Reviews
 
 
@@ -935,10 +931,7 @@ INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'PlayStation 4');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'PlayStation 4');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'PlayStation 4');
 INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(32,'Windows 10')
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(33,'PlayStation 4');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(33,'Windows 10');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(33,'Windows 10');
-INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES(33,'Windows 10')
+
 
 
 -- insert purchases
@@ -1056,7 +1049,7 @@ AS
 			RETURN @counter
 	end
 GO
-SELECT  Project.[udf_countuserFollwers] (2)
+
 
 GO
 
@@ -1221,39 +1214,34 @@ GO
 
 
 
-CREATE FUNCTION Project.[udf_checkGameCopies] (@IDGame INT, @PlatformName VARCHAR(30)) RETURNS int
+CREATE FUNCTION Project.[udf_checkGameCopies] (@IDGame INT, @PlatformName VARCHAR(30)) RETURNS TABLE
 AS
-		BEGIN
-			DECLARE @temp TABLE(
-			SerialNum INT
-			)
-			insert INTO @temp  SELECT Purchase.SerialNum FROM Project.[Copy] LEFT OUTER JOIN Project.Purchase on [Copy].SerialNum = Purchase.SerialNum 
-			WHERE @IDGame = [Copy].IDGame AND @PlatformName = [Copy].PlatformName
-			return ( select COUNT(*) from @temp WHERE SerialNum IS NULL)
-		END
-GO
+			RETURN( SELECT Copy.SerialNum as notBought
+			FROM Project.[Copy]  
+			WHERE @IDGame = [Copy].IDGame AND @PlatformName = [Copy].PlatformName EXCEPT SELECT [Copy].SerialNum FROM Project.Purchase JOIN Project.[Copy] ON [Copy].SerialNum = Purchase.SerialNum)
+go
 
 CREATE FUNCTION Project.[udf_checkGameDiscount] (@IDGame INT) RETURNS TABLE
 AS
-	RETURN (SELECT Discount.PromoCode,[Percentage] FROM Project.Game 
+	RETURN (SELECT [Percentage] FROM Project.Game 
 	JOIN Project.DiscountGame ON Game.IDGame =DiscountGame.IDGame 
 	JOIN Project.Discount ON Discount.PromoCode =DiscountGame.PromoCode
-	WHERE DATEDIFF(DAY,DateEnd,GETDATE()) <0 AND Game.IDGame=@IDGame)
+	WHERE DATEDIFF(DAY,DateEnd,GETDATE()) <0  AND DATEDIFF(DAY,DateBegin,GETDATE()) >0 AND Game.IDGame=@IDGame)
 
 GO
-GO
-create Function Project.udf_getGenreDetails(@GenName Varchar(25)) Returns Table
+
+create Function Project.[udf_getGenreDetails](@GenName Varchar(25)) Returns Table
 as
 	Return( Select * From Project.Genre where Genre.GenName=@GenName);
 go
 go
-Create Function Project.udf_getGenreGames(@GenName Varchar(25)) Returns Table
+Create Function Project.[udf_getGenreGames](@GenName Varchar(25)) Returns Table
 as
 	Return ( Select Name From Project.GameGenre Join Project.Game ON GameGenre.IDGame=Game.IDGame where GenName=@GenName);
 
 go
 go
-Create Function Project.udf_getNumberGenreGames(@GenName Varchar(25)) Returns int
+Create Function Project.[udf_getNumberGenreGames](@GenName Varchar(25)) Returns int
 as
 	begin
 	declare @temp as int
@@ -1262,13 +1250,13 @@ as
 	end
 go
 
-create FUNCTION Project.udf_getPlatformDetails(@platformName Varchar(30)) returns table
+create FUNCTION Project.[udf_getPlatformDetails](@platformName Varchar(30)) returns table
 as
 	RETURN( SELECT * FROM Project.[Platform] where [Platform].PlatformName=@platformName);
 
 go
 go
-Create Function Project.udf_getPlatformGames(@platformName Varchar(30)) returns table
+Create Function Project.[udf_getPlatformGames](@platformName Varchar(30)) returns table
 as
 	Return ( Select Game.Name from Project.PlatformReleasesGame 
 	JOIN Project.Game ON Game.IDGame=PlatformReleasesGame.IDGame
@@ -1277,7 +1265,7 @@ as
 go
 
 go
-Create Function Project.udf_getNumberPlatformGames(@platformName Varchar(30)) returns int
+Create Function Project.[udf_getNumberPlatformGames](@platformName Varchar(30)) returns int
 as
 begin
 	Declare @temp as int
@@ -1361,25 +1349,48 @@ CREATE PROCEDURE Project.pd_insertCredit(
 
 GO
 
-
-
-CREATE PROCEDURE Project.pd_insertPurchase(
-	@NumPurchase INT,
-	@Price DECIMAL (5,2),
+ CREATE PROCEDURE Project.pd_insertPurchase(
 	@PurchaseDate DATE,
 	@IDClient INT,
-	@SerialNum INT
+	@IDGame INT,
+	@PlatformName VARCHAR(30)
 	)
 	AS
 		BEGIN
-			INSERT INTO Project.Purchase(NumPurchase,Price,PurchaseDate,IDClient) VALUES (@NumPurchase,@Price,@PurchaseDate,@SerialNum)
---FAZER O TRIGGER!
+			BEGIN TRAN
+			DECLARE @Price DECIMAL(5,2)
+			DECLARE @countDispCopies INT;
+			DECLARE @SerialNum INT;
+			DECLARE @tempPer INT;
+			BEGIN TRY
+			SET @Price = (SELECT Price from Project.Game WHERE Game.IDGame=@IDGame)
+			SET @SerialNum= (SELECT top 1 notBought FROM Project.[udf_checkGameCopies] (@IDGame,@PlatformName))
+			IF @SerialNum IS NULL
+				BEGIN
+					INSERT INTO Project.Copy VALUES (@IDGame,@PlatformName)
+					SET @SerialNum =( SELECT TOP 1 Copy.SerialNum FROM Project.[Copy] WHERE Copy.IDGame=@IDGame AND Copy.PlatformName=@PlatformName ORDER BY SerialNum DESC  )
+				END
+			
+			SET @tempPer = (SELECT TOP 1 * FROM Project.[udf_checkGameDiscount](@IDGame))
+				IF @tempPer is not null 
+					BEGIN
+						SET @Price-=@Price*(@tempPer/100)
+					END
+			INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) VALUES (@Price,@PurchaseDate,@IDClient,@SerialNum)
+			
+			END TRY
+			BEGIN CATCH
+				 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
+				 PRINT ERROR_MESSAGE()
+				 rollback tran
+			END CATCH
+			if @@TRANCOUNT >0
+			COMMIT TRAN
 		END
-
 
 go
 
-
+GO
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 		@IDClient INT,
 		@MinValue DECIMAL (5,2) =NULL,
@@ -1406,7 +1417,7 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 			IF @MinDate is not  null
 				DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,PurchaseDate) < 0
 			IF @MaxDate is not null
-				DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,PurchaseDate) > 0
+				DELETE FROM @temp WHERE DATEDIFF(DAY,@MaxDate,PurchaseDate) > 0
             IF @GameName is not  null
 				DELETE FROM @temp WHERE GameName NOT LIKE  @GameName + '%'
 					
@@ -1436,13 +1447,15 @@ CREATE PROCEDURE Project.pd_filter_CreditHistory(
 				IF @MinDate is not  null
 					DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,DateCredit) < 0
 				IF @MaxDate is not null
-					DELETE FROM @temp WHERE DATEDIFF(DAY,@MinDate,DateCredit) > 0
+					DELETE FROM @temp WHERE DATEDIFF(DAY,@MaxDate,DateCredit) > 0
 				IF @selectedMets is not null	
 					DELETE FROM @temp WHERE  MetCredit NOT  IN (SELECT value FROM STRING_SPLIT(@selectedMets, ','));
 
 				SELECT * FROM @temp
 		END
 GO
+
+
 
 GO
 --TRIGGERS
@@ -1487,6 +1500,7 @@ AS
 			DECLARE @DateCredit as DATE;
 			DECLARE @ValueCredit as DECIMAL(4,2);
 			DECLARE @IDClient AS INT;
+			
 			SELECT @MetCredit = MetCredit,@DateCredit = DateCredit, @ValueCredit = ValueCredit,@IDClient = IDClient FROM INSERTED;
 			BEGIN TRY
 					INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient) VALUES (@MetCredit,@DateCredit,@ValueCredit,@IDClient)
@@ -1504,16 +1518,36 @@ AS
 
 	GO
 
-/*
-CREATE TRIGGER Project.trigger_purchase ON Project.Purchase
+create TRIGGER Project.trigger_purchase ON Project.Purchase
 INSTEAD OF INSERT
 AS
 	BEGIN
-		BEGIN TRAN
-				DECLARE @NumPurchase  AS INT;
 				DECLARE @Price  AS DECIMAL(5,2);
 				DECLARE @PurchaseDate AS DATE;
 				DECLARE	@IDClient AS INT;
 				DECLARE @SerialNum AS INT;
-				SELECT @NumPurchase=NumPurchase,@Price=Price,@PurchaseDate=PurchaseDate,@IDClient=IDClient,@SerialNum=SerialNum FROM INSERTED;
-*/
+				DECLARE @IDGame AS INT;
+				DECLARE @tempPer AS INT;
+				SELECT * FROM inserted
+				SELECT @Price = Price , @PurchaseDate=PurchaseDate,@IDClient=IDClient,@SerialNum=SerialNum FROM INSERTED;
+				if @Price - (SELECT Balance FROM Project.Client WHERE Client.UserID =@IDClient) >0
+				BEGIN
+					raiserror('Not enough balance to buy this game',16,1)
+
+				END
+				ELSE
+					BEGIN TRY
+						UPDATE Project.Client 
+						SET Balance-=@Price WHERE Project.Client.UserID=@IDClient
+						INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) VALUES (@Price,@PurchaseDate,@IDClient,@SerialNum)
+						
+					END TRY
+					BEGIN CATCH
+					 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
+					 PRINT ERROR_MESSAGE()
+					 raiserror ('Error while inserting purchase values', 16, 1);
+					END CATCH
+	END
+
+EXEC Project.pd_insertPurchase '2020-05-02',4,16,'PlayStation 3'
+SELECT * FROM Project.Client 
