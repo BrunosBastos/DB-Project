@@ -142,10 +142,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox34 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.listBox7 = new System.Windows.Forms.ListBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.listBox5 = new System.Windows.Forms.ListBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage6 = new System.Windows.Forms.TabPage();
@@ -161,25 +157,26 @@
             this.button5 = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.ResetFilterCredit = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
             this.label36 = new System.Windows.Forms.Label();
-            this.textBox37 = new System.Windows.Forms.TextBox();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.textBox39 = new System.Windows.Forms.TextBox();
+            this.CreditEndYear = new System.Windows.Forms.TextBox();
+            this.CreditEndMonth = new System.Windows.Forms.TextBox();
+            this.CreditEndDay = new System.Windows.Forms.TextBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.textBox40 = new System.Windows.Forms.TextBox();
-            this.textBox41 = new System.Windows.Forms.TextBox();
-            this.textBox42 = new System.Windows.Forms.TextBox();
+            this.CreditStartYear = new System.Windows.Forms.TextBox();
+            this.CreditStartMonth = new System.Windows.Forms.TextBox();
+            this.CreditStartDay = new System.Windows.Forms.TextBox();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.textBox43 = new System.Windows.Forms.TextBox();
-            this.textBox44 = new System.Windows.Forms.TextBox();
+            this.CreditMinPrice = new System.Windows.Forms.TextBox();
+            this.CreditMaxPrice = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
-            this.checkedListBox5 = new System.Windows.Forms.CheckedListBox();
+            this.CreditMethodList = new System.Windows.Forms.CheckedListBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.PHReset = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.label41 = new System.Windows.Forms.Label();
             this.PHGameName = new System.Windows.Forms.TextBox();
@@ -197,6 +194,13 @@
             this.PHMaxPrice = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button21 = new System.Windows.Forms.Button();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.listBox5 = new System.Windows.Forms.ListBox();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.listBox6 = new System.Windows.Forms.ListBox();
+            this.listBox7 = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -217,8 +221,6 @@
             this.tabPage4.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -229,6 +231,10 @@
             this.tabPage8.SuspendLayout();
             this.groupBox17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.groupBox11.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.groupBox20.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1209,10 +1215,10 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.groupBox14);
-            this.tabPage4.Controls.Add(this.groupBox13);
             this.tabPage4.Controls.Add(this.groupBox12);
             this.tabPage4.Controls.Add(this.groupBox11);
+            this.tabPage4.Controls.Add(this.groupBox14);
+            this.tabPage4.Controls.Add(this.groupBox13);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -1227,9 +1233,9 @@
             this.groupBox14.Controls.Add(this.button13);
             this.groupBox14.Controls.Add(this.button12);
             this.groupBox14.Controls.Add(this.button11);
-            this.groupBox14.Location = new System.Drawing.Point(315, 29);
+            this.groupBox14.Location = new System.Drawing.Point(338, 29);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(175, 175);
+            this.groupBox14.Size = new System.Drawing.Size(175, 217);
             this.groupBox14.TabIndex = 3;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Options";
@@ -1280,7 +1286,7 @@
             this.groupBox13.Controls.Add(this.comboBox1);
             this.groupBox13.Controls.Add(this.textBox34);
             this.groupBox13.Controls.Add(this.label1);
-            this.groupBox13.Location = new System.Drawing.Point(528, 29);
+            this.groupBox13.Location = new System.Drawing.Point(519, 29);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(200, 217);
             this.groupBox13.TabIndex = 2;
@@ -1291,7 +1297,7 @@
             // 
             this.textBox35.Location = new System.Drawing.Point(21, 105);
             this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(100, 20);
+            this.textBox35.Size = new System.Drawing.Size(173, 20);
             this.textBox35.TabIndex = 5;
             // 
             // label29
@@ -1299,9 +1305,9 @@
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(21, 89);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(54, 13);
+            this.label29.Size = new System.Drawing.Size(32, 13);
             this.label29.TabIndex = 4;
-            this.label29.Text = "Full Name";
+            this.label29.Text = "Email";
             // 
             // label15
             // 
@@ -1327,7 +1333,7 @@
             // 
             this.textBox34.Location = new System.Drawing.Point(23, 51);
             this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(100, 20);
+            this.textBox34.Size = new System.Drawing.Size(171, 20);
             this.textBox34.TabIndex = 1;
             // 
             // label1
@@ -1338,42 +1344,6 @@
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username";
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.listBox7);
-            this.groupBox12.Location = new System.Drawing.Point(23, 295);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(274, 259);
-            this.groupBox12.TabIndex = 1;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Your Followers";
-            // 
-            // listBox7
-            // 
-            this.listBox7.FormattingEnabled = true;
-            this.listBox7.Location = new System.Drawing.Point(17, 20);
-            this.listBox7.Name = "listBox7";
-            this.listBox7.Size = new System.Drawing.Size(230, 225);
-            this.listBox7.TabIndex = 0;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.listBox5);
-            this.groupBox11.Location = new System.Drawing.Point(23, 29);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(274, 259);
-            this.groupBox11.TabIndex = 0;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Your Follows";
-            // 
-            // listBox5
-            // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(24, 20);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(223, 225);
-            this.listBox5.TabIndex = 0;
             // 
             // tabPage5
             // 
@@ -1530,27 +1500,38 @@
             // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.ResetFilterCredit);
             this.groupBox16.Controls.Add(this.button17);
             this.groupBox16.Controls.Add(this.label36);
-            this.groupBox16.Controls.Add(this.textBox37);
-            this.groupBox16.Controls.Add(this.textBox38);
-            this.groupBox16.Controls.Add(this.textBox39);
+            this.groupBox16.Controls.Add(this.CreditEndYear);
+            this.groupBox16.Controls.Add(this.CreditEndMonth);
+            this.groupBox16.Controls.Add(this.CreditEndDay);
             this.groupBox16.Controls.Add(this.label37);
-            this.groupBox16.Controls.Add(this.textBox40);
-            this.groupBox16.Controls.Add(this.textBox41);
-            this.groupBox16.Controls.Add(this.textBox42);
+            this.groupBox16.Controls.Add(this.CreditStartYear);
+            this.groupBox16.Controls.Add(this.CreditStartMonth);
+            this.groupBox16.Controls.Add(this.CreditStartDay);
             this.groupBox16.Controls.Add(this.label38);
             this.groupBox16.Controls.Add(this.label39);
-            this.groupBox16.Controls.Add(this.textBox43);
-            this.groupBox16.Controls.Add(this.textBox44);
+            this.groupBox16.Controls.Add(this.CreditMinPrice);
+            this.groupBox16.Controls.Add(this.CreditMaxPrice);
             this.groupBox16.Controls.Add(this.label40);
-            this.groupBox16.Controls.Add(this.checkedListBox5);
-            this.groupBox16.Location = new System.Drawing.Point(435, 38);
+            this.groupBox16.Controls.Add(this.CreditMethodList);
+            this.groupBox16.Location = new System.Drawing.Point(577, 38);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(149, 364);
+            this.groupBox16.Size = new System.Drawing.Size(149, 393);
             this.groupBox16.TabIndex = 1;
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "Filters";
+            // 
+            // ResetFilterCredit
+            // 
+            this.ResetFilterCredit.Location = new System.Drawing.Point(34, 355);
+            this.ResetFilterCredit.Name = "ResetFilterCredit";
+            this.ResetFilterCredit.Size = new System.Drawing.Size(75, 23);
+            this.ResetFilterCredit.TabIndex = 15;
+            this.ResetFilterCredit.Text = "Reset Filter";
+            this.ResetFilterCredit.UseVisualStyleBackColor = true;
+            this.ResetFilterCredit.Click += new System.EventHandler(this.ResetFilterCH);
             // 
             // button17
             // 
@@ -1560,6 +1541,7 @@
             this.button17.TabIndex = 14;
             this.button17.Text = "Apply Filter";
             this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.ApplyFilterCredit);
             // 
             // label36
             // 
@@ -1570,26 +1552,26 @@
             this.label36.TabIndex = 13;
             this.label36.Text = "End  Date";
             // 
-            // textBox37
+            // CreditEndYear
             // 
-            this.textBox37.Location = new System.Drawing.Point(98, 184);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(44, 20);
-            this.textBox37.TabIndex = 12;
+            this.CreditEndYear.Location = new System.Drawing.Point(98, 184);
+            this.CreditEndYear.Name = "CreditEndYear";
+            this.CreditEndYear.Size = new System.Drawing.Size(44, 20);
+            this.CreditEndYear.TabIndex = 12;
             // 
-            // textBox38
+            // CreditEndMonth
             // 
-            this.textBox38.Location = new System.Drawing.Point(56, 184);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(35, 20);
-            this.textBox38.TabIndex = 11;
+            this.CreditEndMonth.Location = new System.Drawing.Point(56, 184);
+            this.CreditEndMonth.Name = "CreditEndMonth";
+            this.CreditEndMonth.Size = new System.Drawing.Size(35, 20);
+            this.CreditEndMonth.TabIndex = 11;
             // 
-            // textBox39
+            // CreditEndDay
             // 
-            this.textBox39.Location = new System.Drawing.Point(9, 185);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(40, 20);
-            this.textBox39.TabIndex = 10;
+            this.CreditEndDay.Location = new System.Drawing.Point(9, 185);
+            this.CreditEndDay.Name = "CreditEndDay";
+            this.CreditEndDay.Size = new System.Drawing.Size(40, 20);
+            this.CreditEndDay.TabIndex = 10;
             // 
             // label37
             // 
@@ -1600,58 +1582,58 @@
             this.label37.TabIndex = 9;
             this.label37.Text = "Start Date";
             // 
-            // textBox40
+            // CreditStartYear
             // 
-            this.textBox40.Location = new System.Drawing.Point(98, 132);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(44, 20);
-            this.textBox40.TabIndex = 8;
+            this.CreditStartYear.Location = new System.Drawing.Point(98, 132);
+            this.CreditStartYear.Name = "CreditStartYear";
+            this.CreditStartYear.Size = new System.Drawing.Size(44, 20);
+            this.CreditStartYear.TabIndex = 8;
             // 
-            // textBox41
+            // CreditStartMonth
             // 
-            this.textBox41.Location = new System.Drawing.Point(56, 132);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new System.Drawing.Size(35, 20);
-            this.textBox41.TabIndex = 7;
+            this.CreditStartMonth.Location = new System.Drawing.Point(56, 132);
+            this.CreditStartMonth.Name = "CreditStartMonth";
+            this.CreditStartMonth.Size = new System.Drawing.Size(35, 20);
+            this.CreditStartMonth.TabIndex = 7;
             // 
-            // textBox42
+            // CreditStartDay
             // 
-            this.textBox42.Location = new System.Drawing.Point(9, 133);
-            this.textBox42.Name = "textBox42";
-            this.textBox42.Size = new System.Drawing.Size(40, 20);
-            this.textBox42.TabIndex = 6;
+            this.CreditStartDay.Location = new System.Drawing.Point(9, 133);
+            this.CreditStartDay.Name = "CreditStartDay";
+            this.CreditStartDay.Size = new System.Drawing.Size(40, 20);
+            this.CreditStartDay.TabIndex = 6;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(9, 66);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(27, 13);
+            this.label38.Size = new System.Drawing.Size(54, 13);
             this.label38.TabIndex = 5;
-            this.label38.Text = "Max";
+            this.label38.Text = "Max Price";
             // 
             // label39
             // 
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(9, 16);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(24, 13);
+            this.label39.Size = new System.Drawing.Size(51, 13);
             this.label39.TabIndex = 4;
-            this.label39.Text = "Min";
+            this.label39.Text = "Min Price";
             // 
-            // textBox43
+            // CreditMinPrice
             // 
-            this.textBox43.Location = new System.Drawing.Point(9, 35);
-            this.textBox43.Name = "textBox43";
-            this.textBox43.Size = new System.Drawing.Size(100, 20);
-            this.textBox43.TabIndex = 3;
+            this.CreditMinPrice.Location = new System.Drawing.Point(9, 35);
+            this.CreditMinPrice.Name = "CreditMinPrice";
+            this.CreditMinPrice.Size = new System.Drawing.Size(100, 20);
+            this.CreditMinPrice.TabIndex = 3;
             // 
-            // textBox44
+            // CreditMaxPrice
             // 
-            this.textBox44.Location = new System.Drawing.Point(9, 85);
-            this.textBox44.Name = "textBox44";
-            this.textBox44.Size = new System.Drawing.Size(100, 20);
-            this.textBox44.TabIndex = 2;
+            this.CreditMaxPrice.Location = new System.Drawing.Point(9, 85);
+            this.CreditMaxPrice.Name = "CreditMaxPrice";
+            this.CreditMaxPrice.Size = new System.Drawing.Size(100, 20);
+            this.CreditMaxPrice.TabIndex = 2;
             // 
             // label40
             // 
@@ -1662,24 +1644,30 @@
             this.label40.TabIndex = 1;
             this.label40.Text = "Method";
             // 
-            // checkedListBox5
+            // CreditMethodList
             // 
-            this.checkedListBox5.FormattingEnabled = true;
-            this.checkedListBox5.Location = new System.Drawing.Point(5, 226);
-            this.checkedListBox5.Name = "checkedListBox5";
-            this.checkedListBox5.Size = new System.Drawing.Size(137, 94);
-            this.checkedListBox5.TabIndex = 0;
+            this.CreditMethodList.FormattingEnabled = true;
+            this.CreditMethodList.Items.AddRange(new object[] {
+            "Paypal",
+            "MBWay",
+            "VISA",
+            "MasterCard"});
+            this.CreditMethodList.Location = new System.Drawing.Point(5, 226);
+            this.CreditMethodList.Name = "CreditMethodList";
+            this.CreditMethodList.Size = new System.Drawing.Size(137, 94);
+            this.CreditMethodList.TabIndex = 0;
             // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(26, 38);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(393, 364);
+            this.dataGridView1.Size = new System.Drawing.Size(492, 364);
             this.dataGridView1.TabIndex = 0;
             // 
             // tabPage8
@@ -1696,7 +1684,7 @@
             // groupBox17
             // 
             this.groupBox17.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox17.Controls.Add(this.button4);
+            this.groupBox17.Controls.Add(this.PHReset);
             this.groupBox17.Controls.Add(this.button18);
             this.groupBox17.Controls.Add(this.label41);
             this.groupBox17.Controls.Add(this.PHGameName);
@@ -1719,15 +1707,15 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Filters";
             // 
-            // button4
+            // PHReset
             // 
-            this.button4.Location = new System.Drawing.Point(34, 349);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "Reset Filter";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.ResetFilterPH);
+            this.PHReset.Location = new System.Drawing.Point(34, 349);
+            this.PHReset.Name = "PHReset";
+            this.PHReset.Size = new System.Drawing.Size(75, 23);
+            this.PHReset.TabIndex = 17;
+            this.PHReset.Text = "Reset Filter";
+            this.PHReset.UseVisualStyleBackColor = true;
+            this.PHReset.Click += new System.EventHandler(this.ResetFilterPH);
             // 
             // button18
             // 
@@ -1737,7 +1725,7 @@
             this.button18.TabIndex = 16;
             this.button18.Text = "Apply Filter";
             this.button18.UseVisualStyleBackColor = true;
-            this.button18.Click += new System.EventHandler(this.ApplyFilter);
+            this.button18.Click += new System.EventHandler(this.ApplyFilterPurchase);
             // 
             // label41
             // 
@@ -1871,6 +1859,71 @@
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.LogOut);
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.listBox5);
+            this.groupBox11.Location = new System.Drawing.Point(27, 29);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(305, 300);
+            this.groupBox11.TabIndex = 4;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Search User";
+            // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.Location = new System.Drawing.Point(6, 19);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(293, 264);
+            this.listBox5.TabIndex = 0;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.groupBox20);
+            this.groupBox12.Controls.Add(this.groupBox19);
+            this.groupBox12.Location = new System.Drawing.Point(27, 349);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(779, 294);
+            this.groupBox12.TabIndex = 5;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "groupBox12";
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.listBox6);
+            this.groupBox19.Location = new System.Drawing.Point(6, 35);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(314, 253);
+            this.groupBox19.TabIndex = 0;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Followers";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.listBox7);
+            this.groupBox20.Location = new System.Drawing.Point(434, 35);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(339, 253);
+            this.groupBox20.TabIndex = 1;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Followed";
+            // 
+            // listBox6
+            // 
+            this.listBox6.FormattingEnabled = true;
+            this.listBox6.Location = new System.Drawing.Point(7, 20);
+            this.listBox6.Name = "listBox6";
+            this.listBox6.Size = new System.Drawing.Size(292, 225);
+            this.listBox6.TabIndex = 0;
+            // 
+            // listBox7
+            // 
+            this.listBox7.FormattingEnabled = true;
+            this.listBox7.Location = new System.Drawing.Point(7, 20);
+            this.listBox7.Name = "listBox7";
+            this.listBox7.Size = new System.Drawing.Size(326, 225);
+            this.listBox7.TabIndex = 0;
+            // 
             // ClientMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1906,8 +1959,6 @@
             this.groupBox14.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
@@ -1922,6 +1973,10 @@
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2040,10 +2095,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox34;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.ListBox listBox7;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage tabPage6;
@@ -2059,19 +2110,19 @@
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.TextBox textBox37;
-        private System.Windows.Forms.TextBox textBox38;
-        private System.Windows.Forms.TextBox textBox39;
+        private System.Windows.Forms.TextBox CreditEndYear;
+        private System.Windows.Forms.TextBox CreditEndMonth;
+        private System.Windows.Forms.TextBox CreditEndDay;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox textBox40;
-        private System.Windows.Forms.TextBox textBox41;
-        private System.Windows.Forms.TextBox textBox42;
+        private System.Windows.Forms.TextBox CreditStartYear;
+        private System.Windows.Forms.TextBox CreditStartMonth;
+        private System.Windows.Forms.TextBox CreditStartDay;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.TextBox textBox43;
-        private System.Windows.Forms.TextBox textBox44;
+        private System.Windows.Forms.TextBox CreditMinPrice;
+        private System.Windows.Forms.TextBox CreditMaxPrice;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.CheckedListBox checkedListBox5;
+        private System.Windows.Forms.CheckedListBox CreditMethodList;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.GroupBox groupBox17;
@@ -2094,8 +2145,16 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button PHReset;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.TextBox AddCreditBalance;
+        private System.Windows.Forms.Button ResetFilterCredit;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.GroupBox groupBox20;
+        private System.Windows.Forms.ListBox listBox7;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.ListBox listBox6;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.ListBox listBox5;
     }
 }

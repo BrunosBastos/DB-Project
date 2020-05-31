@@ -275,9 +275,12 @@ namespace App
                LoadAddCredit();
             }else if(tabControl2.SelectedIndex == 1)
             {
+                ResetFilterCH(null, null);
+                LoadCreditHistory();
                 Console.WriteLine("Credit History");
             }else if(tabControl2.SelectedIndex == 2)
             {
+                ResetFilterPH(null,null);
                 LoadPurchaseHistory();
                 Console.WriteLine("Purchase History");
             }
@@ -358,45 +361,85 @@ namespace App
                 }
                 else
                 {
-                    cmd.Parameters.AddWithValue("@GameName", null);
+                    cmd.Parameters.AddWithValue("@GameName", DBNull.Value);
                 }
 
                 if (Decimal.TryParse(PHMaxPrice.Text,out decimal n1))
                 {
                     cmd.Parameters.AddWithValue("@MaxValue",n1);
                 }
-                else
+                else if (PHMaxPrice.Text.Length==0)
                 {
                     cmd.Parameters.AddWithValue("@MaxValue",null);
+                }
+                else
+                {
+                    MessageBox.Show("Insert a number in the Max Price");
+                    return;
                 }
                 
                 if (Decimal.TryParse(PHMinPrice.Text,out decimal n2))
                 {
                     cmd.Parameters.AddWithValue("@MinValue", n2);
                 }
+                else if(PHMinPrice.Text.Length==0)
+                {
+                    cmd.Parameters.AddWithValue("@MinValue",DBNull.Value);
+                }
                 else
                 {
-                    cmd.Parameters.AddWithValue("@MinValue",null);
+                    MessageBox.Show("Insert a number in the Min Price");
+                    return;
                 }
+
+                if(PHMaxPrice.Text.Length!=0 && PHMinPrice.Text.Length!=0 && n1 < n2)
+                {
+                    MessageBox.Show("Min Price cannot be higher than Max Price");
+                    return;
+                }
+
+
                 // PHStartDay
                 string startdate =PHStartYear.Text+ "-" +PHStartMonth.Text + "-" + PHStartDay.Text;
                 if(ValidateDate(startdate)){
                     cmd.Parameters.AddWithValue("@MinDate", DateTime.Parse(startdate));
                 }
+                else if(startdate.Length==2)
+                {
+                    cmd.Parameters.AddWithValue("@MinDate", DBNull.Value);
+                }
                 else
                 {
-                    cmd.Parameters.AddWithValue("@MinDate", null);
+                    MessageBox.Show("That is not a valid date");
+                    return;
                 }
+
+
                 Console.WriteLine(startdate);
-                string enddate = PHEndYear.Text + "-" + PHEndMonth + "-" + PHEndYear.Text;
+                string enddate = PHEndYear.Text + "-" + PHEndMonth.Text + "-" + PHEndYear.Text;
                 if (ValidateDate(enddate)){
                     cmd.Parameters.AddWithValue("@MaxDate", DateTime.Parse(enddate));
                 }
+                else if(enddate.Length==2)
+                {
+                    cmd.Parameters.AddWithValue("@MaxDate", DBNull.Value);
+                }
                 else
                 {
-                    cmd.Parameters.AddWithValue("@MaxDate", null);
+                    MessageBox.Show("That is not a valid date");
+                    return;
                 }
                 Console.WriteLine(enddate);
+
+                if (startdate.Length > 2 && enddate.Length > 2)
+                {
+                    int comp = DateTime.Compare(DateTime.Parse(startdate), DateTime.Parse(enddate));
+                    if (comp > 0)
+                    {
+                        MessageBox.Show("Starting Date cannot be after Ending Date");
+                        return;
+                    }
+                }
 
 
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -408,7 +451,7 @@ namespace App
             }
         }
 
-        private void ApplyFilter(object sender, EventArgs e)
+        private void ApplyFilterPurchase(object sender, EventArgs e)
         {
             LoadPurchaseHistory();
         }
@@ -449,6 +492,146 @@ namespace App
 
         }
 
-       
+
+        // Credit History
+
+        private void ApplyFilterCredit(object sender, EventArgs e)
+        {
+            LoadCreditHistory();
+        }
+
+
+        private void LoadCreditHistory()
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                DataTable dt = new DataTable();
+                SqlCommand cmd = new SqlCommand("Project.pd_filter_CreditHistory", Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@IDClient", Program.currentUser);
+                //cmd.Parameters.AddWithValue("@MinValue", min);
+                //cmd.Parameters.AddWithValue("@MaxValue", max);
+                //cmd.Parameters.AddWithValue("@MinDate", DateTime.Parse(startdate));
+                //cmd.Parameters.AddWithValue("@MaxDate", DateTime.Parse(enddate));
+                //cmd.Parameters.AddWithValue("@selectedMets", methods);
+
+                string minprice = CreditMinPrice.Text;
+                string maxprice = CreditMaxPrice.Text;
+                string startday = CreditStartDay.Text;
+                string startmonth = CreditStartMonth.Text;
+                string startyear = CreditStartYear.Text;
+                string endday = CreditEndDay.Text;
+                string endmonth = CreditEndMonth.Text;
+                string endyear = CreditEndYear.Text;
+                string methods = "";
+                for (int i = 0; i < CreditMethodList.CheckedItems.Count; i++)
+                {
+                    methods += CreditMethodList.CheckedItems[i].ToString() + ",";
+                }
+                Console.WriteLine(methods);
+                if (!decimal.TryParse(minprice, out decimal min) && minprice.Length != 0)
+                {
+                    MessageBox.Show("Insert a number for the min price");
+                    return;
+                } 
+                else if (minprice.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@MinValue", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MinValue", min);
+                }
+
+
+                if (!decimal.TryParse(maxprice, out decimal max) && maxprice.Length != 0)
+                {
+                    MessageBox.Show("Insert a number for the max price");
+                    return;
+                }else if (maxprice.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@MaxValue", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MaxValue", max);
+                }
+
+
+                if (max < min && minprice.Length!=0 && maxprice.Length!=0)
+                {
+                    MessageBox.Show("Max price cannot be lower than Min price");
+                    return;
+                }
+                string startdate = startyear + "-" + startmonth + "-" + startday;
+                string enddate = endyear + "-" + endmonth + "-" + endday;
+
+                if (ValidateDate(startdate))
+                {
+                    cmd.Parameters.AddWithValue("@MinDate", DateTime.Parse(startdate));
+                }
+                else if (startdate.Length==2)
+                {
+                    cmd.Parameters.AddWithValue("@MinDate", DBNull.Value);
+                }
+                else
+                {
+                    MessageBox.Show("Starting date is not valid");
+                    return;
+                }
+
+
+                if (ValidateDate(enddate))
+                {
+                    cmd.Parameters.AddWithValue("@MaxDate", DateTime.Parse(enddate));
+                }
+                else if (enddate.Length == 2)
+                {
+                    cmd.Parameters.AddWithValue("@MaxDate", DBNull.Value);
+                }
+                else
+                {
+                    MessageBox.Show("Ending date is not valid");
+                    return;
+                }
+                if (startdate.Length > 2 && enddate.Length > 2)
+                {
+                    int comp = DateTime.Compare(DateTime.Parse(startdate), DateTime.Parse(enddate));
+                    if (comp > 0)
+                    {
+                        MessageBox.Show("Starting Date cannot be after Ending Date");
+                        return;
+                    }
+                }
+                cmd.Parameters.AddWithValue("@selectedMets", methods);
+                cmd.Connection = Program.cn;
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+                dataGridView1.ReadOnly = true;
+                dataGridView1.DataSource = dt;
+
+                
+            }
+        }
+
+        private void ResetFilterCH(object sender, EventArgs e)
+        {
+            CreditMinPrice.Text = "";
+            CreditMaxPrice.Text = "";
+            CreditStartDay.Text = "";
+            CreditStartMonth.Text = "";
+            CreditStartYear.Text = "";
+            CreditEndDay.Text = "";
+            CreditEndMonth.Text = "";
+            CreditEndYear.Text = "";
+            for (int i = 0; i < CreditMethodList.Items.Count; i++)
+            {
+                CreditMethodList.SetItemChecked(i, true);
+            }
+            LoadCreditHistory();
+
+        }
     }
 }
