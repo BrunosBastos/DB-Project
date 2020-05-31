@@ -1068,6 +1068,23 @@ AS
 
 GO
 
+go
+Create Function Project.udf_checkIfFollows(@IDFollower INT , @IDFollowed INT) Returns INT
+as
+	begin
+
+		declare @temp as varchar(50)
+		set @temp= ( Select IDFollowed From Project.Follows where IDFollowed=@IDFollowed and IDFollower=@IDFollower);
+		if @temp is null
+			return 0
+		return 1
+
+	end
+go
+SELECT Project.udf_checkIfFollows(8,2)
+
+
+
 
 --Get all Games that two users have in common 
 GO

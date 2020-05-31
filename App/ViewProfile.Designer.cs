@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.Email = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.NFollowers = new System.Windows.Forms.TextBox();
             this.Username = new System.Windows.Forms.TextBox();
@@ -43,8 +45,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.NGames = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Email = new System.Windows.Forms.TextBox();
             this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,6 +71,23 @@
             this.groupBox10.TabIndex = 56;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "User Profile";
+            // 
+            // Email
+            // 
+            this.Email.Location = new System.Drawing.Point(16, 164);
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Size = new System.Drawing.Size(305, 20);
+            this.Email.TabIndex = 53;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(32, 13);
+            this.label1.TabIndex = 52;
+            this.label1.Text = "Email";
             // 
             // button1
             // 
@@ -191,23 +208,7 @@
             this.button3.TabIndex = 55;
             this.button3.Text = "Close Profile";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 148);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(32, 13);
-            this.label1.TabIndex = 52;
-            this.label1.Text = "Email";
-            // 
-            // Email
-            // 
-            this.Email.Location = new System.Drawing.Point(16, 164);
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Size = new System.Drawing.Size(305, 20);
-            this.Email.TabIndex = 53;
+            this.button3.Click += new System.EventHandler(this.CloseProfile);
             // 
             // ViewProfile
             // 

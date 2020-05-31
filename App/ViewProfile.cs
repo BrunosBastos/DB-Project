@@ -53,13 +53,25 @@ namespace App
                 Email.Text = reader["Email"].ToString();
                 reader.Close();
 
-
-
+                cmd = new SqlCommand("Select Project.udf_checkIfFollows("+Program.currentUser+","+UserID+")",Program.cn);
+                int value = (int)cmd.ExecuteScalar();
+                if (value > 0)
+                {
+                    button1.Text = "Unfollow";
+                }
+                else
+                {
+                    button1.Text = "Follow";
+                }
 
             }
 
 
         }
 
+        private void CloseProfile(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
