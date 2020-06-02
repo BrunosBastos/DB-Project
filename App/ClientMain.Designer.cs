@@ -64,6 +64,8 @@
             this.MGDReleaseDate = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -71,43 +73,49 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.button24 = new System.Windows.Forms.Button();
+            this.StoreClientBalance = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.StoreGameDiscount = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.StoreGameName = new System.Windows.Forms.TextBox();
+            this.StoreGamePrice = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.StoreGameDescription = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.StoreGameAgeRestriction = new System.Windows.Forms.TextBox();
+            this.StoreGameCompany = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.StoreGameFranchise = new System.Windows.Forms.TextBox();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.label11 = new System.Windows.Forms.Label();
             this.listBox4 = new System.Windows.Forms.ListBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.StoreGameLogo = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.StoreGameReleaseDate = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.StoreStartYear = new System.Windows.Forms.TextBox();
+            this.StoreStartMonth = new System.Windows.Forms.TextBox();
+            this.StoreStartDay = new System.Windows.Forms.TextBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.StoreMinDiscount = new System.Windows.Forms.TextBox();
+            this.groupBox21 = new System.Windows.Forms.GroupBox();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.StoreMaxPrice = new System.Windows.Forms.TextBox();
+            this.StoreMinPrice = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.label14 = new System.Windows.Forms.Label();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
+            this.StoreSearchGame = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.button10 = new System.Windows.Forms.Button();
@@ -130,6 +138,13 @@
             this.label24 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.groupBox20 = new System.Windows.Forms.GroupBox();
+            this.listBox7 = new System.Windows.Forms.ListBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.listBox6 = new System.Windows.Forms.ListBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.listBox5 = new System.Windows.Forms.ListBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.button14 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
@@ -194,13 +209,11 @@
             this.PHMaxPrice = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button21 = new System.Windows.Forms.Button();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.listBox5 = new System.Windows.Forms.ListBox();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.listBox6 = new System.Windows.Forms.ListBox();
-            this.listBox7 = new System.Windows.Forms.ListBox();
+            this.StoreEndYear = new System.Windows.Forms.TextBox();
+            this.StoreEndMonth = new System.Windows.Forms.TextBox();
+            this.StoreEndDay = new System.Windows.Forms.TextBox();
+            this.label49 = new System.Windows.Forms.Label();
+            this.button25 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -214,11 +227,16 @@
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StoreGameLogo)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox21.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox20.SuspendLayout();
+            this.groupBox19.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox13.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -231,10 +249,6 @@
             this.tabPage8.SuspendLayout();
             this.groupBox17.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox11.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox19.SuspendLayout();
-            this.groupBox20.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -597,16 +611,36 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.button8);
+            this.groupBox9.Controls.Add(this.button4);
             this.groupBox9.Controls.Add(this.button16);
             this.groupBox9.Controls.Add(this.button15);
             this.groupBox9.Controls.Add(this.button6);
             this.groupBox9.Controls.Add(this.button2);
-            this.groupBox9.Location = new System.Drawing.Point(482, 336);
+            this.groupBox9.Location = new System.Drawing.Point(823, 327);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(393, 317);
+            this.groupBox9.Size = new System.Drawing.Size(393, 326);
             this.groupBox9.TabIndex = 90;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Options";
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(98, 275);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(198, 45);
+            this.button8.TabIndex = 91;
+            this.button8.Text = "View Genre Details";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(98, 224);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(198, 45);
+            this.button4.TabIndex = 90;
+            this.button4.Text = "View Platform Details";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button16
             // 
@@ -616,6 +650,7 @@
             this.button16.TabIndex = 89;
             this.button16.Text = "View Franchise Details";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.StoreFranchiseDetails);
             // 
             // button15
             // 
@@ -625,6 +660,7 @@
             this.button15.TabIndex = 88;
             this.button15.Text = "View Company Details";
             this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.StoreViewCompanyDetails);
             // 
             // button6
             // 
@@ -643,13 +679,14 @@
             this.button2.TabIndex = 87;
             this.button2.Text = "View Reviews";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.StoreViewReviews);
             // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.listBox2);
             this.groupBox8.Location = new System.Drawing.Point(6, 101);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(153, 552);
+            this.groupBox8.Size = new System.Drawing.Size(235, 552);
             this.groupBox8.TabIndex = 89;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Game List";
@@ -659,70 +696,79 @@
             this.listBox2.FormattingEnabled = true;
             this.listBox2.Location = new System.Drawing.Point(6, 19);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(141, 524);
+            this.listBox2.Size = new System.Drawing.Size(223, 524);
             this.listBox2.TabIndex = 48;
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.textBox11);
+            this.groupBox7.Controls.Add(this.button24);
+            this.groupBox7.Controls.Add(this.StoreClientBalance);
             this.groupBox7.Location = new System.Drawing.Point(6, 18);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(153, 64);
+            this.groupBox7.Size = new System.Drawing.Size(229, 64);
             this.groupBox7.TabIndex = 88;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Your Balance";
             // 
-            // textBox11
+            // button24
             // 
-            this.textBox11.Location = new System.Drawing.Point(6, 27);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(99, 20);
-            this.textBox11.TabIndex = 67;
+            this.button24.Location = new System.Drawing.Point(124, 25);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(75, 23);
+            this.button24.TabIndex = 68;
+            this.button24.Text = "Add Credit";
+            this.button24.UseVisualStyleBackColor = true;
+            // 
+            // StoreClientBalance
+            // 
+            this.StoreClientBalance.Location = new System.Drawing.Point(6, 27);
+            this.StoreClientBalance.Name = "StoreClientBalance";
+            this.StoreClientBalance.ReadOnly = true;
+            this.StoreClientBalance.Size = new System.Drawing.Size(99, 20);
+            this.StoreClientBalance.TabIndex = 67;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox12);
+            this.groupBox2.Controls.Add(this.StoreGameDiscount);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox8);
+            this.groupBox2.Controls.Add(this.StoreGameName);
+            this.groupBox2.Controls.Add(this.StoreGamePrice);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label13);
-            this.groupBox2.Controls.Add(this.textBox9);
+            this.groupBox2.Controls.Add(this.StoreGameDescription);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.textBox10);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.StoreGameAgeRestriction);
+            this.groupBox2.Controls.Add(this.StoreGameCompany);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.StoreGameFranchise);
             this.groupBox2.Controls.Add(this.listBox3);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.listBox4);
-            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Controls.Add(this.StoreGameLogo);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.textBox7);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Location = new System.Drawing.Point(174, 18);
+            this.groupBox2.Controls.Add(this.StoreGameReleaseDate);
+            this.groupBox2.Location = new System.Drawing.Point(247, 21);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(302, 635);
+            this.groupBox2.Size = new System.Drawing.Size(570, 635);
             this.groupBox2.TabIndex = 86;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Details";
             // 
-            // textBox12
+            // StoreGameDiscount
             // 
-            this.textBox12.Location = new System.Drawing.Point(243, 61);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ReadOnly = true;
-            this.textBox12.Size = new System.Drawing.Size(38, 20);
-            this.textBox12.TabIndex = 83;
+            this.StoreGameDiscount.Location = new System.Drawing.Point(80, 91);
+            this.StoreGameDiscount.Name = "StoreGameDiscount";
+            this.StoreGameDiscount.ReadOnly = true;
+            this.StoreGameDiscount.Size = new System.Drawing.Size(38, 20);
+            this.StoreGameDiscount.TabIndex = 83;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(240, 45);
+            this.label4.Location = new System.Drawing.Point(77, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 82;
@@ -731,32 +777,32 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 40);
+            this.label5.Location = new System.Drawing.Point(20, 24);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 58;
             this.label5.Text = "Name";
             // 
-            // textBox2
+            // StoreGameName
             // 
-            this.textBox2.Location = new System.Drawing.Point(20, 61);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(149, 20);
-            this.textBox2.TabIndex = 57;
+            this.StoreGameName.Location = new System.Drawing.Point(20, 45);
+            this.StoreGameName.Name = "StoreGameName";
+            this.StoreGameName.ReadOnly = true;
+            this.StoreGameName.Size = new System.Drawing.Size(261, 20);
+            this.StoreGameName.TabIndex = 57;
             // 
-            // textBox8
+            // StoreGamePrice
             // 
-            this.textBox8.Location = new System.Drawing.Point(183, 61);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(40, 20);
-            this.textBox8.TabIndex = 59;
+            this.StoreGamePrice.Location = new System.Drawing.Point(20, 91);
+            this.StoreGamePrice.Name = "StoreGamePrice";
+            this.StoreGamePrice.ReadOnly = true;
+            this.StoreGamePrice.Size = new System.Drawing.Size(40, 20);
+            this.StoreGamePrice.TabIndex = 59;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(17, 405);
+            this.label12.Location = new System.Drawing.Point(20, 424);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 13);
             this.label12.TabIndex = 79;
@@ -771,69 +817,69 @@
             this.label13.TabIndex = 81;
             this.label13.Text = "Age Restriction";
             // 
-            // textBox9
+            // StoreGameDescription
             // 
-            this.textBox9.Location = new System.Drawing.Point(20, 421);
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.ReadOnly = true;
-            this.textBox9.Size = new System.Drawing.Size(255, 74);
-            this.textBox9.TabIndex = 78;
+            this.StoreGameDescription.Location = new System.Drawing.Point(20, 446);
+            this.StoreGameDescription.Multiline = true;
+            this.StoreGameDescription.Name = "StoreGameDescription";
+            this.StoreGameDescription.ReadOnly = true;
+            this.StoreGameDescription.Size = new System.Drawing.Size(526, 177);
+            this.StoreGameDescription.TabIndex = 78;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(180, 45);
+            this.label9.Location = new System.Drawing.Point(17, 75);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 60;
             this.label9.Text = "Price";
             // 
-            // textBox10
+            // StoreGameAgeRestriction
             // 
-            this.textBox10.Location = new System.Drawing.Point(206, 239);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(51, 20);
-            this.textBox10.TabIndex = 80;
+            this.StoreGameAgeRestriction.Location = new System.Drawing.Point(206, 239);
+            this.StoreGameAgeRestriction.Name = "StoreGameAgeRestriction";
+            this.StoreGameAgeRestriction.ReadOnly = true;
+            this.StoreGameAgeRestriction.Size = new System.Drawing.Size(51, 20);
+            this.StoreGameAgeRestriction.TabIndex = 80;
             // 
-            // textBox3
+            // StoreGameCompany
             // 
-            this.textBox3.Location = new System.Drawing.Point(180, 110);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 61;
+            this.StoreGameCompany.Location = new System.Drawing.Point(20, 142);
+            this.StoreGameCompany.Name = "StoreGameCompany";
+            this.StoreGameCompany.ReadOnly = true;
+            this.StoreGameCompany.Size = new System.Drawing.Size(260, 20);
+            this.StoreGameCompany.TabIndex = 61;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(180, 91);
+            this.label10.Location = new System.Drawing.Point(20, 123);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(51, 13);
             this.label10.TabIndex = 62;
             this.label10.Text = "Company";
             // 
-            // textBox4
+            // StoreGameFranchise
             // 
-            this.textBox4.Location = new System.Drawing.Point(181, 154);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 63;
+            this.StoreGameFranchise.Location = new System.Drawing.Point(21, 186);
+            this.StoreGameFranchise.Name = "StoreGameFranchise";
+            this.StoreGameFranchise.ReadOnly = true;
+            this.StoreGameFranchise.Size = new System.Drawing.Size(259, 20);
+            this.StoreGameFranchise.TabIndex = 63;
             // 
             // listBox3
             // 
             this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(141, 294);
+            this.listBox3.Location = new System.Drawing.Point(308, 325);
             this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(100, 95);
+            this.listBox3.Size = new System.Drawing.Size(238, 95);
             this.listBox3.TabIndex = 77;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(178, 138);
+            this.label11.Location = new System.Drawing.Point(18, 170);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(53, 13);
             this.label11.TabIndex = 64;
@@ -842,18 +888,18 @@
             // listBox4
             // 
             this.listBox4.FormattingEnabled = true;
-            this.listBox4.Location = new System.Drawing.Point(20, 294);
+            this.listBox4.Location = new System.Drawing.Point(22, 326);
             this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(100, 95);
+            this.listBox4.Size = new System.Drawing.Size(261, 95);
             this.listBox4.TabIndex = 76;
             // 
-            // pictureBox1
+            // StoreGameLogo
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(20, 90);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(149, 102);
-            this.pictureBox1.TabIndex = 65;
-            this.pictureBox1.TabStop = false;
+            this.StoreGameLogo.Location = new System.Drawing.Point(308, 19);
+            this.StoreGameLogo.Name = "StoreGameLogo";
+            this.StoreGameLogo.Size = new System.Drawing.Size(256, 256);
+            this.StoreGameLogo.TabIndex = 65;
+            this.StoreGameLogo.TabStop = false;
             // 
             // label8
             // 
@@ -867,120 +913,178 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(20, 277);
+            this.label16.Location = new System.Drawing.Point(22, 309);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(36, 13);
             this.label16.TabIndex = 70;
             this.label16.Text = "Genre";
             // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(141, 236);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(43, 20);
-            this.textBox7.TabIndex = 74;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(140, 276);
+            this.label7.Location = new System.Drawing.Point(307, 307);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 13);
             this.label7.TabIndex = 71;
             this.label7.Text = "Platform";
             // 
-            // textBox6
+            // StoreGameReleaseDate
             // 
-            this.textBox6.Location = new System.Drawing.Point(89, 235);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ReadOnly = true;
-            this.textBox6.Size = new System.Drawing.Size(46, 20);
-            this.textBox6.TabIndex = 73;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(22, 236);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
-            this.textBox5.Size = new System.Drawing.Size(61, 20);
-            this.textBox5.TabIndex = 72;
+            this.StoreGameReleaseDate.Location = new System.Drawing.Point(22, 236);
+            this.StoreGameReleaseDate.Name = "StoreGameReleaseDate";
+            this.StoreGameReleaseDate.ReadOnly = true;
+            this.StoreGameReleaseDate.Size = new System.Drawing.Size(96, 20);
+            this.StoreGameReleaseDate.TabIndex = 72;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button25);
+            this.groupBox1.Controls.Add(this.label49);
+            this.groupBox1.Controls.Add(this.StoreEndYear);
+            this.groupBox1.Controls.Add(this.StoreEndMonth);
+            this.groupBox1.Controls.Add(this.StoreEndDay);
+            this.groupBox1.Controls.Add(this.StoreStartYear);
+            this.groupBox1.Controls.Add(this.StoreStartMonth);
+            this.groupBox1.Controls.Add(this.StoreStartDay);
+            this.groupBox1.Controls.Add(this.label48);
+            this.groupBox1.Controls.Add(this.StoreMinDiscount);
+            this.groupBox1.Controls.Add(this.groupBox21);
             this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.checkedListBox3);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.checkedListBox1);
-            this.groupBox1.Controls.Add(this.checkedListBox4);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.checkedListBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label17);
-            this.groupBox1.Location = new System.Drawing.Point(482, 18);
+            this.groupBox1.Controls.Add(this.StoreSearchGame);
+            this.groupBox1.Location = new System.Drawing.Point(823, 18);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(393, 303);
             this.groupBox1.TabIndex = 85;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
+            // StoreStartYear
+            // 
+            this.StoreStartYear.Location = new System.Drawing.Point(340, 212);
+            this.StoreStartYear.Name = "StoreStartYear";
+            this.StoreStartYear.Size = new System.Drawing.Size(43, 20);
+            this.StoreStartYear.TabIndex = 91;
+            // 
+            // StoreStartMonth
+            // 
+            this.StoreStartMonth.Location = new System.Drawing.Point(302, 212);
+            this.StoreStartMonth.Name = "StoreStartMonth";
+            this.StoreStartMonth.Size = new System.Drawing.Size(32, 20);
+            this.StoreStartMonth.TabIndex = 90;
+            // 
+            // StoreStartDay
+            // 
+            this.StoreStartDay.Location = new System.Drawing.Point(266, 212);
+            this.StoreStartDay.Name = "StoreStartDay";
+            this.StoreStartDay.Size = new System.Drawing.Size(30, 20);
+            this.StoreStartDay.TabIndex = 89;
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(267, 196);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(97, 13);
+            this.label48.TabIndex = 88;
+            this.label48.Text = "Start Release Date";
+            // 
+            // StoreMinDiscount
+            // 
+            this.StoreMinDiscount.Location = new System.Drawing.Point(266, 168);
+            this.StoreMinDiscount.Name = "StoreMinDiscount";
+            this.StoreMinDiscount.Size = new System.Drawing.Size(100, 20);
+            this.StoreMinDiscount.TabIndex = 87;
+            // 
+            // groupBox21
+            // 
+            this.groupBox21.Controls.Add(this.label47);
+            this.groupBox21.Controls.Add(this.label17);
+            this.groupBox21.Controls.Add(this.StoreMaxPrice);
+            this.groupBox21.Controls.Add(this.StoreMinPrice);
+            this.groupBox21.Location = new System.Drawing.Point(260, 19);
+            this.groupBox21.Name = "groupBox21";
+            this.groupBox21.Size = new System.Drawing.Size(127, 125);
+            this.groupBox21.TabIndex = 86;
+            this.groupBox21.TabStop = false;
+            this.groupBox21.Text = "Price";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(10, 69);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(27, 13);
+            this.label47.TabIndex = 3;
+            this.label47.Text = "Max";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(7, 19);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(24, 13);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Min";
+            // 
+            // StoreMaxPrice
+            // 
+            this.StoreMaxPrice.Location = new System.Drawing.Point(6, 88);
+            this.StoreMaxPrice.Name = "StoreMaxPrice";
+            this.StoreMaxPrice.Size = new System.Drawing.Size(100, 20);
+            this.StoreMaxPrice.TabIndex = 1;
+            // 
+            // StoreMinPrice
+            // 
+            this.StoreMinPrice.Location = new System.Drawing.Point(6, 34);
+            this.StoreMinPrice.Name = "StoreMinPrice";
+            this.StoreMinPrice.Size = new System.Drawing.Size(100, 20);
+            this.StoreMinPrice.TabIndex = 0;
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(98, 257);
+            this.button1.Location = new System.Drawing.Point(12, 257);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(106, 40);
             this.button1.TabIndex = 85;
             this.button1.Text = "Apply Filter";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox3
-            // 
-            this.checkedListBox3.FormattingEnabled = true;
-            this.checkedListBox3.Location = new System.Drawing.Point(142, 87);
-            this.checkedListBox3.Name = "checkedListBox3";
-            this.checkedListBox3.Size = new System.Drawing.Size(106, 64);
-            this.checkedListBox3.TabIndex = 68;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(143, 163);
+            this.label14.Location = new System.Drawing.Point(263, 152);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(49, 13);
+            this.label14.Size = new System.Drawing.Size(91, 13);
             this.label14.TabIndex = 84;
-            this.label14.Text = "Discount";
+            this.label14.Text = "Minimun Discount";
             // 
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(12, 83);
+            this.checkedListBox1.Location = new System.Drawing.Point(127, 94);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(106, 64);
+            this.checkedListBox1.Size = new System.Drawing.Size(116, 154);
             this.checkedListBox1.TabIndex = 49;
-            // 
-            // checkedListBox4
-            // 
-            this.checkedListBox4.FormattingEnabled = true;
-            this.checkedListBox4.Location = new System.Drawing.Point(142, 179);
-            this.checkedListBox4.Name = "checkedListBox4";
-            this.checkedListBox4.Size = new System.Drawing.Size(106, 64);
-            this.checkedListBox4.TabIndex = 83;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(13, 26);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.Size = new System.Drawing.Size(72, 13);
             this.label6.TabIndex = 50;
-            this.label6.Text = "Search";
+            this.label6.Text = "Search Game";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 67);
+            this.label2.Location = new System.Drawing.Point(124, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 51;
@@ -989,7 +1093,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 163);
+            this.label3.Location = new System.Drawing.Point(9, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 52;
@@ -998,26 +1102,17 @@
             // checkedListBox2
             // 
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(12, 179);
+            this.checkedListBox2.Location = new System.Drawing.Point(12, 97);
             this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(106, 64);
+            this.checkedListBox2.Size = new System.Drawing.Size(106, 154);
             this.checkedListBox2.TabIndex = 53;
             // 
-            // textBox1
+            // StoreSearchGame
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(106, 20);
-            this.textBox1.TabIndex = 55;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(142, 68);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(31, 13);
-            this.label17.TabIndex = 69;
-            this.label17.Text = "Price";
+            this.StoreSearchGame.Location = new System.Drawing.Point(12, 42);
+            this.StoreSearchGame.Name = "StoreSearchGame";
+            this.StoreSearchGame.Size = new System.Drawing.Size(231, 20);
+            this.StoreSearchGame.TabIndex = 55;
             // 
             // tabPage3
             // 
@@ -1226,6 +1321,71 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Follows";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.groupBox20);
+            this.groupBox12.Controls.Add(this.groupBox19);
+            this.groupBox12.Location = new System.Drawing.Point(27, 349);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(779, 294);
+            this.groupBox12.TabIndex = 5;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "groupBox12";
+            // 
+            // groupBox20
+            // 
+            this.groupBox20.Controls.Add(this.listBox7);
+            this.groupBox20.Location = new System.Drawing.Point(434, 35);
+            this.groupBox20.Name = "groupBox20";
+            this.groupBox20.Size = new System.Drawing.Size(339, 253);
+            this.groupBox20.TabIndex = 1;
+            this.groupBox20.TabStop = false;
+            this.groupBox20.Text = "Followed";
+            // 
+            // listBox7
+            // 
+            this.listBox7.FormattingEnabled = true;
+            this.listBox7.Location = new System.Drawing.Point(7, 20);
+            this.listBox7.Name = "listBox7";
+            this.listBox7.Size = new System.Drawing.Size(326, 225);
+            this.listBox7.TabIndex = 0;
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.listBox6);
+            this.groupBox19.Location = new System.Drawing.Point(6, 35);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(314, 253);
+            this.groupBox19.TabIndex = 0;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Followers";
+            // 
+            // listBox6
+            // 
+            this.listBox6.FormattingEnabled = true;
+            this.listBox6.Location = new System.Drawing.Point(7, 20);
+            this.listBox6.Name = "listBox6";
+            this.listBox6.Size = new System.Drawing.Size(292, 225);
+            this.listBox6.TabIndex = 0;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.listBox5);
+            this.groupBox11.Location = new System.Drawing.Point(27, 29);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(305, 300);
+            this.groupBox11.TabIndex = 4;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Search User";
+            // 
+            // listBox5
+            // 
+            this.listBox5.FormattingEnabled = true;
+            this.listBox5.Location = new System.Drawing.Point(6, 19);
+            this.listBox5.Name = "listBox5";
+            this.listBox5.Size = new System.Drawing.Size(293, 264);
+            this.listBox5.TabIndex = 0;
             // 
             // groupBox14
             // 
@@ -1859,70 +2019,44 @@
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.LogOut);
             // 
-            // groupBox11
+            // StoreEndYear
             // 
-            this.groupBox11.Controls.Add(this.listBox5);
-            this.groupBox11.Location = new System.Drawing.Point(27, 29);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(305, 300);
-            this.groupBox11.TabIndex = 4;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Search User";
+            this.StoreEndYear.Location = new System.Drawing.Point(340, 257);
+            this.StoreEndYear.Name = "StoreEndYear";
+            this.StoreEndYear.Size = new System.Drawing.Size(43, 20);
+            this.StoreEndYear.TabIndex = 94;
             // 
-            // listBox5
+            // StoreEndMonth
             // 
-            this.listBox5.FormattingEnabled = true;
-            this.listBox5.Location = new System.Drawing.Point(6, 19);
-            this.listBox5.Name = "listBox5";
-            this.listBox5.Size = new System.Drawing.Size(293, 264);
-            this.listBox5.TabIndex = 0;
+            this.StoreEndMonth.Location = new System.Drawing.Point(302, 257);
+            this.StoreEndMonth.Name = "StoreEndMonth";
+            this.StoreEndMonth.Size = new System.Drawing.Size(32, 20);
+            this.StoreEndMonth.TabIndex = 93;
             // 
-            // groupBox12
+            // StoreEndDay
             // 
-            this.groupBox12.Controls.Add(this.groupBox20);
-            this.groupBox12.Controls.Add(this.groupBox19);
-            this.groupBox12.Location = new System.Drawing.Point(27, 349);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(779, 294);
-            this.groupBox12.TabIndex = 5;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "groupBox12";
+            this.StoreEndDay.Location = new System.Drawing.Point(266, 257);
+            this.StoreEndDay.Name = "StoreEndDay";
+            this.StoreEndDay.Size = new System.Drawing.Size(30, 20);
+            this.StoreEndDay.TabIndex = 92;
             // 
-            // groupBox19
+            // label49
             // 
-            this.groupBox19.Controls.Add(this.listBox6);
-            this.groupBox19.Location = new System.Drawing.Point(6, 35);
-            this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(314, 253);
-            this.groupBox19.TabIndex = 0;
-            this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "Followers";
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(263, 242);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(94, 13);
+            this.label49.TabIndex = 95;
+            this.label49.Text = "End Release Date";
             // 
-            // groupBox20
+            // button25
             // 
-            this.groupBox20.Controls.Add(this.listBox7);
-            this.groupBox20.Location = new System.Drawing.Point(434, 35);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(339, 253);
-            this.groupBox20.TabIndex = 1;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "Followed";
-            // 
-            // listBox6
-            // 
-            this.listBox6.FormattingEnabled = true;
-            this.listBox6.Location = new System.Drawing.Point(7, 20);
-            this.listBox6.Name = "listBox6";
-            this.listBox6.Size = new System.Drawing.Size(292, 225);
-            this.listBox6.TabIndex = 0;
-            // 
-            // listBox7
-            // 
-            this.listBox7.FormattingEnabled = true;
-            this.listBox7.Location = new System.Drawing.Point(7, 20);
-            this.listBox7.Name = "listBox7";
-            this.listBox7.Size = new System.Drawing.Size(326, 225);
-            this.listBox7.TabIndex = 0;
+            this.button25.Location = new System.Drawing.Point(127, 257);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(106, 40);
+            this.button25.TabIndex = 96;
+            this.button25.Text = "Reset Filter";
+            this.button25.UseVisualStyleBackColor = true;
             // 
             // ClientMain
             // 
@@ -1949,13 +2083,19 @@
             this.groupBox7.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StoreGameLogo)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox21.ResumeLayout(false);
+            this.groupBox21.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.tabPage4.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox20.ResumeLayout(false);
+            this.groupBox19.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
             this.groupBox14.ResumeLayout(false);
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
@@ -1973,10 +2113,6 @@
             this.groupBox17.ResumeLayout(false);
             this.groupBox17.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox19.ResumeLayout(false);
-            this.groupBox20.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -2024,43 +2160,38 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox StoreClientBalance;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox StoreGameDiscount;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox StoreGameName;
+        private System.Windows.Forms.TextBox StoreGamePrice;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox StoreGameDescription;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox StoreGameAgeRestriction;
+        private System.Windows.Forms.TextBox StoreGameCompany;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox StoreGameFranchise;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox StoreGameLogo;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox StoreGameReleaseDate;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.CheckedListBox checkedListBox3;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckedListBox checkedListBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox StoreSearchGame;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Button button10;
@@ -2156,5 +2287,23 @@
         private System.Windows.Forms.ListBox listBox6;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.GroupBox groupBox21;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox StoreMaxPrice;
+        private System.Windows.Forms.TextBox StoreMinPrice;
+        private System.Windows.Forms.TextBox StoreStartYear;
+        private System.Windows.Forms.TextBox StoreStartMonth;
+        private System.Windows.Forms.TextBox StoreStartDay;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.TextBox StoreMinDiscount;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.TextBox StoreEndYear;
+        private System.Windows.Forms.TextBox StoreEndMonth;
+        private System.Windows.Forms.TextBox StoreEndDay;
     }
 }

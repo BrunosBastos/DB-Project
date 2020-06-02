@@ -47,6 +47,7 @@ namespace App
             }
             else if (tabControl1.SelectedIndex == 1)
             {
+                LoadStore();
                 Console.WriteLine("Inside tab Store");
 
             }
@@ -263,6 +264,77 @@ namespace App
             lg.ShowDialog();
 
         }
+
+
+
+
+
+        // Store
+        private void StoreViewReviews(object sender, EventArgs e)
+        {
+            Game g = (Game)listBox2.Items[current_game];
+            ViewReviews vr = new ViewReviews(int.Parse(g.IDGame));
+            vr.ShowDialog();
+        }
+
+        private void StoreViewCompanyDetails(object sender, EventArgs e)
+        {
+            Game g = (Game)listBox2.Items[current_game];
+            CompanyDetails cd = new CompanyDetails(int.Parse(g.IDCompany));
+            cd.ShowDialog();
+        }
+
+        private void StoreFranchiseDetails(object sender, EventArgs e)
+        {
+            Game g = (Game)listBox2.Items[current_game];
+            FranchiseDetails cd = new FranchiseDetails(int.Parse(g.IDFranchise));
+            cd.ShowDialog();
+        }
+
+
+
+
+
+        private void LoadStore()
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Project.pd_filter_Games",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (StoreSearchGame.Text.Length==0)
+                {
+                    cmd.Parameters.AddWithValue("@GameName", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@GameName", StoreSearchGame.Text);
+                }
+
+                // acabar isto
+
+
+
+
+
+
+            }
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         // Transactions
 
@@ -633,5 +705,7 @@ namespace App
             LoadCreditHistory();
 
         }
+
+        
     }
 }
