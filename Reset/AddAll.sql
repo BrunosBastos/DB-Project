@@ -1240,12 +1240,15 @@ go
 
 CREATE FUNCTION Project.[udf_checkGameDiscount] (@IDGame INT) RETURNS TABLE
 AS
-	RETURN (SELECT [Percentage] FROM Project.Game 
+	RETURN (SELECT ISNULL([Percentage], 0) AS [Percentage] FROM Project.Game 
 	JOIN Project.DiscountGame ON Game.IDGame =DiscountGame.IDGame 
 	JOIN Project.Discount ON Discount.PromoCode =DiscountGame.PromoCode
 	WHERE DATEDIFF(DAY,DateEnd,GETDATE()) <0  AND DATEDIFF(DAY,DateBegin,GETDATE()) >0 AND Game.IDGame=@IDGame)
 
 GO
+
+
+
 
 create Function Project.[udf_getGenreDetails](@GenName Varchar(25)) Returns Table
 as
@@ -1471,10 +1474,63 @@ CREATE PROCEDURE Project.pd_filter_CreditHistory(
 				SELECT * FROM @temp
 		END
 GO
+CREATE PROCEDURE Project.pd_filter_Games(
+	@MinValue DECIMAL (5,2),
+	@MaxValue DECIMAL (5,2),
+	@MinDate DATE,
+	@MaxDate DATE,
+	@SelectedPlats VARCHAR(MAX),
+	@SelectedGenres VARCHAR(MAX),
+	@SelectedAge INT, 
+	@MinDiscount INT,
+	@GameName VARCHAR(max) =NULL -- user input
+)
+AS
+	BEGIN
+			DECLARE  @tempPurchase TABLE(
+				IDGame INT,
+				GameName VARCHAR(50),
+				[Description] VARCHAR(max),
+				ReleaseDate DATE,
+				AgeRestriction INT,
+				CoverImg varchar(max),
+				Price  DECIMAL (5,2),
+				IDCompany INT,
+				IDFranchise INT,
+				GenName VARCHAR(25),
+				PlatformName  VARCHAR(30),
+				Disc INT
+			) 
+				DECLARE @tempPer INT;
+				INSERT INTO @tempPurchase SELECT Game.*,GameGenre.GenName,PlatformReleasesGame.PlatformName,0
+				FROM Project.Game JOIN Project.PlatformReleasesGame ON Game.IDGame=PlatformReleasesGame.IDGame 
+				JOIN Project.GameGenre ON GameGenre.IDGame= Game.IDGame
+				UPDATE @tempPurchase
+				SET Disc =(SELECT IIF (EXISTS (SELECT TOP 1 [Percentage]  FROM Project.udf_checkGameDiscount (IDGame)),(SELECT TOP 1 [Percentage]  FROM Project.udf_checkGameDiscount (IDGame)),0))
+				UPDATE @tempPurchase
+				SET Price-=Price *Disc/100;
+				IF @MinValue is not null
+					DELETE FROM @tempPurchase WHERE @MinValue>Price
+				IF @MaxValue is not null 
+					DELETE FROM @tempPurchase WHERE @MaxValue<Price 
+				IF @MinDate is not  null
+					DELETE FROM @tempPurchase WHERE DATEDIFF(DAY,@MinDate,ReleaseDate) < 0
+				IF @MaxDate is not null
+					DELETE FROM @tempPurchase WHERE DATEDIFF(DAY,@MaxDate,ReleaseDate) > 0
+				IF @SelectedPlats is not null
+					DELETE FROM @tempPurchase WHERE  PlatformName NOT  IN (SELECT value FROM STRING_SPLIT(@SelectedPlats, ','));
+                IF @SelectedGenres is not null
+					DELETE FROM @tempPurchase WHERE  GenName NOT  IN (SELECT value FROM STRING_SPLIT(@SelectedGenres, ','));
+				IF @SelectedAge is not null
+					DELETE FROM @tempPurchase WHERE AgeRestriction > @SelectedAge;
+				IF @MinDiscount is not null
+					DELETE FROM @tempPurchase WHERE  Disc < @MinDiscount
+                IF @GameName is not  null
+					DELETE FROM @tempPurchase WHERE GameName NOT LIKE  @GameName + '%'
+				SELECT * FROM @tempPurchase
+	END
 
-
-
-GO
+go
 --TRIGGERS
 CREATE TRIGGER Project.trigger_review ON Project.[Reviews]
 instead of insert
