@@ -1371,7 +1371,7 @@ CREATE PROCEDURE Project.pd_insertCredit(
 		END
 
 GO
-
+INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient) VALUES('PayPal','2020-06-03',50.00,2)
 CREATE PROCEDURE Project.pd_insertPurchase(
 	@PurchaseDate DATE,
 	@IDClient INT,
@@ -1417,10 +1417,8 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 		END
 
 go
-DECLARE @res AS VARCHAR(30);
-EXEC Project.pd_insertPurchase '2020-06-03',5,10,'PlayStation 3',@res
-SELECT @res
-select * from Project.Purchase
+
+
 GO
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 		@IDClient INT,
@@ -1715,3 +1713,25 @@ AS
 			PRINT @responseMsg
 	END
 go
+
+
+CREATE FUNCTION Project.[udf_mostSoldGames]() RETURNS TABLE
+AS
+	RETURN (SELECT  top 1000 COUNT(Game.IDGame) as CountPurchases,Game.IDGame, Game.[Name] FROM Project.Purchase 
+	JOIN Project.[Copy] ON [Copy].SerialNum=Purchase.SerialNum 
+	JOIN Project.Game ON Game.IDGame = Copy.IDGame GROUP BY Game.IDGame,Game.Name ORDER BY CountPurchases DESC )
+
+GO
+
+CREATE FUNCTION Project.udf_mostMoneySpent() RETURNS TABLE
+AS
+	RETURN (SELECT TOP 1000 IDClient,SUM(ValueCredit) AS Total FROM Project.Credit JOIN Project.Client ON Client.UserID=Credit.IDClient GROUP BY IDClient,ValueCredit order BY Total DESC)
+
+GO
+CREATE FUNCTION Project.udf_most_Sold_Genres() RETURNS TABLE
+AS
+	RETURN ( SELECT GenName,CountPurchases FROM (SELECT IDGame AS TempIDGame,CountPurchases FROM  Project.[udf_mostSoldGames]())
+	X INNER JOIN Project.Game ON Game.IDGame=TempIDGame 
+	JOIN Project.GameGenre ON GameGenre.IDGame=Game.IDGame)
+go
+select * from Project.udf_most_Sold_Genres()
