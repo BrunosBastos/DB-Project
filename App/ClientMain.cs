@@ -48,7 +48,7 @@ namespace App
             else if (tabControl1.SelectedIndex == 1)
             {
                 UpdateBalanceStore();
-                LoadStoreInterface();
+                resetFilterStore(null, null);
                 LoadStore();
                 Console.WriteLine("Inside tab Store");
 
@@ -349,6 +349,7 @@ namespace App
             StoreStartDay.Text = "";
             StoreStartMonth.Text = "";
             StoreStartYear.Text = "";
+            StoreOrderBy.SelectedIndex = 0;
             LoadStore();
         }
 
@@ -484,7 +485,7 @@ namespace App
                     cmd.Parameters.AddWithValue("@MinDiscount", disc);
                 }
 
-                string startdate = StoreStartDay.Text + "-" + StoreStartMonth.Text + "-" + StoreStartYear.Text;
+                string startdate = StoreStartYear.Text + "-" + StoreStartMonth.Text + "-" + StoreStartDay.Text;
                 if (ValidateDate(startdate))
                 {
                     cmd.Parameters.AddWithValue("@MinDate", DateTime.Parse(startdate));
@@ -494,11 +495,11 @@ namespace App
                 }
                 else
                 {
-                    MessageBox.Show("That's not a valid date.");
+                    //MessageBox.Show("That's not a valid date.");
                     return;
                 }
 
-                string enddate = StoreEndDay.Text + "-" + StoreEndMonth.Text + "-" + StoreEndYear.Text;
+                string enddate = StoreEndYear.Text + "-" + StoreEndMonth.Text + "-" + StoreEndDay.Text;
                 if (ValidateDate(enddate))
                 {
                     cmd.Parameters.AddWithValue("@MaxDate", DateTime.Parse(enddate));
@@ -572,8 +573,8 @@ namespace App
                     cmd.Parameters.AddWithValue("@SelectedPlats", platforms);
                 }
 
-
-                cmd.Parameters.AddWithValue("@orderopt",DBNull.Value);
+                
+                cmd.Parameters.AddWithValue("@orderopt",StoreOrderBy.SelectedItem.ToString().Replace(" ","").ToString());
 
                 
                 cmd.Connection = Program.cn;
@@ -631,6 +632,10 @@ namespace App
             {
                 StoreGameLogo.LoadAsync(g.CoverImg);
             }
+            else
+            {
+                StoreGameLogo.LoadAsync("https://findicons.com/files/icons/1008/quiet/256/no.png");
+            }
             StoreGamePrice.Text = g.Price;
             StoreGameDiscount.Text = g.discount;
             StoreGameDescription.Text = g.Description;
@@ -647,11 +652,16 @@ namespace App
 
             if (Program.verifySGBDConnection()) {
                 StoreGameReleaseDate.Text = g.ReleaseDate;
-                SqlCommand cmd = new SqlCommand("Select Name From Project.Franchise where IDFranchise=" + g.IDFranchise, Program.cn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-                StoreGameFranchise.Text = reader["Name"].ToString();
-                reader.Close();
+                SqlCommand cmd;
+                SqlDataReader reader;
+                if (!g.IDFranchise.Equals(""))
+                {
+                    cmd = new SqlCommand("Select Name From Project.Franchise where IDFranchise=" + g.IDFranchise, Program.cn);
+                    reader = cmd.ExecuteReader();
+                    reader.Read();
+                    StoreGameFranchise.Text = reader["Name"].ToString();
+                    reader.Close();
+                }
                 cmd = new SqlCommand("Select CompanyName From Project.Company where IDCompany="+g.IDCompany, Program.cn);
                 reader = cmd.ExecuteReader();
                 reader.Read();
@@ -1070,6 +1080,66 @@ namespace App
 
         }
 
+
+        // Profile
+        private void goToConfirmPassword(object sender, EventArgs e)
+        {
+            EditProfile ep = new EditProfile(this);
+            ep.ShowDialog();
+
+        }
         
+        public void editProfile()
+        {
+            ProfileBalance.Visible = false;
+            ProfileSex.Visible = false;
+            ProfileNFollowers.Visible = false;
+            ProfileNGames.Visible = false;
+            ProfileBalanceLabel.Visible = false;
+            ProfileSexLabel.Visible = false;
+            ProfileFollowersLabel.Visible = false;
+            ProfileGamesLabel.Visible = false;
+            EditProfileButton.Visible = false;
+            ProfileBirthLabel.Visible = false;
+            ProfileBirth.Visible = false;
+            ProfileConfirmEdit.Visible = true;
+            ProfileCancelEdit.Visible = true;
+            ProfilePasswordLabel.Visible = true;
+            ProfilePassword.Visible = true;
+            ProfileUsername.ReadOnly = false;
+            ProfileFullName.ReadOnly = false;
+            ProfileEmail.ReadOnly = false;
+        }
+
+        private void confirmEditProfile(object sender, EventArgs e)
+        {
+
+            //query para dar update ao profile
+            // meter as cenas invisiveis
+
+            MessageBox.Show("Profile has been updated.");
+            ProfileBalance.Visible = true;
+            ProfileSex.Visible = true;
+            ProfileNFollowers.Visible = true;
+            ProfileNGames.Visible = true;
+            ProfileBalanceLabel.Visible = true;
+            ProfileSexLabel.Visible = true;
+            ProfileFollowersLabel.Visible = true;
+            ProfileGamesLabel.Visible = true;
+            EditProfileButton.Visible = true;
+            ProfileBirthLabel.Visible = true;
+            ProfileBirth.Visible = true;
+            ProfileConfirmEdit.Visible = false;
+            ProfileCancelEdit.Visible = false;
+            ProfilePasswordLabel.Visible = false;
+            ProfilePassword.Visible = false;
+            ProfileUsername.ReadOnly = true;
+            ProfileFullName.ReadOnly = true;
+            ProfileEmail.ReadOnly = true;
+
+
+
+
+        }
     }
 }

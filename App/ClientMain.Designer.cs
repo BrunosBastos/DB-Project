@@ -125,25 +125,23 @@
             this.StoreSearchGame = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
-            this.textBox21 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox19 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.ProfileConfirmEdit = new System.Windows.Forms.Button();
+            this.ProfileCancelEdit = new System.Windows.Forms.Button();
+            this.ProfileNFollowers = new System.Windows.Forms.TextBox();
+            this.EditProfileButton = new System.Windows.Forms.Button();
+            this.ProfileUsername = new System.Windows.Forms.TextBox();
+            this.ProfileBalanceLabel = new System.Windows.Forms.Label();
+            this.ProfileFullName = new System.Windows.Forms.TextBox();
+            this.ProfileBirthLabel = new System.Windows.Forms.Label();
+            this.ProfileSex = new System.Windows.Forms.TextBox();
+            this.ProfileSexLabel = new System.Windows.Forms.Label();
+            this.ProfileBirth = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
-            this.textBox17 = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.ProfileGamesLabel = new System.Windows.Forms.Label();
+            this.ProfileBalance = new System.Windows.Forms.TextBox();
+            this.ProfileFollowersLabel = new System.Windows.Forms.Label();
+            this.ProfileNGames = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
@@ -216,6 +214,12 @@
             this.PHMaxPrice = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button21 = new System.Windows.Forms.Button();
+            this.StoreOrderBy = new System.Windows.Forms.ComboBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.ProfileEmail = new System.Windows.Forms.TextBox();
+            this.ProfilePasswordLabel = new System.Windows.Forms.Label();
+            this.ProfilePassword = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -619,18 +623,18 @@
             this.groupBox9.Controls.Add(this.button15);
             this.groupBox9.Controls.Add(this.button6);
             this.groupBox9.Controls.Add(this.button2);
-            this.groupBox9.Location = new System.Drawing.Point(823, 327);
+            this.groupBox9.Location = new System.Drawing.Point(823, 434);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(393, 326);
+            this.groupBox9.Size = new System.Drawing.Size(393, 219);
             this.groupBox9.TabIndex = 90;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Options";
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(98, 275);
+            this.button8.Location = new System.Drawing.Point(219, 165);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(198, 45);
+            this.button8.Size = new System.Drawing.Size(138, 45);
             this.button8.TabIndex = 91;
             this.button8.Text = "View Genre Details";
             this.button8.UseVisualStyleBackColor = true;
@@ -638,9 +642,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(98, 224);
+            this.button4.Location = new System.Drawing.Point(19, 165);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(198, 45);
+            this.button4.Size = new System.Drawing.Size(141, 45);
             this.button4.TabIndex = 90;
             this.button4.Text = "View Platform Details";
             this.button4.UseVisualStyleBackColor = true;
@@ -648,9 +652,9 @@
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(98, 172);
+            this.button16.Location = new System.Drawing.Point(219, 90);
             this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(198, 48);
+            this.button16.Size = new System.Drawing.Size(138, 48);
             this.button16.TabIndex = 89;
             this.button16.Text = "View Franchise Details";
             this.button16.UseVisualStyleBackColor = true;
@@ -658,9 +662,9 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(98, 118);
+            this.button15.Location = new System.Drawing.Point(19, 90);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(198, 48);
+            this.button15.Size = new System.Drawing.Size(141, 48);
             this.button15.TabIndex = 88;
             this.button15.Text = "View Company Details";
             this.button15.UseVisualStyleBackColor = true;
@@ -668,9 +672,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(98, 19);
+            this.button6.Location = new System.Drawing.Point(19, 26);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(198, 45);
+            this.button6.Size = new System.Drawing.Size(141, 45);
             this.button6.TabIndex = 82;
             this.button6.Text = "Buy";
             this.button6.UseVisualStyleBackColor = true;
@@ -678,9 +682,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(98, 70);
+            this.button2.Location = new System.Drawing.Point(219, 26);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(198, 42);
+            this.button2.Size = new System.Drawing.Size(138, 45);
             this.button2.TabIndex = 87;
             this.button2.Text = "View Reviews";
             this.button2.UseVisualStyleBackColor = true;
@@ -945,6 +949,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label51);
+            this.groupBox1.Controls.Add(this.StoreOrderBy);
             this.groupBox1.Controls.Add(this.StoreAgeRestriction);
             this.groupBox1.Controls.Add(this.label50);
             this.groupBox1.Controls.Add(this.button25);
@@ -968,7 +974,7 @@
             this.groupBox1.Controls.Add(this.StoreSearchGame);
             this.groupBox1.Location = new System.Drawing.Point(823, 18);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(393, 303);
+            this.groupBox1.Size = new System.Drawing.Size(393, 410);
             this.groupBox1.TabIndex = 85;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
@@ -991,7 +997,7 @@
             // 
             // button25
             // 
-            this.button25.Location = new System.Drawing.Point(127, 257);
+            this.button25.Location = new System.Drawing.Point(127, 364);
             this.button25.Name = "button25";
             this.button25.Size = new System.Drawing.Size(106, 40);
             this.button25.TabIndex = 96;
@@ -1002,7 +1008,7 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(263, 198);
+            this.label49.Location = new System.Drawing.Point(12, 148);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(94, 13);
             this.label49.TabIndex = 95;
@@ -1010,42 +1016,42 @@
             // 
             // StoreEndYear
             // 
-            this.StoreEndYear.Location = new System.Drawing.Point(340, 213);
+            this.StoreEndYear.Location = new System.Drawing.Point(89, 163);
             this.StoreEndYear.Name = "StoreEndYear";
             this.StoreEndYear.Size = new System.Drawing.Size(43, 20);
             this.StoreEndYear.TabIndex = 94;
             // 
             // StoreEndMonth
             // 
-            this.StoreEndMonth.Location = new System.Drawing.Point(302, 213);
+            this.StoreEndMonth.Location = new System.Drawing.Point(51, 163);
             this.StoreEndMonth.Name = "StoreEndMonth";
             this.StoreEndMonth.Size = new System.Drawing.Size(32, 20);
             this.StoreEndMonth.TabIndex = 93;
             // 
             // StoreEndDay
             // 
-            this.StoreEndDay.Location = new System.Drawing.Point(266, 213);
+            this.StoreEndDay.Location = new System.Drawing.Point(15, 163);
             this.StoreEndDay.Name = "StoreEndDay";
             this.StoreEndDay.Size = new System.Drawing.Size(30, 20);
             this.StoreEndDay.TabIndex = 92;
             // 
             // StoreStartYear
             // 
-            this.StoreStartYear.Location = new System.Drawing.Point(340, 168);
+            this.StoreStartYear.Location = new System.Drawing.Point(89, 118);
             this.StoreStartYear.Name = "StoreStartYear";
             this.StoreStartYear.Size = new System.Drawing.Size(43, 20);
             this.StoreStartYear.TabIndex = 91;
             // 
             // StoreStartMonth
             // 
-            this.StoreStartMonth.Location = new System.Drawing.Point(302, 168);
+            this.StoreStartMonth.Location = new System.Drawing.Point(51, 118);
             this.StoreStartMonth.Name = "StoreStartMonth";
             this.StoreStartMonth.Size = new System.Drawing.Size(32, 20);
             this.StoreStartMonth.TabIndex = 90;
             // 
             // StoreStartDay
             // 
-            this.StoreStartDay.Location = new System.Drawing.Point(266, 168);
+            this.StoreStartDay.Location = new System.Drawing.Point(15, 118);
             this.StoreStartDay.Name = "StoreStartDay";
             this.StoreStartDay.Size = new System.Drawing.Size(30, 20);
             this.StoreStartDay.TabIndex = 89;
@@ -1053,7 +1059,7 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(267, 152);
+            this.label48.Location = new System.Drawing.Point(16, 102);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(97, 13);
             this.label48.TabIndex = 88;
@@ -1113,7 +1119,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 257);
+            this.button1.Location = new System.Drawing.Point(6, 364);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 40);
             this.button1.TabIndex = 85;
@@ -1133,7 +1139,7 @@
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(127, 109);
+            this.checkedListBox1.Location = new System.Drawing.Point(127, 210);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(116, 139);
             this.checkedListBox1.TabIndex = 49;
@@ -1150,7 +1156,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(124, 93);
+            this.label2.Location = new System.Drawing.Point(124, 192);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 51;
@@ -1159,7 +1165,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 94);
+            this.label3.Location = new System.Drawing.Point(6, 192);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 52;
@@ -1168,7 +1174,7 @@
             // checkedListBox2
             // 
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(12, 112);
+            this.checkedListBox2.Location = new System.Drawing.Point(9, 210);
             this.checkedListBox2.Name = "checkedListBox2";
             this.checkedListBox2.Size = new System.Drawing.Size(106, 139);
             this.checkedListBox2.TabIndex = 53;
@@ -1194,122 +1200,131 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.button10);
-            this.groupBox10.Controls.Add(this.button9);
-            this.groupBox10.Controls.Add(this.textBox14);
-            this.groupBox10.Controls.Add(this.button3);
-            this.groupBox10.Controls.Add(this.textBox21);
-            this.groupBox10.Controls.Add(this.label18);
-            this.groupBox10.Controls.Add(this.textBox20);
-            this.groupBox10.Controls.Add(this.label19);
-            this.groupBox10.Controls.Add(this.textBox19);
-            this.groupBox10.Controls.Add(this.label20);
-            this.groupBox10.Controls.Add(this.textBox18);
+            this.groupBox10.Controls.Add(this.ProfilePassword);
+            this.groupBox10.Controls.Add(this.ProfilePasswordLabel);
+            this.groupBox10.Controls.Add(this.ProfileEmail);
+            this.groupBox10.Controls.Add(this.label52);
+            this.groupBox10.Controls.Add(this.ProfileConfirmEdit);
+            this.groupBox10.Controls.Add(this.ProfileCancelEdit);
+            this.groupBox10.Controls.Add(this.ProfileNFollowers);
+            this.groupBox10.Controls.Add(this.EditProfileButton);
+            this.groupBox10.Controls.Add(this.ProfileUsername);
+            this.groupBox10.Controls.Add(this.ProfileBalanceLabel);
+            this.groupBox10.Controls.Add(this.ProfileFullName);
+            this.groupBox10.Controls.Add(this.ProfileBirthLabel);
+            this.groupBox10.Controls.Add(this.ProfileSex);
+            this.groupBox10.Controls.Add(this.ProfileSexLabel);
+            this.groupBox10.Controls.Add(this.ProfileBirth);
             this.groupBox10.Controls.Add(this.label21);
-            this.groupBox10.Controls.Add(this.textBox17);
             this.groupBox10.Controls.Add(this.label22);
-            this.groupBox10.Controls.Add(this.textBox16);
-            this.groupBox10.Controls.Add(this.label23);
-            this.groupBox10.Controls.Add(this.textBox15);
-            this.groupBox10.Controls.Add(this.label24);
-            this.groupBox10.Controls.Add(this.textBox13);
+            this.groupBox10.Controls.Add(this.ProfileGamesLabel);
+            this.groupBox10.Controls.Add(this.ProfileBalance);
+            this.groupBox10.Controls.Add(this.ProfileFollowersLabel);
+            this.groupBox10.Controls.Add(this.ProfileNGames);
             this.groupBox10.Location = new System.Drawing.Point(20, 19);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(335, 311);
+            this.groupBox10.Size = new System.Drawing.Size(457, 318);
             this.groupBox10.TabIndex = 53;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Your Profile";
             // 
-            // button10
+            // ProfileConfirmEdit
             // 
-            this.button10.Location = new System.Drawing.Point(19, 265);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 54;
-            this.button10.Text = "Confirm";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Visible = false;
+            this.ProfileConfirmEdit.Location = new System.Drawing.Point(113, 265);
+            this.ProfileConfirmEdit.Name = "ProfileConfirmEdit";
+            this.ProfileConfirmEdit.Size = new System.Drawing.Size(75, 23);
+            this.ProfileConfirmEdit.TabIndex = 54;
+            this.ProfileConfirmEdit.Text = "Confirm";
+            this.ProfileConfirmEdit.UseVisualStyleBackColor = true;
+            this.ProfileConfirmEdit.Visible = false;
+            this.ProfileConfirmEdit.Click += new System.EventHandler(this.confirmEditProfile);
             // 
-            // button9
+            // ProfileCancelEdit
             // 
-            this.button9.Location = new System.Drawing.Point(221, 265);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 53;
-            this.button9.Text = "Cancel";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Visible = false;
+            this.ProfileCancelEdit.Location = new System.Drawing.Point(315, 265);
+            this.ProfileCancelEdit.Name = "ProfileCancelEdit";
+            this.ProfileCancelEdit.Size = new System.Drawing.Size(75, 23);
+            this.ProfileCancelEdit.TabIndex = 53;
+            this.ProfileCancelEdit.Text = "Cancel";
+            this.ProfileCancelEdit.UseVisualStyleBackColor = true;
+            this.ProfileCancelEdit.Visible = false;
             // 
-            // textBox14
+            // ProfileNFollowers
             // 
-            this.textBox14.Location = new System.Drawing.Point(221, 49);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 20);
-            this.textBox14.TabIndex = 43;
+            this.ProfileNFollowers.Location = new System.Drawing.Point(267, 139);
+            this.ProfileNFollowers.Name = "ProfileNFollowers";
+            this.ProfileNFollowers.ReadOnly = true;
+            this.ProfileNFollowers.Size = new System.Drawing.Size(100, 20);
+            this.ProfileNFollowers.TabIndex = 43;
             // 
-            // button3
+            // EditProfileButton
             // 
-            this.button3.Location = new System.Drawing.Point(122, 265);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 52;
-            this.button3.Text = "Edit Profile";
-            this.button3.UseVisualStyleBackColor = true;
+            this.EditProfileButton.Location = new System.Drawing.Point(216, 265);
+            this.EditProfileButton.Name = "EditProfileButton";
+            this.EditProfileButton.Size = new System.Drawing.Size(75, 23);
+            this.EditProfileButton.TabIndex = 52;
+            this.EditProfileButton.Text = "Edit Profile";
+            this.EditProfileButton.UseVisualStyleBackColor = true;
+            this.EditProfileButton.Click += new System.EventHandler(this.goToConfirmPassword);
             // 
-            // textBox21
+            // ProfileUsername
             // 
-            this.textBox21.Location = new System.Drawing.Point(16, 49);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(181, 20);
-            this.textBox21.TabIndex = 36;
+            this.ProfileUsername.Location = new System.Drawing.Point(16, 49);
+            this.ProfileUsername.Name = "ProfileUsername";
+            this.ProfileUsername.ReadOnly = true;
+            this.ProfileUsername.Size = new System.Drawing.Size(181, 20);
+            this.ProfileUsername.TabIndex = 36;
             // 
-            // label18
+            // ProfileBalanceLabel
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(79, 154);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(46, 13);
-            this.label18.TabIndex = 51;
-            this.label18.Text = "Balance";
+            this.ProfileBalanceLabel.AutoSize = true;
+            this.ProfileBalanceLabel.Location = new System.Drawing.Point(330, 20);
+            this.ProfileBalanceLabel.Name = "ProfileBalanceLabel";
+            this.ProfileBalanceLabel.Size = new System.Drawing.Size(46, 13);
+            this.ProfileBalanceLabel.TabIndex = 51;
+            this.ProfileBalanceLabel.Text = "Balance";
             // 
-            // textBox20
+            // ProfileFullName
             // 
-            this.textBox20.Location = new System.Drawing.Point(16, 111);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(181, 20);
-            this.textBox20.TabIndex = 37;
+            this.ProfileFullName.Location = new System.Drawing.Point(16, 111);
+            this.ProfileFullName.Name = "ProfileFullName";
+            this.ProfileFullName.ReadOnly = true;
+            this.ProfileFullName.Size = new System.Drawing.Size(181, 20);
+            this.ProfileFullName.TabIndex = 37;
             // 
-            // label19
+            // ProfileBirthLabel
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(16, 196);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(28, 13);
-            this.label19.TabIndex = 50;
-            this.label19.Text = "Birth";
+            this.ProfileBirthLabel.AutoSize = true;
+            this.ProfileBirthLabel.Location = new System.Drawing.Point(267, 65);
+            this.ProfileBirthLabel.Name = "ProfileBirthLabel";
+            this.ProfileBirthLabel.Size = new System.Drawing.Size(28, 13);
+            this.ProfileBirthLabel.TabIndex = 50;
+            this.ProfileBirthLabel.Text = "Birth";
             // 
-            // textBox19
+            // ProfileSex
             // 
-            this.textBox19.Location = new System.Drawing.Point(16, 170);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(54, 20);
-            this.textBox19.TabIndex = 38;
+            this.ProfileSex.Location = new System.Drawing.Point(267, 39);
+            this.ProfileSex.Name = "ProfileSex";
+            this.ProfileSex.ReadOnly = true;
+            this.ProfileSex.Size = new System.Drawing.Size(54, 20);
+            this.ProfileSex.TabIndex = 38;
             // 
-            // label20
+            // ProfileSexLabel
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(16, 151);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(25, 13);
-            this.label20.TabIndex = 49;
-            this.label20.Text = "Sex";
+            this.ProfileSexLabel.AutoSize = true;
+            this.ProfileSexLabel.Location = new System.Drawing.Point(267, 20);
+            this.ProfileSexLabel.Name = "ProfileSexLabel";
+            this.ProfileSexLabel.Size = new System.Drawing.Size(25, 13);
+            this.ProfileSexLabel.TabIndex = 49;
+            this.ProfileSexLabel.Text = "Sex";
             // 
-            // textBox18
+            // ProfileBirth
             // 
-            this.textBox18.Location = new System.Drawing.Point(16, 215);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(59, 20);
-            this.textBox18.TabIndex = 39;
+            this.ProfileBirth.Location = new System.Drawing.Point(267, 84);
+            this.ProfileBirth.Name = "ProfileBirth";
+            this.ProfileBirth.ReadOnly = true;
+            this.ProfileBirth.Size = new System.Drawing.Size(100, 20);
+            this.ProfileBirth.TabIndex = 39;
             // 
             // label21
             // 
@@ -1320,13 +1335,6 @@
             this.label21.TabIndex = 48;
             this.label21.Text = "Full Name";
             // 
-            // textBox17
-            // 
-            this.textBox17.Location = new System.Drawing.Point(82, 214);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(41, 20);
-            this.textBox17.TabIndex = 40;
-            // 
             // label22
             // 
             this.label22.AutoSize = true;
@@ -1336,44 +1344,39 @@
             this.label22.TabIndex = 47;
             this.label22.Text = "Username";
             // 
-            // textBox16
+            // ProfileGamesLabel
             // 
-            this.textBox16.Location = new System.Drawing.Point(130, 214);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(43, 20);
-            this.textBox16.TabIndex = 41;
+            this.ProfileGamesLabel.AutoSize = true;
+            this.ProfileGamesLabel.Location = new System.Drawing.Point(267, 182);
+            this.ProfileGamesLabel.Name = "ProfileGamesLabel";
+            this.ProfileGamesLabel.Size = new System.Drawing.Size(67, 13);
+            this.ProfileGamesLabel.TabIndex = 46;
+            this.ProfileGamesLabel.Text = "Nº of Games";
             // 
-            // label23
+            // ProfileBalance
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(221, 90);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(67, 13);
-            this.label23.TabIndex = 46;
-            this.label23.Text = "Nº of Games";
+            this.ProfileBalance.Location = new System.Drawing.Point(333, 39);
+            this.ProfileBalance.Name = "ProfileBalance";
+            this.ProfileBalance.ReadOnly = true;
+            this.ProfileBalance.Size = new System.Drawing.Size(91, 20);
+            this.ProfileBalance.TabIndex = 42;
             // 
-            // textBox15
+            // ProfileFollowersLabel
             // 
-            this.textBox15.Location = new System.Drawing.Point(82, 170);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(91, 20);
-            this.textBox15.TabIndex = 42;
+            this.ProfileFollowersLabel.AutoSize = true;
+            this.ProfileFollowersLabel.Location = new System.Drawing.Point(267, 120);
+            this.ProfileFollowersLabel.Name = "ProfileFollowersLabel";
+            this.ProfileFollowersLabel.Size = new System.Drawing.Size(78, 13);
+            this.ProfileFollowersLabel.TabIndex = 45;
+            this.ProfileFollowersLabel.Text = "Nº of Followers";
             // 
-            // label24
+            // ProfileNGames
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(221, 30);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(78, 13);
-            this.label24.TabIndex = 45;
-            this.label24.Text = "Nº of Followers";
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(221, 109);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 44;
+            this.ProfileNGames.Location = new System.Drawing.Point(267, 201);
+            this.ProfileNGames.Name = "ProfileNGames";
+            this.ProfileNGames.ReadOnly = true;
+            this.ProfileNGames.Size = new System.Drawing.Size(100, 20);
+            this.ProfileNGames.TabIndex = 44;
             // 
             // tabPage4
             // 
@@ -2086,6 +2089,67 @@
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.LogOut);
             // 
+            // StoreOrderBy
+            // 
+            this.StoreOrderBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.StoreOrderBy.FormattingEnabled = true;
+            this.StoreOrderBy.Items.AddRange(new object[] {
+            "Name Asc",
+            "Name Desc",
+            "Date Asc",
+            "Date Desc",
+            "Price Asc",
+            "Price Desc"});
+            this.StoreOrderBy.Location = new System.Drawing.Point(260, 210);
+            this.StoreOrderBy.Name = "StoreOrderBy";
+            this.StoreOrderBy.Size = new System.Drawing.Size(121, 21);
+            this.StoreOrderBy.TabIndex = 99;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(257, 192);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(47, 13);
+            this.label51.TabIndex = 100;
+            this.label51.Text = "Order by";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(16, 146);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(32, 13);
+            this.label52.TabIndex = 55;
+            this.label52.Text = "Email";
+            // 
+            // ProfileEmail
+            // 
+            this.ProfileEmail.Location = new System.Drawing.Point(19, 165);
+            this.ProfileEmail.Name = "ProfileEmail";
+            this.ProfileEmail.ReadOnly = true;
+            this.ProfileEmail.Size = new System.Drawing.Size(178, 20);
+            this.ProfileEmail.TabIndex = 56;
+            // 
+            // ProfilePasswordLabel
+            // 
+            this.ProfilePasswordLabel.AutoSize = true;
+            this.ProfilePasswordLabel.Location = new System.Drawing.Point(19, 201);
+            this.ProfilePasswordLabel.Name = "ProfilePasswordLabel";
+            this.ProfilePasswordLabel.Size = new System.Drawing.Size(53, 13);
+            this.ProfilePasswordLabel.TabIndex = 57;
+            this.ProfilePasswordLabel.Text = "Password";
+            this.ProfilePasswordLabel.Visible = false;
+            // 
+            // ProfilePassword
+            // 
+            this.ProfilePassword.Location = new System.Drawing.Point(19, 217);
+            this.ProfilePassword.Name = "ProfilePassword";
+            this.ProfilePassword.PasswordChar = '*';
+            this.ProfilePassword.Size = new System.Drawing.Size(178, 20);
+            this.ProfilePassword.TabIndex = 58;
+            this.ProfilePassword.Visible = false;
+            // 
             // ClientMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2222,25 +2286,23 @@
         private System.Windows.Forms.TextBox StoreSearchGame;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.Button ProfileConfirmEdit;
+        private System.Windows.Forms.Button ProfileCancelEdit;
+        private System.Windows.Forms.TextBox ProfileNFollowers;
+        private System.Windows.Forms.Button EditProfileButton;
+        private System.Windows.Forms.TextBox ProfileUsername;
+        private System.Windows.Forms.Label ProfileBalanceLabel;
+        private System.Windows.Forms.TextBox ProfileFullName;
+        private System.Windows.Forms.Label ProfileBirthLabel;
+        private System.Windows.Forms.TextBox ProfileSex;
+        private System.Windows.Forms.Label ProfileSexLabel;
+        private System.Windows.Forms.TextBox ProfileBirth;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label ProfileGamesLabel;
+        private System.Windows.Forms.TextBox ProfileBalance;
+        private System.Windows.Forms.Label ProfileFollowersLabel;
+        private System.Windows.Forms.TextBox ProfileNGames;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Button button14;
@@ -2335,5 +2397,11 @@
         private System.Windows.Forms.TextBox StoreEndDay;
         private System.Windows.Forms.TextBox StoreAgeRestriction;
         private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.ComboBox StoreOrderBy;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox ProfileEmail;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox ProfilePassword;
+        private System.Windows.Forms.Label ProfilePasswordLabel;
     }
 }
