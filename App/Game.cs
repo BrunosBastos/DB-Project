@@ -8,19 +8,33 @@ namespace App
 {
     class Game
     {
-        private string _IDGame;
-        private string _Name;
-        private string _Description;
-        private string _ReleaseDate;
-        private string _AgeRestriction;
-        private string _CoverImg;
-        private string _Price;
-        private string _IDCompany;
-        private string _IDFranchise;
+        private string _IDGame ="";
+        private string _Name="";
+        private string _Description="";
+        private string _ReleaseDate="";
+        private string _AgeRestriction="";
+        private string _CoverImg="";
+        private string _Price="";
+        private string _IDCompany="";
+        private string _IDFranchise="";
+        private HashSet<string> _genres = new HashSet<string>();
+        private HashSet<string> _platforms = new HashSet<string>();
+        private string _discount="";
 
         public Game()
         {
 
+        }
+
+
+        public void addGenre(string genre)
+        {
+            _genres.Add(genre);
+        }
+
+        public void addPlatform(string platform)
+        {
+            _platforms.Add(platform);
         }
 
 
@@ -29,6 +43,25 @@ namespace App
         {
             return this._Name;
         }
+
+        public HashSet<string> genres
+        {
+            get { return _genres; }
+            set { _genres = value; }
+        }
+
+        public HashSet<string> platforms
+        {
+            get { return _platforms; }
+            set { _platforms = value; }
+        }
+
+        public string discount
+        {
+            get { return _discount; }
+            set { _discount = value; }
+        }
+
 
         public string IDGame
         {
