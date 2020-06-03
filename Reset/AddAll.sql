@@ -1295,10 +1295,13 @@ end
 go
 
 
-
-
-
-
+CREATE FUNCTION Project.[udf_checkUserPurchase] (@IDClient INT,@IDGame INT) RETURNS INT
+AS
+	BEGIN
+	IF EXISTS ( SELECT TOP 1 Purchase.NumPurchase  FROM Project.Purchase JOIN Project.Copy ON Copy.SerialNum=Purchase.SerialNum WHERE Copy.IDGame=@IDGame AND Purchase.IDClient=@IDClient)
+		RETURN 1
+	RETURN 0
+	END
 GO
 ---- PROCEDURES---
 create procedure Project.pd_Login(
@@ -1369,11 +1372,12 @@ CREATE PROCEDURE Project.pd_insertCredit(
 
 GO
 
- CREATE PROCEDURE Project.pd_insertPurchase(
+CREATE PROCEDURE Project.pd_insertPurchase(
 	@PurchaseDate DATE,
 	@IDClient INT,
 	@IDGame INT,
-	@PlatformName VARCHAR(30)
+	@PlatformName VARCHAR(30),
+	@res VARCHAR(30) output
 	)
 	AS
 		BEGIN
@@ -1383,6 +1387,9 @@ GO
 			DECLARE @SerialNum INT;
 			DECLARE @tempPer INT;
 			BEGIN TRY
+			IF ( (SELECT Project.udf_checkUserPurchase(@IDClient,@IDGame)) = 1)
+				raiserror ('User Already Contains that Game',16,1);
+
 			SET @Price = (SELECT Price from Project.Game WHERE Game.IDGame=@IDGame)
 			SET @SerialNum= (SELECT top 1 notBought FROM Project.[udf_checkGameCopies] (@IDGame,@PlatformName))
 			IF @SerialNum IS NULL
@@ -1397,11 +1404,12 @@ GO
 						SET @Price-=@Price*(@tempPer/100)
 					END
 			INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) VALUES (@Price,@PurchaseDate,@IDClient,@SerialNum)
-			
+			SET @res ='Success!'
 			END TRY
 			BEGIN CATCH
 				 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
 				 PRINT ERROR_MESSAGE()
+				 SET @res= ERROR_MESSAGE()
 				 rollback tran
 			END CATCH
 			if @@TRANCOUNT >0
@@ -1409,7 +1417,10 @@ GO
 		END
 
 go
-
+DECLARE @res AS VARCHAR(30);
+EXEC Project.pd_insertPurchase '2020-06-03',5,10,'PlayStation 3',@res
+SELECT @res
+select * from Project.Purchase
 GO
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 		@IDClient INT,
@@ -1557,11 +1568,13 @@ AS
 				END
 				if @orderopt is null
 				BEGIN
-					select * from @tempPurchase 
+					select * from @tempPurchase ORDER BY IDGame
 				END
 	END
 
 go
+EXEC pROJECT.pd_filter_Games null,null,null,null,null,null,null,null,null,NULL
+
 --TRIGGERS
 CREATE TRIGGER Project.trigger_review ON Project.[Reviews]
 instead of insert
@@ -1641,6 +1654,7 @@ AS
 				END
 				ELSE
 					BEGIN TRY
+						PRINT 'OLA'
 						UPDATE Project.Client 
 						SET Balance-=@Price WHERE Project.Client.UserID=@IDClient
 						INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) VALUES (@Price,@PurchaseDate,@IDClient,@SerialNum)
@@ -1648,10 +1662,14 @@ AS
 					END TRY
 					BEGIN CATCH
 					 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
-					 PRINT ERROR_MESSAGE()
+					 --PRINT ERROR_MESSAGE()
 					 raiserror ('Error while inserting purchase values', 16, 1);
 					END CATCH
 	END
 
 EXEC Project.pd_insertPurchase '2020-05-02',4,16,'PlayStation 3'
 SELECT * FROM Project.Client 
+
+
+
+
