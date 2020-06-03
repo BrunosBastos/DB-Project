@@ -1474,6 +1474,7 @@ CREATE PROCEDURE Project.pd_filter_CreditHistory(
 				SELECT * FROM @temp
 		END
 GO
+
 CREATE PROCEDURE Project.pd_filter_Games(
 	@MinValue DECIMAL (5,2),
 	@MaxValue DECIMAL (5,2),
@@ -1483,7 +1484,8 @@ CREATE PROCEDURE Project.pd_filter_Games(
 	@SelectedGenres VARCHAR(MAX),
 	@SelectedAge INT, 
 	@MinDiscount INT,
-	@GameName VARCHAR(max) =NULL -- user input
+	@GameName VARCHAR(max),  -- user input
+	@orderopt VARCHAR(MAX)  -- option to order games
 )
 AS
 	BEGIN
@@ -1527,7 +1529,36 @@ AS
 					DELETE FROM @tempPurchase WHERE  Disc < @MinDiscount
                 IF @GameName is not  null
 					DELETE FROM @tempPurchase WHERE GameName NOT LIKE  @GameName + '%'
-				SELECT * FROM @tempPurchase
+	---ordering options
+				IF @orderopt = 'DateDesc'
+				BEGIN
+					select * from @tempPurchase where ReleaseDate IS NOT NULL ORDER BY ReleaseDate DESC
+				END
+				IF @orderopt = 'DateAsc'
+				BEGIN
+					select * from @tempPurchase where ReleaseDate IS NOT NULL ORDER BY ReleaseDate ASC
+
+				END
+				if @orderopt = 'NameDesc'
+				BEGIN
+					select * from @tempPurchase where GameName IS NOT NULL ORDER BY GameName DESC
+				END
+				if @orderopt ='NameAsc'
+				BEGIN
+					select * from @tempPurchase where GameName IS NOT NULL ORDER BY GameName ASC
+				END
+				if @orderopt='PriceAsc'
+				BEGIN
+					select * from @tempPurchase where Price IS NOT NULL ORDER BY Price ASC
+				END
+				if @orderopt='PriceDesc'
+				BEGIN
+					select * from @tempPurchase where Price IS NOT NULL ORDER BY Price DESC
+				END
+				if @orderopt is null
+				BEGIN
+					select * from @tempPurchase 
+				END
 	END
 
 go
