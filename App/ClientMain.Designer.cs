@@ -98,6 +98,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.StoreGameReleaseDate = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button25 = new System.Windows.Forms.Button();
+            this.label49 = new System.Windows.Forms.Label();
+            this.StoreEndYear = new System.Windows.Forms.TextBox();
+            this.StoreEndMonth = new System.Windows.Forms.TextBox();
+            this.StoreEndDay = new System.Windows.Forms.TextBox();
             this.StoreStartYear = new System.Windows.Forms.TextBox();
             this.StoreStartMonth = new System.Windows.Forms.TextBox();
             this.StoreStartDay = new System.Windows.Forms.TextBox();
@@ -209,11 +214,8 @@
             this.PHMaxPrice = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button21 = new System.Windows.Forms.Button();
-            this.StoreEndYear = new System.Windows.Forms.TextBox();
-            this.StoreEndMonth = new System.Windows.Forms.TextBox();
-            this.StoreEndDay = new System.Windows.Forms.TextBox();
-            this.label49 = new System.Windows.Forms.Label();
-            this.button25 = new System.Windows.Forms.Button();
+            this.label50 = new System.Windows.Forms.Label();
+            this.StoreAgeRestriction = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -938,6 +940,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.StoreAgeRestriction);
+            this.groupBox1.Controls.Add(this.label50);
             this.groupBox1.Controls.Add(this.button25);
             this.groupBox1.Controls.Add(this.label49);
             this.groupBox1.Controls.Add(this.StoreEndYear);
@@ -964,23 +968,62 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(127, 257);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(106, 40);
+            this.button25.TabIndex = 96;
+            this.button25.Text = "Reset Filter";
+            this.button25.UseVisualStyleBackColor = true;
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(263, 198);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(94, 13);
+            this.label49.TabIndex = 95;
+            this.label49.Text = "End Release Date";
+            // 
+            // StoreEndYear
+            // 
+            this.StoreEndYear.Location = new System.Drawing.Point(340, 213);
+            this.StoreEndYear.Name = "StoreEndYear";
+            this.StoreEndYear.Size = new System.Drawing.Size(43, 20);
+            this.StoreEndYear.TabIndex = 94;
+            // 
+            // StoreEndMonth
+            // 
+            this.StoreEndMonth.Location = new System.Drawing.Point(302, 213);
+            this.StoreEndMonth.Name = "StoreEndMonth";
+            this.StoreEndMonth.Size = new System.Drawing.Size(32, 20);
+            this.StoreEndMonth.TabIndex = 93;
+            // 
+            // StoreEndDay
+            // 
+            this.StoreEndDay.Location = new System.Drawing.Point(266, 213);
+            this.StoreEndDay.Name = "StoreEndDay";
+            this.StoreEndDay.Size = new System.Drawing.Size(30, 20);
+            this.StoreEndDay.TabIndex = 92;
+            // 
             // StoreStartYear
             // 
-            this.StoreStartYear.Location = new System.Drawing.Point(340, 212);
+            this.StoreStartYear.Location = new System.Drawing.Point(340, 168);
             this.StoreStartYear.Name = "StoreStartYear";
             this.StoreStartYear.Size = new System.Drawing.Size(43, 20);
             this.StoreStartYear.TabIndex = 91;
             // 
             // StoreStartMonth
             // 
-            this.StoreStartMonth.Location = new System.Drawing.Point(302, 212);
+            this.StoreStartMonth.Location = new System.Drawing.Point(302, 168);
             this.StoreStartMonth.Name = "StoreStartMonth";
             this.StoreStartMonth.Size = new System.Drawing.Size(32, 20);
             this.StoreStartMonth.TabIndex = 90;
             // 
             // StoreStartDay
             // 
-            this.StoreStartDay.Location = new System.Drawing.Point(266, 212);
+            this.StoreStartDay.Location = new System.Drawing.Point(266, 168);
             this.StoreStartDay.Name = "StoreStartDay";
             this.StoreStartDay.Size = new System.Drawing.Size(30, 20);
             this.StoreStartDay.TabIndex = 89;
@@ -988,7 +1031,7 @@
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(267, 196);
+            this.label48.Location = new System.Drawing.Point(267, 152);
             this.label48.Name = "label48";
             this.label48.Size = new System.Drawing.Size(97, 13);
             this.label48.TabIndex = 88;
@@ -996,7 +1039,7 @@
             // 
             // StoreMinDiscount
             // 
-            this.StoreMinDiscount.Location = new System.Drawing.Point(266, 168);
+            this.StoreMinDiscount.Location = new System.Drawing.Point(127, 70);
             this.StoreMinDiscount.Name = "StoreMinDiscount";
             this.StoreMinDiscount.Size = new System.Drawing.Size(100, 20);
             this.StoreMinDiscount.TabIndex = 87;
@@ -1058,7 +1101,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(263, 152);
+            this.label14.Location = new System.Drawing.Point(124, 54);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(91, 13);
             this.label14.TabIndex = 84;
@@ -1067,15 +1110,15 @@
             // checkedListBox1
             // 
             this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(127, 94);
+            this.checkedListBox1.Location = new System.Drawing.Point(127, 109);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(116, 154);
+            this.checkedListBox1.Size = new System.Drawing.Size(116, 139);
             this.checkedListBox1.TabIndex = 49;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 26);
+            this.label6.Location = new System.Drawing.Point(9, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 13);
             this.label6.TabIndex = 50;
@@ -1084,7 +1127,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(124, 78);
+            this.label2.Location = new System.Drawing.Point(124, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(36, 13);
             this.label2.TabIndex = 51;
@@ -1093,7 +1136,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 78);
+            this.label3.Location = new System.Drawing.Point(9, 94);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 13);
             this.label3.TabIndex = 52;
@@ -1102,14 +1145,14 @@
             // checkedListBox2
             // 
             this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(12, 97);
+            this.checkedListBox2.Location = new System.Drawing.Point(12, 112);
             this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(106, 154);
+            this.checkedListBox2.Size = new System.Drawing.Size(106, 139);
             this.checkedListBox2.TabIndex = 53;
             // 
             // StoreSearchGame
             // 
-            this.StoreSearchGame.Location = new System.Drawing.Point(12, 42);
+            this.StoreSearchGame.Location = new System.Drawing.Point(12, 31);
             this.StoreSearchGame.Name = "StoreSearchGame";
             this.StoreSearchGame.Size = new System.Drawing.Size(231, 20);
             this.StoreSearchGame.TabIndex = 55;
@@ -2019,44 +2062,21 @@
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.LogOut);
             // 
-            // StoreEndYear
+            // label50
             // 
-            this.StoreEndYear.Location = new System.Drawing.Point(340, 257);
-            this.StoreEndYear.Name = "StoreEndYear";
-            this.StoreEndYear.Size = new System.Drawing.Size(43, 20);
-            this.StoreEndYear.TabIndex = 94;
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(13, 56);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(79, 13);
+            this.label50.TabIndex = 97;
+            this.label50.Text = "Age Restriction";
             // 
-            // StoreEndMonth
+            // StoreAgeRestriction
             // 
-            this.StoreEndMonth.Location = new System.Drawing.Point(302, 257);
-            this.StoreEndMonth.Name = "StoreEndMonth";
-            this.StoreEndMonth.Size = new System.Drawing.Size(32, 20);
-            this.StoreEndMonth.TabIndex = 93;
-            // 
-            // StoreEndDay
-            // 
-            this.StoreEndDay.Location = new System.Drawing.Point(266, 257);
-            this.StoreEndDay.Name = "StoreEndDay";
-            this.StoreEndDay.Size = new System.Drawing.Size(30, 20);
-            this.StoreEndDay.TabIndex = 92;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(263, 242);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(94, 13);
-            this.label49.TabIndex = 95;
-            this.label49.Text = "End Release Date";
-            // 
-            // button25
-            // 
-            this.button25.Location = new System.Drawing.Point(127, 257);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(106, 40);
-            this.button25.TabIndex = 96;
-            this.button25.Text = "Reset Filter";
-            this.button25.UseVisualStyleBackColor = true;
+            this.StoreAgeRestriction.Location = new System.Drawing.Point(16, 71);
+            this.StoreAgeRestriction.Name = "StoreAgeRestriction";
+            this.StoreAgeRestriction.Size = new System.Drawing.Size(27, 20);
+            this.StoreAgeRestriction.TabIndex = 98;
             // 
             // ClientMain
             // 
@@ -2305,5 +2325,7 @@
         private System.Windows.Forms.TextBox StoreEndYear;
         private System.Windows.Forms.TextBox StoreEndMonth;
         private System.Windows.Forms.TextBox StoreEndDay;
+        private System.Windows.Forms.TextBox StoreAgeRestriction;
+        private System.Windows.Forms.Label label50;
     }
 }

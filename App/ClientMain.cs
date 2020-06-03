@@ -300,6 +300,8 @@ namespace App
 
             if (Program.verifySGBDConnection())
             {
+
+                listBox2.Items.Clear();
                 SqlCommand cmd = new SqlCommand("Project.pd_filter_Games",Program.cn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 if (StoreSearchGame.Text.Length==0)
@@ -311,18 +313,193 @@ namespace App
                     cmd.Parameters.AddWithValue("@GameName", StoreSearchGame.Text);
                 }
 
-                // acabar isto
+
+                string minprice = StoreMinPrice.Text;
+                if (!decimal.TryParse(minprice,out decimal n1) && minprice.Length!=0)
+                {
+                    MessageBox.Show("That's not number");
+                    return;
+                }else if (minprice.Length==0)
+                {
+                    cmd.Parameters.AddWithValue("@MinValue", DBNull.Value);
+                }
+                else
+                {
+                    if (n1 < 0)
+                    {
+                        MessageBox.Show("Price cannot be negative.");
+                        return;
+                    }
+                    cmd.Parameters.AddWithValue("@MinValue", n1);
+                }
+
+                string maxprice = StoreMaxPrice.Text;
+                if(!decimal.TryParse(maxprice,out decimal n2) && maxprice.Length != 0)
+                {
+                    MessageBox.Show("That's not a number");
+                    return;
+                }else if (maxprice.Length==0)
+                {
+                    cmd.Parameters.AddWithValue("@MaxValue", DBNull.Value);
+                }
+                else
+                {
+                    if (n2 < 0)
+                    {
+                        MessageBox.Show("Price cannot be negative.");
+                        return;
+                    }
+                    cmd.Parameters.AddWithValue("@MaxValue", n2);
+                }
+
+                if(minprice.Length!=0 && maxprice.Length != 0)
+                {
+                    if (n1 > n2)
+                    {
+                        MessageBox.Show("Min Price cannot be higher than Max Price.");
+                        return;
+                    }
+                }
+
+                string discount = StoreMinDiscount.Text;
+                if(!int.TryParse(discount,out int disc) && discount.Length != 0)
+                {
+                    MessageBox.Show("Discount has to be a int number between 0 and 100");
+                    return;
+                }else if (discount.Length==0)
+                {
+                    cmd.Parameters.AddWithValue("@MinDiscount",DBNull.Value);
+                }else if(disc>100 || disc < 0)
+                {
+                    MessageBox.Show("Discount has to be between 0 and 100");
+                    return;
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@MinDiscount", disc);
+                }
+
+                string startdate = StoreStartDay.Text + "-" + StoreStartMonth.Text + "-" + StoreStartYear.Text;
+                if (ValidateDate(startdate))
+                {
+                    cmd.Parameters.AddWithValue("@MinDate", DateTime.Parse(startdate));
+                }else if (startdate.Length == 2)
+                {
+                    cmd.Parameters.AddWithValue("@MinDate", DBNull.Value);
+                }
+                else
+                {
+                    MessageBox.Show("That's not a valid date.");
+                    return;
+                }
+
+                string enddate = StoreEndDay.Text + "-" + StoreEndMonth.Text + "-" + StoreEndYear.Text;
+                if (ValidateDate(enddate))
+                {
+                    cmd.Parameters.AddWithValue("@MaxDate", DateTime.Parse(enddate));
+                }else if (enddate.Length==2)
+                {
+                    cmd.Parameters.AddWithValue("@MaxDate", DBNull.Value);
+                }
+                else
+                {
+                    MessageBox.Show("That's not a valid date.");
+                    return;
+                }
+
+                if (startdate.Length > 2 && enddate.Length > 2)
+                {
+                    int comp = DateTime.Compare(DateTime.Parse(startdate), DateTime.Parse(enddate));
+                    if (comp > 0)
+                    {
+                        MessageBox.Show("Starting Date cannot be after Ending Date");
+                        return;
+                    }
+                }
+
+                string agerestriction = StoreAgeRestriction.Text;
+                if(!int.TryParse(agerestriction,out int age) && agerestriction.Length != 0)
+                {
+                    MessageBox.Show("Age restriction is a number between 0 and 18.");
+                    return;
+                }else if (agerestriction.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@SelectedAge", DBNull.Value);
+                }
+                else
+                {
+                    if(age>18 || age < 0)
+                    {
+                        MessageBox.Show("Age restriction is a number between 0 and 18.");
+                        return;
+                    }
+                    cmd.Parameters.AddWithValue("@SelectedAge", age);
+                }
 
 
 
+                string genres = "";
+                for (int i = 0; i < checkedListBox1.CheckedItems.Count; i++)
+                {
+                    genres += checkedListBox1.CheckedItems[i].ToString() + ",";
+                }
+
+                string platforms = "";
+                for (int i = 0; i < checkedListBox2.CheckedItems.Count; i++)
+                {
+                    platforms += checkedListBox2.CheckedItems[i].ToString() + ",";
+                }
+
+                if (genres.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@SelectedGenres", DBNull.Value);
+                }
+                else
+                {  
+                    cmd.Parameters.AddWithValue("@SelectedGenres", genres);
+                }
+                if (platforms.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@SelectedPlats", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@SelectedPlats", platforms);
+                }
+                
+                cmd.Connection = Program.cn;
+                cmd.ExecuteNonQuery();
+                SqlDataReader reader = cmd.ExecuteReader();
 
 
 
+                Game g =  new Game();
+                Console.WriteLine("Inserting into store");
+
+                
+
+                while (reader.Read())
+                {
+                    if (!reader["IDGame"].ToString().Equals(g.IDGame))
+                    {
+                        listBox2.Items.Add(g);
+                        g = new Game();
+                        g.IDGame = reader["IDGame"].ToString();
+                        g.Name = reader["GameName"].ToString();
+                        g.Description = reader["Description"].ToString();
+                        g.ReleaseDate = reader["ReleaseDate"].ToString();
+                        g.AgeRestriction = reader["AgeRestriction"].ToString();
+                        g.CoverImg = reader["CoverImg"].ToString();
+                        g.Price = reader["Price"].ToString();
+                        g.IDCompany = reader["IDCompany"].ToString();
+                        g.IDFranchise = reader["IDFranchise"].ToString();
+                        g.discount = reader["Disc"].ToString();
+                    }
+                    g.addGenre(reader["GenName"].ToString());
+                    g.addPlatform(reader["PlatformName"].ToString());
+                }
+                reader.Close();
             }
-
-
-
-
         }
 
 
