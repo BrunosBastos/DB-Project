@@ -1667,9 +1667,51 @@ AS
 					END CATCH
 	END
 
-EXEC Project.pd_insertPurchase '2020-05-02',4,16,'PlayStation 3'
-SELECT * FROM Project.Client 
+GO
 
-
-
-
+CREATE PROCEDURE Project.pd_UpdateUser(
+	      @UserID AS INT,
+		  @Email AS VARCHAR(50),
+		  @Password AS VARCHAR(20),
+		  @UserName AS VARCHAR(50),
+		  @FullName AS VARCHAR(MAX),
+		  @Sex AS CHAR(1),
+		  @Birth AS DATE,
+		  @responseMsg VARCHAR(MAX)
+		 )
+AS
+	BEGIN
+			BEGIN TRY
+				IF @Email IS NOT NULL
+				BEGIN
+					UPDATE Project.[User]
+					SET Email =@Email
+					WHERE UserID=@UserID
+				END
+				IF @Password IS NOT NULL
+				BEGIN
+					UPDATE Project.[User]
+					SET [Password]=(ENCRYPTBYPASSPHRASE('**********',@Password))
+					WHERE UserID=@UserID
+				END
+				IF @UserName IS NOT NULL
+				BEGIN
+					UPDATE Project.Client
+					SET UserName=@UserName
+					WHERE UserID=@UserID
+				END
+				IF @Sex IS NOT NULL
+				BEGIN
+					UPDATE Project.Client
+					SET Sex=@Sex
+					WHERE UserID=@UserID
+				END
+				SET @responseMsg='Success On Updating Account!'
+			END TRY
+			BEGIN CATCH
+				raiserror('Could not Update Account',16,1)
+				set @responseMsg=error_message()
+			END CATCH
+			PRINT @responseMsg
+	END
+go
