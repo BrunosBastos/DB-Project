@@ -1753,9 +1753,9 @@ AS
 
 
 GO
-/*
+
 CREATE PROCEDURE Project.pd_insert_Games (
-	@Name AS VARCHAR(50),
+	@Name  VARCHAR(50),
 	@Description VARCHAR(max),
 	@ReleaseDate DATE,
 	@AgeRestriction INT,
@@ -1772,13 +1772,80 @@ AS
 	BEGIN 
 		BEGIN TRAN
 			BEGIN TRY
+			    DECLARE @tempcounter INT;
 				INSERT INTO Project.Game([Name],[Description],ReleaseDate,AgeRestriction,CoverImg,Price,IDCompany,IDFranchise) 
 				VALUES(@Name,@Description,@ReleaseDate,@AgeRestriction,@CoverImg,@Price,@IDCompany,@IDFranchise)
 				SELECT TOP 1 @addedGameID=IDGame FROM Project.Game ORDER BY IDGame DESC
-				--falta inserir split 
+				PRINT @addedGameID
+				--insert Game Genres
+					DECLARE @SP INT
+					DECLARE @VALUE VARCHAR(1000)
+					WHILE PATINDEX('%' + ',' + '%', @genres ) <> 0
+					BEGIN
+					SELECT  @SP = PATINDEX('%' + ','  + '%',@genres)
+					SELECT  @VALUE = LEFT(@genres , @SP - 1)
+					SELECT  @genres = STUFF(@genres, 1, @SP, '')
+					INSERT INTO Project.GameGenre(IDGame,GenName) VALUES (@addedGameID,@VALUE)
+					END
+					PRINT ('ACABEI GENEROS')
+				--insert Game Platforms
+					SET  @SP=0;
+					SET @VALUE=''
+					WHILE PATINDEX('%' + ',' + '%', @platforms ) <> 0
+					BEGIN
+					SELECT  @SP = PATINDEX('%' + ','  + '%',@platforms)
+					SELECT  @VALUE = LEFT(@platforms , @SP - 1)
+					SELECT  @platforms = STUFF(@platforms, 1, @SP, '')
+					INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (@addedGameID,@VALUE)
+					END
+						
+					PRINT ('ACABEI Plataformas')
+				-- Insert 4 Copies of the Game
+					SET @tempcounter=1
+					WHILE (SELECT COUNT(PlatformName) FROM Project.PlatformReleasesGame WHERE PlatformReleasesGame.IDGame=@addedGameID) >= @tempcounter AND @tempcounter<=4
+					BEGIN
+						SET @platforms= (SELECT  PlatformName From (SELECT *,ROW_NUMBER() OVER(ORDER BY PlatformName  DESC) AS mRow FROM Project.PlatformReleasesGame  WHERE @addedGameID=IDGame) as TT WHERE TT.mRow=@tempcounter)
+						INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES (@addedGameID,@platforms);
+						SET	@tempcounter+=1
+					END
+					PRINT ('ACABEI tudo')
+					SET @res='Success inserting Games'
 			END TRY
 			BEGIN CATCH
-				
+					SET @res=ERROR_MESSAGE();
+					ROLLBACK TRAN
 			END CATCH
+		IF @@TRANCOUNT>0
+		COMMIT TRAN
+	END
+
+GO
+CREATE TRIGGER Project.trigger_insertGames ON Project.Game
+INSTEAD OF INSERT
+AS 
+	BEGIN
+	DECLARE @IDGame INT;
+	DECLARE  @Name VARCHAR(50);
+	DECLARE @Description VARCHAR(max);
+	DECLARE @ReleaseDate DATE;
+	DECLARE @AgeRestriction INT;
+	DECLARE @CoverImg VARCHAR(max);
+	DECLARE	@Price DECIMAL (5,2);
+	DECLARE	@IDCompany INT;
+	DECLARE	@IDFranchise INT;
+	DECLARE @tempcounter INT;
+	DECLARE @Plat VARCHAR(30);
+	SELECT @IDGame=IDGame,@Name=[Name],@Description=[Description],@ReleaseDate=ReleaseDate,@AgeRestriction=AgeRestriction,@CoverImg=CoverImg,@Price=Price,@IDCompany=IDCompany,@IDFranchise=IDFranchise FROM inserted;
+	IF EXISTS(SELECT TOP 1 [Name] From Project.Game WHERE Game.[Name]=@Name)
+		raiserror('Game Already Exists!',16,1);
+	ELSE
+	PRINT ('ENTREI')
+		INSERT INTO Project.Game VALUES(@Name,@Description,@ReleaseDate,@AgeRestriction,@CoverImg,@Price,@IDCompany,@IDFranchise)
+	END
+
+
+go
+use LocalDB
+
 
 
