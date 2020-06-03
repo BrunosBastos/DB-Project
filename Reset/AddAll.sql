@@ -1377,7 +1377,7 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 	@IDClient INT,
 	@IDGame INT,
 	@PlatformName VARCHAR(30),
-	@res VARCHAR(30) output
+	@res VARCHAR(35) output
 	)
 	AS
 		BEGIN
@@ -1723,6 +1723,15 @@ AS
 
 GO
 
+CREATE FUNCTION Project.[udf_leastSoldGames]() RETURNS TABLE
+AS
+	RETURN (SELECT  top 1000 COUNT(Game.IDGame) as CountPurchases,Game.IDGame, Game.[Name] FROM Project.Purchase 
+	JOIN Project.[Copy] ON [Copy].SerialNum=Purchase.SerialNum 
+	JOIN Project.Game ON Game.IDGame = Copy.IDGame GROUP BY Game.IDGame,Game.Name ORDER BY CountPurchases ASC )
+
+GO
+
+
 CREATE FUNCTION Project.udf_mostMoneySpent() RETURNS TABLE
 AS
 	RETURN (SELECT TOP 1000 IDClient,SUM(ValueCredit) AS Total FROM Project.Credit JOIN Project.Client ON Client.UserID=Credit.IDClient GROUP BY IDClient,ValueCredit order BY Total DESC)
@@ -1735,3 +1744,41 @@ AS
 	JOIN Project.GameGenre ON GameGenre.IDGame=Game.IDGame)
 go
 select * from Project.udf_most_Sold_Genres()
+GO
+CREATE FUNCTION Project.udf_most_Sold_Platforms() RETURNS TABLE
+AS
+	RETURN ( SELECT PlatformName,CountPurchases FROM (SELECT IDGame AS TempIDGame,CountPurchases FROM  Project.[udf_mostSoldGames]())
+	X INNER JOIN Project.Game ON Game.IDGame=TempIDGame 
+	JOIN Project.PlatformReleasesGame ON PlatformReleasesGame.IDGame=Game.IDGame)
+
+
+GO
+/*
+CREATE PROCEDURE Project.pd_insert_Games (
+	@Name AS VARCHAR(50),
+	@Description VARCHAR(max),
+	@ReleaseDate DATE,
+	@AgeRestriction INT,
+	@CoverImg VARCHAR(max),
+	@Price DECIMAL (5,2),
+	@IDCompany INT,
+	@IDFranchise INT,
+	@platforms VARCHAR(max),
+	@genres VARCHAR(max),
+	@res VARCHAR(35) output,
+	@addedGameID INT output
+)
+AS
+	BEGIN 
+		BEGIN TRAN
+			BEGIN TRY
+				INSERT INTO Project.Game([Name],[Description],ReleaseDate,AgeRestriction,CoverImg,Price,IDCompany,IDFranchise) 
+				VALUES(@Name,@Description,@ReleaseDate,@AgeRestriction,@CoverImg,@Price,@IDCompany,@IDFranchise)
+				SELECT TOP 1 @addedGameID=IDGame FROM Project.Game ORDER BY IDGame DESC
+				--falta inserir split 
+			END TRY
+			BEGIN CATCH
+				
+			END CATCH
+
+
