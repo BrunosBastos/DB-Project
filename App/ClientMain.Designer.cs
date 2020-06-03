@@ -98,6 +98,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.StoreGameReleaseDate = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.StoreAgeRestriction = new System.Windows.Forms.TextBox();
+            this.label50 = new System.Windows.Forms.Label();
             this.button25 = new System.Windows.Forms.Button();
             this.label49 = new System.Windows.Forms.Label();
             this.StoreEndYear = new System.Windows.Forms.TextBox();
@@ -214,8 +216,6 @@
             this.PHMaxPrice = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button21 = new System.Windows.Forms.Button();
-            this.label50 = new System.Windows.Forms.Label();
-            this.StoreAgeRestriction = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -634,6 +634,7 @@
             this.button8.TabIndex = 91;
             this.button8.Text = "View Genre Details";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.ViewGenreDetails);
             // 
             // button4
             // 
@@ -643,6 +644,7 @@
             this.button4.TabIndex = 90;
             this.button4.Text = "View Platform Details";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.ViewPlatformDetails);
             // 
             // button16
             // 
@@ -672,6 +674,7 @@
             this.button6.TabIndex = 82;
             this.button6.Text = "Buy";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.buy);
             // 
             // button2
             // 
@@ -700,6 +703,7 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(223, 524);
             this.listBox2.TabIndex = 48;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.ChangeStoreGame);
             // 
             // groupBox7
             // 
@@ -720,6 +724,7 @@
             this.button24.TabIndex = 68;
             this.button24.Text = "Add Credit";
             this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.goToAddCredit);
             // 
             // StoreClientBalance
             // 
@@ -968,6 +973,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
+            // StoreAgeRestriction
+            // 
+            this.StoreAgeRestriction.Location = new System.Drawing.Point(16, 71);
+            this.StoreAgeRestriction.Name = "StoreAgeRestriction";
+            this.StoreAgeRestriction.Size = new System.Drawing.Size(27, 20);
+            this.StoreAgeRestriction.TabIndex = 98;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(13, 56);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(79, 13);
+            this.label50.TabIndex = 97;
+            this.label50.Text = "Age Restriction";
+            // 
             // button25
             // 
             this.button25.Location = new System.Drawing.Point(127, 257);
@@ -976,6 +997,7 @@
             this.button25.TabIndex = 96;
             this.button25.Text = "Reset Filter";
             this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.resetFilterStore);
             // 
             // label49
             // 
@@ -1097,6 +1119,7 @@
             this.button1.TabIndex = 85;
             this.button1.Text = "Apply Filter";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.StoreApplyFilter);
             // 
             // label14
             // 
@@ -1156,6 +1179,7 @@
             this.StoreSearchGame.Name = "StoreSearchGame";
             this.StoreSearchGame.Size = new System.Drawing.Size(231, 20);
             this.StoreSearchGame.TabIndex = 55;
+            this.StoreSearchGame.TextChanged += new System.EventHandler(this.keyPressedGameName);
             // 
             // tabPage3
             // 
@@ -2061,22 +2085,6 @@
             this.button21.Text = "Log Out";
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.LogOut);
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(13, 56);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(79, 13);
-            this.label50.TabIndex = 97;
-            this.label50.Text = "Age Restriction";
-            // 
-            // StoreAgeRestriction
-            // 
-            this.StoreAgeRestriction.Location = new System.Drawing.Point(16, 71);
-            this.StoreAgeRestriction.Name = "StoreAgeRestriction";
-            this.StoreAgeRestriction.Size = new System.Drawing.Size(27, 20);
-            this.StoreAgeRestriction.TabIndex = 98;
             // 
             // ClientMain
             // 

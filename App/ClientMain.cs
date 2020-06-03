@@ -47,6 +47,8 @@ namespace App
             }
             else if (tabControl1.SelectedIndex == 1)
             {
+                UpdateBalanceStore();
+                LoadStoreInterface();
                 LoadStore();
                 Console.WriteLine("Inside tab Store");
 
@@ -272,26 +274,129 @@ namespace App
         // Store
         private void StoreViewReviews(object sender, EventArgs e)
         {
-            Game g = (Game)listBox2.Items[current_game];
+            Game g = (Game)listBox2.Items[listBox2.SelectedIndex];
             ViewReviews vr = new ViewReviews(int.Parse(g.IDGame));
             vr.ShowDialog();
         }
 
         private void StoreViewCompanyDetails(object sender, EventArgs e)
         {
-            Game g = (Game)listBox2.Items[current_game];
+            Game g = (Game)listBox2.Items[listBox2.SelectedIndex];
             CompanyDetails cd = new CompanyDetails(int.Parse(g.IDCompany));
             cd.ShowDialog();
         }
 
         private void StoreFranchiseDetails(object sender, EventArgs e)
         {
-            Game g = (Game)listBox2.Items[current_game];
+            Game g = (Game)listBox2.Items[listBox2.SelectedIndex];
             FranchiseDetails cd = new FranchiseDetails(int.Parse(g.IDFranchise));
             cd.ShowDialog();
         }
 
+        private void ViewPlatformDetails(object sender, EventArgs e)
+        {
+            if (listBox3.SelectedIndex < 0 || listBox3.SelectedIndex > listBox3.Items.Count)
+            {
+                MessageBox.Show("Select a Platform");
+                return;
+            }
+            PlatformDetails pd = new PlatformDetails(listBox3.Items[listBox3.SelectedIndex].ToString());
+            pd.ShowDialog();
+        }
 
+        private void ViewGenreDetails(object sender, EventArgs e)
+        {
+            if(listBox4.SelectedIndex<0 || listBox4.SelectedIndex > listBox4.Items.Count)
+            {
+                MessageBox.Show("Select a Genre");
+                return;
+            }
+            GenreDetails gd = new GenreDetails(listBox4.SelectedItem.ToString());
+            gd.ShowDialog();
+
+        }
+
+        private void UpdateBalanceStore()
+        {
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Select Balance From Project.Client where UserID=" + Program.currentUser, Program.cn);
+                StoreClientBalance.Text = cmd.ExecuteScalar().ToString();
+            }
+        }
+
+        private void StoreApplyFilter(object sender, EventArgs e)
+        {
+            LoadStore();
+        }
+        private void keyPressedGameName(object sender, EventArgs e)
+        {
+            LoadStore();
+        }
+
+     
+        private void resetFilterStore(object sender, EventArgs e)
+        {
+            LoadStoreInterface();
+            StoreMinDiscount.Text = "";
+            StoreMinPrice.Text = "";
+            StoreMaxPrice.Text = "";
+            StoreSearchGame.Text = "";
+            StoreAgeRestriction.Text = "";
+            StoreEndDay.Text = "";
+            StoreEndMonth.Text = "";
+            StoreEndYear.Text = "";
+            StoreStartDay.Text = "";
+            StoreStartMonth.Text = "";
+            StoreStartYear.Text = "";
+            LoadStore();
+        }
+
+
+        private void buy(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Project.pd_insertPurchase",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (listBox3.SelectedIndex<0 || listBox3.Items.Count<listBox3.SelectedIndex)
+                {
+                    MessageBox.Show("Select the platform that we want to buy the game for.");
+                    return;
+                }
+                if(listBox2.SelectedIndex<0 || listBox2.Items.Count < listBox2.SelectedIndex)
+                {
+                    MessageBox.Show("There isn't a game selected.");
+                    return;
+                }
+
+                cmd.Parameters.AddWithValue("@PlatformName", listBox3.SelectedItem.ToString());
+                Game g = (Game)listBox2.SelectedItem;
+                cmd.Parameters.AddWithValue("@IDGame", g.IDGame);
+                cmd.Parameters.AddWithValue("@PurchaseDate", DateTime.Now);
+                cmd.Parameters.AddWithValue("@IDClient", Program.currentUser);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar,255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+                cmd.Connection = Program.cn;
+                cmd.ExecuteNonQuery();
+                Console.WriteLine(cmd.Parameters["@res"].Value.ToString());
+                string output = cmd.Parameters["@res"].Value.ToString();
+                if (output.Equals("Success!"))
+                {
+                    MessageBox.Show("Purchase Completed.");
+                    UpdateBalanceStore();
+                }else if (output.Equals("User Already Contains that Game"))
+                {
+                    MessageBox.Show("Already have this game for this platform");
+                }else if(output.Equals("Not enough balance to buy this"))
+                {
+                    MessageBox.Show("Not enough balance to buy this");
+                }
+
+
+            }
+        }
 
 
 
@@ -466,6 +571,10 @@ namespace App
                 {
                     cmd.Parameters.AddWithValue("@SelectedPlats", platforms);
                 }
+
+
+                cmd.Parameters.AddWithValue("@orderopt",DBNull.Value);
+
                 
                 cmd.Connection = Program.cn;
                 cmd.ExecuteNonQuery();
@@ -474,10 +583,7 @@ namespace App
 
 
                 Game g =  new Game();
-                Console.WriteLine("Inserting into store");
-
-                
-
+               
                 while (reader.Read())
                 {
                     if (!reader["IDGame"].ToString().Equals(g.IDGame))
@@ -487,9 +593,9 @@ namespace App
                         g.IDGame = reader["IDGame"].ToString();
                         g.Name = reader["GameName"].ToString();
                         g.Description = reader["Description"].ToString();
-                        g.ReleaseDate = reader["ReleaseDate"].ToString();
+                        g.ReleaseDate = reader["ReleaseDate"].ToString().Split(' ').ToArray()[0];
                         g.AgeRestriction = reader["AgeRestriction"].ToString();
-                        g.CoverImg = reader["CoverImg"].ToString();
+                        g.CoverImg = "https://" + reader["CoverImg"].ToString();
                         g.Price = reader["Price"].ToString();
                         g.IDCompany = reader["IDCompany"].ToString();
                         g.IDFranchise = reader["IDFranchise"].ToString();
@@ -498,24 +604,105 @@ namespace App
                     g.addGenre(reader["GenName"].ToString());
                     g.addPlatform(reader["PlatformName"].ToString());
                 }
+                listBox2.Items.Add(g);
+                reader.Close();
+                listBox2.Items.RemoveAt(0);
+                
+                if (listBox2.Items.Count>0)
+                {
+                    listBox2.SelectedIndex = 0;
+                    StoreShowGame();
+                }
+            }
+        }
+
+        private void StoreShowGame()
+        {
+            if(listBox2.SelectedIndex<0 || listBox2.SelectedIndex > listBox2.Items.Count)
+            {
+                return;
+            }
+
+            Game g = (Game)listBox2.Items[listBox2.SelectedIndex];
+            StoreGameName.Text = g.Name;
+            StoreGameAgeRestriction.Text = g.AgeRestriction;
+            Console.WriteLine(g.CoverImg);
+            if (!g.CoverImg.Equals("https://"))
+            {
+                StoreGameLogo.LoadAsync(g.CoverImg);
+            }
+            StoreGamePrice.Text = g.Price;
+            StoreGameDiscount.Text = g.discount;
+            StoreGameDescription.Text = g.Description;
+            listBox4.Items.Clear();
+            foreach(String x in g.genres)
+            {
+                listBox4.Items.Add(x);
+            }
+            listBox3.Items.Clear();
+            foreach (String x in g.platforms)
+            {
+                listBox3.Items.Add(x);
+            }
+
+            if (Program.verifySGBDConnection()) {
+                StoreGameReleaseDate.Text = g.ReleaseDate;
+                SqlCommand cmd = new SqlCommand("Select Name From Project.Franchise where IDFranchise=" + g.IDFranchise, Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                StoreGameFranchise.Text = reader["Name"].ToString();
+                reader.Close();
+                cmd = new SqlCommand("Select CompanyName From Project.Company where IDCompany="+g.IDCompany, Program.cn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                StoreGameCompany.Text = reader["CompanyName"].ToString();
+                reader.Close();
+            }
+
+
+        }
+
+        private void ChangeStoreGame(object sender, EventArgs e)
+        {
+            StoreShowGame();
+        }
+
+        private void goToAddCredit(object sender, EventArgs e)
+        {
+            tabControl1.SelectedIndex = 4;
+            tabControl2.SelectedIndex = 0;
+
+        }
+
+        private void LoadStoreInterface()
+        {
+            if (Program.verifySGBDConnection())
+            {
+                checkedListBox1.Items.Clear();
+                checkedListBox2.Items.Clear();
+                SqlCommand cmd = new SqlCommand("Select GenName from Project.Genre",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    checkedListBox1.Items.Add(reader["GenName"].ToString());
+                    checkedListBox1.SetItemChecked(checkedListBox1.Items.Count-1, true);
+                }
+                reader.Close();
+
+                cmd = new SqlCommand("Select PlatformName from Project.[Platform]",Program.cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    checkedListBox2.Items.Add(reader["PlatformName"].ToString());
+                    checkedListBox2.SetItemChecked(checkedListBox2.Items.Count - 1, true);
+                }
                 reader.Close();
             }
         }
 
 
 
-
-
-
-
-
-
-
-
-
         // Transactions
-
-
         private void Change_transaction_tabs(object sender, EventArgs e)
         {
 
