@@ -95,7 +95,7 @@ CREATE TABLE Project.Company(
     Contact         VARCHAR(50), --our contact will only be the email of the companies
     CompanyName     VARCHAR(30) NOT NULL,
     Website         VARCHAR(50) NOT NULL,
-    Logo            VARBINARY(MAX),
+    Logo            VARCHAR(MAX),
     FoundationDate  DATE,
     City            VARCHAR(50),
     Country	        VARCHAR(50),
@@ -154,7 +154,7 @@ CREATE TABLE Project.GameGenre(
 CREATE TABLE Project.Franchise(
     IDFranchise    INT				IDENTITY(1,1),
     Name           VARCHAR(30)      NOT NULL,
-    Logo       VARBINARY(MAX),
+    Logo       VARCHAR(MAX),
 	IDCompany INT NOT NULL, 
     PRIMARY KEY(IDFranchise)
 );
@@ -1819,13 +1819,13 @@ AS
 					PRINT ('ACABEI Plataformas')
 				-- Insert 4 Copies of the Game
 					SET @tempcounter=1
-					WHILE (SELECT COUNT(PlatformName) FROM Project.PlatformReleasesGame WHERE PlatformReleasesGame.IDGame=@addedGameID) >= @tempcounter AND @tempcounter<=4
+					WHILE (SELECT COUNT(PlatformName) FROM Project.PlatformReleasesGame WHERE PlatformReleasesGame.IDGame=@addedGameID) >= @tempcounter
 					BEGIN
 						SET @platforms= (SELECT  PlatformName From (SELECT *,ROW_NUMBER() OVER(ORDER BY PlatformName  DESC) AS mRow FROM Project.PlatformReleasesGame  WHERE @addedGameID=IDGame) as TT WHERE TT.mRow=@tempcounter)
 						INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES (@addedGameID,@platforms);
 						SET	@tempcounter+=1
 					END
-					PRINT ('ACABEI tudo')
+					PRINT ('ACABEI TUDO')
 					SET @res='Success inserting Games'
 			END TRY
 			BEGIN CATCH
@@ -1862,7 +1862,112 @@ AS
 
 
 go
-use LocalDB
+
+CREATE PROCEDURE Project.pd_insertGenres (
+	@GenName VARCHAR(50),
+	@Description VARCHAR(MAX),
+	@res VARCHAR(35) OUTPUT
+)AS 
+	BEGIN
+		BEGIN TRY
+				INSERT INTO Project.Genre VALUES(@GenName,@Description)
+				SET @res='Sucess inserting Genre'
+		END TRY
+		BEGIN CATCH
+				SET @res= ERROR_MESSAGE()
+		END CATCH
+ END
+ GO
+ 
+
+ CREATE TRIGGER Project.trigger_Genres ON Project.Genre
+ INSTEAD OF INSERT
+ AS
+	BEGIN
+		DECLARE @GenName VARCHAR(50);
+		DECLARE @Description VARCHAR(35);
+		SELECT @GenName=GenName,@Description=[Description] FROM inserted;
+		IF EXISTS ( SELECT TOP 1 GenName FROM Project.Genre WHERE Genre.GenName=@GenName)
+			RAISERROR('This Genre Name Already Exists!',16,1)
+		ELSE
+			INSERT INTO Project.Genre VALUES (@GenName,@Description)
+	END
+
+go
 
 
+
+CREATE PROCEDURE Project.pd_insertFranchise(
+	@Name VARCHAR(30),
+	@Logo VARCHAR(MAX),
+	@IDCompany INT,
+	@res VARCHAR(MAX) OUTPUT
+)
+AS
+	BEGIN
+		BEGIN TRY
+			INSERT INTO Project.Franchise ([Name],Logo,IDCompany) VALUES (@Name,@Logo,@IDCompany)
+			SET @res='Success inserting a new Franchise!'
+		END TRY
+		BEGIN CATCH
+			SET @res=ERROR_MESSAGE()
+		END CATCH
+	END
+GO
+CREATE TRIGGER Project.trigger_Franchise ON Project.Franchise
+INSTEAD OF INSERT
+	AS
+		BEGIN
+			DECLARE @Name VARCHAR(30);
+			DECLARE @Logo VARCHAR(MAX);
+			DECLARE @IDCompany INT;
+			SELECT @Name=[Name],@Logo=Logo,@IDCompany=IDCompany FROM inserted;
+			IF EXISTS (SELECT TOP 1 [Name] FROM Project.Franchise WHERE Franchise.[Name] = @Name  )
+				RAISERROR('This Franchise Name Already Exists!',16,1)
+			PRINT @IDCompany
+			IF EXISTS (SELECT TOP 1 IDCompany FROM Project.Company WHERE Company.IDCompany = @IDCompany  )
+				BEGIN
+					PRINT 'OLA'
+					INSERT INTO Project.Franchise ([Name],Logo,IDCompany) VALUES (@Name,@Logo,@IDCompany)
+				END
+			ELSE
+				BEGIN
+					PRINT ERROR_Message()
+					RAISERROR('Error!Invalid Company!',16,1)
+				END
+		END
+
+go
+CREATE PROCEDURE Project.pd_insertPlatforms (	
+		 @PlatformName VARCHAR(30),
+		 @ReleaseDate DATE,
+		 @Producer VARCHAR(30),
+		 @res VARCHAR(255) OUTPUT
+)
+AS
+	BEGIN
+		 BEGIN TRY
+			INSERT INTO Project.[Platform] VALUES(@PlatformName,@ReleaseDate,@Producer)
+			set @res='Success Inserting new Platform!'
+		 END TRY
+		 BEGIN CATCH
+			set @res=ERROR_MESSAGE()
+		 END CATCH
+	END
+GO
+CREATE TRIGGER Project.trigger_Platforms ON Project.[Platform]
+INSTEAD OF INSERT
+AS
+	BEGIN
+		DECLARE  @PlatformName VARCHAR(30);
+		DECLARE @ReleaseDate DATE;
+		DECLARE @Producer VARCHAR(30);
+		SELECT @PlatformName=PlatformName,@ReleaseDate=ReleaseDate,@Producer=Producer FROM inserted;
+		IF EXISTS (SELECT TOP 1 PlatformName FROM Project.[Platform] WHERE @PlatformName=PlatformName)
+				RAISERROR('This Platform Name already Exists!',16,1)
+		ELSE
+			BEGIN
+				INSERT INTO Project.[Platform] VALUES (@PlatformName,@ReleaseDate,@Producer)
+			END
+	END
 
