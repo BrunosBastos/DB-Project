@@ -55,6 +55,7 @@ namespace App
             }
             else if (tabControl1.SelectedIndex == 2)
             {
+                LoadProfile();
                 Console.WriteLine("Inside tab Profile");
 
             }
@@ -1089,27 +1090,42 @@ namespace App
 
         }
         
-        public void editProfile()
-        {
-            ProfileBalance.Visible = false;
-            ProfileSex.Visible = false;
-            ProfileNFollowers.Visible = false;
-            ProfileNGames.Visible = false;
-            ProfileBalanceLabel.Visible = false;
-            ProfileSexLabel.Visible = false;
-            ProfileFollowersLabel.Visible = false;
-            ProfileGamesLabel.Visible = false;
-            EditProfileButton.Visible = false;
-            ProfileBirthLabel.Visible = false;
-            ProfileBirth.Visible = false;
-            ProfileConfirmEdit.Visible = true;
-            ProfileCancelEdit.Visible = true;
-            ProfilePasswordLabel.Visible = true;
-            ProfilePassword.Visible = true;
-            ProfileUsername.ReadOnly = false;
-            ProfileFullName.ReadOnly = false;
-            ProfileEmail.ReadOnly = false;
+        public void editProfile(bool invert)
+        {   
+            // invert a false
+            ProfileBalance.Visible = invert;
+            ProfileSex.Visible = invert;
+            ProfileNFollowers.Visible = invert;
+            ProfileNGames.Visible = invert;
+            ProfileBalanceLabel.Visible = invert;
+            ProfileSexLabel.Visible = invert;
+            ProfileFollowersLabel.Visible = invert;
+            ProfileGamesLabel.Visible = invert;
+            EditProfileButton.Visible = invert;
+            ProfileBirthLabel.Visible = invert;
+            ProfileBirth.Visible = invert;
+            ProfileConfirmEdit.Visible = !invert;
+            ProfileCancelEdit.Visible = !invert;
+            ProfilePasswordLabel.Visible = !invert;
+            ProfilePassword.Visible = !invert;
+            ProfileUsername.ReadOnly = invert;
+            ProfileFullName.ReadOnly = invert;
+            ProfileEmail.ReadOnly = invert;
         }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
 
         private void confirmEditProfile(object sender, EventArgs e)
         {
@@ -1117,29 +1133,110 @@ namespace App
             //query para dar update ao profile
             // meter as cenas invisiveis
 
-            MessageBox.Show("Profile has been updated.");
-            ProfileBalance.Visible = true;
-            ProfileSex.Visible = true;
-            ProfileNFollowers.Visible = true;
-            ProfileNGames.Visible = true;
-            ProfileBalanceLabel.Visible = true;
-            ProfileSexLabel.Visible = true;
-            ProfileFollowersLabel.Visible = true;
-            ProfileGamesLabel.Visible = true;
-            EditProfileButton.Visible = true;
-            ProfileBirthLabel.Visible = true;
-            ProfileBirth.Visible = true;
-            ProfileConfirmEdit.Visible = false;
-            ProfileCancelEdit.Visible = false;
-            ProfilePasswordLabel.Visible = false;
-            ProfilePassword.Visible = false;
-            ProfileUsername.ReadOnly = true;
-            ProfileFullName.ReadOnly = true;
-            ProfileEmail.ReadOnly = true;
+            SqlCommand cmd = new SqlCommand("Project.pd_UpdateUser", Program.cn);
+            cmd.CommandType = CommandType.StoredProcedure;
 
+            string email = ProfileEmail.Text;
+            string password = ProfilePassword.Text;
+            string username = ProfileUsername.Text;
+            string fullname = ProfileFullName.Text;
 
+            if (email.Length>0 && IsValidEmail(email))
+            {
+                cmd.Parameters.AddWithValue("@Email", email);
+            }
+            else
+            {
+                MessageBox.Show("That's not a valid email");
+                return;
+            }
 
+            if (password.Length > 4 && password.Length<20)
+            {
+                cmd.Parameters.AddWithValue("@Password", password);
+            }
+            else
+            {
+                MessageBox.Show("Password has to be between 4 and 20 chars long");
+                return;
+            }
 
+            if(username.Length>0 && username.Length < 50)
+            {
+                cmd.Parameters.AddWithValue("@UserName", username);
+            }
+            else
+            {
+                MessageBox.Show("Invalid Username.");
+                return;
+            }
+
+            if (fullname.Length > 3)
+            {
+                cmd.Parameters.AddWithValue("@FullName", fullname);
+            }
+            else
+            {
+                MessageBox.Show("Insert a valid Name");
+                return;
+            }
+
+            cmd.Parameters.AddWithValue("@UserID",Program.currentUser);
+            cmd.Parameters.AddWithValue("@Sex", DBNull.Value);
+            cmd.Parameters.AddWithValue("@Birth", DBNull.Value);
+            cmd.Parameters.Add(new SqlParameter("@responseMsg", SqlDbType.VarChar,255));
+            cmd.Parameters["@responseMsg"].Direction = ParameterDirection.Output;
+            cmd.ExecuteNonQuery();
+
+            Console.WriteLine(cmd.Parameters["@responseMsg"].Value);
+            MessageBox.Show(cmd.Parameters["@responseMsg"].Value.ToString());
+            editProfile(true);
         }
+
+
+        private void LoadProfile()
+        {
+            if (Program.verifySGBDConnection())
+            {
+                editProfile(true);
+                SqlCommand cmd = new SqlCommand("Select Username,FullName,Sex,Birth,Balance From Project.Client where UserID=" + Program.currentUser, Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                ProfileBalance.Text = reader["Balance"].ToString();
+                ProfileBirth.Text = reader["Birth"].ToString().Split(' ').ToArray()[0];
+                ProfileUsername.Text = reader["Username"].ToString();
+                ProfileFullName.Text = reader["FullName"].ToString();
+                ProfileSex.Text = reader["Sex"].ToString();
+
+                reader.Close();
+
+                cmd = new SqlCommand("Select Email From Project.[User] where UserID=" + Program.currentUser, Program.cn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+
+                ProfileEmail.Text = reader["Email"].ToString();
+
+                reader.Close();
+
+                cmd = new SqlCommand("Select Project.udf_countuserFollowers(" + Program.currentUser + ")", Program.cn);
+                int nfollowers = (int)cmd.ExecuteScalar();
+
+                ProfileNFollowers.Text = nfollowers.ToString();
+
+                cmd = new SqlCommand("Select Project.udf_countuserGames(" + Program.currentUser + ")", Program.cn);
+                int ngames = (int)cmd.ExecuteScalar();
+
+                ProfileNGames.Text = ngames.ToString();
+            }
+        }
+
+        private void cancelEditProfile(object sender, EventArgs e)
+        {
+
+            LoadProfile();
+        }
+
+        
     }
 }

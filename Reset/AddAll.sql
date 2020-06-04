@@ -1371,7 +1371,7 @@ CREATE PROCEDURE Project.pd_insertCredit(
 		END
 
 GO
-INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient) VALUES('PayPal','2020-06-03',50.00,2)
+go
 CREATE PROCEDURE Project.pd_insertPurchase(
 	@PurchaseDate DATE,
 	@IDClient INT,
@@ -1453,7 +1453,7 @@ CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 			SELECT * FROM @temp
 		END
 go
-
+go
 CREATE PROCEDURE Project.pd_filter_CreditHistory(
 	@IDClient INT,
 	@MinValue DECIMAL(5,2),
@@ -1483,7 +1483,7 @@ CREATE PROCEDURE Project.pd_filter_CreditHistory(
 				SELECT * FROM @temp
 		END
 GO
-
+go
 CREATE PROCEDURE Project.pd_filter_Games(
 	@MinValue DECIMAL (5,2),
 	@MaxValue DECIMAL (5,2),
@@ -1574,6 +1574,7 @@ go
 EXEC pROJECT.pd_filter_Games null,null,null,null,null,null,null,null,null,NULL
 
 --TRIGGERS
+go
 CREATE TRIGGER Project.trigger_review ON Project.[Reviews]
 instead of insert
 AS
@@ -1666,8 +1667,8 @@ AS
 	END
 
 GO
-
-CREATE PROCEDURE Project.pd_UpdateUser(
+go
+Create PROCEDURE Project.pd_UpdateUser(
 	      @UserID AS INT,
 		  @Email AS VARCHAR(50),
 		  @Password AS VARCHAR(20),
@@ -1675,16 +1676,24 @@ CREATE PROCEDURE Project.pd_UpdateUser(
 		  @FullName AS VARCHAR(MAX),
 		  @Sex AS CHAR(1),
 		  @Birth AS DATE,
-		  @responseMsg VARCHAR(MAX)
+		  @responseMsg VARCHAR(MAX) output
 		 )
 AS
 	BEGIN
 			BEGIN TRY
 				IF @Email IS NOT NULL
 				BEGIN
-					UPDATE Project.[User]
-					SET Email =@Email
-					WHERE UserID=@UserID
+					IF (Select Project.udf_check_email (@Email)) > 0 AND (Select Email From Project.[User] where UserID=@UserID)<>@Email
+					BEGIN
+						SET @responseMsg = 'Email in use'
+						return
+					END
+					ELSE
+					BEGIN
+						UPDATE Project.[User]
+						SET Email =@Email
+						WHERE UserID=@UserID
+					END
 				END
 				IF @Password IS NOT NULL
 				BEGIN
@@ -1694,9 +1703,17 @@ AS
 				END
 				IF @UserName IS NOT NULL
 				BEGIN
-					UPDATE Project.Client
-					SET UserName=@UserName
-					WHERE UserID=@UserID
+					IF (Select Project.udf_check_username(@UserName))>0 and (Select Username From Project.Client where UserID=@UserID)<>@UserName 
+					BEGIN
+						Set @responseMsg = 'Usename in use'
+						return
+					END
+					ELSE
+					BEGIn
+						UPDATE Project.Client
+						SET UserName=@UserName
+						WHERE UserID=@UserID
+					END
 				END
 				IF @Sex IS NOT NULL
 				BEGIN
@@ -1714,7 +1731,7 @@ AS
 	END
 go
 
-
+go
 CREATE FUNCTION Project.[udf_mostSoldGames]() RETURNS TABLE
 AS
 	RETURN (SELECT  top 1000 COUNT(Game.IDGame) as CountPurchases,Game.IDGame, Game.[Name] FROM Project.Purchase 
@@ -1722,7 +1739,7 @@ AS
 	JOIN Project.Game ON Game.IDGame = Copy.IDGame GROUP BY Game.IDGame,Game.Name ORDER BY CountPurchases DESC )
 
 GO
-
+go
 CREATE FUNCTION Project.[udf_leastSoldGames]() RETURNS TABLE
 AS
 	RETURN (SELECT  top 1000 COUNT(Game.IDGame) as CountPurchases,Game.IDGame, Game.[Name] FROM Project.Purchase 
@@ -1753,7 +1770,7 @@ AS
 
 
 GO
-
+go
 CREATE PROCEDURE Project.pd_insert_Games (
 	@Name  VARCHAR(50),
 	@Description VARCHAR(max),

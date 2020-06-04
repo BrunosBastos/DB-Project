@@ -31,7 +31,7 @@ namespace App
                 if (textBox1.Text.Equals(reader["Password"].ToString()))
                 {
                     reader.Close();
-                    cm.editProfile();
+                    cm.editProfile(false);
                     this.Close();
                 }
                 else

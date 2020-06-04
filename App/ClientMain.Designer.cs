@@ -98,6 +98,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.StoreGameReleaseDate = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.StoreOrderBy = new System.Windows.Forms.ComboBox();
             this.StoreAgeRestriction = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.button25 = new System.Windows.Forms.Button();
@@ -125,6 +127,10 @@
             this.StoreSearchGame = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.ProfilePassword = new System.Windows.Forms.TextBox();
+            this.ProfilePasswordLabel = new System.Windows.Forms.Label();
+            this.ProfileEmail = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
             this.ProfileConfirmEdit = new System.Windows.Forms.Button();
             this.ProfileCancelEdit = new System.Windows.Forms.Button();
             this.ProfileNFollowers = new System.Windows.Forms.TextBox();
@@ -214,12 +220,6 @@
             this.PHMaxPrice = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button21 = new System.Windows.Forms.Button();
-            this.StoreOrderBy = new System.Windows.Forms.ComboBox();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.ProfileEmail = new System.Windows.Forms.TextBox();
-            this.ProfilePasswordLabel = new System.Windows.Forms.Label();
-            this.ProfilePassword = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox18.SuspendLayout();
@@ -979,6 +979,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filter";
             // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(257, 192);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(47, 13);
+            this.label51.TabIndex = 100;
+            this.label51.Text = "Order by";
+            // 
+            // StoreOrderBy
+            // 
+            this.StoreOrderBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.StoreOrderBy.FormattingEnabled = true;
+            this.StoreOrderBy.Items.AddRange(new object[] {
+            "Name Asc",
+            "Name Desc",
+            "Date Asc",
+            "Date Desc",
+            "Price Asc",
+            "Price Desc"});
+            this.StoreOrderBy.Location = new System.Drawing.Point(260, 210);
+            this.StoreOrderBy.Name = "StoreOrderBy";
+            this.StoreOrderBy.Size = new System.Drawing.Size(121, 21);
+            this.StoreOrderBy.TabIndex = 99;
+            // 
             // StoreAgeRestriction
             // 
             this.StoreAgeRestriction.Location = new System.Drawing.Point(16, 71);
@@ -1228,6 +1253,42 @@
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Your Profile";
             // 
+            // ProfilePassword
+            // 
+            this.ProfilePassword.Location = new System.Drawing.Point(19, 217);
+            this.ProfilePassword.Name = "ProfilePassword";
+            this.ProfilePassword.PasswordChar = '*';
+            this.ProfilePassword.Size = new System.Drawing.Size(178, 20);
+            this.ProfilePassword.TabIndex = 58;
+            this.ProfilePassword.Visible = false;
+            // 
+            // ProfilePasswordLabel
+            // 
+            this.ProfilePasswordLabel.AutoSize = true;
+            this.ProfilePasswordLabel.Location = new System.Drawing.Point(19, 201);
+            this.ProfilePasswordLabel.Name = "ProfilePasswordLabel";
+            this.ProfilePasswordLabel.Size = new System.Drawing.Size(53, 13);
+            this.ProfilePasswordLabel.TabIndex = 57;
+            this.ProfilePasswordLabel.Text = "Password";
+            this.ProfilePasswordLabel.Visible = false;
+            // 
+            // ProfileEmail
+            // 
+            this.ProfileEmail.Location = new System.Drawing.Point(19, 165);
+            this.ProfileEmail.Name = "ProfileEmail";
+            this.ProfileEmail.ReadOnly = true;
+            this.ProfileEmail.Size = new System.Drawing.Size(178, 20);
+            this.ProfileEmail.TabIndex = 56;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(16, 146);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(32, 13);
+            this.label52.TabIndex = 55;
+            this.label52.Text = "Email";
+            // 
             // ProfileConfirmEdit
             // 
             this.ProfileConfirmEdit.Location = new System.Drawing.Point(113, 265);
@@ -1248,6 +1309,7 @@
             this.ProfileCancelEdit.Text = "Cancel";
             this.ProfileCancelEdit.UseVisualStyleBackColor = true;
             this.ProfileCancelEdit.Visible = false;
+            this.ProfileCancelEdit.Click += new System.EventHandler(this.cancelEditProfile);
             // 
             // ProfileNFollowers
             // 
@@ -1620,9 +1682,9 @@
             this.label46.AutoSize = true;
             this.label46.Location = new System.Drawing.Point(26, 14);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(68, 13);
+            this.label46.Size = new System.Drawing.Size(71, 13);
             this.label46.TabIndex = 11;
-            this.label46.Text = "You Balance";
+            this.label46.Text = "Your Balance";
             // 
             // AddCreditBalance
             // 
@@ -2088,67 +2150,6 @@
             this.button21.Text = "Log Out";
             this.button21.UseVisualStyleBackColor = true;
             this.button21.Click += new System.EventHandler(this.LogOut);
-            // 
-            // StoreOrderBy
-            // 
-            this.StoreOrderBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.StoreOrderBy.FormattingEnabled = true;
-            this.StoreOrderBy.Items.AddRange(new object[] {
-            "Name Asc",
-            "Name Desc",
-            "Date Asc",
-            "Date Desc",
-            "Price Asc",
-            "Price Desc"});
-            this.StoreOrderBy.Location = new System.Drawing.Point(260, 210);
-            this.StoreOrderBy.Name = "StoreOrderBy";
-            this.StoreOrderBy.Size = new System.Drawing.Size(121, 21);
-            this.StoreOrderBy.TabIndex = 99;
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(257, 192);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(47, 13);
-            this.label51.TabIndex = 100;
-            this.label51.Text = "Order by";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(16, 146);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(32, 13);
-            this.label52.TabIndex = 55;
-            this.label52.Text = "Email";
-            // 
-            // ProfileEmail
-            // 
-            this.ProfileEmail.Location = new System.Drawing.Point(19, 165);
-            this.ProfileEmail.Name = "ProfileEmail";
-            this.ProfileEmail.ReadOnly = true;
-            this.ProfileEmail.Size = new System.Drawing.Size(178, 20);
-            this.ProfileEmail.TabIndex = 56;
-            // 
-            // ProfilePasswordLabel
-            // 
-            this.ProfilePasswordLabel.AutoSize = true;
-            this.ProfilePasswordLabel.Location = new System.Drawing.Point(19, 201);
-            this.ProfilePasswordLabel.Name = "ProfilePasswordLabel";
-            this.ProfilePasswordLabel.Size = new System.Drawing.Size(53, 13);
-            this.ProfilePasswordLabel.TabIndex = 57;
-            this.ProfilePasswordLabel.Text = "Password";
-            this.ProfilePasswordLabel.Visible = false;
-            // 
-            // ProfilePassword
-            // 
-            this.ProfilePassword.Location = new System.Drawing.Point(19, 217);
-            this.ProfilePassword.Name = "ProfilePassword";
-            this.ProfilePassword.PasswordChar = '*';
-            this.ProfilePassword.Size = new System.Drawing.Size(178, 20);
-            this.ProfilePassword.TabIndex = 58;
-            this.ProfilePassword.Visible = false;
             // 
             // ClientMain
             // 
