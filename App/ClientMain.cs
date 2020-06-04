@@ -61,6 +61,7 @@ namespace App
             }
             else if (tabControl1.SelectedIndex == 3)
             {
+                LoadFollows();
                 Console.WriteLine("Inside tab Follows");
             }
             else if (tabControl1.SelectedIndex == 4)
@@ -784,6 +785,7 @@ namespace App
 
             CreditAddAmount.Text = "";
             checkedButton.Checked = false;
+            LoadAddCredit();
         }
 
         // Purchase History
@@ -1237,6 +1239,113 @@ namespace App
             LoadProfile();
         }
 
-        
+
+        // Follows
+
+        private void LoadFollows()
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+                // Change this to the procedure for the filters
+
+                SqlCommand cmd = new SqlCommand("Select Username from Project.Client",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listBox5.Items.Add(reader["Username"].ToString());
+                }
+
+                reader.Close();
+
+                cmd = new SqlCommand("Select Username from Project.Follows JOIN Project.Client On Client.UserID=Follows.IDFollowed where IDFollower=" + Program.currentUser, Program.cn);
+                reader = cmd.ExecuteReader();
+
+                listBox7.Items.Clear();
+                while (reader.Read())
+                {
+                    listBox7.Items.Add(reader["Username"].ToString());
+                }
+
+                reader.Close();
+
+                cmd = new SqlCommand("Select Username from Project.Follows JOIN Project.Client On Client.UserID=Follows.IDFollower where IDFollowed=" + Program.currentUser, Program.cn);
+                reader = cmd.ExecuteReader();
+
+                listBox6.Items.Clear();
+                while (reader.Read())
+                {
+                    listBox6.Items.Add(reader["Username"].ToString());
+                }
+
+                reader.Close();
+
+
+
+                if (listBox5.Items.Count > 0)
+                {
+                    listBox5.SelectedIndex = 0;
+                }
+                SeeIfFollows();
+
+            }
+        }
+        private void SwitchUser(object sender, EventArgs e)
+        {
+            SeeIfFollows();
+        }
+
+        private void SeeIfFollows()
+        {
+            if (Program.verifySGBDConnection())
+            {
+                //Project.udf_checkIfFollows(@IDFollower INT , @IDFollowed INT) returns int
+                SqlCommand cmd = new SqlCommand("Select UserID From Project.Client where Username='"+listBox5.SelectedItem.ToString()+"'", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int userid = int.Parse(reader["UserID"].ToString());
+                reader.Close();
+
+                cmd = new SqlCommand("Select Project.udf_checkIfFollows("+Program.currentUser+","+userid+")",Program.cn);
+                int value = (int)cmd.ExecuteScalar();
+
+                if (value > 0)
+                {
+                    FollowsFollow.Visible = false;
+                    FollowsUnfollow.Visible = true;
+                }
+                else
+                {
+                    FollowsFollow.Visible = true;
+                    FollowsUnfollow.Visible = false;
+                }
+            }
+        }
+
+        private void FollowsUnfollow_Click(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+                // deletes line from database?????
+                SqlCommand cmd = new SqlCommand();
+
+
+
+            }
+        }
+
+        private void FollowsFollow_Click(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+                //trigger to insert into the data base???
+                SqlCommand cmd = new SqlCommand();
+
+
+
+            }
+        }
     }
 }

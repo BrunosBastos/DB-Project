@@ -149,7 +149,6 @@
             this.ProfileFollowersLabel = new System.Windows.Forms.Label();
             this.ProfileNGames = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
             this.listBox7 = new System.Windows.Forms.ListBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
@@ -157,8 +156,8 @@
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
+            this.FollowsUnfollow = new System.Windows.Forms.Button();
+            this.FollowsFollow = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
@@ -239,7 +238,6 @@
             this.tabPage3.SuspendLayout();
             this.groupBox10.SuspendLayout();
             this.tabPage4.SuspendLayout();
-            this.groupBox12.SuspendLayout();
             this.groupBox20.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -1442,7 +1440,8 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.groupBox12);
+            this.tabPage4.Controls.Add(this.groupBox20);
+            this.tabPage4.Controls.Add(this.groupBox19);
             this.tabPage4.Controls.Add(this.groupBox11);
             this.tabPage4.Controls.Add(this.groupBox14);
             this.tabPage4.Controls.Add(this.groupBox13);
@@ -1454,21 +1453,10 @@
             this.tabPage4.Text = "Follows";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.groupBox20);
-            this.groupBox12.Controls.Add(this.groupBox19);
-            this.groupBox12.Location = new System.Drawing.Point(27, 349);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(779, 294);
-            this.groupBox12.TabIndex = 5;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "groupBox12";
-            // 
             // groupBox20
             // 
             this.groupBox20.Controls.Add(this.listBox7);
-            this.groupBox20.Location = new System.Drawing.Point(434, 35);
+            this.groupBox20.Location = new System.Drawing.Point(27, 363);
             this.groupBox20.Name = "groupBox20";
             this.groupBox20.Size = new System.Drawing.Size(339, 253);
             this.groupBox20.TabIndex = 1;
@@ -1486,7 +1474,7 @@
             // groupBox19
             // 
             this.groupBox19.Controls.Add(this.listBox6);
-            this.groupBox19.Location = new System.Drawing.Point(6, 35);
+            this.groupBox19.Location = new System.Drawing.Point(405, 363);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(314, 253);
             this.groupBox19.TabIndex = 0;
@@ -1496,7 +1484,7 @@
             // listBox6
             // 
             this.listBox6.FormattingEnabled = true;
-            this.listBox6.Location = new System.Drawing.Point(7, 20);
+            this.listBox6.Location = new System.Drawing.Point(7, 19);
             this.listBox6.Name = "listBox6";
             this.listBox6.Size = new System.Drawing.Size(292, 225);
             this.listBox6.TabIndex = 0;
@@ -1518,11 +1506,12 @@
             this.listBox5.Name = "listBox5";
             this.listBox5.Size = new System.Drawing.Size(293, 264);
             this.listBox5.TabIndex = 0;
+            this.listBox5.SelectedIndexChanged += new System.EventHandler(this.SwitchUser);
             // 
             // groupBox14
             // 
-            this.groupBox14.Controls.Add(this.button14);
-            this.groupBox14.Controls.Add(this.button13);
+            this.groupBox14.Controls.Add(this.FollowsUnfollow);
+            this.groupBox14.Controls.Add(this.FollowsFollow);
             this.groupBox14.Controls.Add(this.button12);
             this.groupBox14.Controls.Add(this.button11);
             this.groupBox14.Location = new System.Drawing.Point(338, 29);
@@ -1532,25 +1521,27 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Options";
             // 
-            // button14
+            // FollowsUnfollow
             // 
-            this.button14.Location = new System.Drawing.Point(32, 125);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(101, 23);
-            this.button14.TabIndex = 3;
-            this.button14.Text = "Unfollow";
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Visible = false;
+            this.FollowsUnfollow.Location = new System.Drawing.Point(32, 125);
+            this.FollowsUnfollow.Name = "FollowsUnfollow";
+            this.FollowsUnfollow.Size = new System.Drawing.Size(101, 23);
+            this.FollowsUnfollow.TabIndex = 3;
+            this.FollowsUnfollow.Text = "Unfollow";
+            this.FollowsUnfollow.UseVisualStyleBackColor = true;
+            this.FollowsUnfollow.Visible = false;
+            this.FollowsUnfollow.Click += new System.EventHandler(this.FollowsUnfollow_Click);
             // 
-            // button13
+            // FollowsFollow
             // 
-            this.button13.Location = new System.Drawing.Point(32, 125);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(101, 23);
-            this.button13.TabIndex = 2;
-            this.button13.Text = "Follow";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Visible = false;
+            this.FollowsFollow.Location = new System.Drawing.Point(32, 125);
+            this.FollowsFollow.Name = "FollowsFollow";
+            this.FollowsFollow.Size = new System.Drawing.Size(101, 23);
+            this.FollowsFollow.TabIndex = 2;
+            this.FollowsFollow.Text = "Follow";
+            this.FollowsFollow.UseVisualStyleBackColor = true;
+            this.FollowsFollow.Visible = false;
+            this.FollowsFollow.Click += new System.EventHandler(this.FollowsFollow_Click);
             // 
             // button12
             // 
@@ -2185,7 +2176,6 @@
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.tabPage4.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
             this.groupBox20.ResumeLayout(false);
             this.groupBox19.ResumeLayout(false);
             this.groupBox11.ResumeLayout(false);
@@ -2306,8 +2296,8 @@
         private System.Windows.Forms.TextBox ProfileNGames;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button FollowsUnfollow;
+        private System.Windows.Forms.Button FollowsFollow;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.GroupBox groupBox13;
@@ -2371,7 +2361,6 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.TextBox AddCreditBalance;
         private System.Windows.Forms.Button ResetFilterCredit;
-        private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.GroupBox groupBox20;
         private System.Windows.Forms.ListBox listBox7;
         private System.Windows.Forms.GroupBox groupBox19;
