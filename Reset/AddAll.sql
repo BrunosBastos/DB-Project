@@ -1971,3 +1971,126 @@ AS
 			END
 	END
 
+GO
+CREATE PROCEDURE Project.pd_insertCompany (
+	@Contact VARCHAR(50),
+	@CompanyName VARCHAR(30),
+	@Website VARCHAR(50),
+	@Logo VARCHAR(MAX),
+	@FoundationDate DATE,
+	@City VARCHAR(50),
+	@Country VARCHAR(50),
+	@res VARCHAR(255) OUTPUT
+)
+AS
+	BEGIN
+		BEGIN TRY
+			INSERT INTO Project.Company (Contact,CompanyName,Website,Logo,FoundationDate,City,Country) VALUES (@Contact,@CompanyName,@Website,@Logo,@FoundationDate,@City,@Country)
+			SET @res='Success inserting New Company!'
+		END TRY
+		BEGIN CATCH
+			SET @res=ERROR_MESSAGE()
+		END CATCH
+	END
+
+GO
+CREATE TRIGGER Project.trigger_Company ON Project.[Company]
+INSTEAD OF INSERT
+	AS
+		BEGIN
+			DECLARE @Contact VARCHAR(50);
+			DECLARE @CompanyName VARCHAR(30);
+			DECLARE @Website VARCHAR(50);
+			DECLARE @Logo VARCHAR(MAX);
+			DECLARE @FoundationDate DATE;
+			DECLARE	@City VARCHAR(50);
+			DECLARE	@Country VARCHAR(50);
+			SELECT @Contact=Contact,@CompanyName=CompanyName,@Website=Website,@Logo=Logo,@FoundationDate=FoundationDate,@City=City,@Country=Country FROM inserted;
+			IF EXISTS (SELECT TOP 1 CompanyName FROM Project.Company WHERE CompanyName=@CompanyName)
+			RAISERROR('This Company Name Already Exists!',16,1)
+			ELSE
+			INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) VALUES (@Contact,@CompanyName,@Website,@Logo,@FoundationDate,@City,@Country)
+		END
+GO
+create PROCEDURE Project.pd_insertDiscount(
+	@PromoCode INT,
+	@Percentage INT,
+	@DateBegin DATE,
+	@DateEnd DATE,
+
+	@res VARCHAR(50)output
+
+)
+AS
+	BEGIN
+	BEGIN TRAN
+		BEGIN TRY
+		INSERT INTO Project.Discount (PromoCode,[Percentage],DateBegin,DateEnd) VALUES (@PromoCode,@Percentage,@DateBegin,@DateEnd)
+		SET @res='Success Inserting new  Discount'
+		END TRY
+		BEGIN CATCH
+			set @res=ERROR_MESSAGE()
+			Rollback
+		END CATCH
+	IF @@TRANCOUNT>0
+	COMMIT TRAN
+END
+
+
+GO
+CREATE TRIGGER Project.trigger_Discount ON Project.Discount
+INSTEAD OF INSERT
+AS
+	BEGIN
+		DECLARE @PromoCode INT;
+		DECLARE		@Percentage INT;
+		DECLARE		@DateBegin DATE;
+		DECLARE		@DateEnd DATE;
+		DECLARE		@IDGame INT;
+		SELECT @PromoCode=PromoCode,@Percentage=[Percentage],@DateBegin=DateBegin,@DateEnd=DateEnd from inserted
+		IF EXISTS (SELECT TOP 1 PromoCode FROM Project.Discount WHERE Discount.PromoCode = @PromoCode) 
+			RAISERROR('This PromoCode already exists!',16,1)
+		ELSE
+			INSERT INTO Project.Discount (PromoCode,[Percentage],DateBegin,DateEnd) VALUES (@PromoCode,@Percentage,@DateBegin,@DateEnd)
+	END
+GO
+
+CREATE PROCEDURE Project.pd_insertDiscountGame(
+	@PromoCode INT,
+	@IDGame INT,
+	@res varchar(255) output
+)
+AS
+	BEGIN
+	BEGIN TRY
+		DECLARE @tempPer INT;
+		SET @tempPer = (SELECT TOP 1 * FROM Project.[udf_checkGameDiscount](@IDGame))
+		IF @tempPer IS NOT NULL
+			raiserror('Cannot Insert a Discount to This Game, because it has already one active',16,1)
+		ELSE
+		BEGIN
+			INSERT INTO Project.DiscountGame VALUES(@PromoCode,@IDGame)
+			SET @res='Success aplying this Discount to this Game!'
+		END
+	END TRY
+	BEGIN CATCH
+		SET @res=ERROR_MESSAGE()
+	END CATCH
+	END
+GO
+CREATE TRIGGER Project.trigger_DiscountGame ON Project.DiscountGame
+INSTEAD OF INSERT
+	AS
+		BEGIN 
+			DECLARE @PromoCode INT;
+			DECLARE @IDGame INT;
+			SELECT @PromoCode=PromoCode,@IDGame=IDGame FROM inserted;
+			IF NOT EXISTS (SELECT TOP 1 PromoCode	FROM Project.Discount WHERE PromoCode=@PromoCode)
+				raiserror('This Promotional Code does not exist!',16,1)
+			IF NOT EXISTS (SELECT TOP 1 IDGame	FROM Project.Game WHERE IDGame=@IDGame)
+				raiserror('This Game does not exist!',16,1)
+			IF EXISTS (SELECT TOP 1 PromoCode FROM Project.DiscountGame  WhERE DiscountGame.IDGame=@IDGame AND DiscountGame.PromoCode=@PromoCode)
+				raiserror('Cannot Insert same Discount to the Same Game',16,1)
+			else
+				INSERT INTO Project.DiscountGame VALUES(@PromoCode,@IDGame)
+		END
