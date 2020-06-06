@@ -61,6 +61,7 @@ namespace App
             }
             else if (tabControl1.SelectedIndex == 3)
             {
+                FollowsReset(null,null);
                 LoadFollows();
                 Console.WriteLine("Inside tab Follows");
             }
@@ -1249,9 +1250,42 @@ namespace App
 
                 // Change this to the procedure for the filters
 
-                SqlCommand cmd = new SqlCommand("Select Username from Project.Client",Program.cn);
+                //SqlCommand cmd = new SqlCommand("Select Username from Project.Client",Program.cn);
+                //SqlDataReader reader = cmd.ExecuteReader();
+
+                SqlCommand cmd = new SqlCommand("Project.pd_getUserFilter",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                string email = FollowsEmailInput.Text;
+                string username = FollowsUsernameInput.Text;
+                string orderby = FollowsOrderby.Text;
+
+                if (email.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@email", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                }
+
+                if(username.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@username", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                }
+
+                cmd.Parameters.AddWithValue("@orderby", orderby.Replace(" ","")) ;
+                cmd.Parameters.AddWithValue("@IDClient", Program.currentUser);
+                cmd.Connection = Program.cn;
+                cmd.ExecuteNonQuery();
+
                 SqlDataReader reader = cmd.ExecuteReader();
 
+                listBox5.Items.Clear();
                 while (reader.Read())
                 {
                     listBox5.Items.Add(reader["Username"].ToString());
@@ -1301,6 +1335,10 @@ namespace App
             if (Program.verifySGBDConnection())
             {
                 //Project.udf_checkIfFollows(@IDFollower INT , @IDFollowed INT) returns int
+                if (listBox5.Items.Count == 0)
+                {
+                    return;
+                }
                 SqlCommand cmd = new SqlCommand("Select UserID From Project.Client where Username='"+listBox5.SelectedItem.ToString()+"'", Program.cn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
@@ -1346,6 +1384,19 @@ namespace App
 
 
             }
+        }
+
+        private void FollowsApply(object sender, EventArgs e)
+        {
+            LoadFollows();
+        }
+
+        private void FollowsReset(object sender, EventArgs e)
+        {
+            FollowsEmailInput.Text = "";
+            FollowsUsernameInput.Text = "";
+            FollowsOrderby.SelectedIndex = 0;
+            LoadFollows();
         }
     }
 }

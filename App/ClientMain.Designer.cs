@@ -161,11 +161,13 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.textBox35 = new System.Windows.Forms.TextBox();
+            this.FollowsResetFilter = new System.Windows.Forms.Button();
+            this.FollowsApplyFilter = new System.Windows.Forms.Button();
+            this.FollowsEmailInput = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox34 = new System.Windows.Forms.TextBox();
+            this.FollowsOrderby = new System.Windows.Forms.ComboBox();
+            this.FollowsUsernameInput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -1563,25 +1565,47 @@
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.textBox35);
+            this.groupBox13.Controls.Add(this.FollowsResetFilter);
+            this.groupBox13.Controls.Add(this.FollowsApplyFilter);
+            this.groupBox13.Controls.Add(this.FollowsEmailInput);
             this.groupBox13.Controls.Add(this.label29);
             this.groupBox13.Controls.Add(this.label15);
-            this.groupBox13.Controls.Add(this.comboBox1);
-            this.groupBox13.Controls.Add(this.textBox34);
+            this.groupBox13.Controls.Add(this.FollowsOrderby);
+            this.groupBox13.Controls.Add(this.FollowsUsernameInput);
             this.groupBox13.Controls.Add(this.label1);
             this.groupBox13.Location = new System.Drawing.Point(519, 29);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(200, 217);
+            this.groupBox13.Size = new System.Drawing.Size(200, 300);
             this.groupBox13.TabIndex = 2;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Filter";
             // 
-            // textBox35
+            // FollowsResetFilter
             // 
-            this.textBox35.Location = new System.Drawing.Point(21, 105);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(173, 20);
-            this.textBox35.TabIndex = 5;
+            this.FollowsResetFilter.Location = new System.Drawing.Point(56, 260);
+            this.FollowsResetFilter.Name = "FollowsResetFilter";
+            this.FollowsResetFilter.Size = new System.Drawing.Size(75, 23);
+            this.FollowsResetFilter.TabIndex = 7;
+            this.FollowsResetFilter.Text = "ResetFilter";
+            this.FollowsResetFilter.UseVisualStyleBackColor = true;
+            this.FollowsResetFilter.Click += new System.EventHandler(this.FollowsReset);
+            // 
+            // FollowsApplyFilter
+            // 
+            this.FollowsApplyFilter.Location = new System.Drawing.Point(56, 216);
+            this.FollowsApplyFilter.Name = "FollowsApplyFilter";
+            this.FollowsApplyFilter.Size = new System.Drawing.Size(75, 23);
+            this.FollowsApplyFilter.TabIndex = 6;
+            this.FollowsApplyFilter.Text = "Apply Filter";
+            this.FollowsApplyFilter.UseVisualStyleBackColor = true;
+            this.FollowsApplyFilter.Click += new System.EventHandler(this.FollowsApply);
+            // 
+            // FollowsEmailInput
+            // 
+            this.FollowsEmailInput.Location = new System.Drawing.Point(21, 105);
+            this.FollowsEmailInput.Name = "FollowsEmailInput";
+            this.FollowsEmailInput.Size = new System.Drawing.Size(173, 20);
+            this.FollowsEmailInput.TabIndex = 5;
             // 
             // label29
             // 
@@ -1601,23 +1625,26 @@
             this.label15.TabIndex = 3;
             this.label15.Text = "Order by";
             // 
-            // comboBox1
+            // FollowsOrderby
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Number of Games",
-            "Number of Followers"});
-            this.comboBox1.Location = new System.Drawing.Point(21, 163);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
+            this.FollowsOrderby.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FollowsOrderby.FormattingEnabled = true;
+            this.FollowsOrderby.Items.AddRange(new object[] {
+            "Username Asc",
+            "Username Desc",
+            "Email Asc",
+            "Email Desc"});
+            this.FollowsOrderby.Location = new System.Drawing.Point(21, 163);
+            this.FollowsOrderby.Name = "FollowsOrderby";
+            this.FollowsOrderby.Size = new System.Drawing.Size(121, 21);
+            this.FollowsOrderby.TabIndex = 2;
             // 
-            // textBox34
+            // FollowsUsernameInput
             // 
-            this.textBox34.Location = new System.Drawing.Point(23, 51);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(171, 20);
-            this.textBox34.TabIndex = 1;
+            this.FollowsUsernameInput.Location = new System.Drawing.Point(23, 51);
+            this.FollowsUsernameInput.Name = "FollowsUsernameInput";
+            this.FollowsUsernameInput.Size = new System.Drawing.Size(171, 20);
+            this.FollowsUsernameInput.TabIndex = 1;
             // 
             // label1
             // 
@@ -2301,11 +2328,11 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.TextBox textBox35;
+        private System.Windows.Forms.TextBox FollowsEmailInput;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox34;
+        private System.Windows.Forms.ComboBox FollowsOrderby;
+        private System.Windows.Forms.TextBox FollowsUsernameInput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabControl tabControl2;
@@ -2393,5 +2420,7 @@
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.TextBox ProfilePassword;
         private System.Windows.Forms.Label ProfilePasswordLabel;
+        private System.Windows.Forms.Button FollowsResetFilter;
+        private System.Windows.Forms.Button FollowsApplyFilter;
     }
 }
