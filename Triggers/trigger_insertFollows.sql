@@ -24,8 +24,20 @@ as
 		else if @temp=1
 			raiserror('User is already being followed',16,1);
 	end
-
-Select * from Project.Follows;
-
-insert into Project.Follows values(8,2)
-select Project.udf_checkIfFollows(4,3)
+go
+CREATE PROCEDURE Project.pd_insertFollows(
+	@IDFollower INT,
+	@IDFollowed INT,
+	@res VARCHAR(255) output
+	)
+	AS
+	BEGIN
+		BEGIN TRY
+			INSERT INTO Project.Follows values(@IDFollower,@IDFollowed)
+			SET @res='Success inserting new Follower'
+		END TRY
+		BEGIN CATCH
+			SET @res=ERROR_MESSAGE()
+		END CATCH
+	END
+go
