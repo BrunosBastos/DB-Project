@@ -33,4 +33,4 @@ as
 	end
 go
 
-exec Project.pd_getUserFilter 2,'Coco','A',null
+exec Project.pd_getUserFilter 2,null,'A',null
