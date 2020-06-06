@@ -201,7 +201,6 @@ INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('Wesley_Shields
 INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('leandrocoelhom@gmail.com', ENCRYPTBYPASSPHRASE('**********','BxjthfZPFX'), '2020-01-01')
 INSERT INTO Project.[User](Email,[Password],RegisterDate) VALUES('procsplayerdaubi@gmail.com', ENCRYPTBYPASSPHRASE('**********','sLMfQeyTT6'), '2019-12-02')
 
-
 -- insert admin
 INSERT INTO Project.[Admin](UserID) VALUES (1);
 
@@ -219,64 +218,64 @@ INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance) Values(10
 -- inser Company
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('beth@softworks.com','Bethesda Softworks','www.bethesda.net',NULL,'1986-06-28','Rockville, Maryland','United States');
+VALUES ('beth@softworks.com','Bethesda Softworks','www.bethesda.net','i2.wp.com/www.inforumatik.com/wp-content/uploads/2017/04/data.images.authors.bgs_gear-black.png?resize=256%2C256&ssl=1','1986-06-28','Rockville, Maryland','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('privacy_policy@ea.com','Electronic Arts', 'www.ea.com',NULL,'1982-05-27', 'Redwood City,California','United States');
+VALUES ('privacy_policy@ea.com','Electronic Arts', 'www.ea.com','cdn.iconscout.com/icon/free/png-256/electronic-arts-2-761658.png','1982-05-27', 'Redwood City,California','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('squareenix@se.com','	Square Enix','www.square-enix-games.com',NULL,'1975-09-22','Shinjuku, Tokyo','Japan');
+VALUES ('squareenix@se.com','	Square Enix','www.square-enix-games.com','www.ssbwiki.com/images/a/a6/DragonQuestSymbol.svg','1975-09-22','Shinjuku, Tokyo','Japan');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('rockstargames@rs.com','Rockstar Games','www.rockstargames.com',NULL,'1998-12-01','New York City, New York','United States');
+VALUES ('rockstargames@rs.com','Rockstar Games','www.rockstargames.com','cdn.iconscout.com/icon/free/png-256/rockstar-4-282963.png','1998-12-01','New York City, New York','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('beth@softworks.com','Tencent Games','www.tencent.com',NULL,'1998-11-11','Nanshan,Shenzen','China');
+VALUES ('beth@softworks.com','Tencent Games','www.tencent.com','img.tapimg.com/market/images/07f7fbba25187f74f1509e17fabd3a91.png?imageView2/1/w/256/q/40/interlace/1/ignore-error/1','1998-11-11','Nanshan,Shenzen','China');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('easports@ea.com','EA Sports','www.easports.com',NULL,'1991-01-01','Redwood City,California','United States');
+VALUES ('easports@ea.com','EA Sports','www.easports.com','pbs.twimg.com/profile_images/617071953053028352/AhRCgQq7_400x400.jpg','1991-01-01','Redwood City,California','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('konami@pes.com','Konami','www.konami.com',NULL,'1969-03-21','Tokyo','Japan');
+VALUES ('konami@pes.com','Konami','www.konami.com','res-1.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1471973547/adsebqux5ocydnqlpv95.png','1969-03-21','Tokyo','Japan');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('sonygames@sony.com','Sony Interactive Entertainment','www.sie.com',NULL,'1993-11-16','San Mateo, California','United States');
+VALUES ('sonygames@sony.com','Sony Interactive Entertainment','www.sie.com','logospng.org/download/sony/logo-sony-256.png','1993-11-16','San Mateo, California','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('microstudios@micro.pt','Xbox Game Studios','www.microsoftstudios.com',NULL,'2002-01-01','Redmond, Washington','United States');
+VALUES ('microstudios@micro.pt','Xbox Game Studios','www.microsoftstudios.com','tweaks.com/img/cat/300.jpg','2002-01-01','Redmond, Washington','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('activision@contact.com','Activision','www.activision.com',NULL,'1979-10-01','Santa Monica, California','United States');
+VALUES ('activision@contact.com','Activision','www.activision.com','res-2.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/w099gxyaawn8mjsld0rx','1979-10-01','Santa Monica, California','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('billing@blizzard.com','Blizzard Entertainment','www.blizzard.com',NULL,'1991-02-08','Irving, California','United States');
+VALUES ('billing@blizzard.com','Blizzard Entertainment','www.blizzard.com','dl1.cbsistatic.com/i/2019/06/20/1beee23f-1b12-4364-99c3-ce915d44a160/ca8589b0643aa68e02dcbd0921634cf0/imgingest-286371551299044459.png','1991-02-08','Irving, California','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('dmca@noa.nintendo.com','Nintendo','www.nintendo.com',NULL,'1889-09-23','Kyoto','Japan');
+VALUES ('dmca@noa.nintendo.com','Nintendo','www.nintendo.com','cdn.iconscout.com/icon/free/png-256/nintendo-6-282132.png','1889-09-23','Kyoto','Japan');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('bandai@namco.com','BANDAI NAMCO Entertainment','www.bandainamcoent.com',NULL,'2006-03-31','	Tokyo','Japan');
+VALUES ('bandai@namco.com','BANDAI NAMCO Entertainment','www.bandainamcoent.com','res-4.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1418805261/dhgs17yoampfadyglg62.jpg','2006-03-31','	Tokyo','Japan');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('cap@com.com','Capcom','www.capcom.co.jp',NULL,'1979-05-30','Osaka','Japan');
+VALUES ('cap@com.com','Capcom','www.capcom.co.jp','cdn.iconscout.com/icon/free/png-256/capcom-285355.png','1979-05-30','Osaka','Japan');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('press@wizards.com','Wizards of the Coast','company.wizards.com',NULL,'1990-01-01','Renton, Washington','United States');
+VALUES ('press@wizards.com','Wizards of the Coast','company.wizards.com','pbs.twimg.com/profile_images/378800000138698413/5c74ebfc0015676be7b1cca2bd8c924a.jpeg','1990-01-01','Renton, Washington','United States');
     
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('ubi@mail.com','Ubisoft','www.ubisoft.com',NULL,'1986-03-12','Montreuil','France');
+VALUES ('ubi@mail.com','Ubisoft','www.ubisoft.com','triangle-studios.com/wp-content/uploads/2015/11/logo_ubisoft.png','1986-03-12','Montreuil','France');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('contact@epic.com','Epic Games','www.epicgames.com',NULL,'1991-01-01','Cary, North Carolina','United States');
+VALUES ('contact@epic.com','Epic Games','www.epicgames.com','img.informer.com/icons_mac/png/128/444/444398.png','1991-01-01','Cary, North Carolina','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES (NULL,'Riot games','www.riotgames.com',NULL,'2006-08-31','Los Angeles, California','United States');
+VALUES (NULL,'Riot games','www.riotgames.com','s3.us-east-2.amazonaws.com/upload-icon/uploads/icons/png/14871393811551942295-256.png','2006-08-31','Los Angeles, California','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('contact@valvesoftware.com','Valve','www.valvesoftware.com',NULL,'1996-09-24','Belleveue, Washington','United States');
+VALUES ('contact@valvesoftware.com','Valve','www.valvesoftware.com','cdn.iconscout.com/icon/free/png-256/valve-51-286093.png','1996-09-24','Belleveue, Washington','United States');
 
 INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) 
-VALUES ('wbsf@warnerbros.com','Warner Bros Int. Entertainment','www.wbgames.com',NULL,'1993-06-23','Burbank, California','United States');
+VALUES ('wbsf@warnerbros.com','Warner Bros Int. Entertainment','www.wbgames.com','res-4.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1464182490/wu53830rljaewbldv1no.png','1993-06-23','Burbank, California','United States');
 
 -- insert franchise
 
@@ -1734,11 +1733,13 @@ go
 go
 CREATE FUNCTION Project.[udf_mostSoldGames]() RETURNS TABLE
 AS
-	RETURN (SELECT  top 1000 COUNT(Game.IDGame) as CountPurchases,Game.IDGame, Game.[Name] FROM Project.Purchase 
+	RETURN (SELECT  top 1000 COUNT(Game.IDGame) as CountPurchases,Game.IDGame, Game.[Name], SUM(Purchase.Price) as Revenue FROM Project.Purchase 
 	JOIN Project.[Copy] ON [Copy].SerialNum=Purchase.SerialNum 
-	JOIN Project.Game ON Game.IDGame = Copy.IDGame GROUP BY Game.IDGame,Game.Name ORDER BY CountPurchases DESC )
+	JOIN Project.Game ON Game.IDGame = Copy.IDGame GROUP BY Game.IDGame,Game.Name,Purchase.Price ORDER BY CountPurchases DESC )
 
-GO
+go
+CREATE FUNCTION Project.udf_getTotalMoney() RETURNS TABLE
+	RETURN((select SUM(Revenue) AS totMoney FROM Project.udf_mostSoldGames()))
 go
 CREATE FUNCTION Project.[udf_leastSoldGames]() RETURNS TABLE
 AS
@@ -1770,7 +1771,7 @@ AS
 
 
 GO
-go
+
 CREATE PROCEDURE Project.pd_insert_Games (
 	@Name  VARCHAR(50),
 	@Description VARCHAR(max),
@@ -1894,7 +1895,6 @@ CREATE PROCEDURE Project.pd_insertGenres (
 	END
 
 go
-
 
 
 CREATE PROCEDURE Project.pd_insertFranchise(
