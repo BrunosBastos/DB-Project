@@ -1562,6 +1562,7 @@
             this.button11.TabIndex = 0;
             this.button11.Text = "View Profile";
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.FollowsViewProfile);
             // 
             // groupBox13
             // 

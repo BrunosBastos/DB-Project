@@ -1293,29 +1293,7 @@ namespace App
 
                 reader.Close();
 
-                cmd = new SqlCommand("Select Username from Project.Follows JOIN Project.Client On Client.UserID=Follows.IDFollowed where IDFollower=" + Program.currentUser, Program.cn);
-                reader = cmd.ExecuteReader();
-
-                listBox7.Items.Clear();
-                while (reader.Read())
-                {
-                    listBox7.Items.Add(reader["Username"].ToString());
-                }
-
-                reader.Close();
-
-                cmd = new SqlCommand("Select Username from Project.Follows JOIN Project.Client On Client.UserID=Follows.IDFollower where IDFollowed=" + Program.currentUser, Program.cn);
-                reader = cmd.ExecuteReader();
-
-                listBox6.Items.Clear();
-                while (reader.Read())
-                {
-                    listBox6.Items.Add(reader["Username"].ToString());
-                }
-
-                reader.Close();
-
-
+                updateFollowsLists();
 
                 if (listBox5.Items.Count > 0)
                 {
@@ -1328,6 +1306,32 @@ namespace App
         private void SwitchUser(object sender, EventArgs e)
         {
             SeeIfFollows();
+        }
+
+        private void updateFollowsLists()
+        {
+            SqlCommand cmd = new SqlCommand("Select Username from Project.Follows JOIN Project.Client On Client.UserID=Follows.IDFollowed where IDFollower=" + Program.currentUser, Program.cn);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            listBox7.Items.Clear();
+            while (reader.Read())
+            {
+                listBox7.Items.Add(reader["Username"].ToString());
+            }
+
+            reader.Close();
+
+            cmd = new SqlCommand("Select Username from Project.Follows JOIN Project.Client On Client.UserID=Follows.IDFollower where IDFollowed=" + Program.currentUser, Program.cn);
+            reader = cmd.ExecuteReader();
+
+            listBox6.Items.Clear();
+            while (reader.Read())
+            {
+                listBox6.Items.Add(reader["Username"].ToString());
+            }
+
+            reader.Close();
+
         }
 
         private void SeeIfFollows()
@@ -1365,8 +1369,31 @@ namespace App
         {
             if (Program.verifySGBDConnection())
             {
-                // deletes line from database?????
-                SqlCommand cmd = new SqlCommand();
+                string username = listBox5.SelectedItem.ToString();
+                SqlCommand cmd = new SqlCommand("Select UserID From Project.Client where Username='" + username + "'", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int val = int.Parse(reader["UserID"].ToString());
+                reader.Close();
+
+                cmd = new SqlCommand("Project.pd_deleteFollows",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IDFollower",Program.currentUser);
+                cmd.Parameters.AddWithValue("@IDFollowed", val);
+                cmd.Parameters.Add(new SqlParameter("@res",SqlDbType.VarChar,255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+
+                if (cmd.Parameters["@res"].Value.ToString().Equals("Success"))
+                {
+                    MessageBox.Show("User is no longer being followed");
+                    SeeIfFollows();
+                    updateFollowsLists();
+                }
+                else
+                {
+                    MessageBox.Show("User was not being followed.");
+                }
 
 
 
@@ -1377,11 +1404,31 @@ namespace App
         {
             if (Program.verifySGBDConnection())
             {
+                string username = listBox5.SelectedItem.ToString();
+                SqlCommand cmd = new SqlCommand("Select UserID From Project.Client where Username='"+username+"'",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int val = int.Parse(reader["UserID"].ToString());
+                reader.Close();
 
-                //trigger to insert into the data base???
-                SqlCommand cmd = new SqlCommand();
+                cmd = new SqlCommand("Project.pd_insertFollows",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@IDFollower",Program.currentUser);
+                cmd.Parameters.AddWithValue("@IDFollowed", val);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
 
-
+                if(cmd.Parameters["@res"].Value.ToString().Equals("Success inserting new Follower"))
+                {
+                    MessageBox.Show("User is now being followed.");
+                    SeeIfFollows();
+                    updateFollowsLists();
+                }
+                else
+                {
+                    MessageBox.Show("User is already being followed.");
+                }
 
             }
         }
@@ -1397,6 +1444,23 @@ namespace App
             FollowsUsernameInput.Text = "";
             FollowsOrderby.SelectedIndex = 0;
             LoadFollows();
+        }
+
+        private void FollowsViewProfile(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+                string username = listBox5.SelectedItem.ToString();
+                SqlCommand cmd = new SqlCommand("Select UserID From Project.Client where Username='" + username + "'", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                int val = int.Parse(reader["UserID"].ToString());
+                reader.Close();
+                ViewProfile vp = new ViewProfile(val);
+                vp.ShowDialog();
+                
+            }
         }
     }
 }
