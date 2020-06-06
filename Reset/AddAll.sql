@@ -12,7 +12,7 @@ CREATE TABLE Project.[User](
 );
 
 CREATE TABLE Project.[Admin](
-    USERID      INT,
+    UserID      INT,
     PRIMARY KEY (USERID)
 );
 
@@ -2094,3 +2094,67 @@ INSTEAD OF INSERT
 			else
 				INSERT INTO Project.DiscountGame VALUES(@PromoCode,@IDGame)
 		END
+
+GO
+CREATE PROCEDURE Project.pd_insertAdmin(
+	@UserID INT,
+	@res VARCHAR(255) OUTPUT
+)
+	AS
+		BEGIN
+		BEGIN TRY
+			INSERT INTO Project.[Admin] VALUES (@UserID)
+			SET @res='Success inserting new Admin!'
+		END TRY
+		BEGIN CATCH
+			SET @res=ERROR_MESSAGE();
+		END CATCH
+		END
+go
+CREATE TRIGGER Project.trigger_Admin ON Project.[Admin]
+INSTEAD OF INSERT
+	AS
+		BEGIN
+			DECLARE @UserID INT;
+			SELECT @UserID = UserID FROM inserted;
+			IF EXISTS (SELECT TOP 1 UserID FROM Project.[Admin] WHERE UserID=@UserID)
+				raiserror('This User is already an Admin of the Platform!',16,1)
+			IF EXISTS (SELECT TOP 1 UserID FROM Project.[Client] WHERE UserID=@UserID)
+				raiserror('Cannot be a Client and Admin at the same Time!',16,1)
+			ELSE
+				INSERT INTO Project.[Admin] VALUES (@UserID)
+		END
+
+
+GO
+CREATE PROCEDURE Project.pd_insertUser (
+	@Email VARCHAR(50),
+	@Password VARCHAR(20),
+	@RegisterDate DATE,
+	@res VARCHAR(255) OUTPUT)
+	AS
+		BEGIN
+		BEGIN TRY
+			INSERT INTO Project.[User] (Email,[Password],RegisterDate) VALUES(@Email,ENCRYPTBYPASSPHRASE('**********',@Password),@RegisterDate)
+			SET @res='Success inserting new User!'
+		END TRY
+		BEGIN CATCH
+			SET  @res=ERROR_MESSAGE()
+		END CATCH
+		END
+go
+
+CREATE TRIGGER Project.trigger_User ON Project.[User]
+INSTEAD OF INSERT
+	AS
+		BEGIN
+			DECLARE  @Email VARCHAR(50);
+			DECLARE	 @Password VARCHAR(30);
+			DECLARE	 @RegisterDate DATE;
+			SELECT @Email=Email,@Password=CONVERT(VARCHAR(20),DECRYPTBYPASSPHRASE('**********',[Password])),@RegisterDate=RegisterDate  FROM inserted
+			IF ( (SELECT Project.udf_check_email(@Email)) = 1 )
+				raiserror('Email already in use',16,1)
+			ELSE
+				INSERT INTO Project.[User] (Email,[Password],RegisterDate) VALUES(@Email,ENCRYPTBYPASSPHRASE('**********',@Password),@RegisterDate)
+		END
+go
