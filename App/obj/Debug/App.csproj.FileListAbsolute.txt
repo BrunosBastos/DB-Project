@@ -37,3 +37,4 @@ C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug
 C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug\App.ViewReviews.resources
 C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug\App.ListGameOwners.resources
 C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug\App.EditProfile.resources
+C:\Users\Bruno Bastos\OneDrive\Área de Trabalho\BD\Git\DB-Project\App\obj\Debug\App.CompareGames.resources

@@ -64,6 +64,12 @@
     <Compile Include="CompanyDetails.Designer.cs">
       <DependentUpon>CompanyDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="CompareGames.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompareGames.Designer.cs">
+      <DependentUpon>CompareGames.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateReview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CompanyDetails.resx">
       <DependentUpon>CompanyDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompareGames.resx">
+      <DependentUpon>CompareGames.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateReview.resx">
       <DependentUpon>CreateReview.cs</DependentUpon>

@@ -1462,5 +1462,19 @@ namespace App
                 
             }
         }
+
+        private void compareGames(object sender, EventArgs e)
+        {
+            string username = listBox5.SelectedItem.ToString();
+            SqlCommand cmd = new SqlCommand("Select UserID From Project.Client where Username='" + username + "'", Program.cn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            int val = int.Parse(reader["UserID"].ToString());
+            reader.Close();
+
+            CompareGames cg = new CompareGames(val);
+            cg.ShowDialog();
+
+        }
     }
 }

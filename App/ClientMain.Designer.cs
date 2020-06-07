@@ -1553,6 +1553,7 @@
             this.button12.TabIndex = 1;
             this.button12.Text = "Compare Games";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.compareGames);
             // 
             // button11
             // 

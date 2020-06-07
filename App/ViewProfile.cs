@@ -35,43 +35,99 @@ namespace App
                 NFollowers.Text = nfollowers.ToString();
 
                 // query to get 
-                cmd = new SqlCommand("SELECT Username,FullName,Sex,Birth From Project.Client where UserID=" + UserID, Program.cn);
+                cmd = new SqlCommand("SELECT Username From Project.Client where UserID=" + UserID, Program.cn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
 
                 Username.Text = reader["Username"].ToString();
-                FullName.Text = reader["FullName"].ToString();
-                Birth.Text = reader["Birth"].ToString().Split(' ').ToArray()[0];
-                Sex.Text = reader["Sex"].ToString();
+               
 
                 reader.Close();
 
-                cmd = new SqlCommand("Select Email From Project.[User] where UserID=" + UserID,Program.cn);
-                reader = cmd.ExecuteReader();
-                reader.Read();
-
-                Email.Text = reader["Email"].ToString();
-                reader.Close();
-
-                cmd = new SqlCommand("Select Project.udf_checkIfFollows("+Program.currentUser+","+UserID+")",Program.cn);
-                int value = (int)cmd.ExecuteScalar();
-                if (value > 0)
-                {
-                    button1.Text = "Unfollow";
-                }
-                else
-                {
-                    button1.Text = "Follow";
-                }
+                seeIfFollows();
+                
 
             }
 
 
         }
 
+        private void seeIfFollows()
+        {
+
+            SqlCommand cmd = new SqlCommand("Select Project.udf_checkIfFollows(" + Program.currentUser + "," + UserID + ")", Program.cn);
+            int value = (int)cmd.ExecuteScalar();
+            if (value > 0)
+            {
+                Follow.Visible = false;
+                Unfollow.Visible = true;
+            }
+            else
+            {
+                Follow.Visible = true;
+                Unfollow.Visible = false;
+            }
+
+        }
+
+
         private void CloseProfile(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void unfollow(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Project.pd_deleteFollows",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@IDFollower", Program.currentUser);
+                cmd.Parameters.AddWithValue("@IDFollowed", UserID);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+                if (cmd.Parameters["@res"].Value.ToString().Equals("Success"))
+                {
+                    MessageBox.Show("User no longer being followed");
+                    seeIfFollows();
+                }
+                else
+                {
+                    MessageBox.Show("Could not unfollow the user");
+                }
+
+            }
+        }
+
+        private void follow(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Project.pd_insertFollows",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@IDFollower",Program.currentUser);
+                cmd.Parameters.AddWithValue("@IDFollowed", UserID);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+                if (cmd.Parameters["@res"].Value.ToString().Equals("Success inserting new Follower"))
+                {
+                    MessageBox.Show("User is now being followed");
+                    seeIfFollows();
+                }
+                else
+                {
+                    MessageBox.Show("User is already being followed");
+                }
+
+
+            }
         }
     }
 }
