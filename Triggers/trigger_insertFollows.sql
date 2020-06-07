@@ -41,3 +41,20 @@ CREATE PROCEDURE Project.pd_insertFollows(
 		END CATCH
 	END
 go
+
+Create Procedure Project.pd_deleteFollows(
+	@IDFollower INT,
+	@IDFollowed INT,
+	@res VARCHAR(255) output
+	)
+	as
+	begin
+		begin try
+			delete from Project.Follows where IDFollowed=@IDFollowed and IDFollower=@IDFollower
+			set @res='Success'
+		end try
+		begin catch
+			set @res=ERROR_MESSAGE()
+		END CATCH
+	END
+
