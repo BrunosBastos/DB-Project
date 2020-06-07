@@ -1020,16 +1020,6 @@ AS
 GO
 
 
-GO
-CREATE FUNCTION Project.[udf_countuserGames] (@IDClient INT) RETURNS INT
-AS 
-	begin
-			DECLARE @counter AS INT;
-			SELECT @counter= COUNT( IDGame) FROM Project.[udf_checkusersgames] (@IDClient);
-	
-				RETURN @counter
-	end
-GO
 CREATE FUNCTION Project.[udf_userfollowers] (@IDClient INT) RETURNS TABLE
 AS
 	RETURN ( SELECT IDFollower FROM  Project.Follows WHERE Follows.IDFollowed =  @IDClient)
@@ -1040,17 +1030,7 @@ SELECT * FROM Project.[udf_userfollowers] (2)
 
 GO
 
-create FUNCTION Project.[udf_countuserFollowers] (@IDClient INT) RETURNS INT
-AS 
-	begin
-			DECLARE @counter AS INT;
-			SELECT @counter= COUNT( IDFollower) FROM Project.[udf_userfollowers] (@IDClient);
-			RETURN @counter
-	end
-GO
 
-
-GO
 
 go
 --Check the people that we follow that have a  specific game in common with the client itself 
@@ -1144,18 +1124,6 @@ AS
 	where Reviews.IDGame=@IDGame);
 go
 
-go
-CREATE FUNCTION Project.[udf_getNumberOfReviews] (@IDGame INT) RETURNS INT
-AS
-	Begin
-		DECLARE @ret as int;
-		SELECT @ret=COUNT(IDReview) From Project.Reviews where Reviews.IDGame=@IDGame;
-		return @ret;
-	end
-go
-SELECT * FROM Project.[udf_getReviewsList](1);
-SELECT Project.[udf_getNumberOfReviews](1);
-
 
 GO
 
@@ -1177,39 +1145,10 @@ GO
 
 
 
-CREATE FUNCTION Project.[udf_getNumberGameFranchises] (@IDFranchise INT) RETURNS INT
-AS
-	BEGIN
-		DECLARE @counter INT;
-		SElECT @counter = COUNT([Name]) FROM Project.[udf_getGamesFranchise] (@IDFranchise);
-		RETURN @counter;
-	END
-GO
-
-
-CREATE FUNCTION Project.[udf_getNumberFranchiseComp] (@IDCompany INT) RETURNS INT
-AS
-	BEGIN
-		DECLARE @counter INT;
-		SElECT @counter = COUNT(IDFranchise) FROM Project.[udf_getFranchisesComp] (@IDCompany);
-		RETURN @counter;
-	END
-GO
-
-
 CREATE FUNCTION Project.[udf_getCompGames] (@IDCompany INT) RETURNS TABLE
 AS
 	RETURN ( SELECT Game.[Name] FROM Project.Game JOIN Project.Company ON Game.IDCompany = Company.IDCompany WHERE Company.IDCompany=@IDCompany)
 
-GO
-
-CREATE FUNCTION Project.[udf_getNumberCompGames] (@IDCompany INT) RETURNS INT
-AS
-	BEGIN
-		DECLARE @counter INT;
-		SElECT @counter = COUNT([Name]) FROM Project.udf_getCompGames (@IDCompany);
-		RETURN @counter;
-	END
 
 GO
 
@@ -1283,17 +1222,6 @@ as
 
 go
 
-go
-Create Function Project.[udf_getNumberPlatformGames](@platformName Varchar(30)) returns int
-as
-begin
-	Declare @temp as int
-	Select @temp = COUNT(Name) From Project.udf_getPlatformGames(@platformName);
-	return @temp;
-end
-go
-
-
 CREATE FUNCTION Project.[udf_checkUserPurchase] (@IDClient INT,@IDGame INT) RETURNS INT
 AS
 	BEGIN
@@ -1327,7 +1255,7 @@ create procedure Project.pd_sign_up
     @fullName VARCHAR(max),
     @sex        CHAR,
     @birth      DATE,
-    @response INT output
+    @response varchar(255) output
 as
 begin
     begin try
@@ -1336,14 +1264,33 @@ begin
         DECLARE @client_id AS INT;
         SELECT @client_id = UserID from Project.[User] where [User].Email=@email
         INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance)  VALUES(@client_id,@userName,@fullName,@sex, @birth,0.0)
-        set @response=1
+        set @response='Success'
     end try
     begin catch
-        set @response=0
+        set @response=ERROR_MESSAGE()
     end catch
 end
 go
 
+create TRIGGER Project.trigger_Client ON Project.Client
+INSTEAD OF INSERT
+	AS
+		BEGIN
+				DECLARE	@UserID VARCHAR(50);
+				DECLARE	@userName VARCHAR(50);
+				DECLARE	@fullName VARCHAR(max);
+				DECLARE @sex        CHAR;
+				DECLARE	@birth      DATE;
+				SELECT @UserID=UserID,@userName=Username,@fullName=FullName,@sex=Sex,@birth=Birth from inserted
+				IF ((SELECT Project.udf_check_username(@userName))>0)
+					raiserror('Username already taken!',16,1)
+				IF EXISTS (SELECT  TOP 1 UserID from Project.Client WHERE UserID = @UserID)
+					raiserror('ID already in use!',16,1)
+				ELSE
+					INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance)  VALUES(@UserID,@userName,@fullName,@sex, @birth,0.0)
+		END
+
+go
 
 CREATE PROCEDURE Project.pd_insertReview(
 	@Title VARCHAR(50),
@@ -1358,18 +1305,30 @@ CREATE PROCEDURE Project.pd_insertReview(
 				INSERT INTO Project.Reviews(Title,[Text],Rating,DateReview,UserID,IDGame) VALUES (@Title,@Text,@Rating,@DateReview,@UserID,@IDGame)
 		END
 GO
-
 CREATE PROCEDURE Project.pd_insertCredit(
 	@MetCredit varchar(20),
 	@DateCredit DATE,
 	@ValueCredit DECIMAL (4,2),
-	@IDClient INT)
+	@IDClient INT,
+	@res VARCHAR(255) OUTPUT
+	)
 	AS
 		BEGIN
-			INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient) VALUES (@MetCredit,@DateCredit,@ValueCredit,@IDClient)
+		BEGIN TRAN
+			BEGIN TRY
+				INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient) VALUES (@MetCredit,@DateCredit,@ValueCredit,@IDClient)
+				SET @res='Success Inserting Credit'
+			END TRY
+			BEGIN CATCH
+				SET @res=ERROR_MESSAGE()
+			ROLLBACK TRAN
+			END CATCH
+		IF @@TRANCOUNT>0
+		COMMIT TRAN
 		END
 
 GO
+
 go
 CREATE PROCEDURE Project.pd_insertPurchase(
 	@PurchaseDate DATE,
@@ -1406,8 +1365,6 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 			SET @res ='Success!'
 			END TRY
 			BEGIN CATCH
-				 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
-				 PRINT ERROR_MESSAGE()
 				 SET @res= ERROR_MESSAGE()
 				 rollback tran
 			END CATCH
@@ -1597,9 +1554,7 @@ AS
 		 WHERE Project.Reviews.IDGame = @IDGame AND Project.Reviews.UserID=@UserID
 	END TRY
 	BEGIN CATCH
-		 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
-		 PRINT ERROR_MESSAGE()
-		 raiserror ('Insertion Error', 16, 1);
+		 raiserror ('Could not Insert/Update Review', 16, 1);
 	END CATCH
 	END
 go
@@ -1610,25 +1565,21 @@ CREATE TRIGGER Project.trigger_credit ON Project.Credit
 INSTEAD OF INSERT
 AS
 	BEGIN
-		BEGIN TRAN
 			DECLARE @MetCredit as VARCHAR(20);
 			DECLARE @DateCredit as DATE;
 			DECLARE @ValueCredit as DECIMAL(4,2);
 			DECLARE @IDClient AS INT;
 			
 			SELECT @MetCredit = MetCredit,@DateCredit = DateCredit, @ValueCredit = ValueCredit,@IDClient = IDClient FROM INSERTED;
-			BEGIN TRY
+				IF NOT EXISTS(select UserID FROM Project.Client WHERE @IDClient=UserID)
+					RAISERROR('User not found!',16,1)
+				ELSE
+				BEGIN
 					INSERT INTO Project.Credit(MetCredit,DateCredit,ValueCredit,IDClient) VALUES (@MetCredit,@DateCredit,@ValueCredit,@IDClient)
 					UPDATE Project.Client
 						SET Balance+=@ValueCredit 
 						WHERE Project.Client.UserID=@IDClient
-			END TRY
-			BEGIN CATCH
-			 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
-			 PRINT ERROR_MESSAGE()
-			 raiserror ('Insertion Error', 16, 1);
-			END CATCH
-		COMMIT TRAN
+				END
 	END
 
 	GO
@@ -2097,20 +2048,32 @@ INSTEAD OF INSERT
 
 GO
 CREATE PROCEDURE Project.pd_insertAdmin(
-	@UserID INT,
+	@Email VARCHAR(50),
+	@Password VARCHAR(20),
+	@RegisterDate DATE,
 	@res VARCHAR(255) OUTPUT
 )
 	AS
 		BEGIN
+		BEGIN TRAN
 		BEGIN TRY
+			DECLARE @UserID INT;
+			INSERT INTO Project.[User] VALUES (@Email,ENCRYPTBYPASSPHRASE('**********',@Password),@RegisterDate)
+			SET @UserID=(SELECT TOP 1 UserID FROM Project.[User] WHERE @Email=Email order by USERID DESC)
 			INSERT INTO Project.[Admin] VALUES (@UserID)
 			SET @res='Success inserting new Admin!'
 		END TRY
 		BEGIN CATCH
 			SET @res=ERROR_MESSAGE();
+			ROLLBACK TRAN
 		END CATCH
+		IF @@TRANCOUNT>0
+		COMMIT TRAN
 		END
 go
+
+
+GO
 CREATE TRIGGER Project.trigger_Admin ON Project.[Admin]
 INSTEAD OF INSERT
 	AS
@@ -2127,25 +2090,6 @@ INSTEAD OF INSERT
 
 
 GO
-CREATE PROCEDURE Project.pd_insertUser (
-	@Email VARCHAR(50),
-	@Password VARCHAR(20),
-	@RegisterDate DATE,
-	@res VARCHAR(255) OUTPUT)
-	AS
-		BEGIN
-		BEGIN TRY
-			INSERT INTO Project.[User] (Email,[Password],RegisterDate) VALUES(@Email,ENCRYPTBYPASSPHRASE('**********',@Password),@RegisterDate)
-			SET @res='Success inserting new User!'
-		END TRY
-		BEGIN CATCH
-			SET  @res=ERROR_MESSAGE()
-		END CATCH
-		END
-go
-
-
-
 CREATE TRIGGER Project.trigger_User ON Project.[User]
 INSTEAD OF INSERT
 	AS
