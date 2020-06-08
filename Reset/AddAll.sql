@@ -1178,7 +1178,7 @@ go
 
 CREATE FUNCTION Project.[udf_checkGameDiscount] (@IDGame INT) RETURNS TABLE
 AS
-	RETURN (SELECT ISNULL([Percentage], 0) AS [Percentage] FROM Project.Game 
+	RETURN (SELECT [Percentage] AS [Percentage] FROM Project.Game 
 	JOIN Project.DiscountGame ON Game.IDGame =DiscountGame.IDGame 
 	JOIN Project.Discount ON Discount.PromoCode =DiscountGame.PromoCode
 	WHERE DATEDIFF(DAY,DateEnd,GETDATE()) <0  AND DATEDIFF(DAY,DateBegin,GETDATE()) >0 AND Game.IDGame=@IDGame)
