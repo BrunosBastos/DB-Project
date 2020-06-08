@@ -203,12 +203,12 @@
             this.button13 = new System.Windows.Forms.Button();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.textBox25 = new System.Windows.Forms.TextBox();
+            this.FranchiseUpdateID = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.button11 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.textBox23 = new System.Windows.Forms.TextBox();
-            this.textBox24 = new System.Windows.Forms.TextBox();
+            this.FranchiseUpdateButton = new System.Windows.Forms.Button();
+            this.FranchiseUpdateCompany = new System.Windows.Forms.ComboBox();
+            this.FranchiseUpdateLogo = new System.Windows.Forms.TextBox();
+            this.FranchiseUpdateName = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -1935,6 +1935,7 @@
             this.button13.TabIndex = 1;
             this.button13.Text = "Select";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.selectFranchise);
             // 
             // listBox3
             // 
@@ -1946,12 +1947,12 @@
             // 
             // groupBox10
             // 
-            this.groupBox10.Controls.Add(this.textBox25);
+            this.groupBox10.Controls.Add(this.FranchiseUpdateID);
             this.groupBox10.Controls.Add(this.label23);
-            this.groupBox10.Controls.Add(this.button11);
-            this.groupBox10.Controls.Add(this.comboBox2);
-            this.groupBox10.Controls.Add(this.textBox23);
-            this.groupBox10.Controls.Add(this.textBox24);
+            this.groupBox10.Controls.Add(this.FranchiseUpdateButton);
+            this.groupBox10.Controls.Add(this.FranchiseUpdateCompany);
+            this.groupBox10.Controls.Add(this.FranchiseUpdateLogo);
+            this.groupBox10.Controls.Add(this.FranchiseUpdateName);
             this.groupBox10.Controls.Add(this.label20);
             this.groupBox10.Controls.Add(this.label21);
             this.groupBox10.Controls.Add(this.label22);
@@ -1960,14 +1961,15 @@
             this.groupBox10.Size = new System.Drawing.Size(339, 319);
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "groupBox10";
+            this.groupBox10.Text = "Update Franchise";
             // 
-            // textBox25
+            // FranchiseUpdateID
             // 
-            this.textBox25.Location = new System.Drawing.Point(23, 49);
-            this.textBox25.Name = "textBox25";
-            this.textBox25.Size = new System.Drawing.Size(67, 20);
-            this.textBox25.TabIndex = 15;
+            this.FranchiseUpdateID.Location = new System.Drawing.Point(23, 49);
+            this.FranchiseUpdateID.Name = "FranchiseUpdateID";
+            this.FranchiseUpdateID.ReadOnly = true;
+            this.FranchiseUpdateID.Size = new System.Drawing.Size(67, 20);
+            this.FranchiseUpdateID.TabIndex = 15;
             // 
             // label23
             // 
@@ -1978,37 +1980,38 @@
             this.label23.TabIndex = 14;
             this.label23.Text = "Franchise ID";
             // 
-            // button11
+            // FranchiseUpdateButton
             // 
-            this.button11.Location = new System.Drawing.Point(140, 275);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 13;
-            this.button11.Text = "Update";
-            this.button11.UseVisualStyleBackColor = true;
+            this.FranchiseUpdateButton.Location = new System.Drawing.Point(140, 275);
+            this.FranchiseUpdateButton.Name = "FranchiseUpdateButton";
+            this.FranchiseUpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.FranchiseUpdateButton.TabIndex = 13;
+            this.FranchiseUpdateButton.Text = "Update";
+            this.FranchiseUpdateButton.UseVisualStyleBackColor = true;
+            this.FranchiseUpdateButton.Click += new System.EventHandler(this.updateFranchise);
             // 
-            // comboBox2
+            // FranchiseUpdateCompany
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(23, 217);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 12;
+            this.FranchiseUpdateCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FranchiseUpdateCompany.FormattingEnabled = true;
+            this.FranchiseUpdateCompany.Location = new System.Drawing.Point(23, 217);
+            this.FranchiseUpdateCompany.Name = "FranchiseUpdateCompany";
+            this.FranchiseUpdateCompany.Size = new System.Drawing.Size(121, 21);
+            this.FranchiseUpdateCompany.TabIndex = 12;
             // 
-            // textBox23
+            // FranchiseUpdateLogo
             // 
-            this.textBox23.Location = new System.Drawing.Point(23, 164);
-            this.textBox23.Name = "textBox23";
-            this.textBox23.Size = new System.Drawing.Size(283, 20);
-            this.textBox23.TabIndex = 11;
+            this.FranchiseUpdateLogo.Location = new System.Drawing.Point(23, 164);
+            this.FranchiseUpdateLogo.Name = "FranchiseUpdateLogo";
+            this.FranchiseUpdateLogo.Size = new System.Drawing.Size(283, 20);
+            this.FranchiseUpdateLogo.TabIndex = 11;
             // 
-            // textBox24
+            // FranchiseUpdateName
             // 
-            this.textBox24.Location = new System.Drawing.Point(23, 105);
-            this.textBox24.Name = "textBox24";
-            this.textBox24.Size = new System.Drawing.Size(283, 20);
-            this.textBox24.TabIndex = 10;
+            this.FranchiseUpdateName.Location = new System.Drawing.Point(23, 105);
+            this.FranchiseUpdateName.Name = "FranchiseUpdateName";
+            this.FranchiseUpdateName.Size = new System.Drawing.Size(283, 20);
+            this.FranchiseUpdateName.TabIndex = 10;
             // 
             // label20
             // 
@@ -2761,12 +2764,12 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.TextBox textBox25;
+        private System.Windows.Forms.TextBox FranchiseUpdateID;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox23;
-        private System.Windows.Forms.TextBox textBox24;
+        private System.Windows.Forms.Button FranchiseUpdateButton;
+        private System.Windows.Forms.ComboBox FranchiseUpdateCompany;
+        private System.Windows.Forms.TextBox FranchiseUpdateLogo;
+        private System.Windows.Forms.TextBox FranchiseUpdateName;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;

@@ -80,6 +80,7 @@ namespace App
                 Console.WriteLine("Inside Company");
             }else if (tabControl2.SelectedIndex == 4)
             {
+                LoadFranchise();
                 Console.WriteLine("Inside Franchise");
             }else if (tabControl2.SelectedIndex == 5)
             {
@@ -406,12 +407,60 @@ namespace App
                 PlatformAddProducer.Text = "";
                 PlatformAddProducer.Text = "";
 
+            }
+        }
+
+        private void LoadFranchise()
+        {
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Select IDFranchise,Name From Project.Franchise",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                listBox3.Items.Clear();
+                while (reader.Read())
+                {
+                    listBox3.Items.Add(reader["IDFranchise"].ToString()+" - "+reader["Name"].ToString());
+                }
+                reader.Close();
+            }
+        }
+
+        private void selectFranchise(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+                SqlCommand cmd = new SqlCommand("Select CompanyName From Project.Company",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                FranchiseUpdateCompany.Items.Clear();
+                while (reader.Read())
+                {
+                    FranchiseUpdateCompany.Items.Add(reader["CompanyName"].ToString());
+                }
+                reader.Close();
+
+                int val= int.Parse(listBox3.SelectedItem.ToString().Split(' ').ToArray()[0]);
+                cmd = new SqlCommand("Select * From Project.Franchise where IDFranchise="+val, Program.cn);
+                reader = cmd.ExecuteReader();
+                reader.Read();
+                FranchiseUpdateID.Text = val.ToString();
+                FranchiseUpdateLogo.Text = reader["Logo"].ToString();
+                FranchiseUpdateName.Text = reader["Name"].ToString();
+                int company = int.Parse(reader["IDCompany"].ToString());
+                FranchiseUpdateCompany.SelectedIndex = company;
+                reader.Close();
+            }
+        }
+
+        private void updateFranchise(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+
 
 
             }
-
-
-
         }
     }
 }
