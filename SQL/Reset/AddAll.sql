@@ -279,10 +279,10 @@ VALUES ('wbsf@warnerbros.com','Warner Bros Int. Entertainment','www.wbgames.com'
 
 -- insert franchise
 
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Mario',12);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Pokemon',12);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Grand Theft Auto',4);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('FIFA',2);
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Mario',12,'img.pngio.com/filemario-logopng-wikimedia-commons-mario-logo-png-256_256.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Pokemon',12,'res-1.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1487981301/x29qmdr7nzxnpfrplxmd.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Grand Theft Auto',4,'cdn.iconscout.com/icon/free/png-256/gta-283003.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('FIFA',2,'images.ctfassets.net/oqcxjunhepvs/29JWmTZaTy66O4SicWsawW/4ecfe87b180f741f8ce37bea3b6ab53e/July-15-2014-1.png');
 INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Call of Duty',10);
 INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Left 4 Dead',19);
 INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Need For Speed',2);
