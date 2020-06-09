@@ -4,13 +4,13 @@ go
 CREATE TABLE Project.[User](
     UserID          INT IDENTITY(1,1) ,
     Email           VARCHAR(50) UNIQUE    NOT NULL,
-    Password        VARCHAR(20)     NOT NULL,
+    [Password]        VARBINARY(64)     NOT NULL,
     RegisterDate    DATE            NOT NULL,
     PRIMARY KEY (USERID)
 );
 
 CREATE TABLE Project.[Admin](
-    USERID      INT,
+    UserID      INT,
     PRIMARY KEY (USERID)
 );
 
@@ -34,7 +34,7 @@ CREATE TABLE Project.Follows(
 
 CREATE TABLE Project.Credit(
 
-    NumCredit     INT             NOT NULL,
+    NumCredit     INT      IDENTITY(1,1)       NOT NULL,
     MetCredit     VARCHAR(20)     NOT NULL,
     DateCredit    DATE            NOT NULL,
     ValueCredit   Decimal(4,2)    NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE Project.Game(
     Description     VARCHAR(MAX),
     ReleaseDate     DATE            NOT NULL,
     AgeRestriction  INT             NOT NUll,
-    CoverImg        VARBINARY(MAX),
+    CoverImg        VARCHAR(MAX),
     Price           Decimal(5,2)   CHECK(Price >= 0)  NOT NULL,
 	IDCompany       INT             NOT NULL,
 	IDFranchise    INT,
@@ -80,8 +80,9 @@ CREATE TABLE Project.Game(
 );
 
 CREATE TABLE Project.[Copy](
-    SerialNum       INT         NOT NULL,
-    IDGame          INT         NOT NULL,
+    SerialNum       INT IDENTITY(100000,1)   NOT NULL,
+    IDGame          INT					NOT NULL,
+	PlatformName	VARCHAR(30)			NOT NULL,
     PRIMARY KEY(SerialNum)
 
 );
@@ -92,7 +93,7 @@ CREATE TABLE Project.Company(
     Contact         VARCHAR(50), --our contact will only be the email of the companies
     CompanyName     VARCHAR(30) NOT NULL,
     Website         VARCHAR(50) NOT NULL,
-    Logo            VARBINARY(MAX),
+    Logo            VARCHAR(MAX),
     FoundationDate  DATE,
     City            VARCHAR(50),
     Country	        VARCHAR(50),
@@ -151,15 +152,11 @@ CREATE TABLE Project.GameGenre(
 CREATE TABLE Project.Franchise(
     IDFranchise    INT				IDENTITY(1,1),
     Name           VARCHAR(30)      NOT NULL,
-    Logo       VARBINARY(MAX), 
+    Logo       VARCHAR(MAX),
+	IDCompany INT NOT NULL, 
     PRIMARY KEY(IDFranchise)
 );
 
-CREATE TABLE Project.CompFranchise(
-    IDCompany       INT         NOT NULL,
-    IDFranchise     INT         NOT NULL,
-    PRIMARY KEY(IDCompany,IDFranchise)
-);
 
 
 
@@ -175,11 +172,11 @@ ALTER TABLE Project.Client ADD CONSTRAINT ClientID FOREIGN KEY(UserID) REFERENCE
 ALTER TABLE Project.Game ADD CONSTRAINT   IDCompanyGame  FOREIGN KEY (IDCompany) REFERENCES Project.Company(IDCompany);
 ALTER TABLE Project.Game ADD CONSTRAINT   IDFranchiseGame  FOREIGN KEY (IDFranchise) REFERENCES Project.Franchise(IDFranchise);
 ALTER TABLE Project.[Copy] ADD CONSTRAINT CopyGame FOREIGN KEY(IDGame) REFERENCES Project.Game(IDGame);
+ALTER TABLE Project.[Copy] ADD CONSTRAINT CopyPlatform FOREIGN KEY(PlatformName) REFERENCES Project.[Platform](PlatformName);
 ALTER TABLE Project.PlatformReleasesGame ADD CONSTRAINT LaunchedGame FOREIGN KEY(IDGame) REFERENCES Project.Game(IDGame);
 ALTER TABLE Project.PlatformReleasesGame ADD CONSTRAINT PlatformGame FOREIGN KEY(PlatformName) REFERENCES Project.[Platform](PlatformName);
 ALTER TABLE Project.DiscountGame ADD CONSTRAINT CodDiscount FOREIGN KEY (PromoCode) REFERENCES Project.Discount(PromoCode);
 ALTER TABLE Project.DiscountGame ADD CONSTRAINT CodGame FOREIGN KEY (IDGame) REFERENCES Project.Game(IDGame);
 ALTER TABLE Project.GameGenre ADD CONSTRAINT  GenGame FOREIGN KEY (IDGame) REFERENCES Project.Game(IDGame);
 ALTER TABLE Project.GameGenre ADD CONSTRAINT  GenName FOREIGN KEY (GenName) REFERENCES Project.Genre(GenName);
-ALTER TABLE Project.CompFranchise ADD CONSTRAINT ProducesCompany  FOREIGN KEY(IDCompany) REFERENCES Project.Company(IDCompany);
-ALTER TABLE Project.CompFranchise ADD CONSTRAINT ProducesFranchise FOREIGN KEY(IDFranchise) REFERENCES Project.Franchise(IDFranchise);
+ALTER TABLE Project.Franchise ADD CONSTRAINT  Comp FOREIGN KEY (IDCompany) REFERENCES Project.Company(IDCompany);
