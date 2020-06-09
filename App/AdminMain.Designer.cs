@@ -142,20 +142,20 @@
             this.label54 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.button21 = new System.Windows.Forms.Button();
+            this.selectGenre = new System.Windows.Forms.Button();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.button20 = new System.Windows.Forms.Button();
-            this.textBox49 = new System.Windows.Forms.TextBox();
+            this.GenreUpdateButton = new System.Windows.Forms.Button();
+            this.GenreUpdateDescription = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
-            this.textBox50 = new System.Windows.Forms.TextBox();
+            this.GenreUpdateName = new System.Windows.Forms.TextBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.button19 = new System.Windows.Forms.Button();
-            this.textBox48 = new System.Windows.Forms.TextBox();
+            this.GenreAddButton = new System.Windows.Forms.Button();
+            this.GenreAddDescription = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.textBox47 = new System.Windows.Forms.TextBox();
+            this.GenreAddName = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.button16 = new System.Windows.Forms.Button();
@@ -213,10 +213,10 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.FranchiseAddButton = new System.Windows.Forms.Button();
+            this.FranchiseAddCompany = new System.Windows.Forms.ComboBox();
+            this.FranchiseAddLogo = new System.Windows.Forms.TextBox();
+            this.FranchiseAddName = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -1384,7 +1384,7 @@
             // 
             // groupBox19
             // 
-            this.groupBox19.Controls.Add(this.button21);
+            this.groupBox19.Controls.Add(this.selectGenre);
             this.groupBox19.Controls.Add(this.listBox5);
             this.groupBox19.Location = new System.Drawing.Point(802, 7);
             this.groupBox19.Name = "groupBox19";
@@ -1393,14 +1393,14 @@
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Genre List";
             // 
-            // button21
+            // selectGenre
             // 
-            this.button21.Location = new System.Drawing.Point(12, 296);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(75, 23);
-            this.button21.TabIndex = 1;
-            this.button21.Text = "Select";
-            this.button21.UseVisualStyleBackColor = true;
+            this.selectGenre.Location = new System.Drawing.Point(12, 296);
+            this.selectGenre.Name = "selectGenre";
+            this.selectGenre.Size = new System.Drawing.Size(75, 23);
+            this.selectGenre.TabIndex = 1;
+            this.selectGenre.Text = "Select";
+            this.selectGenre.UseVisualStyleBackColor = true;
             // 
             // listBox5
             // 
@@ -1412,11 +1412,11 @@
             // 
             // groupBox18
             // 
-            this.groupBox18.Controls.Add(this.button20);
-            this.groupBox18.Controls.Add(this.textBox49);
+            this.groupBox18.Controls.Add(this.GenreUpdateButton);
+            this.groupBox18.Controls.Add(this.GenreUpdateDescription);
             this.groupBox18.Controls.Add(this.label51);
             this.groupBox18.Controls.Add(this.label52);
-            this.groupBox18.Controls.Add(this.textBox50);
+            this.groupBox18.Controls.Add(this.GenreUpdateName);
             this.groupBox18.Location = new System.Drawing.Point(422, 7);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(373, 269);
@@ -1424,22 +1424,22 @@
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Update Genre";
             // 
-            // button20
+            // GenreUpdateButton
             // 
-            this.button20.Location = new System.Drawing.Point(142, 216);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(75, 23);
-            this.button20.TabIndex = 9;
-            this.button20.Text = "Update";
-            this.button20.UseVisualStyleBackColor = true;
+            this.GenreUpdateButton.Location = new System.Drawing.Point(142, 216);
+            this.GenreUpdateButton.Name = "GenreUpdateButton";
+            this.GenreUpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.GenreUpdateButton.TabIndex = 9;
+            this.GenreUpdateButton.Text = "Update";
+            this.GenreUpdateButton.UseVisualStyleBackColor = true;
             // 
-            // textBox49
+            // GenreUpdateDescription
             // 
-            this.textBox49.Location = new System.Drawing.Point(11, 94);
-            this.textBox49.Multiline = true;
-            this.textBox49.Name = "textBox49";
-            this.textBox49.Size = new System.Drawing.Size(342, 101);
-            this.textBox49.TabIndex = 8;
+            this.GenreUpdateDescription.Location = new System.Drawing.Point(11, 94);
+            this.GenreUpdateDescription.Multiline = true;
+            this.GenreUpdateDescription.Name = "GenreUpdateDescription";
+            this.GenreUpdateDescription.Size = new System.Drawing.Size(342, 101);
+            this.GenreUpdateDescription.TabIndex = 8;
             // 
             // label51
             // 
@@ -1459,20 +1459,20 @@
             this.label52.TabIndex = 6;
             this.label52.Text = "Genre Name";
             // 
-            // textBox50
+            // GenreUpdateName
             // 
-            this.textBox50.Location = new System.Drawing.Point(11, 45);
-            this.textBox50.Name = "textBox50";
-            this.textBox50.Size = new System.Drawing.Size(345, 20);
-            this.textBox50.TabIndex = 5;
+            this.GenreUpdateName.Location = new System.Drawing.Point(11, 45);
+            this.GenreUpdateName.Name = "GenreUpdateName";
+            this.GenreUpdateName.Size = new System.Drawing.Size(345, 20);
+            this.GenreUpdateName.TabIndex = 5;
             // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.button19);
-            this.groupBox17.Controls.Add(this.textBox48);
+            this.groupBox17.Controls.Add(this.GenreAddButton);
+            this.groupBox17.Controls.Add(this.GenreAddDescription);
             this.groupBox17.Controls.Add(this.label50);
             this.groupBox17.Controls.Add(this.label49);
-            this.groupBox17.Controls.Add(this.textBox47);
+            this.groupBox17.Controls.Add(this.GenreAddName);
             this.groupBox17.Location = new System.Drawing.Point(7, 7);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(408, 269);
@@ -1480,22 +1480,22 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Add Genre";
             // 
-            // button19
+            // GenreAddButton
             // 
-            this.button19.Location = new System.Drawing.Point(160, 221);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(75, 23);
-            this.button19.TabIndex = 4;
-            this.button19.Text = "Add";
-            this.button19.UseVisualStyleBackColor = true;
+            this.GenreAddButton.Location = new System.Drawing.Point(160, 221);
+            this.GenreAddButton.Name = "GenreAddButton";
+            this.GenreAddButton.Size = new System.Drawing.Size(75, 23);
+            this.GenreAddButton.TabIndex = 4;
+            this.GenreAddButton.Text = "Add";
+            this.GenreAddButton.UseVisualStyleBackColor = true;
             // 
-            // textBox48
+            // GenreAddDescription
             // 
-            this.textBox48.Location = new System.Drawing.Point(29, 99);
-            this.textBox48.Multiline = true;
-            this.textBox48.Name = "textBox48";
-            this.textBox48.Size = new System.Drawing.Size(342, 101);
-            this.textBox48.TabIndex = 3;
+            this.GenreAddDescription.Location = new System.Drawing.Point(29, 99);
+            this.GenreAddDescription.Multiline = true;
+            this.GenreAddDescription.Name = "GenreAddDescription";
+            this.GenreAddDescription.Size = new System.Drawing.Size(342, 101);
+            this.GenreAddDescription.TabIndex = 3;
             // 
             // label50
             // 
@@ -1515,12 +1515,12 @@
             this.label49.TabIndex = 1;
             this.label49.Text = "Genre Name";
             // 
-            // textBox47
+            // GenreAddName
             // 
-            this.textBox47.Location = new System.Drawing.Point(29, 50);
-            this.textBox47.Name = "textBox47";
-            this.textBox47.Size = new System.Drawing.Size(345, 20);
-            this.textBox47.TabIndex = 0;
+            this.GenreAddName.Location = new System.Drawing.Point(29, 50);
+            this.GenreAddName.Name = "GenreAddName";
+            this.GenreAddName.Size = new System.Drawing.Size(345, 20);
+            this.GenreAddName.TabIndex = 0;
             // 
             // tabPage6
             // 
@@ -1996,7 +1996,7 @@
             this.FranchiseUpdateCompany.FormattingEnabled = true;
             this.FranchiseUpdateCompany.Location = new System.Drawing.Point(23, 217);
             this.FranchiseUpdateCompany.Name = "FranchiseUpdateCompany";
-            this.FranchiseUpdateCompany.Size = new System.Drawing.Size(121, 21);
+            this.FranchiseUpdateCompany.Size = new System.Drawing.Size(283, 21);
             this.FranchiseUpdateCompany.TabIndex = 12;
             // 
             // FranchiseUpdateLogo
@@ -2042,10 +2042,10 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.button10);
-            this.groupBox9.Controls.Add(this.comboBox1);
-            this.groupBox9.Controls.Add(this.textBox22);
-            this.groupBox9.Controls.Add(this.textBox21);
+            this.groupBox9.Controls.Add(this.FranchiseAddButton);
+            this.groupBox9.Controls.Add(this.FranchiseAddCompany);
+            this.groupBox9.Controls.Add(this.FranchiseAddLogo);
+            this.groupBox9.Controls.Add(this.FranchiseAddName);
             this.groupBox9.Controls.Add(this.label19);
             this.groupBox9.Controls.Add(this.label18);
             this.groupBox9.Controls.Add(this.label17);
@@ -2056,37 +2056,38 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Add Franchise";
             // 
-            // button10
+            // FranchiseAddButton
             // 
-            this.button10.Location = new System.Drawing.Point(126, 240);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 6;
-            this.button10.Text = "Add";
-            this.button10.UseVisualStyleBackColor = true;
+            this.FranchiseAddButton.Location = new System.Drawing.Point(126, 240);
+            this.FranchiseAddButton.Name = "FranchiseAddButton";
+            this.FranchiseAddButton.Size = new System.Drawing.Size(75, 23);
+            this.FranchiseAddButton.TabIndex = 6;
+            this.FranchiseAddButton.Text = "Add";
+            this.FranchiseAddButton.UseVisualStyleBackColor = true;
+            this.FranchiseAddButton.Click += new System.EventHandler(this.addFranchise);
             // 
-            // comboBox1
+            // FranchiseAddCompany
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 175);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this.FranchiseAddCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FranchiseAddCompany.FormattingEnabled = true;
+            this.FranchiseAddCompany.Location = new System.Drawing.Point(16, 175);
+            this.FranchiseAddCompany.Name = "FranchiseAddCompany";
+            this.FranchiseAddCompany.Size = new System.Drawing.Size(283, 21);
+            this.FranchiseAddCompany.TabIndex = 5;
             // 
-            // textBox22
+            // FranchiseAddLogo
             // 
-            this.textBox22.Location = new System.Drawing.Point(16, 122);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(283, 20);
-            this.textBox22.TabIndex = 4;
+            this.FranchiseAddLogo.Location = new System.Drawing.Point(16, 122);
+            this.FranchiseAddLogo.Name = "FranchiseAddLogo";
+            this.FranchiseAddLogo.Size = new System.Drawing.Size(283, 20);
+            this.FranchiseAddLogo.TabIndex = 4;
             // 
-            // textBox21
+            // FranchiseAddName
             // 
-            this.textBox21.Location = new System.Drawing.Point(16, 63);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(283, 20);
-            this.textBox21.TabIndex = 3;
+            this.FranchiseAddName.Location = new System.Drawing.Point(16, 63);
+            this.FranchiseAddName.Name = "FranchiseAddName";
+            this.FranchiseAddName.Size = new System.Drawing.Size(283, 20);
+            this.FranchiseAddName.TabIndex = 3;
             // 
             // label19
             // 
@@ -2774,10 +2775,10 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.Button FranchiseAddButton;
+        private System.Windows.Forms.ComboBox FranchiseAddCompany;
+        private System.Windows.Forms.TextBox FranchiseAddLogo;
+        private System.Windows.Forms.TextBox FranchiseAddName;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
@@ -2823,20 +2824,20 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Button selectGenre;
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.GroupBox groupBox18;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.TextBox textBox49;
+        private System.Windows.Forms.Button GenreUpdateButton;
+        private System.Windows.Forms.TextBox GenreUpdateDescription;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox textBox50;
+        private System.Windows.Forms.TextBox GenreUpdateName;
         private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.TextBox textBox48;
+        private System.Windows.Forms.Button GenreAddButton;
+        private System.Windows.Forms.TextBox GenreAddDescription;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.TextBox textBox47;
+        private System.Windows.Forms.TextBox GenreAddName;
         private System.Windows.Forms.GroupBox groupBox24;
         private System.Windows.Forms.Button button26;
         private System.Windows.Forms.TextBox textBox70;

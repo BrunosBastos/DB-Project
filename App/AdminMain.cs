@@ -410,6 +410,9 @@ namespace App
             }
         }
 
+        //Franchise
+
+
         private void LoadFranchise()
         {
             if (Program.verifySGBDConnection())
@@ -422,6 +425,16 @@ namespace App
                     listBox3.Items.Add(reader["IDFranchise"].ToString()+" - "+reader["Name"].ToString());
                 }
                 reader.Close();
+
+                cmd = new SqlCommand("Select CompanyName From Project.Company",Program.cn);
+                reader = cmd.ExecuteReader();
+                FranchiseAddCompany.Items.Clear();
+                while (reader.Read())
+                {
+                    FranchiseAddCompany.Items.Add(reader["CompanyName"].ToString());
+                }
+                reader.Close();
+
             }
         }
 
@@ -447,7 +460,7 @@ namespace App
                 FranchiseUpdateLogo.Text = reader["Logo"].ToString();
                 FranchiseUpdateName.Text = reader["Name"].ToString();
                 int company = int.Parse(reader["IDCompany"].ToString());
-                FranchiseUpdateCompany.SelectedIndex = company;
+                FranchiseUpdateCompany.SelectedIndex = company-1;
                 reader.Close();
             }
         }
@@ -456,11 +469,121 @@ namespace App
         {
             if (Program.verifySGBDConnection())
             {
+                if (FranchiseUpdateName.Text.Length > 30)
+                {
+                    MessageBox.Show("Franchise name is too long.");
+                    return;
+                }
+                string logo = FranchiseUpdateLogo.Text;
+                if (logo.Length>8 && logo.Substring(0, 8).Equals("https://")){
+                    logo = logo.Substring(8, logo.Length - 8);
+                }
+                Console.WriteLine(logo);
 
+                SqlCommand cmd = new SqlCommand("Select IDCompany From Project.Company where CompanyName='" + FranchiseUpdateCompany.SelectedItem.ToString() + "'", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
 
+                int val = int.Parse(reader["IDCompany"].ToString());
 
+                reader.Close();
+                
+                cmd = new SqlCommand("Project.pd_updateFranchise ",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                int idfranchise = int.Parse(listBox3.SelectedItem.ToString().Split(' ').ToArray()[0]);
+
+                cmd.Parameters.AddWithValue("@IDFranchise",idfranchise);
+                if (FranchiseUpdateName.Text.Length==0)
+                {
+                    cmd.Parameters.AddWithValue("@Name",DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Name", FranchiseUpdateName.Text);
+                }
+
+                cmd.Parameters.AddWithValue("@Logo", logo);
+                cmd.Parameters.AddWithValue("@IDCompany",val);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
 
             }
         }
+
+        private void addFranchise(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+
+                string name = FranchiseAddName.Text;
+                if(name.Length>30 || name.Length == 0)
+                {
+                    MessageBox.Show("Name must be between 0 and 30 chars long.");
+                    return;
+                }
+                if(FranchiseAddCompany.SelectedIndex<0 || FranchiseAddCompany.SelectedIndex>FranchiseAddCompany.Items.Count)
+                {
+                    MessageBox.Show("Select a Company.");
+                    return;
+                }
+                string company = FranchiseAddCompany.SelectedItem.ToString();
+                if(company.Length == 0)
+                {
+                    MessageBox.Show("Select a company");
+                    return;
+                }
+
+                SqlCommand cmd = new SqlCommand("Select IDCompany From Project.Company where CompanyName='" + FranchiseAddCompany.Text + "'", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int comp = int.Parse(reader["IDCompany"].ToString());
+                reader.Close();
+
+                cmd = new SqlCommand("Project.pd_insertFranchise");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Name",name);
+                cmd.Parameters.AddWithValue("@IDCompany", comp);
+                if (FranchiseAddLogo.Text.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@Logo", DBNull.Value);
+                }
+                else
+                {
+                    string logo = FranchiseAddLogo.Text;
+                    if(logo.Length>8 && logo.Substring(0, 8).Equals("https://"))
+                    {
+                        logo = logo.Substring(8, logo.Length - 8);
+                    }
+                    cmd.Parameters.AddWithValue("@Logo", logo);
+                }
+
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+                cmd.Connection = Program.cn;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadFranchise();
+
+
+            }
+
+
+        }
+
+
+        // Genre
+
+
+
+
+
+
     }
 }
