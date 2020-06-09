@@ -682,13 +682,17 @@ namespace App
                 dataGridView7.DataSource = dt;
                 dataGridView7.ReadOnly = true;
 
+                SqlCommand cmd = new SqlCommand("Select IDGame,Name From Project.Game", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
 
+                DiscountGameList.Items.Clear();
+                while (reader.Read())
+                {
+                    DiscountGameList.Items.Add(reader["IDGame"].ToString() + " " + reader["Name"].ToString());
+                }
 
-
-
+                reader.Close();
             }
-
-
         }
 
         private void selectDiscount(object sender, EventArgs e)
@@ -710,6 +714,7 @@ namespace App
             DiscountUpdateEndMonth.Text = end.Split('/').ToArray()[1].ToString();
             DiscountUpdateEndYear.Text = end.Split('/').ToArray()[2].ToString().Split(' ').ToArray()[0].ToString();
 
+            DiscountGamePromo.Text = promocode;
 
         }
 
@@ -769,6 +774,8 @@ namespace App
                 MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
                 LoadDiscount();
 
+
+                
             }
         }
 
@@ -777,14 +784,76 @@ namespace App
             if (Program.verifySGBDConnection())
             {
 
+                string percentage = DiscountAddPercentage.Text;
+                string code = DiscountAddPromo.Text;
+                string begin = DiscountAddBeginYear.Text + "-" + DiscountAddBeginMonth.Text + "-" + DiscountAddBeginDay.Text;
+                string end = DiscountAddEndYear.Text + "-" + DiscountAddEndMonth.Text + "-" + DiscountAddEndDay.Text;
 
+                if (!int.TryParse(percentage, out int n))
+                {
+                    MessageBox.Show("Percentage is a number between 0 and 100.");
+                    return;
+                }
 
+                if (n > 100 || n < 0)
+                {
+                    MessageBox.Show("Percentage is a number between 0 and 100.");
+                    return;
+                }
 
+                if(!int.TryParse(code,out int c))
+                {
+                    MessageBox.Show("PromoCode must be a number.");
+                    return;
+                }
+
+                if (!ValidateDate(begin))
+                {
+                    MessageBox.Show("Begin Date is not valid.");
+                    return;
+                }
+
+                if (!ValidateDate(end))
+                {
+                    MessageBox.Show("End Date is not valid.");
+                    return;
+                }
+
+                SqlCommand cmd = new SqlCommand("Project.pd_insertDiscount", Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@PromoCode",c);
+                cmd.Parameters.AddWithValue("@Percentage", n);
+                cmd.Parameters.AddWithValue("@DateBegin", DateTime.Parse(begin));
+                cmd.Parameters.AddWithValue("@DateEnd", DateTime.Parse(end));
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadDiscount();
             }
+        }
 
+        private void addDiscountGame(object sender, EventArgs e)
+        {
 
+            if (Program.verifySGBDConnection())
+            {
 
+                SqlCommand cmd = new SqlCommand("Project.pd_insertDiscountGame",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.AddWithValue("@PromoCode",int.Parse(DiscountGamePromo.Text));
+                cmd.Parameters.AddWithValue("@IDGame", int.Parse(DiscountGameList.SelectedItem.ToString().Split(' ').ToArray()[0]));
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+            }
 
 
 

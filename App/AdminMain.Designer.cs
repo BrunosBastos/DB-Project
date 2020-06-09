@@ -110,9 +110,8 @@
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.button26 = new System.Windows.Forms.Button();
-            this.textBox70 = new System.Windows.Forms.TextBox();
             this.label64 = new System.Windows.Forms.Label();
-            this.textBox69 = new System.Windows.Forms.TextBox();
+            this.DiscountGamePromo = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.DiscountUpdateButton = new System.Windows.Forms.Button();
@@ -276,6 +275,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.DiscountGameList = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -1093,10 +1093,10 @@
             // 
             // groupBox24
             // 
+            this.groupBox24.Controls.Add(this.DiscountGameList);
             this.groupBox24.Controls.Add(this.button26);
-            this.groupBox24.Controls.Add(this.textBox70);
             this.groupBox24.Controls.Add(this.label64);
-            this.groupBox24.Controls.Add(this.textBox69);
+            this.groupBox24.Controls.Add(this.DiscountGamePromo);
             this.groupBox24.Controls.Add(this.label63);
             this.groupBox24.Location = new System.Drawing.Point(7, 315);
             this.groupBox24.Name = "groupBox24";
@@ -1113,13 +1113,7 @@
             this.button26.TabIndex = 6;
             this.button26.Text = "Add Discount to Game";
             this.button26.UseVisualStyleBackColor = true;
-            // 
-            // textBox70
-            // 
-            this.textBox70.Location = new System.Drawing.Point(23, 135);
-            this.textBox70.Name = "textBox70";
-            this.textBox70.Size = new System.Drawing.Size(100, 20);
-            this.textBox70.TabIndex = 5;
+            this.button26.Click += new System.EventHandler(this.addDiscountGame);
             // 
             // label64
             // 
@@ -1130,12 +1124,13 @@
             this.label64.TabIndex = 4;
             this.label64.Text = "Game ID";
             // 
-            // textBox69
+            // DiscountGamePromo
             // 
-            this.textBox69.Location = new System.Drawing.Point(23, 67);
-            this.textBox69.Name = "textBox69";
-            this.textBox69.Size = new System.Drawing.Size(134, 20);
-            this.textBox69.TabIndex = 3;
+            this.DiscountGamePromo.Location = new System.Drawing.Point(23, 67);
+            this.DiscountGamePromo.Name = "DiscountGamePromo";
+            this.DiscountGamePromo.ReadOnly = true;
+            this.DiscountGamePromo.Size = new System.Drawing.Size(134, 20);
+            this.DiscountGamePromo.TabIndex = 3;
             // 
             // label63
             // 
@@ -2653,6 +2648,15 @@
             this.button1.Text = "Log Out";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // DiscountGameList
+            // 
+            this.DiscountGameList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DiscountGameList.FormattingEnabled = true;
+            this.DiscountGameList.Location = new System.Drawing.Point(23, 147);
+            this.DiscountGameList.Name = "DiscountGameList";
+            this.DiscountGameList.Size = new System.Drawing.Size(229, 21);
+            this.DiscountGameList.TabIndex = 7;
+            // 
             // AdminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2871,9 +2875,8 @@
         private System.Windows.Forms.TextBox GenreAddName;
         private System.Windows.Forms.GroupBox groupBox24;
         private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.TextBox textBox70;
         private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.TextBox textBox69;
+        private System.Windows.Forms.TextBox DiscountGamePromo;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.GroupBox groupBox22;
         private System.Windows.Forms.Button DiscountUpdateButton;
@@ -2978,5 +2981,6 @@
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView7;
+        private System.Windows.Forms.ComboBox DiscountGameList;
     }
 }
