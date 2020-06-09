@@ -142,7 +142,7 @@
             this.label54 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.selectGenre = new System.Windows.Forms.Button();
+            this.button21 = new System.Windows.Forms.Button();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
             this.GenreUpdateButton = new System.Windows.Forms.Button();
@@ -1384,7 +1384,7 @@
             // 
             // groupBox19
             // 
-            this.groupBox19.Controls.Add(this.selectGenre);
+            this.groupBox19.Controls.Add(this.button21);
             this.groupBox19.Controls.Add(this.listBox5);
             this.groupBox19.Location = new System.Drawing.Point(802, 7);
             this.groupBox19.Name = "groupBox19";
@@ -1393,14 +1393,15 @@
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Genre List";
             // 
-            // selectGenre
+            // button21
             // 
-            this.selectGenre.Location = new System.Drawing.Point(12, 296);
-            this.selectGenre.Name = "selectGenre";
-            this.selectGenre.Size = new System.Drawing.Size(75, 23);
-            this.selectGenre.TabIndex = 1;
-            this.selectGenre.Text = "Select";
-            this.selectGenre.UseVisualStyleBackColor = true;
+            this.button21.Location = new System.Drawing.Point(12, 296);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(75, 23);
+            this.button21.TabIndex = 1;
+            this.button21.Text = "Select";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.selectGenre);
             // 
             // listBox5
             // 
@@ -1432,6 +1433,7 @@
             this.GenreUpdateButton.TabIndex = 9;
             this.GenreUpdateButton.Text = "Update";
             this.GenreUpdateButton.UseVisualStyleBackColor = true;
+            this.GenreUpdateButton.Click += new System.EventHandler(this.updateGenre);
             // 
             // GenreUpdateDescription
             // 
@@ -1463,6 +1465,7 @@
             // 
             this.GenreUpdateName.Location = new System.Drawing.Point(11, 45);
             this.GenreUpdateName.Name = "GenreUpdateName";
+            this.GenreUpdateName.ReadOnly = true;
             this.GenreUpdateName.Size = new System.Drawing.Size(345, 20);
             this.GenreUpdateName.TabIndex = 5;
             // 
@@ -1488,6 +1491,7 @@
             this.GenreAddButton.TabIndex = 4;
             this.GenreAddButton.Text = "Add";
             this.GenreAddButton.UseVisualStyleBackColor = true;
+            this.GenreAddButton.Click += new System.EventHandler(this.addGenre);
             // 
             // GenreAddDescription
             // 
@@ -2824,7 +2828,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.Button selectGenre;
+        private System.Windows.Forms.Button button21;
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.Button GenreUpdateButton;

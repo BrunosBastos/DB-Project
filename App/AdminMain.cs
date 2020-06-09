@@ -74,6 +74,7 @@ namespace App
                 Console.WriteLine("Inside Discount");
             }else if (tabControl2.SelectedIndex == 2)
             {
+                LoadGenre();
                 Console.WriteLine("Inside Genre");
             }else if (tabControl2.SelectedIndex == 3)
             {
@@ -580,10 +581,90 @@ namespace App
 
         // Genre
 
+        private void LoadGenre()
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+
+                SqlCommand cmd = new SqlCommand("Select GenName From Project.Genre",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                listBox5.Items.Clear();
+                while (reader.Read())
+                { 
+                    listBox5.Items.Add(reader["GenName"].ToString());
+                }
+                reader.Close();
+            }
+        }
+        private void selectGenre(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+                string name = listBox5.SelectedItem.ToString();
+
+                SqlCommand cmd = new SqlCommand("Select Description from Project.Genre Where GenName='" + name + "'", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                reader.Read();
+
+                GenreUpdateName.Text = name;
+                GenreUpdateDescription.Text = reader["Description"].ToString();
+
+                reader.Close();
+
+            }
+        }
+
+        private void addGenre(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                if(GenreAddName.Text.Length==0 || GenreAddName.Text.Length > 50)
+                {
+                    MessageBox.Show("Genre Name has to be between 0 and 50 chars long.");
+                    return;
+                }
+
+                
 
 
+                SqlCommand cmd = new SqlCommand("Project.pd_insertGenres",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.AddWithValue("@GenName", GenreAddName.Text);
+                cmd.Parameters.AddWithValue("@Description", GenreAddDescription.Text);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 35));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
 
+                cmd.ExecuteNonQuery();
 
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadGenre();
+                GenreAddDescription.Text = "";
+                GenreAddName.Text = "";
+            }
+        }
+
+        private void updateGenre(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Project.pd_updateGenre", Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@GenName", GenreUpdateName.Text);
+                cmd.Parameters.AddWithValue("@Description", GenreUpdateDescription.Text);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+            }
+        }
     }
 }
