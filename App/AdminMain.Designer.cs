@@ -162,18 +162,18 @@
             this.button16 = new System.Windows.Forms.Button();
             this.listBox4 = new System.Windows.Forms.ListBox();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.button15 = new System.Windows.Forms.Button();
-            this.textBox45 = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateButton = new System.Windows.Forms.Button();
+            this.CompanyUpdateID = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
-            this.textBox36 = new System.Windows.Forms.TextBox();
-            this.textBox37 = new System.Windows.Forms.TextBox();
-            this.textBox38 = new System.Windows.Forms.TextBox();
-            this.textBox39 = new System.Windows.Forms.TextBox();
-            this.textBox40 = new System.Windows.Forms.TextBox();
-            this.textBox41 = new System.Windows.Forms.TextBox();
-            this.textBox42 = new System.Windows.Forms.TextBox();
-            this.textBox43 = new System.Windows.Forms.TextBox();
-            this.textBox44 = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateCountry = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateCity = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateYear = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateMonth = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateDay = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateLogo = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateWebsite = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateContact = new System.Windows.Forms.TextBox();
+            this.CompanyUpdateName = new System.Windows.Forms.TextBox();
             this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -182,16 +182,16 @@
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.textBox35 = new System.Windows.Forms.TextBox();
-            this.textBox34 = new System.Windows.Forms.TextBox();
-            this.textBox33 = new System.Windows.Forms.TextBox();
-            this.textBox32 = new System.Windows.Forms.TextBox();
-            this.textBox31 = new System.Windows.Forms.TextBox();
-            this.textBox30 = new System.Windows.Forms.TextBox();
-            this.textBox29 = new System.Windows.Forms.TextBox();
-            this.textBox28 = new System.Windows.Forms.TextBox();
-            this.textBox27 = new System.Windows.Forms.TextBox();
-            this.button14 = new System.Windows.Forms.Button();
+            this.CompanyAddCountry = new System.Windows.Forms.TextBox();
+            this.CompanyAddCity = new System.Windows.Forms.TextBox();
+            this.CompanyAddYear = new System.Windows.Forms.TextBox();
+            this.CompanyAddMonth = new System.Windows.Forms.TextBox();
+            this.CompanyAddDay = new System.Windows.Forms.TextBox();
+            this.CompanyAddLogo = new System.Windows.Forms.TextBox();
+            this.CompanyAddWebsite = new System.Windows.Forms.TextBox();
+            this.CompanyAddContact = new System.Windows.Forms.TextBox();
+            this.CompanyAddName = new System.Windows.Forms.TextBox();
+            this.CompanyAddButton = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -1579,6 +1579,7 @@
             this.button16.TabIndex = 1;
             this.button16.Text = "Select";
             this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.selectCompany);
             // 
             // listBox4
             // 
@@ -1590,18 +1591,18 @@
             // 
             // groupBox14
             // 
-            this.groupBox14.Controls.Add(this.button15);
-            this.groupBox14.Controls.Add(this.textBox45);
+            this.groupBox14.Controls.Add(this.CompanyUpdateButton);
+            this.groupBox14.Controls.Add(this.CompanyUpdateID);
             this.groupBox14.Controls.Add(this.label41);
-            this.groupBox14.Controls.Add(this.textBox36);
-            this.groupBox14.Controls.Add(this.textBox37);
-            this.groupBox14.Controls.Add(this.textBox38);
-            this.groupBox14.Controls.Add(this.textBox39);
-            this.groupBox14.Controls.Add(this.textBox40);
-            this.groupBox14.Controls.Add(this.textBox41);
-            this.groupBox14.Controls.Add(this.textBox42);
-            this.groupBox14.Controls.Add(this.textBox43);
-            this.groupBox14.Controls.Add(this.textBox44);
+            this.groupBox14.Controls.Add(this.CompanyUpdateCountry);
+            this.groupBox14.Controls.Add(this.CompanyUpdateCity);
+            this.groupBox14.Controls.Add(this.CompanyUpdateYear);
+            this.groupBox14.Controls.Add(this.CompanyUpdateMonth);
+            this.groupBox14.Controls.Add(this.CompanyUpdateDay);
+            this.groupBox14.Controls.Add(this.CompanyUpdateLogo);
+            this.groupBox14.Controls.Add(this.CompanyUpdateWebsite);
+            this.groupBox14.Controls.Add(this.CompanyUpdateContact);
+            this.groupBox14.Controls.Add(this.CompanyUpdateName);
             this.groupBox14.Controls.Add(this.label34);
             this.groupBox14.Controls.Add(this.label35);
             this.groupBox14.Controls.Add(this.label36);
@@ -1616,21 +1617,21 @@
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Update Company";
             // 
-            // button15
+            // CompanyUpdateButton
             // 
-            this.button15.Location = new System.Drawing.Point(163, 419);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(75, 23);
-            this.button15.TabIndex = 35;
-            this.button15.Text = "Update";
-            this.button15.UseVisualStyleBackColor = true;
+            this.CompanyUpdateButton.Location = new System.Drawing.Point(163, 419);
+            this.CompanyUpdateButton.Name = "CompanyUpdateButton";
+            this.CompanyUpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.CompanyUpdateButton.TabIndex = 35;
+            this.CompanyUpdateButton.Text = "Update";
+            this.CompanyUpdateButton.UseVisualStyleBackColor = true;
             // 
-            // textBox45
+            // CompanyUpdateID
             // 
-            this.textBox45.Location = new System.Drawing.Point(26, 41);
-            this.textBox45.Name = "textBox45";
-            this.textBox45.Size = new System.Drawing.Size(100, 20);
-            this.textBox45.TabIndex = 34;
+            this.CompanyUpdateID.Location = new System.Drawing.Point(26, 41);
+            this.CompanyUpdateID.Name = "CompanyUpdateID";
+            this.CompanyUpdateID.Size = new System.Drawing.Size(100, 20);
+            this.CompanyUpdateID.TabIndex = 34;
             // 
             // label41
             // 
@@ -1641,68 +1642,68 @@
             this.label41.TabIndex = 33;
             this.label41.Text = "Company ID";
             // 
-            // textBox36
+            // CompanyUpdateCountry
             // 
-            this.textBox36.Location = new System.Drawing.Point(26, 385);
-            this.textBox36.Name = "textBox36";
-            this.textBox36.Size = new System.Drawing.Size(146, 20);
-            this.textBox36.TabIndex = 32;
+            this.CompanyUpdateCountry.Location = new System.Drawing.Point(26, 385);
+            this.CompanyUpdateCountry.Name = "CompanyUpdateCountry";
+            this.CompanyUpdateCountry.Size = new System.Drawing.Size(146, 20);
+            this.CompanyUpdateCountry.TabIndex = 32;
             // 
-            // textBox37
+            // CompanyUpdateCity
             // 
-            this.textBox37.Location = new System.Drawing.Point(26, 336);
-            this.textBox37.Name = "textBox37";
-            this.textBox37.Size = new System.Drawing.Size(149, 20);
-            this.textBox37.TabIndex = 31;
+            this.CompanyUpdateCity.Location = new System.Drawing.Point(26, 336);
+            this.CompanyUpdateCity.Name = "CompanyUpdateCity";
+            this.CompanyUpdateCity.Size = new System.Drawing.Size(149, 20);
+            this.CompanyUpdateCity.TabIndex = 31;
             // 
-            // textBox38
+            // CompanyUpdateYear
             // 
-            this.textBox38.Location = new System.Drawing.Point(126, 284);
-            this.textBox38.Name = "textBox38";
-            this.textBox38.Size = new System.Drawing.Size(52, 20);
-            this.textBox38.TabIndex = 30;
+            this.CompanyUpdateYear.Location = new System.Drawing.Point(126, 284);
+            this.CompanyUpdateYear.Name = "CompanyUpdateYear";
+            this.CompanyUpdateYear.Size = new System.Drawing.Size(52, 20);
+            this.CompanyUpdateYear.TabIndex = 30;
             // 
-            // textBox39
+            // CompanyUpdateMonth
             // 
-            this.textBox39.Location = new System.Drawing.Point(78, 285);
-            this.textBox39.Name = "textBox39";
-            this.textBox39.Size = new System.Drawing.Size(41, 20);
-            this.textBox39.TabIndex = 29;
+            this.CompanyUpdateMonth.Location = new System.Drawing.Point(78, 285);
+            this.CompanyUpdateMonth.Name = "CompanyUpdateMonth";
+            this.CompanyUpdateMonth.Size = new System.Drawing.Size(41, 20);
+            this.CompanyUpdateMonth.TabIndex = 29;
             // 
-            // textBox40
+            // CompanyUpdateDay
             // 
-            this.textBox40.Location = new System.Drawing.Point(26, 285);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(46, 20);
-            this.textBox40.TabIndex = 28;
+            this.CompanyUpdateDay.Location = new System.Drawing.Point(26, 285);
+            this.CompanyUpdateDay.Name = "CompanyUpdateDay";
+            this.CompanyUpdateDay.Size = new System.Drawing.Size(46, 20);
+            this.CompanyUpdateDay.TabIndex = 28;
             // 
-            // textBox41
+            // CompanyUpdateLogo
             // 
-            this.textBox41.Location = new System.Drawing.Point(26, 241);
-            this.textBox41.Name = "textBox41";
-            this.textBox41.Size = new System.Drawing.Size(343, 20);
-            this.textBox41.TabIndex = 27;
+            this.CompanyUpdateLogo.Location = new System.Drawing.Point(26, 241);
+            this.CompanyUpdateLogo.Name = "CompanyUpdateLogo";
+            this.CompanyUpdateLogo.Size = new System.Drawing.Size(343, 20);
+            this.CompanyUpdateLogo.TabIndex = 27;
             // 
-            // textBox42
+            // CompanyUpdateWebsite
             // 
-            this.textBox42.Location = new System.Drawing.Point(26, 187);
-            this.textBox42.Name = "textBox42";
-            this.textBox42.Size = new System.Drawing.Size(343, 20);
-            this.textBox42.TabIndex = 26;
+            this.CompanyUpdateWebsite.Location = new System.Drawing.Point(26, 187);
+            this.CompanyUpdateWebsite.Name = "CompanyUpdateWebsite";
+            this.CompanyUpdateWebsite.Size = new System.Drawing.Size(343, 20);
+            this.CompanyUpdateWebsite.TabIndex = 26;
             // 
-            // textBox43
+            // CompanyUpdateContact
             // 
-            this.textBox43.Location = new System.Drawing.Point(26, 135);
-            this.textBox43.Name = "textBox43";
-            this.textBox43.Size = new System.Drawing.Size(165, 20);
-            this.textBox43.TabIndex = 25;
+            this.CompanyUpdateContact.Location = new System.Drawing.Point(26, 135);
+            this.CompanyUpdateContact.Name = "CompanyUpdateContact";
+            this.CompanyUpdateContact.Size = new System.Drawing.Size(165, 20);
+            this.CompanyUpdateContact.TabIndex = 25;
             // 
-            // textBox44
+            // CompanyUpdateName
             // 
-            this.textBox44.Location = new System.Drawing.Point(26, 93);
-            this.textBox44.Name = "textBox44";
-            this.textBox44.Size = new System.Drawing.Size(343, 20);
-            this.textBox44.TabIndex = 24;
+            this.CompanyUpdateName.Location = new System.Drawing.Point(26, 93);
+            this.CompanyUpdateName.Name = "CompanyUpdateName";
+            this.CompanyUpdateName.Size = new System.Drawing.Size(343, 20);
+            this.CompanyUpdateName.TabIndex = 24;
             // 
             // label34
             // 
@@ -1769,16 +1770,16 @@
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.textBox35);
-            this.groupBox13.Controls.Add(this.textBox34);
-            this.groupBox13.Controls.Add(this.textBox33);
-            this.groupBox13.Controls.Add(this.textBox32);
-            this.groupBox13.Controls.Add(this.textBox31);
-            this.groupBox13.Controls.Add(this.textBox30);
-            this.groupBox13.Controls.Add(this.textBox29);
-            this.groupBox13.Controls.Add(this.textBox28);
-            this.groupBox13.Controls.Add(this.textBox27);
-            this.groupBox13.Controls.Add(this.button14);
+            this.groupBox13.Controls.Add(this.CompanyAddCountry);
+            this.groupBox13.Controls.Add(this.CompanyAddCity);
+            this.groupBox13.Controls.Add(this.CompanyAddYear);
+            this.groupBox13.Controls.Add(this.CompanyAddMonth);
+            this.groupBox13.Controls.Add(this.CompanyAddDay);
+            this.groupBox13.Controls.Add(this.CompanyAddLogo);
+            this.groupBox13.Controls.Add(this.CompanyAddWebsite);
+            this.groupBox13.Controls.Add(this.CompanyAddContact);
+            this.groupBox13.Controls.Add(this.CompanyAddName);
+            this.groupBox13.Controls.Add(this.CompanyAddButton);
             this.groupBox13.Controls.Add(this.label33);
             this.groupBox13.Controls.Add(this.label32);
             this.groupBox13.Controls.Add(this.label31);
@@ -1793,77 +1794,77 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Add Company";
             // 
-            // textBox35
+            // CompanyAddCountry
             // 
-            this.textBox35.Location = new System.Drawing.Point(33, 334);
-            this.textBox35.Name = "textBox35";
-            this.textBox35.Size = new System.Drawing.Size(146, 20);
-            this.textBox35.TabIndex = 16;
+            this.CompanyAddCountry.Location = new System.Drawing.Point(33, 334);
+            this.CompanyAddCountry.Name = "CompanyAddCountry";
+            this.CompanyAddCountry.Size = new System.Drawing.Size(146, 20);
+            this.CompanyAddCountry.TabIndex = 16;
             // 
-            // textBox34
+            // CompanyAddCity
             // 
-            this.textBox34.Location = new System.Drawing.Point(30, 285);
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new System.Drawing.Size(149, 20);
-            this.textBox34.TabIndex = 15;
+            this.CompanyAddCity.Location = new System.Drawing.Point(30, 285);
+            this.CompanyAddCity.Name = "CompanyAddCity";
+            this.CompanyAddCity.Size = new System.Drawing.Size(149, 20);
+            this.CompanyAddCity.TabIndex = 15;
             // 
-            // textBox33
+            // CompanyAddYear
             // 
-            this.textBox33.Location = new System.Drawing.Point(127, 232);
-            this.textBox33.Name = "textBox33";
-            this.textBox33.Size = new System.Drawing.Size(52, 20);
-            this.textBox33.TabIndex = 14;
+            this.CompanyAddYear.Location = new System.Drawing.Point(127, 232);
+            this.CompanyAddYear.Name = "CompanyAddYear";
+            this.CompanyAddYear.Size = new System.Drawing.Size(52, 20);
+            this.CompanyAddYear.TabIndex = 14;
             // 
-            // textBox32
+            // CompanyAddMonth
             // 
-            this.textBox32.Location = new System.Drawing.Point(79, 233);
-            this.textBox32.Name = "textBox32";
-            this.textBox32.Size = new System.Drawing.Size(41, 20);
-            this.textBox32.TabIndex = 13;
+            this.CompanyAddMonth.Location = new System.Drawing.Point(79, 233);
+            this.CompanyAddMonth.Name = "CompanyAddMonth";
+            this.CompanyAddMonth.Size = new System.Drawing.Size(41, 20);
+            this.CompanyAddMonth.TabIndex = 13;
             // 
-            // textBox31
+            // CompanyAddDay
             // 
-            this.textBox31.Location = new System.Drawing.Point(27, 233);
-            this.textBox31.Name = "textBox31";
-            this.textBox31.Size = new System.Drawing.Size(46, 20);
-            this.textBox31.TabIndex = 12;
+            this.CompanyAddDay.Location = new System.Drawing.Point(27, 233);
+            this.CompanyAddDay.Name = "CompanyAddDay";
+            this.CompanyAddDay.Size = new System.Drawing.Size(46, 20);
+            this.CompanyAddDay.TabIndex = 12;
             // 
-            // textBox30
+            // CompanyAddLogo
             // 
-            this.textBox30.Location = new System.Drawing.Point(27, 189);
-            this.textBox30.Name = "textBox30";
-            this.textBox30.Size = new System.Drawing.Size(343, 20);
-            this.textBox30.TabIndex = 11;
+            this.CompanyAddLogo.Location = new System.Drawing.Point(27, 189);
+            this.CompanyAddLogo.Name = "CompanyAddLogo";
+            this.CompanyAddLogo.Size = new System.Drawing.Size(343, 20);
+            this.CompanyAddLogo.TabIndex = 11;
             // 
-            // textBox29
+            // CompanyAddWebsite
             // 
-            this.textBox29.Location = new System.Drawing.Point(27, 135);
-            this.textBox29.Name = "textBox29";
-            this.textBox29.Size = new System.Drawing.Size(343, 20);
-            this.textBox29.TabIndex = 10;
+            this.CompanyAddWebsite.Location = new System.Drawing.Point(27, 135);
+            this.CompanyAddWebsite.Name = "CompanyAddWebsite";
+            this.CompanyAddWebsite.Size = new System.Drawing.Size(343, 20);
+            this.CompanyAddWebsite.TabIndex = 10;
             // 
-            // textBox28
+            // CompanyAddContact
             // 
-            this.textBox28.Location = new System.Drawing.Point(27, 83);
-            this.textBox28.Name = "textBox28";
-            this.textBox28.Size = new System.Drawing.Size(165, 20);
-            this.textBox28.TabIndex = 9;
+            this.CompanyAddContact.Location = new System.Drawing.Point(27, 83);
+            this.CompanyAddContact.Name = "CompanyAddContact";
+            this.CompanyAddContact.Size = new System.Drawing.Size(165, 20);
+            this.CompanyAddContact.TabIndex = 9;
             // 
-            // textBox27
+            // CompanyAddName
             // 
-            this.textBox27.Location = new System.Drawing.Point(27, 41);
-            this.textBox27.Name = "textBox27";
-            this.textBox27.Size = new System.Drawing.Size(343, 20);
-            this.textBox27.TabIndex = 8;
+            this.CompanyAddName.Location = new System.Drawing.Point(27, 41);
+            this.CompanyAddName.Name = "CompanyAddName";
+            this.CompanyAddName.Size = new System.Drawing.Size(343, 20);
+            this.CompanyAddName.TabIndex = 8;
             // 
-            // button14
+            // CompanyAddButton
             // 
-            this.button14.Location = new System.Drawing.Point(150, 419);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(75, 23);
-            this.button14.TabIndex = 7;
-            this.button14.Text = "Add";
-            this.button14.UseVisualStyleBackColor = true;
+            this.CompanyAddButton.Location = new System.Drawing.Point(150, 419);
+            this.CompanyAddButton.Name = "CompanyAddButton";
+            this.CompanyAddButton.Size = new System.Drawing.Size(75, 23);
+            this.CompanyAddButton.TabIndex = 7;
+            this.CompanyAddButton.Text = "Add";
+            this.CompanyAddButton.UseVisualStyleBackColor = true;
             // 
             // label33
             // 
@@ -2821,18 +2822,18 @@
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.TextBox textBox45;
+        private System.Windows.Forms.Button CompanyUpdateButton;
+        private System.Windows.Forms.TextBox CompanyUpdateID;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.TextBox textBox36;
-        private System.Windows.Forms.TextBox textBox37;
-        private System.Windows.Forms.TextBox textBox38;
-        private System.Windows.Forms.TextBox textBox39;
-        private System.Windows.Forms.TextBox textBox40;
-        private System.Windows.Forms.TextBox textBox41;
-        private System.Windows.Forms.TextBox textBox42;
-        private System.Windows.Forms.TextBox textBox43;
-        private System.Windows.Forms.TextBox textBox44;
+        private System.Windows.Forms.TextBox CompanyUpdateCountry;
+        private System.Windows.Forms.TextBox CompanyUpdateCity;
+        private System.Windows.Forms.TextBox CompanyUpdateYear;
+        private System.Windows.Forms.TextBox CompanyUpdateMonth;
+        private System.Windows.Forms.TextBox CompanyUpdateDay;
+        private System.Windows.Forms.TextBox CompanyUpdateLogo;
+        private System.Windows.Forms.TextBox CompanyUpdateWebsite;
+        private System.Windows.Forms.TextBox CompanyUpdateContact;
+        private System.Windows.Forms.TextBox CompanyUpdateName;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
@@ -2841,16 +2842,16 @@
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.TextBox textBox35;
-        private System.Windows.Forms.TextBox textBox34;
-        private System.Windows.Forms.TextBox textBox33;
-        private System.Windows.Forms.TextBox textBox32;
-        private System.Windows.Forms.TextBox textBox31;
-        private System.Windows.Forms.TextBox textBox30;
-        private System.Windows.Forms.TextBox textBox29;
-        private System.Windows.Forms.TextBox textBox28;
-        private System.Windows.Forms.TextBox textBox27;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.TextBox CompanyAddCountry;
+        private System.Windows.Forms.TextBox CompanyAddCity;
+        private System.Windows.Forms.TextBox CompanyAddYear;
+        private System.Windows.Forms.TextBox CompanyAddMonth;
+        private System.Windows.Forms.TextBox CompanyAddDay;
+        private System.Windows.Forms.TextBox CompanyAddLogo;
+        private System.Windows.Forms.TextBox CompanyAddWebsite;
+        private System.Windows.Forms.TextBox CompanyAddContact;
+        private System.Windows.Forms.TextBox CompanyAddName;
+        private System.Windows.Forms.Button CompanyAddButton;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label31;

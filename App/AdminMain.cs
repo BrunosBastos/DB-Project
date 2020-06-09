@@ -79,6 +79,7 @@ namespace App
                 Console.WriteLine("Inside Genre");
             }else if (tabControl2.SelectedIndex == 3)
             {
+                LoadCompany();
                 Console.WriteLine("Inside Company");
             }else if (tabControl2.SelectedIndex == 4)
             {
@@ -853,6 +854,41 @@ namespace App
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+            }
+        }
+
+        // Company
+        private void LoadCompany()
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+
+                SqlCommand cmd = new SqlCommand("Select IDCompany,CompanyName From Project.Company",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                listBox4.Items.Clear();
+                while (reader.Read())
+                {
+                    listBox4.Items.Add(reader["IDCompany"].ToString()+" "+reader["CompanyName"].ToString());
+                }
+
+                reader.Close();
+
+
+            }
+        }
+
+        private void selectCompany(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+
+
+
+
+
             }
 
 
