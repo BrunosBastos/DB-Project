@@ -71,9 +71,11 @@ namespace App
                 Console.WriteLine("Inside Game");
             }else if (tabControl2.SelectedIndex == 1)
             {
+                LoadDiscount();
                 Console.WriteLine("Inside Discount");
             }else if (tabControl2.SelectedIndex == 2)
             {
+                LoadGenre();
                 Console.WriteLine("Inside Genre");
             }else if (tabControl2.SelectedIndex == 3)
             {
@@ -410,6 +412,9 @@ namespace App
             }
         }
 
+        //Franchise
+
+
         private void LoadFranchise()
         {
             if (Program.verifySGBDConnection())
@@ -422,6 +427,16 @@ namespace App
                     listBox3.Items.Add(reader["IDFranchise"].ToString()+" - "+reader["Name"].ToString());
                 }
                 reader.Close();
+
+                cmd = new SqlCommand("Select CompanyName From Project.Company",Program.cn);
+                reader = cmd.ExecuteReader();
+                FranchiseAddCompany.Items.Clear();
+                while (reader.Read())
+                {
+                    FranchiseAddCompany.Items.Add(reader["CompanyName"].ToString());
+                }
+                reader.Close();
+
             }
         }
 
@@ -447,7 +462,7 @@ namespace App
                 FranchiseUpdateLogo.Text = reader["Logo"].ToString();
                 FranchiseUpdateName.Text = reader["Name"].ToString();
                 int company = int.Parse(reader["IDCompany"].ToString());
-                FranchiseUpdateCompany.SelectedIndex = company;
+                FranchiseUpdateCompany.SelectedIndex = company-1;
                 reader.Close();
             }
         }
@@ -456,11 +471,392 @@ namespace App
         {
             if (Program.verifySGBDConnection())
             {
+                if (FranchiseUpdateName.Text.Length > 30)
+                {
+                    MessageBox.Show("Franchise name is too long.");
+                    return;
+                }
+                string logo = FranchiseUpdateLogo.Text;
+                if (logo.Length>8 && logo.Substring(0, 8).Equals("https://")){
+                    logo = logo.Substring(8, logo.Length - 8);
+                }
+                Console.WriteLine(logo);
 
+                SqlCommand cmd = new SqlCommand("Select IDCompany From Project.Company where CompanyName='" + FranchiseUpdateCompany.SelectedItem.ToString() + "'", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
 
+                int val = int.Parse(reader["IDCompany"].ToString());
+
+                reader.Close();
+                
+                cmd = new SqlCommand("Project.pd_updateFranchise ",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                int idfranchise = int.Parse(listBox3.SelectedItem.ToString().Split(' ').ToArray()[0]);
+
+                cmd.Parameters.AddWithValue("@IDFranchise",idfranchise);
+                if (FranchiseUpdateName.Text.Length==0)
+                {
+                    cmd.Parameters.AddWithValue("@Name",DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Name", FranchiseUpdateName.Text);
+                }
+
+                cmd.Parameters.AddWithValue("@Logo", logo);
+                cmd.Parameters.AddWithValue("@IDCompany",val);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+
+            }
+        }
+
+        private void addFranchise(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+
+                string name = FranchiseAddName.Text;
+                if(name.Length>30 || name.Length == 0)
+                {
+                    MessageBox.Show("Name must be between 0 and 30 chars long.");
+                    return;
+                }
+                if(FranchiseAddCompany.SelectedIndex<0 || FranchiseAddCompany.SelectedIndex>FranchiseAddCompany.Items.Count)
+                {
+                    MessageBox.Show("Select a Company.");
+                    return;
+                }
+                string company = FranchiseAddCompany.SelectedItem.ToString();
+                if(company.Length == 0)
+                {
+                    MessageBox.Show("Select a company");
+                    return;
+                }
+
+                SqlCommand cmd = new SqlCommand("Select IDCompany From Project.Company where CompanyName='" + FranchiseAddCompany.Text + "'", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                int comp = int.Parse(reader["IDCompany"].ToString());
+                reader.Close();
+
+                cmd = new SqlCommand("Project.pd_insertFranchise");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Name",name);
+                cmd.Parameters.AddWithValue("@IDCompany", comp);
+                if (FranchiseAddLogo.Text.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@Logo", DBNull.Value);
+                }
+                else
+                {
+                    string logo = FranchiseAddLogo.Text;
+                    if(logo.Length>8 && logo.Substring(0, 8).Equals("https://"))
+                    {
+                        logo = logo.Substring(8, logo.Length - 8);
+                    }
+                    cmd.Parameters.AddWithValue("@Logo", logo);
+                }
+
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+                cmd.Connection = Program.cn;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadFranchise();
 
 
             }
+
+
+        }
+
+
+        // Genre
+
+        private void LoadGenre()
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+
+                SqlCommand cmd = new SqlCommand("Select GenName From Project.Genre",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                listBox5.Items.Clear();
+                while (reader.Read())
+                { 
+                    listBox5.Items.Add(reader["GenName"].ToString());
+                }
+                reader.Close();
+            }
+        }
+        private void selectGenre(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+                string name = listBox5.SelectedItem.ToString();
+
+                SqlCommand cmd = new SqlCommand("Select Description from Project.Genre Where GenName='" + name + "'", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                reader.Read();
+
+                GenreUpdateName.Text = name;
+                GenreUpdateDescription.Text = reader["Description"].ToString();
+
+                reader.Close();
+
+            }
+        }
+
+        private void addGenre(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                if(GenreAddName.Text.Length==0 || GenreAddName.Text.Length > 50)
+                {
+                    MessageBox.Show("Genre Name has to be between 0 and 50 chars long.");
+                    return;
+                }
+
+                
+
+
+                SqlCommand cmd = new SqlCommand("Project.pd_insertGenres",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@GenName", GenreAddName.Text);
+                cmd.Parameters.AddWithValue("@Description", GenreAddDescription.Text);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 35));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadGenre();
+                GenreAddDescription.Text = "";
+                GenreAddName.Text = "";
+            }
+        }
+
+        private void updateGenre(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Project.pd_updateGenre", Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@GenName", GenreUpdateName.Text);
+                cmd.Parameters.AddWithValue("@Description", GenreUpdateDescription.Text);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+            }
+        }
+
+
+        //Discount
+        private void LoadDiscount()
+        {
+            if (Program.verifySGBDConnection())
+            {
+                //SqlCommand cmd = new SqlCommand("Select * From Project.Discount");
+                SqlDataAdapter adapter = new SqlDataAdapter("Select * From Project.Discount",Program.cn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView7.DataSource = dt;
+                dataGridView7.ReadOnly = true;
+
+                SqlCommand cmd = new SqlCommand("Select IDGame,Name From Project.Game", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                DiscountGameList.Items.Clear();
+                while (reader.Read())
+                {
+                    DiscountGameList.Items.Add(reader["IDGame"].ToString() + " " + reader["Name"].ToString());
+                }
+
+                reader.Close();
+            }
+        }
+
+        private void selectDiscount(object sender, EventArgs e)
+        {
+            int selectedrow = dataGridView7.CurrentCell.RowIndex;
+            string promocode = dataGridView7.Rows[selectedrow].Cells[0].Value.ToString();
+            //Console.WriteLine(promocode);
+
+            DiscountUpdateCode.Text = promocode;
+            DiscountUpdatePercentage.Text = dataGridView7.Rows[selectedrow].Cells[1].Value.ToString();
+            string begin = dataGridView7.Rows[selectedrow].Cells[2].Value.ToString();
+            Console.WriteLine(begin);
+            DiscountUpdateBeginDay.Text = begin.Split('/').ToArray()[0].ToString();
+            DiscountUpdateBeginMonth.Text = begin.Split('/').ToArray()[1].ToString();
+            DiscountUpdateBeginYear.Text = begin.Split('/').ToArray()[2].ToString().Split(' ').ToArray()[0].ToString();
+
+            string end = dataGridView7.Rows[selectedrow].Cells[3].Value.ToString();
+            DiscountUpdateEndDay.Text = end.Split('/').ToArray()[0].ToString();
+            DiscountUpdateEndMonth.Text = end.Split('/').ToArray()[1].ToString();
+            DiscountUpdateEndYear.Text = end.Split('/').ToArray()[2].ToString().Split(' ').ToArray()[0].ToString();
+
+            DiscountGamePromo.Text = promocode;
+
+        }
+
+        private void updateDiscount(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                string percentage = DiscountUpdatePercentage.Text;
+
+                if(!int.TryParse(percentage,out int n) || percentage.Length == 0)
+                {
+                    MessageBox.Show("Percentage is a number between 0 and 100");
+                    return;
+                }
+
+                if(n>100 || n < 0)
+                {
+                    MessageBox.Show("Percentage is between 0 and 100");
+                    return;
+                }
+
+                string begin = DiscountUpdateBeginYear.Text + "-" + DiscountUpdateBeginMonth.Text + "-" + DiscountUpdateBeginDay.Text;
+                string end = DiscountUpdateEndYear.Text + "-" + DiscountUpdateEndMonth.Text + "-" + DiscountUpdateEndDay.Text;
+
+                if (!ValidateDate(begin))
+                {
+                    MessageBox.Show("Begin Date is not valid");
+                    return;
+                }
+
+                if (!ValidateDate(end))
+                {
+                    MessageBox.Show("Ending Date is not valid");
+                    return;
+                }
+
+                int comp = DateTime.Compare(DateTime.Parse(begin), DateTime.Parse(end));
+                if (comp > 0)
+                {
+                    MessageBox.Show("Starting Date cannot be after Ending Date");
+                    return;
+                }
+
+                SqlCommand cmd = new SqlCommand("Project.pd_updateDiscount",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@PromoCode", int.Parse(DiscountUpdateCode.Text));
+                cmd.Parameters.AddWithValue("@Percentage", n);
+                cmd.Parameters.AddWithValue("@Begin", DateTime.Parse(begin));
+                cmd.Parameters.AddWithValue("@End", DateTime.Parse(end));
+                cmd.Parameters.Add(new SqlParameter("@res",SqlDbType.VarChar,255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadDiscount();
+
+
+                
+            }
+        }
+
+        private void addDiscount(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+                string percentage = DiscountAddPercentage.Text;
+                string code = DiscountAddPromo.Text;
+                string begin = DiscountAddBeginYear.Text + "-" + DiscountAddBeginMonth.Text + "-" + DiscountAddBeginDay.Text;
+                string end = DiscountAddEndYear.Text + "-" + DiscountAddEndMonth.Text + "-" + DiscountAddEndDay.Text;
+
+                if (!int.TryParse(percentage, out int n))
+                {
+                    MessageBox.Show("Percentage is a number between 0 and 100.");
+                    return;
+                }
+
+                if (n > 100 || n < 0)
+                {
+                    MessageBox.Show("Percentage is a number between 0 and 100.");
+                    return;
+                }
+
+                if(!int.TryParse(code,out int c))
+                {
+                    MessageBox.Show("PromoCode must be a number.");
+                    return;
+                }
+
+                if (!ValidateDate(begin))
+                {
+                    MessageBox.Show("Begin Date is not valid.");
+                    return;
+                }
+
+                if (!ValidateDate(end))
+                {
+                    MessageBox.Show("End Date is not valid.");
+                    return;
+                }
+
+                SqlCommand cmd = new SqlCommand("Project.pd_insertDiscount", Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@PromoCode",c);
+                cmd.Parameters.AddWithValue("@Percentage", n);
+                cmd.Parameters.AddWithValue("@DateBegin", DateTime.Parse(begin));
+                cmd.Parameters.AddWithValue("@DateEnd", DateTime.Parse(end));
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadDiscount();
+            }
+        }
+
+        private void addDiscountGame(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+
+                SqlCommand cmd = new SqlCommand("Project.pd_insertDiscountGame",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@PromoCode",int.Parse(DiscountGamePromo.Text));
+                cmd.Parameters.AddWithValue("@IDGame", int.Parse(DiscountGameList.SelectedItem.ToString().Split(' ').ToArray()[0]));
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+            }
+
+
+
         }
     }
 }

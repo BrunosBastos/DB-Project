@@ -106,56 +106,57 @@
             this.button3 = new System.Windows.Forms.Button();
             this.listBox6 = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.button26 = new System.Windows.Forms.Button();
-            this.textBox70 = new System.Windows.Forms.TextBox();
             this.label64 = new System.Windows.Forms.Label();
-            this.textBox69 = new System.Windows.Forms.TextBox();
+            this.DiscountGamePromo = new System.Windows.Forms.TextBox();
             this.label63 = new System.Windows.Forms.Label();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.button24 = new System.Windows.Forms.Button();
-            this.textBox60 = new System.Windows.Forms.TextBox();
-            this.textBox61 = new System.Windows.Forms.TextBox();
-            this.textBox62 = new System.Windows.Forms.TextBox();
+            this.DiscountUpdateButton = new System.Windows.Forms.Button();
+            this.DiscountUpdateEndYear = new System.Windows.Forms.TextBox();
+            this.DiscountUpdateEndMonth = new System.Windows.Forms.TextBox();
+            this.DiscountUpdateEndDay = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
-            this.textBox63 = new System.Windows.Forms.TextBox();
-            this.textBox64 = new System.Windows.Forms.TextBox();
-            this.textBox65 = new System.Windows.Forms.TextBox();
+            this.DiscountUpdateBeginYear = new System.Windows.Forms.TextBox();
+            this.DiscountUpdateBeginMonth = new System.Windows.Forms.TextBox();
+            this.DiscountUpdateBeginDay = new System.Windows.Forms.TextBox();
             this.label59 = new System.Windows.Forms.Label();
-            this.textBox66 = new System.Windows.Forms.TextBox();
+            this.DiscountUpdatePercentage = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
-            this.textBox67 = new System.Windows.Forms.TextBox();
+            this.DiscountUpdateCode = new System.Windows.Forms.TextBox();
             this.label61 = new System.Windows.Forms.Label();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.button23 = new System.Windows.Forms.Button();
-            this.textBox57 = new System.Windows.Forms.TextBox();
-            this.textBox58 = new System.Windows.Forms.TextBox();
-            this.textBox59 = new System.Windows.Forms.TextBox();
+            this.DiscountAddButton = new System.Windows.Forms.Button();
+            this.DiscountAddEndYear = new System.Windows.Forms.TextBox();
+            this.DiscountAddEndMonth = new System.Windows.Forms.TextBox();
+            this.DiscountAddEndDay = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
-            this.textBox56 = new System.Windows.Forms.TextBox();
-            this.textBox55 = new System.Windows.Forms.TextBox();
-            this.textBox54 = new System.Windows.Forms.TextBox();
+            this.DiscountAddBeginYear = new System.Windows.Forms.TextBox();
+            this.DiscountAddBeginMonth = new System.Windows.Forms.TextBox();
+            this.DiscountAddBeginDay = new System.Windows.Forms.TextBox();
             this.label56 = new System.Windows.Forms.Label();
-            this.textBox53 = new System.Windows.Forms.TextBox();
+            this.DiscountAddPercentage = new System.Windows.Forms.TextBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.textBox52 = new System.Windows.Forms.TextBox();
+            this.DiscountAddPromo = new System.Windows.Forms.TextBox();
             this.label54 = new System.Windows.Forms.Label();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
             this.button21 = new System.Windows.Forms.Button();
             this.listBox5 = new System.Windows.Forms.ListBox();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.button20 = new System.Windows.Forms.Button();
-            this.textBox49 = new System.Windows.Forms.TextBox();
+            this.GenreUpdateButton = new System.Windows.Forms.Button();
+            this.GenreUpdateDescription = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
             this.label52 = new System.Windows.Forms.Label();
-            this.textBox50 = new System.Windows.Forms.TextBox();
+            this.GenreUpdateName = new System.Windows.Forms.TextBox();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.button19 = new System.Windows.Forms.Button();
-            this.textBox48 = new System.Windows.Forms.TextBox();
+            this.GenreAddButton = new System.Windows.Forms.Button();
+            this.GenreAddDescription = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.textBox47 = new System.Windows.Forms.TextBox();
+            this.GenreAddName = new System.Windows.Forms.TextBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.button16 = new System.Windows.Forms.Button();
@@ -213,10 +214,10 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox22 = new System.Windows.Forms.TextBox();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.FranchiseAddButton = new System.Windows.Forms.Button();
+            this.FranchiseAddCompany = new System.Windows.Forms.ComboBox();
+            this.FranchiseAddLogo = new System.Windows.Forms.TextBox();
+            this.FranchiseAddName = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -274,6 +275,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.DiscountGameList = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -286,6 +288,7 @@
             this.groupBox11.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             this.groupBox24.SuspendLayout();
             this.groupBox22.SuspendLayout();
             this.groupBox21.SuspendLayout();
@@ -1057,6 +1060,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.button2);
+            this.tabPage4.Controls.Add(this.dataGridView7);
             this.tabPage4.Controls.Add(this.groupBox24);
             this.tabPage4.Controls.Add(this.groupBox22);
             this.tabPage4.Controls.Add(this.groupBox21);
@@ -1068,12 +1073,30 @@
             this.tabPage4.Text = "Discount";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(475, 325);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Select";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.selectDiscount);
+            // 
+            // dataGridView7
+            // 
+            this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView7.Location = new System.Drawing.Point(475, 17);
+            this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.Size = new System.Drawing.Size(420, 292);
+            this.dataGridView7.TabIndex = 4;
+            // 
             // groupBox24
             // 
+            this.groupBox24.Controls.Add(this.DiscountGameList);
             this.groupBox24.Controls.Add(this.button26);
-            this.groupBox24.Controls.Add(this.textBox70);
             this.groupBox24.Controls.Add(this.label64);
-            this.groupBox24.Controls.Add(this.textBox69);
+            this.groupBox24.Controls.Add(this.DiscountGamePromo);
             this.groupBox24.Controls.Add(this.label63);
             this.groupBox24.Location = new System.Drawing.Point(7, 315);
             this.groupBox24.Name = "groupBox24";
@@ -1090,13 +1113,7 @@
             this.button26.TabIndex = 6;
             this.button26.Text = "Add Discount to Game";
             this.button26.UseVisualStyleBackColor = true;
-            // 
-            // textBox70
-            // 
-            this.textBox70.Location = new System.Drawing.Point(23, 135);
-            this.textBox70.Name = "textBox70";
-            this.textBox70.Size = new System.Drawing.Size(100, 20);
-            this.textBox70.TabIndex = 5;
+            this.button26.Click += new System.EventHandler(this.addDiscountGame);
             // 
             // label64
             // 
@@ -1107,12 +1124,13 @@
             this.label64.TabIndex = 4;
             this.label64.Text = "Game ID";
             // 
-            // textBox69
+            // DiscountGamePromo
             // 
-            this.textBox69.Location = new System.Drawing.Point(23, 67);
-            this.textBox69.Name = "textBox69";
-            this.textBox69.Size = new System.Drawing.Size(134, 20);
-            this.textBox69.TabIndex = 3;
+            this.DiscountGamePromo.Location = new System.Drawing.Point(23, 67);
+            this.DiscountGamePromo.Name = "DiscountGamePromo";
+            this.DiscountGamePromo.ReadOnly = true;
+            this.DiscountGamePromo.Size = new System.Drawing.Size(134, 20);
+            this.DiscountGamePromo.TabIndex = 3;
             // 
             // label63
             // 
@@ -1125,18 +1143,18 @@
             // 
             // groupBox22
             // 
-            this.groupBox22.Controls.Add(this.button24);
-            this.groupBox22.Controls.Add(this.textBox60);
-            this.groupBox22.Controls.Add(this.textBox61);
-            this.groupBox22.Controls.Add(this.textBox62);
+            this.groupBox22.Controls.Add(this.DiscountUpdateButton);
+            this.groupBox22.Controls.Add(this.DiscountUpdateEndYear);
+            this.groupBox22.Controls.Add(this.DiscountUpdateEndMonth);
+            this.groupBox22.Controls.Add(this.DiscountUpdateEndDay);
             this.groupBox22.Controls.Add(this.label58);
-            this.groupBox22.Controls.Add(this.textBox63);
-            this.groupBox22.Controls.Add(this.textBox64);
-            this.groupBox22.Controls.Add(this.textBox65);
+            this.groupBox22.Controls.Add(this.DiscountUpdateBeginYear);
+            this.groupBox22.Controls.Add(this.DiscountUpdateBeginMonth);
+            this.groupBox22.Controls.Add(this.DiscountUpdateBeginDay);
             this.groupBox22.Controls.Add(this.label59);
-            this.groupBox22.Controls.Add(this.textBox66);
+            this.groupBox22.Controls.Add(this.DiscountUpdatePercentage);
             this.groupBox22.Controls.Add(this.label60);
-            this.groupBox22.Controls.Add(this.textBox67);
+            this.groupBox22.Controls.Add(this.DiscountUpdateCode);
             this.groupBox22.Controls.Add(this.label61);
             this.groupBox22.Location = new System.Drawing.Point(228, 7);
             this.groupBox22.Name = "groupBox22";
@@ -1145,35 +1163,36 @@
             this.groupBox22.TabStop = false;
             this.groupBox22.Text = "Update Discount";
             // 
-            // button24
+            // DiscountUpdateButton
             // 
-            this.button24.Location = new System.Drawing.Point(72, 260);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(75, 23);
-            this.button24.TabIndex = 25;
-            this.button24.Text = "Update";
-            this.button24.UseVisualStyleBackColor = true;
+            this.DiscountUpdateButton.Location = new System.Drawing.Point(72, 260);
+            this.DiscountUpdateButton.Name = "DiscountUpdateButton";
+            this.DiscountUpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.DiscountUpdateButton.TabIndex = 25;
+            this.DiscountUpdateButton.Text = "Update";
+            this.DiscountUpdateButton.UseVisualStyleBackColor = true;
+            this.DiscountUpdateButton.Click += new System.EventHandler(this.updateDiscount);
             // 
-            // textBox60
+            // DiscountUpdateEndYear
             // 
-            this.textBox60.Location = new System.Drawing.Point(127, 217);
-            this.textBox60.Name = "textBox60";
-            this.textBox60.Size = new System.Drawing.Size(58, 20);
-            this.textBox60.TabIndex = 24;
+            this.DiscountUpdateEndYear.Location = new System.Drawing.Point(127, 217);
+            this.DiscountUpdateEndYear.Name = "DiscountUpdateEndYear";
+            this.DiscountUpdateEndYear.Size = new System.Drawing.Size(58, 20);
+            this.DiscountUpdateEndYear.TabIndex = 24;
             // 
-            // textBox61
+            // DiscountUpdateEndMonth
             // 
-            this.textBox61.Location = new System.Drawing.Point(72, 217);
-            this.textBox61.Name = "textBox61";
-            this.textBox61.Size = new System.Drawing.Size(48, 20);
-            this.textBox61.TabIndex = 23;
+            this.DiscountUpdateEndMonth.Location = new System.Drawing.Point(72, 217);
+            this.DiscountUpdateEndMonth.Name = "DiscountUpdateEndMonth";
+            this.DiscountUpdateEndMonth.Size = new System.Drawing.Size(48, 20);
+            this.DiscountUpdateEndMonth.TabIndex = 23;
             // 
-            // textBox62
+            // DiscountUpdateEndDay
             // 
-            this.textBox62.Location = new System.Drawing.Point(20, 217);
-            this.textBox62.Name = "textBox62";
-            this.textBox62.Size = new System.Drawing.Size(45, 20);
-            this.textBox62.TabIndex = 22;
+            this.DiscountUpdateEndDay.Location = new System.Drawing.Point(20, 217);
+            this.DiscountUpdateEndDay.Name = "DiscountUpdateEndDay";
+            this.DiscountUpdateEndDay.Size = new System.Drawing.Size(45, 20);
+            this.DiscountUpdateEndDay.TabIndex = 22;
             // 
             // label58
             // 
@@ -1184,26 +1203,26 @@
             this.label58.TabIndex = 21;
             this.label58.Text = "Date End";
             // 
-            // textBox63
+            // DiscountUpdateBeginYear
             // 
-            this.textBox63.Location = new System.Drawing.Point(127, 164);
-            this.textBox63.Name = "textBox63";
-            this.textBox63.Size = new System.Drawing.Size(58, 20);
-            this.textBox63.TabIndex = 20;
+            this.DiscountUpdateBeginYear.Location = new System.Drawing.Point(127, 164);
+            this.DiscountUpdateBeginYear.Name = "DiscountUpdateBeginYear";
+            this.DiscountUpdateBeginYear.Size = new System.Drawing.Size(58, 20);
+            this.DiscountUpdateBeginYear.TabIndex = 20;
             // 
-            // textBox64
+            // DiscountUpdateBeginMonth
             // 
-            this.textBox64.Location = new System.Drawing.Point(72, 164);
-            this.textBox64.Name = "textBox64";
-            this.textBox64.Size = new System.Drawing.Size(48, 20);
-            this.textBox64.TabIndex = 19;
+            this.DiscountUpdateBeginMonth.Location = new System.Drawing.Point(72, 164);
+            this.DiscountUpdateBeginMonth.Name = "DiscountUpdateBeginMonth";
+            this.DiscountUpdateBeginMonth.Size = new System.Drawing.Size(48, 20);
+            this.DiscountUpdateBeginMonth.TabIndex = 19;
             // 
-            // textBox65
+            // DiscountUpdateBeginDay
             // 
-            this.textBox65.Location = new System.Drawing.Point(20, 164);
-            this.textBox65.Name = "textBox65";
-            this.textBox65.Size = new System.Drawing.Size(45, 20);
-            this.textBox65.TabIndex = 18;
+            this.DiscountUpdateBeginDay.Location = new System.Drawing.Point(20, 164);
+            this.DiscountUpdateBeginDay.Name = "DiscountUpdateBeginDay";
+            this.DiscountUpdateBeginDay.Size = new System.Drawing.Size(45, 20);
+            this.DiscountUpdateBeginDay.TabIndex = 18;
             // 
             // label59
             // 
@@ -1214,12 +1233,12 @@
             this.label59.TabIndex = 17;
             this.label59.Text = "Date Begin";
             // 
-            // textBox66
+            // DiscountUpdatePercentage
             // 
-            this.textBox66.Location = new System.Drawing.Point(20, 107);
-            this.textBox66.Name = "textBox66";
-            this.textBox66.Size = new System.Drawing.Size(100, 20);
-            this.textBox66.TabIndex = 16;
+            this.DiscountUpdatePercentage.Location = new System.Drawing.Point(20, 107);
+            this.DiscountUpdatePercentage.Name = "DiscountUpdatePercentage";
+            this.DiscountUpdatePercentage.Size = new System.Drawing.Size(100, 20);
+            this.DiscountUpdatePercentage.TabIndex = 16;
             // 
             // label60
             // 
@@ -1230,12 +1249,13 @@
             this.label60.TabIndex = 15;
             this.label60.Text = "Percentage";
             // 
-            // textBox67
+            // DiscountUpdateCode
             // 
-            this.textBox67.Location = new System.Drawing.Point(20, 53);
-            this.textBox67.Name = "textBox67";
-            this.textBox67.Size = new System.Drawing.Size(165, 20);
-            this.textBox67.TabIndex = 14;
+            this.DiscountUpdateCode.Location = new System.Drawing.Point(20, 53);
+            this.DiscountUpdateCode.Name = "DiscountUpdateCode";
+            this.DiscountUpdateCode.ReadOnly = true;
+            this.DiscountUpdateCode.Size = new System.Drawing.Size(165, 20);
+            this.DiscountUpdateCode.TabIndex = 14;
             // 
             // label61
             // 
@@ -1248,18 +1268,18 @@
             // 
             // groupBox21
             // 
-            this.groupBox21.Controls.Add(this.button23);
-            this.groupBox21.Controls.Add(this.textBox57);
-            this.groupBox21.Controls.Add(this.textBox58);
-            this.groupBox21.Controls.Add(this.textBox59);
+            this.groupBox21.Controls.Add(this.DiscountAddButton);
+            this.groupBox21.Controls.Add(this.DiscountAddEndYear);
+            this.groupBox21.Controls.Add(this.DiscountAddEndMonth);
+            this.groupBox21.Controls.Add(this.DiscountAddEndDay);
             this.groupBox21.Controls.Add(this.label57);
-            this.groupBox21.Controls.Add(this.textBox56);
-            this.groupBox21.Controls.Add(this.textBox55);
-            this.groupBox21.Controls.Add(this.textBox54);
+            this.groupBox21.Controls.Add(this.DiscountAddBeginYear);
+            this.groupBox21.Controls.Add(this.DiscountAddBeginMonth);
+            this.groupBox21.Controls.Add(this.DiscountAddBeginDay);
             this.groupBox21.Controls.Add(this.label56);
-            this.groupBox21.Controls.Add(this.textBox53);
+            this.groupBox21.Controls.Add(this.DiscountAddPercentage);
             this.groupBox21.Controls.Add(this.label55);
-            this.groupBox21.Controls.Add(this.textBox52);
+            this.groupBox21.Controls.Add(this.DiscountAddPromo);
             this.groupBox21.Controls.Add(this.label54);
             this.groupBox21.Location = new System.Drawing.Point(7, 7);
             this.groupBox21.Name = "groupBox21";
@@ -1268,35 +1288,36 @@
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Add Discount";
             // 
-            // button23
+            // DiscountAddButton
             // 
-            this.button23.Location = new System.Drawing.Point(76, 260);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(75, 23);
-            this.button23.TabIndex = 12;
-            this.button23.Text = "Add";
-            this.button23.UseVisualStyleBackColor = true;
+            this.DiscountAddButton.Location = new System.Drawing.Point(76, 260);
+            this.DiscountAddButton.Name = "DiscountAddButton";
+            this.DiscountAddButton.Size = new System.Drawing.Size(75, 23);
+            this.DiscountAddButton.TabIndex = 12;
+            this.DiscountAddButton.Text = "Add";
+            this.DiscountAddButton.UseVisualStyleBackColor = true;
+            this.DiscountAddButton.Click += new System.EventHandler(this.addDiscount);
             // 
-            // textBox57
+            // DiscountAddEndYear
             // 
-            this.textBox57.Location = new System.Drawing.Point(131, 217);
-            this.textBox57.Name = "textBox57";
-            this.textBox57.Size = new System.Drawing.Size(58, 20);
-            this.textBox57.TabIndex = 11;
+            this.DiscountAddEndYear.Location = new System.Drawing.Point(131, 217);
+            this.DiscountAddEndYear.Name = "DiscountAddEndYear";
+            this.DiscountAddEndYear.Size = new System.Drawing.Size(58, 20);
+            this.DiscountAddEndYear.TabIndex = 11;
             // 
-            // textBox58
+            // DiscountAddEndMonth
             // 
-            this.textBox58.Location = new System.Drawing.Point(76, 217);
-            this.textBox58.Name = "textBox58";
-            this.textBox58.Size = new System.Drawing.Size(48, 20);
-            this.textBox58.TabIndex = 10;
+            this.DiscountAddEndMonth.Location = new System.Drawing.Point(76, 217);
+            this.DiscountAddEndMonth.Name = "DiscountAddEndMonth";
+            this.DiscountAddEndMonth.Size = new System.Drawing.Size(48, 20);
+            this.DiscountAddEndMonth.TabIndex = 10;
             // 
-            // textBox59
+            // DiscountAddEndDay
             // 
-            this.textBox59.Location = new System.Drawing.Point(24, 217);
-            this.textBox59.Name = "textBox59";
-            this.textBox59.Size = new System.Drawing.Size(45, 20);
-            this.textBox59.TabIndex = 9;
+            this.DiscountAddEndDay.Location = new System.Drawing.Point(24, 217);
+            this.DiscountAddEndDay.Name = "DiscountAddEndDay";
+            this.DiscountAddEndDay.Size = new System.Drawing.Size(45, 20);
+            this.DiscountAddEndDay.TabIndex = 9;
             // 
             // label57
             // 
@@ -1307,26 +1328,26 @@
             this.label57.TabIndex = 8;
             this.label57.Text = "Date End";
             // 
-            // textBox56
+            // DiscountAddBeginYear
             // 
-            this.textBox56.Location = new System.Drawing.Point(131, 164);
-            this.textBox56.Name = "textBox56";
-            this.textBox56.Size = new System.Drawing.Size(58, 20);
-            this.textBox56.TabIndex = 7;
+            this.DiscountAddBeginYear.Location = new System.Drawing.Point(131, 164);
+            this.DiscountAddBeginYear.Name = "DiscountAddBeginYear";
+            this.DiscountAddBeginYear.Size = new System.Drawing.Size(58, 20);
+            this.DiscountAddBeginYear.TabIndex = 7;
             // 
-            // textBox55
+            // DiscountAddBeginMonth
             // 
-            this.textBox55.Location = new System.Drawing.Point(76, 164);
-            this.textBox55.Name = "textBox55";
-            this.textBox55.Size = new System.Drawing.Size(48, 20);
-            this.textBox55.TabIndex = 6;
+            this.DiscountAddBeginMonth.Location = new System.Drawing.Point(76, 164);
+            this.DiscountAddBeginMonth.Name = "DiscountAddBeginMonth";
+            this.DiscountAddBeginMonth.Size = new System.Drawing.Size(48, 20);
+            this.DiscountAddBeginMonth.TabIndex = 6;
             // 
-            // textBox54
+            // DiscountAddBeginDay
             // 
-            this.textBox54.Location = new System.Drawing.Point(24, 164);
-            this.textBox54.Name = "textBox54";
-            this.textBox54.Size = new System.Drawing.Size(45, 20);
-            this.textBox54.TabIndex = 5;
+            this.DiscountAddBeginDay.Location = new System.Drawing.Point(24, 164);
+            this.DiscountAddBeginDay.Name = "DiscountAddBeginDay";
+            this.DiscountAddBeginDay.Size = new System.Drawing.Size(45, 20);
+            this.DiscountAddBeginDay.TabIndex = 5;
             // 
             // label56
             // 
@@ -1337,12 +1358,12 @@
             this.label56.TabIndex = 4;
             this.label56.Text = "Date Begin";
             // 
-            // textBox53
+            // DiscountAddPercentage
             // 
-            this.textBox53.Location = new System.Drawing.Point(24, 107);
-            this.textBox53.Name = "textBox53";
-            this.textBox53.Size = new System.Drawing.Size(100, 20);
-            this.textBox53.TabIndex = 3;
+            this.DiscountAddPercentage.Location = new System.Drawing.Point(24, 107);
+            this.DiscountAddPercentage.Name = "DiscountAddPercentage";
+            this.DiscountAddPercentage.Size = new System.Drawing.Size(100, 20);
+            this.DiscountAddPercentage.TabIndex = 3;
             // 
             // label55
             // 
@@ -1353,12 +1374,12 @@
             this.label55.TabIndex = 2;
             this.label55.Text = "Percentage";
             // 
-            // textBox52
+            // DiscountAddPromo
             // 
-            this.textBox52.Location = new System.Drawing.Point(24, 53);
-            this.textBox52.Name = "textBox52";
-            this.textBox52.Size = new System.Drawing.Size(165, 20);
-            this.textBox52.TabIndex = 1;
+            this.DiscountAddPromo.Location = new System.Drawing.Point(24, 53);
+            this.DiscountAddPromo.Name = "DiscountAddPromo";
+            this.DiscountAddPromo.Size = new System.Drawing.Size(165, 20);
+            this.DiscountAddPromo.TabIndex = 1;
             // 
             // label54
             // 
@@ -1401,6 +1422,7 @@
             this.button21.TabIndex = 1;
             this.button21.Text = "Select";
             this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.selectGenre);
             // 
             // listBox5
             // 
@@ -1412,11 +1434,11 @@
             // 
             // groupBox18
             // 
-            this.groupBox18.Controls.Add(this.button20);
-            this.groupBox18.Controls.Add(this.textBox49);
+            this.groupBox18.Controls.Add(this.GenreUpdateButton);
+            this.groupBox18.Controls.Add(this.GenreUpdateDescription);
             this.groupBox18.Controls.Add(this.label51);
             this.groupBox18.Controls.Add(this.label52);
-            this.groupBox18.Controls.Add(this.textBox50);
+            this.groupBox18.Controls.Add(this.GenreUpdateName);
             this.groupBox18.Location = new System.Drawing.Point(422, 7);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(373, 269);
@@ -1424,22 +1446,23 @@
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Update Genre";
             // 
-            // button20
+            // GenreUpdateButton
             // 
-            this.button20.Location = new System.Drawing.Point(142, 216);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(75, 23);
-            this.button20.TabIndex = 9;
-            this.button20.Text = "Update";
-            this.button20.UseVisualStyleBackColor = true;
+            this.GenreUpdateButton.Location = new System.Drawing.Point(142, 216);
+            this.GenreUpdateButton.Name = "GenreUpdateButton";
+            this.GenreUpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.GenreUpdateButton.TabIndex = 9;
+            this.GenreUpdateButton.Text = "Update";
+            this.GenreUpdateButton.UseVisualStyleBackColor = true;
+            this.GenreUpdateButton.Click += new System.EventHandler(this.updateGenre);
             // 
-            // textBox49
+            // GenreUpdateDescription
             // 
-            this.textBox49.Location = new System.Drawing.Point(11, 94);
-            this.textBox49.Multiline = true;
-            this.textBox49.Name = "textBox49";
-            this.textBox49.Size = new System.Drawing.Size(342, 101);
-            this.textBox49.TabIndex = 8;
+            this.GenreUpdateDescription.Location = new System.Drawing.Point(11, 94);
+            this.GenreUpdateDescription.Multiline = true;
+            this.GenreUpdateDescription.Name = "GenreUpdateDescription";
+            this.GenreUpdateDescription.Size = new System.Drawing.Size(342, 101);
+            this.GenreUpdateDescription.TabIndex = 8;
             // 
             // label51
             // 
@@ -1459,20 +1482,21 @@
             this.label52.TabIndex = 6;
             this.label52.Text = "Genre Name";
             // 
-            // textBox50
+            // GenreUpdateName
             // 
-            this.textBox50.Location = new System.Drawing.Point(11, 45);
-            this.textBox50.Name = "textBox50";
-            this.textBox50.Size = new System.Drawing.Size(345, 20);
-            this.textBox50.TabIndex = 5;
+            this.GenreUpdateName.Location = new System.Drawing.Point(11, 45);
+            this.GenreUpdateName.Name = "GenreUpdateName";
+            this.GenreUpdateName.ReadOnly = true;
+            this.GenreUpdateName.Size = new System.Drawing.Size(345, 20);
+            this.GenreUpdateName.TabIndex = 5;
             // 
             // groupBox17
             // 
-            this.groupBox17.Controls.Add(this.button19);
-            this.groupBox17.Controls.Add(this.textBox48);
+            this.groupBox17.Controls.Add(this.GenreAddButton);
+            this.groupBox17.Controls.Add(this.GenreAddDescription);
             this.groupBox17.Controls.Add(this.label50);
             this.groupBox17.Controls.Add(this.label49);
-            this.groupBox17.Controls.Add(this.textBox47);
+            this.groupBox17.Controls.Add(this.GenreAddName);
             this.groupBox17.Location = new System.Drawing.Point(7, 7);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(408, 269);
@@ -1480,22 +1504,23 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Add Genre";
             // 
-            // button19
+            // GenreAddButton
             // 
-            this.button19.Location = new System.Drawing.Point(160, 221);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(75, 23);
-            this.button19.TabIndex = 4;
-            this.button19.Text = "Add";
-            this.button19.UseVisualStyleBackColor = true;
+            this.GenreAddButton.Location = new System.Drawing.Point(160, 221);
+            this.GenreAddButton.Name = "GenreAddButton";
+            this.GenreAddButton.Size = new System.Drawing.Size(75, 23);
+            this.GenreAddButton.TabIndex = 4;
+            this.GenreAddButton.Text = "Add";
+            this.GenreAddButton.UseVisualStyleBackColor = true;
+            this.GenreAddButton.Click += new System.EventHandler(this.addGenre);
             // 
-            // textBox48
+            // GenreAddDescription
             // 
-            this.textBox48.Location = new System.Drawing.Point(29, 99);
-            this.textBox48.Multiline = true;
-            this.textBox48.Name = "textBox48";
-            this.textBox48.Size = new System.Drawing.Size(342, 101);
-            this.textBox48.TabIndex = 3;
+            this.GenreAddDescription.Location = new System.Drawing.Point(29, 99);
+            this.GenreAddDescription.Multiline = true;
+            this.GenreAddDescription.Name = "GenreAddDescription";
+            this.GenreAddDescription.Size = new System.Drawing.Size(342, 101);
+            this.GenreAddDescription.TabIndex = 3;
             // 
             // label50
             // 
@@ -1515,12 +1540,12 @@
             this.label49.TabIndex = 1;
             this.label49.Text = "Genre Name";
             // 
-            // textBox47
+            // GenreAddName
             // 
-            this.textBox47.Location = new System.Drawing.Point(29, 50);
-            this.textBox47.Name = "textBox47";
-            this.textBox47.Size = new System.Drawing.Size(345, 20);
-            this.textBox47.TabIndex = 0;
+            this.GenreAddName.Location = new System.Drawing.Point(29, 50);
+            this.GenreAddName.Name = "GenreAddName";
+            this.GenreAddName.Size = new System.Drawing.Size(345, 20);
+            this.GenreAddName.TabIndex = 0;
             // 
             // tabPage6
             // 
@@ -1996,7 +2021,7 @@
             this.FranchiseUpdateCompany.FormattingEnabled = true;
             this.FranchiseUpdateCompany.Location = new System.Drawing.Point(23, 217);
             this.FranchiseUpdateCompany.Name = "FranchiseUpdateCompany";
-            this.FranchiseUpdateCompany.Size = new System.Drawing.Size(121, 21);
+            this.FranchiseUpdateCompany.Size = new System.Drawing.Size(283, 21);
             this.FranchiseUpdateCompany.TabIndex = 12;
             // 
             // FranchiseUpdateLogo
@@ -2042,10 +2067,10 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.button10);
-            this.groupBox9.Controls.Add(this.comboBox1);
-            this.groupBox9.Controls.Add(this.textBox22);
-            this.groupBox9.Controls.Add(this.textBox21);
+            this.groupBox9.Controls.Add(this.FranchiseAddButton);
+            this.groupBox9.Controls.Add(this.FranchiseAddCompany);
+            this.groupBox9.Controls.Add(this.FranchiseAddLogo);
+            this.groupBox9.Controls.Add(this.FranchiseAddName);
             this.groupBox9.Controls.Add(this.label19);
             this.groupBox9.Controls.Add(this.label18);
             this.groupBox9.Controls.Add(this.label17);
@@ -2056,37 +2081,38 @@
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Add Franchise";
             // 
-            // button10
+            // FranchiseAddButton
             // 
-            this.button10.Location = new System.Drawing.Point(126, 240);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 6;
-            this.button10.Text = "Add";
-            this.button10.UseVisualStyleBackColor = true;
+            this.FranchiseAddButton.Location = new System.Drawing.Point(126, 240);
+            this.FranchiseAddButton.Name = "FranchiseAddButton";
+            this.FranchiseAddButton.Size = new System.Drawing.Size(75, 23);
+            this.FranchiseAddButton.TabIndex = 6;
+            this.FranchiseAddButton.Text = "Add";
+            this.FranchiseAddButton.UseVisualStyleBackColor = true;
+            this.FranchiseAddButton.Click += new System.EventHandler(this.addFranchise);
             // 
-            // comboBox1
+            // FranchiseAddCompany
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 175);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 5;
+            this.FranchiseAddCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.FranchiseAddCompany.FormattingEnabled = true;
+            this.FranchiseAddCompany.Location = new System.Drawing.Point(16, 175);
+            this.FranchiseAddCompany.Name = "FranchiseAddCompany";
+            this.FranchiseAddCompany.Size = new System.Drawing.Size(283, 21);
+            this.FranchiseAddCompany.TabIndex = 5;
             // 
-            // textBox22
+            // FranchiseAddLogo
             // 
-            this.textBox22.Location = new System.Drawing.Point(16, 122);
-            this.textBox22.Name = "textBox22";
-            this.textBox22.Size = new System.Drawing.Size(283, 20);
-            this.textBox22.TabIndex = 4;
+            this.FranchiseAddLogo.Location = new System.Drawing.Point(16, 122);
+            this.FranchiseAddLogo.Name = "FranchiseAddLogo";
+            this.FranchiseAddLogo.Size = new System.Drawing.Size(283, 20);
+            this.FranchiseAddLogo.TabIndex = 4;
             // 
-            // textBox21
+            // FranchiseAddName
             // 
-            this.textBox21.Location = new System.Drawing.Point(16, 63);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(283, 20);
-            this.textBox21.TabIndex = 3;
+            this.FranchiseAddName.Location = new System.Drawing.Point(16, 63);
+            this.FranchiseAddName.Name = "FranchiseAddName";
+            this.FranchiseAddName.Size = new System.Drawing.Size(283, 20);
+            this.FranchiseAddName.TabIndex = 3;
             // 
             // label19
             // 
@@ -2622,6 +2648,15 @@
             this.button1.Text = "Log Out";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // DiscountGameList
+            // 
+            this.DiscountGameList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DiscountGameList.FormattingEnabled = true;
+            this.DiscountGameList.Location = new System.Drawing.Point(23, 147);
+            this.DiscountGameList.Name = "DiscountGameList";
+            this.DiscountGameList.Size = new System.Drawing.Size(229, 21);
+            this.DiscountGameList.TabIndex = 7;
+            // 
             // AdminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2649,6 +2684,7 @@
             this.groupBox11.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             this.groupBox24.ResumeLayout(false);
             this.groupBox24.PerformLayout();
             this.groupBox22.ResumeLayout(false);
@@ -2774,10 +2810,10 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox22;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.Button FranchiseAddButton;
+        private System.Windows.Forms.ComboBox FranchiseAddCompany;
+        private System.Windows.Forms.TextBox FranchiseAddLogo;
+        private System.Windows.Forms.TextBox FranchiseAddName;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
@@ -2826,50 +2862,49 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.ListBox listBox5;
         private System.Windows.Forms.GroupBox groupBox18;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.TextBox textBox49;
+        private System.Windows.Forms.Button GenreUpdateButton;
+        private System.Windows.Forms.TextBox GenreUpdateDescription;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox textBox50;
+        private System.Windows.Forms.TextBox GenreUpdateName;
         private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.TextBox textBox48;
+        private System.Windows.Forms.Button GenreAddButton;
+        private System.Windows.Forms.TextBox GenreAddDescription;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.TextBox textBox47;
+        private System.Windows.Forms.TextBox GenreAddName;
         private System.Windows.Forms.GroupBox groupBox24;
         private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.TextBox textBox70;
         private System.Windows.Forms.Label label64;
-        private System.Windows.Forms.TextBox textBox69;
+        private System.Windows.Forms.TextBox DiscountGamePromo;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.GroupBox groupBox22;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.TextBox textBox60;
-        private System.Windows.Forms.TextBox textBox61;
-        private System.Windows.Forms.TextBox textBox62;
+        private System.Windows.Forms.Button DiscountUpdateButton;
+        private System.Windows.Forms.TextBox DiscountUpdateEndYear;
+        private System.Windows.Forms.TextBox DiscountUpdateEndMonth;
+        private System.Windows.Forms.TextBox DiscountUpdateEndDay;
         private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.TextBox textBox63;
-        private System.Windows.Forms.TextBox textBox64;
-        private System.Windows.Forms.TextBox textBox65;
+        private System.Windows.Forms.TextBox DiscountUpdateBeginYear;
+        private System.Windows.Forms.TextBox DiscountUpdateBeginMonth;
+        private System.Windows.Forms.TextBox DiscountUpdateBeginDay;
         private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.TextBox textBox66;
+        private System.Windows.Forms.TextBox DiscountUpdatePercentage;
         private System.Windows.Forms.Label label60;
-        private System.Windows.Forms.TextBox textBox67;
+        private System.Windows.Forms.TextBox DiscountUpdateCode;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.TextBox textBox57;
-        private System.Windows.Forms.TextBox textBox58;
-        private System.Windows.Forms.TextBox textBox59;
+        private System.Windows.Forms.Button DiscountAddButton;
+        private System.Windows.Forms.TextBox DiscountAddEndYear;
+        private System.Windows.Forms.TextBox DiscountAddEndMonth;
+        private System.Windows.Forms.TextBox DiscountAddEndDay;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.TextBox textBox56;
-        private System.Windows.Forms.TextBox textBox55;
-        private System.Windows.Forms.TextBox textBox54;
+        private System.Windows.Forms.TextBox DiscountAddBeginYear;
+        private System.Windows.Forms.TextBox DiscountAddBeginMonth;
+        private System.Windows.Forms.TextBox DiscountAddBeginDay;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.TextBox textBox53;
+        private System.Windows.Forms.TextBox DiscountAddPercentage;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TextBox textBox52;
+        private System.Windows.Forms.TextBox DiscountAddPromo;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label47;
@@ -2944,5 +2979,8 @@
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.TextBox textBox79;
         private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridView7;
+        private System.Windows.Forms.ComboBox DiscountGameList;
     }
 }

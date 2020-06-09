@@ -27,4 +27,3 @@ as
 	end
 
 
-exec Project.pd_updateFranchise 
