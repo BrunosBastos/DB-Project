@@ -71,6 +71,7 @@ namespace App
                 Console.WriteLine("Inside Game");
             }else if (tabControl2.SelectedIndex == 1)
             {
+                LoadDiscount();
                 Console.WriteLine("Inside Discount");
             }else if (tabControl2.SelectedIndex == 2)
             {
@@ -665,6 +666,128 @@ namespace App
 
                 MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
             }
+        }
+
+
+        //Discount
+        private void LoadDiscount()
+        {
+            if (Program.verifySGBDConnection())
+            {
+                //SqlCommand cmd = new SqlCommand("Select * From Project.Discount");
+                SqlDataAdapter adapter = new SqlDataAdapter("Select * From Project.Discount",Program.cn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView7.DataSource = dt;
+                dataGridView7.ReadOnly = true;
+
+
+
+
+
+            }
+
+
+        }
+
+        private void selectDiscount(object sender, EventArgs e)
+        {
+            int selectedrow = dataGridView7.CurrentCell.RowIndex;
+            string promocode = dataGridView7.Rows[selectedrow].Cells[0].Value.ToString();
+            //Console.WriteLine(promocode);
+
+            DiscountUpdateCode.Text = promocode;
+            DiscountUpdatePercentage.Text = dataGridView7.Rows[selectedrow].Cells[1].Value.ToString();
+            string begin = dataGridView7.Rows[selectedrow].Cells[2].Value.ToString();
+            Console.WriteLine(begin);
+            DiscountUpdateBeginDay.Text = begin.Split('/').ToArray()[0].ToString();
+            DiscountUpdateBeginMonth.Text = begin.Split('/').ToArray()[1].ToString();
+            DiscountUpdateBeginYear.Text = begin.Split('/').ToArray()[2].ToString().Split(' ').ToArray()[0].ToString();
+
+            string end = dataGridView7.Rows[selectedrow].Cells[3].Value.ToString();
+            DiscountUpdateEndDay.Text = end.Split('/').ToArray()[0].ToString();
+            DiscountUpdateEndMonth.Text = end.Split('/').ToArray()[1].ToString();
+            DiscountUpdateEndYear.Text = end.Split('/').ToArray()[2].ToString().Split(' ').ToArray()[0].ToString();
+
+
+        }
+
+        private void updateDiscount(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                string percentage = DiscountUpdatePercentage.Text;
+
+                if(!int.TryParse(percentage,out int n) || percentage.Length == 0)
+                {
+                    MessageBox.Show("Percentage is a number between 0 and 100");
+                    return;
+                }
+
+                if(n>100 || n < 0)
+                {
+                    MessageBox.Show("Percentage is between 0 and 100");
+                    return;
+                }
+
+                string begin = DiscountUpdateBeginYear.Text + "-" + DiscountUpdateBeginMonth.Text + "-" + DiscountUpdateBeginDay.Text;
+                string end = DiscountUpdateEndYear.Text + "-" + DiscountUpdateEndMonth.Text + "-" + DiscountUpdateEndDay.Text;
+
+                if (!ValidateDate(begin))
+                {
+                    MessageBox.Show("Begin Date is not valid");
+                    return;
+                }
+
+                if (!ValidateDate(end))
+                {
+                    MessageBox.Show("Ending Date is not valid");
+                    return;
+                }
+
+                int comp = DateTime.Compare(DateTime.Parse(begin), DateTime.Parse(end));
+                if (comp > 0)
+                {
+                    MessageBox.Show("Starting Date cannot be after Ending Date");
+                    return;
+                }
+
+                SqlCommand cmd = new SqlCommand("Project.pd_updateDiscount",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@PromoCode", int.Parse(DiscountUpdateCode.Text));
+                cmd.Parameters.AddWithValue("@Percentage", n);
+                cmd.Parameters.AddWithValue("@Begin", DateTime.Parse(begin));
+                cmd.Parameters.AddWithValue("@End", DateTime.Parse(end));
+                cmd.Parameters.Add(new SqlParameter("@res",SqlDbType.VarChar,255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadDiscount();
+
+            }
+        }
+
+        private void addDiscount(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+
+
+
+            }
+
+
+
+
+
+
+
         }
     }
 }
