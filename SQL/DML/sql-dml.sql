@@ -92,31 +92,33 @@ VALUES ('wbsf@warnerbros.com','Warner Bros Int. Entertainment','www.wbgames.com'
 
 -- insert franchise
 
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Mario',12);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Pokemon',12);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Grand Theft Auto',4);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('FIFA',2);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Call of Duty',10);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Left 4 Dead',19);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Need For Speed',2);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Assassins Creed',16);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Far Cry',16);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Pro Evolution Soccer',7);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('The Legend Of Zelda',12);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Battlefield',2);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Uncharted',8);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Resident Evil',14);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Halo',9);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Tomb Raider',3);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('The Elder Scrolls',1);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Counter Strike',19);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('God Of War',8);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Warcraft',11);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Forza',9);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Mass Effect',9);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Tekken',13);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Street Fighter',14);
-INSERT INTO Project.Franchise(Name,IDCompany) VALUES ('Borderlands',8);
+
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Mario',12,'img.pngio.com/filemario-logopng-wikimedia-commons-mario-logo-png-256_256.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Pokemon',12,'res-1.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1487981301/x29qmdr7nzxnpfrplxmd.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Grand Theft Auto',4,'cdn.iconscout.com/icon/free/png-256/gta-283003.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('FIFA',2,'images.ctfassets.net/oqcxjunhepvs/29JWmTZaTy66O4SicWsawW/4ecfe87b180f741f8ce37bea3b6ab53e/July-15-2014-1.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Call of Duty',10,'static.cloud-boxloja.com/lojas/wyfyg/produtos/f25a0bd3-cd98-4f34-95e4-f63769130a7e_t260x260.jpg');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Left 4 Dead',19,'p1.hiclipart.com/preview/391/210/556/left-4-dead-2-icon-2-left-4-dead-b-left-4-dead-logo-png-clipart.jpg');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Need For Speed',2,'cdn.iconscout.com/icon/free/png-256/need-for-speed-2-569509.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Assassins Creed',16,'i.pinimg.com/originals/9a/22/3d/9a223d796c71d5f1289e9ad36b9c1a72.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Far Cry',16,'p1.hiclipart.com/preview/865/346/322/far-cry-series-icon-far-cry-by-alchemist10-d7isoxh-png-icon.jpg');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Pro Evolution Soccer',7,'escharts.com/storage/app/uploads/public/5af/59b/40d/5af59b40df255299807350.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('The Legend Of Zelda',12,'i.pinimg.com/originals/f2/e4/6f/f2e46f0473b6d637b7ef9b98ca1a334d.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Battlefield',2,'cdn.iconscout.com/icon/free/png-256/battlefield-1-282437.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Uncharted',8,'ih1.redbubble.net/image.1083813143.6081/flat,128x128,075,f-pad,128x128,f8f8f8.jpg');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Resident Evil',14,'i53.fastpic.ru/big/2013/0322/c8/d743e27bd8e35d690cc63b5d968731c8.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Halo',9,'cdn.shopify.com/s/files/1/1288/8361/files/Halo_Icon.png?9735559993999264622');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Tomb Raider',3,'portingteam.com/index.php?app=downloads&module=display&section=screenshot&id=7840');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('The Elder Scrolls',1,'images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/79db8688-58ac-41dc-aea8-cc2422e185c7/d4gg9zv-97eb5f08-a4e1-4b97-b1d5-08097cf7639c.png/v1/fill/w_256,h_256,q_80,strp/the_elder_scrolls_v_skyrim___icon_by_j1mb091_d4gg9zv-fullview.jpg');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Counter Strike',19,'lh3.googleusercontent.com/proxy/nXDUBI7pbshUG-lMatxCxsz6LHaNxRba9rujXSrvjA1uP4La-mn2Fl8_K6cB9tuQYQ7HkDxuiWnyFrduy7E5KjL9BDkT95Vrd_ebGu5u_53N');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('God Of War',8,'ih1.redbubble.net/image.550493323.5957/flat,128x128,075,t.u5.jpg');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Warcraft',11,'i1.pngguru.com/preview/832/663/631/wow-high-rez-icon-world-of-warcraft-logo-png-clipart.jpg');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Forza',9,'external-preview.redd.it/k7pYlhS4epFbqAE5uiRf7w5Meg52pgD96TdfI7A1X-M.jpg?auto=webp&s=df7b5ae0c3475dcf8da39e2dea907573290278a9');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Mass Effect',9,'external-preview.redd.it/YNrBdv5EFiAay3nyOKnlOWyZFYsv6tqooZrOzc7E-Dw.png?auto=webp&s=a5698bb811548620dfc0ce228345b3ac865576e1');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Tekken',13,'www.esc.watch/storage/app/uploads/public/5a0/ae9/b6a/5a0ae9b6abccf539928704.png');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Street Fighter',14,'www.ssbwiki.com/images/8/84/StreetFighterSymbol.svg');
+INSERT INTO Project.Franchise(Name,IDCompany,Logo) VALUES ('Borderlands',8,'steamuserimages-a.akamaihd.net/ugc/250336157155911118/D961B7C5AB064EF1D8037D4921156787D1B89296/');
+
 
 
 -- insert genre
