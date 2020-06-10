@@ -732,3 +732,29 @@ CREATE PROCEDURE Project.pd_updateGame(
 			SET @res=ERROR_MESSAGE();
 		END CATCH
 	END
+
+
+GO
+CREATE PROCEDURE Project.pd_removeGameGenre (
+@IDGame INT,
+@GenName VARCHAR(25),
+@res VARCHAR(255) OUTPUT
+)
+AS
+	BEGIN
+	BEGIN TRY
+		IF (( SELECT IDGame FROM Project.GameGenre WHERE GenName=@GenName AND IDGame=@IDGame) IS NOT NULL)
+		BEGIN
+			DELETE FROM Project.GameGenre WHERE IDGame=@IDGame AND GenName=@GenName
+			SET @res='Success'
+		END
+		ELSE
+			RAISERROR('Could not remove the Genre associated within this Game',16,1)
+	END TRY
+	BEGIN CATCH
+		SET @res=ERROR_MESSAGE();
+	END CATCH
+	END	
+
+
+	go
