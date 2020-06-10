@@ -109,6 +109,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView7 = new System.Windows.Forms.DataGridView();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.DiscountGameList = new System.Windows.Forms.ComboBox();
             this.button26 = new System.Windows.Forms.Button();
             this.label64 = new System.Windows.Forms.Label();
             this.DiscountGamePromo = new System.Windows.Forms.TextBox();
@@ -275,7 +277,6 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.DiscountGameList = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -1093,6 +1094,7 @@
             // 
             // groupBox24
             // 
+            this.groupBox24.Controls.Add(this.button4);
             this.groupBox24.Controls.Add(this.DiscountGameList);
             this.groupBox24.Controls.Add(this.button26);
             this.groupBox24.Controls.Add(this.label64);
@@ -1100,14 +1102,33 @@
             this.groupBox24.Controls.Add(this.label63);
             this.groupBox24.Location = new System.Drawing.Point(7, 315);
             this.groupBox24.Name = "groupBox24";
-            this.groupBox24.Size = new System.Drawing.Size(315, 300);
+            this.groupBox24.Size = new System.Drawing.Size(315, 321);
             this.groupBox24.TabIndex = 3;
             this.groupBox24.TabStop = false;
             this.groupBox24.Text = "Add Discount to Game";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(94, 254);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(114, 48);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Remove From Game";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.removeDiscountGame);
+            // 
+            // DiscountGameList
+            // 
+            this.DiscountGameList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DiscountGameList.FormattingEnabled = true;
+            this.DiscountGameList.Location = new System.Drawing.Point(23, 147);
+            this.DiscountGameList.Name = "DiscountGameList";
+            this.DiscountGameList.Size = new System.Drawing.Size(229, 21);
+            this.DiscountGameList.TabIndex = 7;
+            // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(94, 195);
+            this.button26.Location = new System.Drawing.Point(94, 191);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(114, 45);
             this.button26.TabIndex = 6;
@@ -1625,11 +1646,13 @@
             this.CompanyUpdateButton.TabIndex = 35;
             this.CompanyUpdateButton.Text = "Update";
             this.CompanyUpdateButton.UseVisualStyleBackColor = true;
+            this.CompanyUpdateButton.Click += new System.EventHandler(this.updateCompany);
             // 
             // CompanyUpdateID
             // 
             this.CompanyUpdateID.Location = new System.Drawing.Point(26, 41);
             this.CompanyUpdateID.Name = "CompanyUpdateID";
+            this.CompanyUpdateID.ReadOnly = true;
             this.CompanyUpdateID.Size = new System.Drawing.Size(100, 20);
             this.CompanyUpdateID.TabIndex = 34;
             // 
@@ -1865,6 +1888,7 @@
             this.CompanyAddButton.TabIndex = 7;
             this.CompanyAddButton.Text = "Add";
             this.CompanyAddButton.UseVisualStyleBackColor = true;
+            this.CompanyAddButton.Click += new System.EventHandler(this.addCompany);
             // 
             // label33
             // 
@@ -2649,15 +2673,6 @@
             this.button1.Text = "Log Out";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // DiscountGameList
-            // 
-            this.DiscountGameList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DiscountGameList.FormattingEnabled = true;
-            this.DiscountGameList.Location = new System.Drawing.Point(23, 147);
-            this.DiscountGameList.Name = "DiscountGameList";
-            this.DiscountGameList.Size = new System.Drawing.Size(229, 21);
-            this.DiscountGameList.TabIndex = 7;
-            // 
             // AdminMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2983,5 +2998,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView7;
         private System.Windows.Forms.ComboBox DiscountGameList;
+        private System.Windows.Forms.Button button4;
     }
 }

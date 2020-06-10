@@ -857,6 +857,26 @@ namespace App
             }
         }
 
+        private void removeDiscountGame(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+                int idgame = int.Parse(DiscountGameList.SelectedItem.ToString().Split(' ').ToArray()[0]);
+                int promo = int.Parse(DiscountGamePromo.Text);
+                SqlCommand cmd = new SqlCommand("Project.pd_removeGameDiscount",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@IDGame",idgame);
+                cmd.Parameters.AddWithValue("@PromoCode", promo);
+                cmd.Parameters.Add(new SqlParameter("@res",SqlDbType.VarChar,255));
+
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+                cmd.ExecuteNonQuery();
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+            }
+        }
+
+
         // Company
         private void LoadCompany()
         {
@@ -883,13 +903,260 @@ namespace App
         {
             if (Program.verifySGBDConnection())
             {
+                int idCompany = int.Parse(listBox4.SelectedItem.ToString().Split(' ').ToArray()[0]);
+                SqlCommand cmd = new SqlCommand("Select * From Project.Company where IDCompany="+idCompany,Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                CompanyUpdateID.Text = reader["IDCompany"].ToString();
+                CompanyUpdateName.Text = reader["CompanyName"].ToString();
+                CompanyUpdateCity.Text = reader["City"].ToString();
+                CompanyUpdateContact.Text = reader["Contact"].ToString();
+                CompanyUpdateCountry.Text = reader["Country"].ToString();
+                CompanyUpdateLogo.Text = reader["Logo"].ToString();
+                CompanyUpdateWebsite.Text = reader["Website"].ToString();
+                string date = reader["FoundationDate"].ToString().Split(' ').ToArray()[0];
+                if (date.Length > 0)
+                { 
+                    CompanyUpdateYear.Text = date.Split('/').ToArray()[2];
+                    CompanyUpdateMonth.Text = date.Split('/').ToArray()[1];
+                    CompanyUpdateDay.Text = date.Split('/').ToArray()[0];
+                }
+                reader.Close();
+            }
+        }
+
+        private void updateCompany(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+
+                string name = CompanyUpdateName.Text;
+                string contact = CompanyUpdateContact.Text;
+                string logo = CompanyUpdateLogo.Text;
+                string city = CompanyUpdateCity.Text;
+                string country = CompanyUpdateCountry.Text;
+                string date = CompanyUpdateYear.Text + "-" + CompanyUpdateMonth.Text + "-" + CompanyUpdateDay.Text;
+                string site = CompanyUpdateWebsite.Text;
+
+
+                if (name.Length>50 || name.Length==0)
+                {
+                    MessageBox.Show("Name is between 0 and 50 chars long.");
+                    return;
+                }
+
+                if(contact.Length>50)
+                {
+                    MessageBox.Show("Contact cannot be more than 50 chars long.");
+                    return;
+                }
+
+                if(logo.Length>8 && logo.Substring(0, 8).Equals("https://"))
+                {
+                    logo = logo.Substring(8, logo.Length - 8);
+                }
+                
+                if(site.Length==0 || site.Length > 50)
+                {
+                    MessageBox.Show("Website must be between 0 and 50 chars long.");
+                    return;
+                }
+
+
+                if (city.Length > 50)
+                {
+                    MessageBox.Show("City cannot be more than 50 chars long.");
+                    return;
+                }
+                if (country.Length > 50)
+                {
+                    MessageBox.Show("Country cannot be more then 50 chars long.");
+                    return;
+                }
+
+                if (!ValidateDate(date) && date.Length!=2)
+                {
+                    MessageBox.Show("Date is not valid.");
+                    return;
+                }
+
+
+                SqlCommand cmd = new SqlCommand("Project.pd_updateCompany", Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@IDCompany", CompanyUpdateID.Text);
+                if (contact.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@Contact", DBNull.Value);
+                }
+                else { 
+                    cmd.Parameters.AddWithValue("@Contact", contact);
+                }
+
+                if (name.Length==0)
+                {
+                    cmd.Parameters.AddWithValue("@CompanyName",DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@CompanyName", name);
+                }
+                cmd.Parameters.AddWithValue("@Website", site);
 
 
 
+                if (logo.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@Logo", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Logo", logo);
+                }
 
+                if (date.Length == 2)
+                {
+                    cmd.Parameters.AddWithValue("@FoundationDate", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@FoundationDate", DateTime.Parse(date));
+                }
 
+                if (city.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@City", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@City", city);
+                }
+
+                if (country.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@Country", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Country", country);
+                }
+
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
 
             }
+        }
+
+        private void addCompany(object sender, EventArgs e)
+        {
+
+
+            string name = CompanyAddName.Text;
+            string contact = CompanyAddContact.Text;
+            string logo = CompanyAddLogo.Text;
+            string city = CompanyAddCity.Text;
+            string country = CompanyAddCountry.Text;
+            string date = CompanyAddYear.Text + "-" + CompanyAddMonth.Text + "-" + CompanyAddDay.Text;
+            string site = CompanyAddWebsite.Text;
+
+
+            if (name.Length > 50 || name.Length == 0)
+            {
+                MessageBox.Show("Name is between 0 and 50 chars long.");
+                return;
+            }
+
+            if (contact.Length > 50)
+            {
+                MessageBox.Show("Contact cannot be more than 50 chars long.");
+                return;
+            }
+
+            if (logo.Length > 8 && logo.Substring(0, 8).Equals("https://"))
+            {
+                logo = logo.Substring(8, logo.Length - 8);
+            }
+
+            if (site.Length == 0 || site.Length > 50)
+            {
+                MessageBox.Show("Website must be between 0 and 50 chars long.");
+                return;
+            }
+
+
+            if (city.Length > 50)
+            {
+                MessageBox.Show("City cannot be more than 50 chars long.");
+                return;
+            }
+            if (country.Length > 50)
+            {
+                MessageBox.Show("Country cannot be more then 50 chars long.");
+                return;
+            }
+
+            if (!ValidateDate(date) && date.Length != 2)
+            {
+                MessageBox.Show("Date is not valid.");
+                return;
+            }
+
+            SqlCommand cmd = new SqlCommand("Project.pd_insertCompany",Program.cn);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@CompanyName", name);
+            cmd.Parameters.AddWithValue("@Website", site);
+            cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+            cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+            if (contact.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@Contact", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Contact", contact);
+            }
+            if (logo.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@Logo", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@Logo", logo);
+            }
+            if (date.Length == 2)
+            {
+                cmd.Parameters.AddWithValue("@FoundationDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@FoundationDate", DateTime.Parse(date));
+            }
+            if (city.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@City", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@City", city);
+            }
+            if (country.Length == 0)
+            {
+                cmd.Parameters.AddWithValue("@Country",DBNull.Value);
+            }
+            else { 
+                cmd.Parameters.AddWithValue("@Country",country);
+            }
+
+            cmd.ExecuteNonQuery();
+
+            MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+            LoadCompany();
 
 
 
