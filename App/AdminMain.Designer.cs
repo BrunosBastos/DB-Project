@@ -34,39 +34,39 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox20 = new System.Windows.Forms.GroupBox();
             this.label74 = new System.Windows.Forms.Label();
-            this.textBox80 = new System.Windows.Forms.TextBox();
+            this.GameUpdateID = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
-            this.textBox72 = new System.Windows.Forms.TextBox();
+            this.GameUpdateDescription = new System.Windows.Forms.TextBox();
             this.button25 = new System.Windows.Forms.Button();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.label53 = new System.Windows.Forms.Label();
-            this.listBox11 = new System.Windows.Forms.ListBox();
+            this.GameUpdatePlatform = new System.Windows.Forms.ListBox();
             this.label62 = new System.Windows.Forms.Label();
-            this.listBox12 = new System.Windows.Forms.ListBox();
+            this.GameUpdateAllPlatforms = new System.Windows.Forms.ListBox();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
             this.button29 = new System.Windows.Forms.Button();
             this.label65 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
-            this.listBox13 = new System.Windows.Forms.ListBox();
+            this.GameUpdateGenre = new System.Windows.Forms.ListBox();
             this.button30 = new System.Windows.Forms.Button();
-            this.listBox14 = new System.Windows.Forms.ListBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.GameUpdateAllGenre = new System.Windows.Forms.ListBox();
+            this.GameUpdateFranchise = new System.Windows.Forms.ComboBox();
             this.label67 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.GameUpdateCompany = new System.Windows.Forms.ComboBox();
             this.label68 = new System.Windows.Forms.Label();
-            this.textBox73 = new System.Windows.Forms.TextBox();
+            this.GameUpdatePrice = new System.Windows.Forms.TextBox();
             this.label69 = new System.Windows.Forms.Label();
-            this.textBox74 = new System.Windows.Forms.TextBox();
+            this.GameUpdateAge = new System.Windows.Forms.TextBox();
             this.label70 = new System.Windows.Forms.Label();
-            this.textBox75 = new System.Windows.Forms.TextBox();
+            this.GameUpdateImage = new System.Windows.Forms.TextBox();
             this.label71 = new System.Windows.Forms.Label();
-            this.textBox76 = new System.Windows.Forms.TextBox();
-            this.textBox77 = new System.Windows.Forms.TextBox();
-            this.textBox78 = new System.Windows.Forms.TextBox();
+            this.GameUpdateYear = new System.Windows.Forms.TextBox();
+            this.GameUpdateMonth = new System.Windows.Forms.TextBox();
+            this.GameUpdateDay = new System.Windows.Forms.TextBox();
             this.label72 = new System.Windows.Forms.Label();
-            this.textBox79 = new System.Windows.Forms.TextBox();
+            this.GameUpdateName = new System.Windows.Forms.TextBox();
             this.label73 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label47 = new System.Windows.Forms.Label();
@@ -78,14 +78,14 @@
             this.label46 = new System.Windows.Forms.Label();
             this.listBox10 = new System.Windows.Forms.ListBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.listBox9 = new System.Windows.Forms.ListBox();
+            this.GameAddAllPlatforms = new System.Windows.Forms.ListBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.button18 = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
             this.listBox8 = new System.Windows.Forms.ListBox();
             this.button9 = new System.Windows.Forms.Button();
-            this.listBox7 = new System.Windows.Forms.ListBox();
+            this.GameAddAllGenre = new System.Windows.Forms.ListBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.label42 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -376,27 +376,27 @@
             // groupBox20
             // 
             this.groupBox20.Controls.Add(this.label74);
-            this.groupBox20.Controls.Add(this.textBox80);
+            this.groupBox20.Controls.Add(this.GameUpdateID);
             this.groupBox20.Controls.Add(this.label48);
-            this.groupBox20.Controls.Add(this.textBox72);
+            this.groupBox20.Controls.Add(this.GameUpdateDescription);
             this.groupBox20.Controls.Add(this.button25);
             this.groupBox20.Controls.Add(this.groupBox23);
             this.groupBox20.Controls.Add(this.groupBox25);
-            this.groupBox20.Controls.Add(this.comboBox5);
+            this.groupBox20.Controls.Add(this.GameUpdateFranchise);
             this.groupBox20.Controls.Add(this.label67);
-            this.groupBox20.Controls.Add(this.comboBox6);
+            this.groupBox20.Controls.Add(this.GameUpdateCompany);
             this.groupBox20.Controls.Add(this.label68);
-            this.groupBox20.Controls.Add(this.textBox73);
+            this.groupBox20.Controls.Add(this.GameUpdatePrice);
             this.groupBox20.Controls.Add(this.label69);
-            this.groupBox20.Controls.Add(this.textBox74);
+            this.groupBox20.Controls.Add(this.GameUpdateAge);
             this.groupBox20.Controls.Add(this.label70);
-            this.groupBox20.Controls.Add(this.textBox75);
+            this.groupBox20.Controls.Add(this.GameUpdateImage);
             this.groupBox20.Controls.Add(this.label71);
-            this.groupBox20.Controls.Add(this.textBox76);
-            this.groupBox20.Controls.Add(this.textBox77);
-            this.groupBox20.Controls.Add(this.textBox78);
+            this.groupBox20.Controls.Add(this.GameUpdateYear);
+            this.groupBox20.Controls.Add(this.GameUpdateMonth);
+            this.groupBox20.Controls.Add(this.GameUpdateDay);
             this.groupBox20.Controls.Add(this.label72);
-            this.groupBox20.Controls.Add(this.textBox79);
+            this.groupBox20.Controls.Add(this.GameUpdateName);
             this.groupBox20.Controls.Add(this.label73);
             this.groupBox20.Location = new System.Drawing.Point(492, 3);
             this.groupBox20.Name = "groupBox20";
@@ -414,12 +414,12 @@
             this.label74.TabIndex = 22;
             this.label74.Text = "Game ID";
             // 
-            // textBox80
+            // GameUpdateID
             // 
-            this.textBox80.Location = new System.Drawing.Point(21, 46);
-            this.textBox80.Name = "textBox80";
-            this.textBox80.Size = new System.Drawing.Size(57, 20);
-            this.textBox80.TabIndex = 21;
+            this.GameUpdateID.Location = new System.Drawing.Point(21, 46);
+            this.GameUpdateID.Name = "GameUpdateID";
+            this.GameUpdateID.Size = new System.Drawing.Size(57, 20);
+            this.GameUpdateID.TabIndex = 21;
             // 
             // label48
             // 
@@ -430,13 +430,13 @@
             this.label48.TabIndex = 20;
             this.label48.Text = "Description";
             // 
-            // textBox72
+            // GameUpdateDescription
             // 
-            this.textBox72.Location = new System.Drawing.Point(15, 517);
-            this.textBox72.Multiline = true;
-            this.textBox72.Name = "textBox72";
-            this.textBox72.Size = new System.Drawing.Size(444, 77);
-            this.textBox72.TabIndex = 19;
+            this.GameUpdateDescription.Location = new System.Drawing.Point(15, 517);
+            this.GameUpdateDescription.Multiline = true;
+            this.GameUpdateDescription.Name = "GameUpdateDescription";
+            this.GameUpdateDescription.Size = new System.Drawing.Size(444, 77);
+            this.GameUpdateDescription.TabIndex = 19;
             // 
             // button25
             // 
@@ -452,9 +452,9 @@
             this.groupBox23.Controls.Add(this.button27);
             this.groupBox23.Controls.Add(this.button28);
             this.groupBox23.Controls.Add(this.label53);
-            this.groupBox23.Controls.Add(this.listBox11);
+            this.groupBox23.Controls.Add(this.GameUpdatePlatform);
             this.groupBox23.Controls.Add(this.label62);
-            this.groupBox23.Controls.Add(this.listBox12);
+            this.groupBox23.Controls.Add(this.GameUpdateAllPlatforms);
             this.groupBox23.Location = new System.Drawing.Point(15, 345);
             this.groupBox23.Name = "groupBox23";
             this.groupBox23.Size = new System.Drawing.Size(444, 140);
@@ -489,13 +489,13 @@
             this.label53.TabIndex = 7;
             this.label53.Text = "Game Platforms";
             // 
-            // listBox11
+            // GameUpdatePlatform
             // 
-            this.listBox11.FormattingEnabled = true;
-            this.listBox11.Location = new System.Drawing.Point(298, 32);
-            this.listBox11.Name = "listBox11";
-            this.listBox11.Size = new System.Drawing.Size(140, 95);
-            this.listBox11.TabIndex = 6;
+            this.GameUpdatePlatform.FormattingEnabled = true;
+            this.GameUpdatePlatform.Location = new System.Drawing.Point(298, 32);
+            this.GameUpdatePlatform.Name = "GameUpdatePlatform";
+            this.GameUpdatePlatform.Size = new System.Drawing.Size(140, 95);
+            this.GameUpdatePlatform.TabIndex = 6;
             // 
             // label62
             // 
@@ -506,22 +506,22 @@
             this.label62.TabIndex = 5;
             this.label62.Text = "All Platforms";
             // 
-            // listBox12
+            // GameUpdateAllPlatforms
             // 
-            this.listBox12.FormattingEnabled = true;
-            this.listBox12.Location = new System.Drawing.Point(6, 32);
-            this.listBox12.Name = "listBox12";
-            this.listBox12.Size = new System.Drawing.Size(140, 95);
-            this.listBox12.TabIndex = 4;
+            this.GameUpdateAllPlatforms.FormattingEnabled = true;
+            this.GameUpdateAllPlatforms.Location = new System.Drawing.Point(6, 32);
+            this.GameUpdateAllPlatforms.Name = "GameUpdateAllPlatforms";
+            this.GameUpdateAllPlatforms.Size = new System.Drawing.Size(140, 95);
+            this.GameUpdateAllPlatforms.TabIndex = 4;
             // 
             // groupBox25
             // 
             this.groupBox25.Controls.Add(this.button29);
             this.groupBox25.Controls.Add(this.label65);
             this.groupBox25.Controls.Add(this.label66);
-            this.groupBox25.Controls.Add(this.listBox13);
+            this.groupBox25.Controls.Add(this.GameUpdateGenre);
             this.groupBox25.Controls.Add(this.button30);
-            this.groupBox25.Controls.Add(this.listBox14);
+            this.groupBox25.Controls.Add(this.GameUpdateAllGenre);
             this.groupBox25.Location = new System.Drawing.Point(15, 191);
             this.groupBox25.Name = "groupBox25";
             this.groupBox25.Size = new System.Drawing.Size(444, 148);
@@ -556,13 +556,13 @@
             this.label66.TabIndex = 3;
             this.label66.Text = "All Genre";
             // 
-            // listBox13
+            // GameUpdateGenre
             // 
-            this.listBox13.FormattingEnabled = true;
-            this.listBox13.Location = new System.Drawing.Point(298, 47);
-            this.listBox13.Name = "listBox13";
-            this.listBox13.Size = new System.Drawing.Size(140, 95);
-            this.listBox13.TabIndex = 2;
+            this.GameUpdateGenre.FormattingEnabled = true;
+            this.GameUpdateGenre.Location = new System.Drawing.Point(298, 47);
+            this.GameUpdateGenre.Name = "GameUpdateGenre";
+            this.GameUpdateGenre.Size = new System.Drawing.Size(140, 95);
+            this.GameUpdateGenre.TabIndex = 2;
             // 
             // button30
             // 
@@ -573,22 +573,22 @@
             this.button30.Text = "Add to Game";
             this.button30.UseVisualStyleBackColor = true;
             // 
-            // listBox14
+            // GameUpdateAllGenre
             // 
-            this.listBox14.FormattingEnabled = true;
-            this.listBox14.Location = new System.Drawing.Point(6, 47);
-            this.listBox14.Name = "listBox14";
-            this.listBox14.Size = new System.Drawing.Size(140, 95);
-            this.listBox14.TabIndex = 0;
+            this.GameUpdateAllGenre.FormattingEnabled = true;
+            this.GameUpdateAllGenre.Location = new System.Drawing.Point(6, 47);
+            this.GameUpdateAllGenre.Name = "GameUpdateAllGenre";
+            this.GameUpdateAllGenre.Size = new System.Drawing.Size(140, 95);
+            this.GameUpdateAllGenre.TabIndex = 0;
             // 
-            // comboBox5
+            // GameUpdateFranchise
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(336, 165);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 21);
-            this.comboBox5.TabIndex = 15;
+            this.GameUpdateFranchise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GameUpdateFranchise.FormattingEnabled = true;
+            this.GameUpdateFranchise.Location = new System.Drawing.Point(336, 165);
+            this.GameUpdateFranchise.Name = "GameUpdateFranchise";
+            this.GameUpdateFranchise.Size = new System.Drawing.Size(121, 21);
+            this.GameUpdateFranchise.TabIndex = 15;
             // 
             // label67
             // 
@@ -599,14 +599,14 @@
             this.label67.TabIndex = 14;
             this.label67.Text = "Franchise ID";
             // 
-            // comboBox6
+            // GameUpdateCompany
             // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(336, 100);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 21);
-            this.comboBox6.TabIndex = 13;
+            this.GameUpdateCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GameUpdateCompany.FormattingEnabled = true;
+            this.GameUpdateCompany.Location = new System.Drawing.Point(336, 100);
+            this.GameUpdateCompany.Name = "GameUpdateCompany";
+            this.GameUpdateCompany.Size = new System.Drawing.Size(121, 21);
+            this.GameUpdateCompany.TabIndex = 13;
             // 
             // label68
             // 
@@ -617,12 +617,12 @@
             this.label68.TabIndex = 12;
             this.label68.Text = "Company ID";
             // 
-            // textBox73
+            // GameUpdatePrice
             // 
-            this.textBox73.Location = new System.Drawing.Point(411, 46);
-            this.textBox73.Name = "textBox73";
-            this.textBox73.Size = new System.Drawing.Size(48, 20);
-            this.textBox73.TabIndex = 11;
+            this.GameUpdatePrice.Location = new System.Drawing.Point(411, 46);
+            this.GameUpdatePrice.Name = "GameUpdatePrice";
+            this.GameUpdatePrice.Size = new System.Drawing.Size(48, 20);
+            this.GameUpdatePrice.TabIndex = 11;
             // 
             // label69
             // 
@@ -633,12 +633,12 @@
             this.label69.TabIndex = 10;
             this.label69.Text = "Price";
             // 
-            // textBox74
+            // GameUpdateAge
             // 
-            this.textBox74.Location = new System.Drawing.Point(213, 111);
-            this.textBox74.Name = "textBox74";
-            this.textBox74.Size = new System.Drawing.Size(100, 20);
-            this.textBox74.TabIndex = 9;
+            this.GameUpdateAge.Location = new System.Drawing.Point(213, 111);
+            this.GameUpdateAge.Name = "GameUpdateAge";
+            this.GameUpdateAge.Size = new System.Drawing.Size(100, 20);
+            this.GameUpdateAge.TabIndex = 9;
             // 
             // label70
             // 
@@ -649,12 +649,12 @@
             this.label70.TabIndex = 8;
             this.label70.Text = "Age Restriction";
             // 
-            // textBox75
+            // GameUpdateImage
             // 
-            this.textBox75.Location = new System.Drawing.Point(21, 165);
-            this.textBox75.Name = "textBox75";
-            this.textBox75.Size = new System.Drawing.Size(280, 20);
-            this.textBox75.TabIndex = 7;
+            this.GameUpdateImage.Location = new System.Drawing.Point(21, 165);
+            this.GameUpdateImage.Name = "GameUpdateImage";
+            this.GameUpdateImage.Size = new System.Drawing.Size(280, 20);
+            this.GameUpdateImage.TabIndex = 7;
             // 
             // label71
             // 
@@ -665,26 +665,26 @@
             this.label71.TabIndex = 6;
             this.label71.Text = "Cover Image Url";
             // 
-            // textBox76
+            // GameUpdateYear
             // 
-            this.textBox76.Location = new System.Drawing.Point(121, 111);
-            this.textBox76.Name = "textBox76";
-            this.textBox76.Size = new System.Drawing.Size(58, 20);
-            this.textBox76.TabIndex = 5;
+            this.GameUpdateYear.Location = new System.Drawing.Point(121, 111);
+            this.GameUpdateYear.Name = "GameUpdateYear";
+            this.GameUpdateYear.Size = new System.Drawing.Size(58, 20);
+            this.GameUpdateYear.TabIndex = 5;
             // 
-            // textBox77
+            // GameUpdateMonth
             // 
-            this.textBox77.Location = new System.Drawing.Point(72, 111);
-            this.textBox77.Name = "textBox77";
-            this.textBox77.Size = new System.Drawing.Size(43, 20);
-            this.textBox77.TabIndex = 4;
+            this.GameUpdateMonth.Location = new System.Drawing.Point(72, 111);
+            this.GameUpdateMonth.Name = "GameUpdateMonth";
+            this.GameUpdateMonth.Size = new System.Drawing.Size(43, 20);
+            this.GameUpdateMonth.TabIndex = 4;
             // 
-            // textBox78
+            // GameUpdateDay
             // 
-            this.textBox78.Location = new System.Drawing.Point(21, 111);
-            this.textBox78.Name = "textBox78";
-            this.textBox78.Size = new System.Drawing.Size(42, 20);
-            this.textBox78.TabIndex = 3;
+            this.GameUpdateDay.Location = new System.Drawing.Point(21, 111);
+            this.GameUpdateDay.Name = "GameUpdateDay";
+            this.GameUpdateDay.Size = new System.Drawing.Size(42, 20);
+            this.GameUpdateDay.TabIndex = 3;
             // 
             // label72
             // 
@@ -695,12 +695,12 @@
             this.label72.TabIndex = 2;
             this.label72.Text = "Release Date";
             // 
-            // textBox79
+            // GameUpdateName
             // 
-            this.textBox79.Location = new System.Drawing.Point(129, 46);
-            this.textBox79.Name = "textBox79";
-            this.textBox79.Size = new System.Drawing.Size(271, 20);
-            this.textBox79.TabIndex = 1;
+            this.GameUpdateName.Location = new System.Drawing.Point(129, 46);
+            this.GameUpdateName.Name = "GameUpdateName";
+            this.GameUpdateName.Size = new System.Drawing.Size(271, 20);
+            this.GameUpdateName.TabIndex = 1;
             // 
             // label73
             // 
@@ -774,7 +774,7 @@
             this.groupBox16.Controls.Add(this.label46);
             this.groupBox16.Controls.Add(this.listBox10);
             this.groupBox16.Controls.Add(this.label45);
-            this.groupBox16.Controls.Add(this.listBox9);
+            this.groupBox16.Controls.Add(this.GameAddAllPlatforms);
             this.groupBox16.Location = new System.Drawing.Point(15, 345);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(444, 140);
@@ -826,13 +826,13 @@
             this.label45.TabIndex = 5;
             this.label45.Text = "All Platforms";
             // 
-            // listBox9
+            // GameAddAllPlatforms
             // 
-            this.listBox9.FormattingEnabled = true;
-            this.listBox9.Location = new System.Drawing.Point(6, 32);
-            this.listBox9.Name = "listBox9";
-            this.listBox9.Size = new System.Drawing.Size(140, 95);
-            this.listBox9.TabIndex = 4;
+            this.GameAddAllPlatforms.FormattingEnabled = true;
+            this.GameAddAllPlatforms.Location = new System.Drawing.Point(6, 32);
+            this.GameAddAllPlatforms.Name = "GameAddAllPlatforms";
+            this.GameAddAllPlatforms.Size = new System.Drawing.Size(140, 95);
+            this.GameAddAllPlatforms.TabIndex = 4;
             // 
             // groupBox11
             // 
@@ -841,7 +841,7 @@
             this.groupBox11.Controls.Add(this.label43);
             this.groupBox11.Controls.Add(this.listBox8);
             this.groupBox11.Controls.Add(this.button9);
-            this.groupBox11.Controls.Add(this.listBox7);
+            this.groupBox11.Controls.Add(this.GameAddAllGenre);
             this.groupBox11.Location = new System.Drawing.Point(15, 191);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(444, 148);
@@ -893,13 +893,13 @@
             this.button9.Text = "Add to Game";
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // listBox7
+            // GameAddAllGenre
             // 
-            this.listBox7.FormattingEnabled = true;
-            this.listBox7.Location = new System.Drawing.Point(6, 47);
-            this.listBox7.Name = "listBox7";
-            this.listBox7.Size = new System.Drawing.Size(140, 95);
-            this.listBox7.TabIndex = 0;
+            this.GameAddAllGenre.FormattingEnabled = true;
+            this.GameAddAllGenre.Location = new System.Drawing.Point(6, 47);
+            this.GameAddAllGenre.Name = "GameAddAllGenre";
+            this.GameAddAllGenre.Size = new System.Drawing.Size(140, 95);
+            this.GameAddAllGenre.TabIndex = 0;
             // 
             // comboBox4
             // 
@@ -1050,6 +1050,7 @@
             this.button3.TabIndex = 1;
             this.button3.Text = "Select";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.selectGame);
             // 
             // listBox6
             // 
@@ -2931,13 +2932,13 @@
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.ListBox listBox10;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.ListBox listBox9;
+        private System.Windows.Forms.ListBox GameAddAllPlatforms;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.ListBox listBox8;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.ListBox listBox7;
+        private System.Windows.Forms.ListBox GameAddAllGenre;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.ComboBox comboBox3;
@@ -2961,39 +2962,39 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.GroupBox groupBox20;
         private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.TextBox textBox80;
+        private System.Windows.Forms.TextBox GameUpdateID;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.TextBox textBox72;
+        private System.Windows.Forms.TextBox GameUpdateDescription;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.GroupBox groupBox23;
         private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.ListBox listBox11;
+        private System.Windows.Forms.ListBox GameUpdatePlatform;
         private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.ListBox listBox12;
+        private System.Windows.Forms.ListBox GameUpdateAllPlatforms;
         private System.Windows.Forms.GroupBox groupBox25;
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.ListBox listBox13;
+        private System.Windows.Forms.ListBox GameUpdateGenre;
         private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.ListBox listBox14;
-        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.ListBox GameUpdateAllGenre;
+        private System.Windows.Forms.ComboBox GameUpdateFranchise;
         private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox GameUpdateCompany;
         private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.TextBox textBox73;
+        private System.Windows.Forms.TextBox GameUpdatePrice;
         private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.TextBox textBox74;
+        private System.Windows.Forms.TextBox GameUpdateAge;
         private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.TextBox textBox75;
+        private System.Windows.Forms.TextBox GameUpdateImage;
         private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.TextBox textBox76;
-        private System.Windows.Forms.TextBox textBox77;
-        private System.Windows.Forms.TextBox textBox78;
+        private System.Windows.Forms.TextBox GameUpdateYear;
+        private System.Windows.Forms.TextBox GameUpdateMonth;
+        private System.Windows.Forms.TextBox GameUpdateDay;
         private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.TextBox textBox79;
+        private System.Windows.Forms.TextBox GameUpdateName;
         private System.Windows.Forms.Label label73;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView7;

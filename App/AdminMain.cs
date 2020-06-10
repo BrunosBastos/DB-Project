@@ -17,6 +17,7 @@ namespace App
         public AdminMain()
         {
             InitializeComponent();
+            LoadGame();
         }
 
         private void changeTabs(object sender, EventArgs e)
@@ -68,6 +69,8 @@ namespace App
 
             if(tabControl2.SelectedIndex == 0)
             {
+
+                LoadGame();
                 Console.WriteLine("Inside Game");
             }else if (tabControl2.SelectedIndex == 1)
             {
@@ -1157,6 +1160,90 @@ namespace App
 
             MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
             LoadCompany();
+
+        }
+
+        // Game
+
+
+        private void LoadGame()
+        {
+            if (Program.verifySGBDConnection())
+            {
+                SqlCommand cmd = new SqlCommand("Select IDGame, Name from Project.Game",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                listBox6.Items.Clear();
+                while (reader.Read())
+                {
+                    listBox6.Items.Add(reader["IDGame"].ToString() + " " + reader["Name"].ToString());
+                }
+                reader.Close();
+            }
+        }
+
+        private void setGame()
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+                SqlCommand cmd = new SqlCommand("Select GenName from Project.Genre",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                GameAddAllGenre.Items.Clear();
+                GameUpdateAllGenre.Items.Clear();
+                while (reader.Read())
+                {
+                    GameAddAllGenre.Items.Add(reader["GenName"].ToString());
+                    GameUpdateAllGenre.Items.Add(reader["GenName"].ToString());
+                }
+                reader.Close();
+                cmd = new SqlCommand("Select PlatformName from Project.Platform");
+                reader = cmd.ExecuteReader();
+                GameAddAllPlatforms.Items.Clear();
+                GameUpdateAllPlatforms.Items.Clear();
+                while (reader.Read())
+                {
+                    GameAddAllPlatforms.Items.Add(reader["PlatformName"].ToString());
+                    GameUpdateAllPlatforms.Items.Add(reader["PlatformName"].ToString());
+                }
+                reader.Close();
+            }
+        }
+
+        private void selectGame(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+                if(listBox6.SelectedIndex<0 || listBox6.SelectedIndex > listBox6.Items.Count)
+                {
+                    return;
+                }
+                int id =int.Parse( listBox6.SelectedItem.ToString().Split(' ').ToArray()[0]);
+
+                SqlCommand cmd = new SqlCommand("Select * From Project.udf_getGameDetails("+id+")",Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                GameUpdateAge.Text = reader["AgeRestriction"].ToString();
+                GameUpdateDescription.Text = reader["Description"].ToString();
+                string date = reader["ReleaseDate"].ToString().Split(' ').ToArray()[0];
+                if (date.Length != 0)
+                {
+                    GameUpdateDay.Text = date.Split('/').ToArray()[0];
+                    GameUpdateMonth.Text = date.Split('/').ToArray()[1];
+                    GameUpdateYear.Text = date.Split('/').ToArray()[2];
+                }
+                GameUpdatePrice.Text = reader["Price"].ToString();
+                GameUpdateImage.Text = reader["CoverImg"].ToString();
+
+                reader.Close();
+
+
+
+
+
+
+            }
 
 
 
