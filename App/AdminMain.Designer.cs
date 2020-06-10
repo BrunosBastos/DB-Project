@@ -86,9 +86,9 @@
             this.listBox8 = new System.Windows.Forms.ListBox();
             this.button9 = new System.Windows.Forms.Button();
             this.GameAddAllGenre = new System.Windows.Forms.ListBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.GameAddFranchise = new System.Windows.Forms.ComboBox();
             this.label42 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.GameAddCompany = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
             this.textBox68 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -418,6 +418,7 @@
             // 
             this.GameUpdateID.Location = new System.Drawing.Point(21, 46);
             this.GameUpdateID.Name = "GameUpdateID";
+            this.GameUpdateID.ReadOnly = true;
             this.GameUpdateID.Size = new System.Drawing.Size(57, 20);
             this.GameUpdateID.TabIndex = 21;
             // 
@@ -446,6 +447,7 @@
             this.button25.TabIndex = 18;
             this.button25.Text = "Update Game";
             this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.updateGame);
             // 
             // groupBox23
             // 
@@ -479,6 +481,7 @@
             this.button28.TabIndex = 8;
             this.button28.Text = "Add to Game";
             this.button28.UseVisualStyleBackColor = true;
+            this.button28.Click += new System.EventHandler(this.updateAddPlatform);
             // 
             // label53
             // 
@@ -495,6 +498,7 @@
             this.GameUpdatePlatform.Location = new System.Drawing.Point(298, 32);
             this.GameUpdatePlatform.Name = "GameUpdatePlatform";
             this.GameUpdatePlatform.Size = new System.Drawing.Size(140, 95);
+            this.GameUpdatePlatform.Sorted = true;
             this.GameUpdatePlatform.TabIndex = 6;
             // 
             // label62
@@ -512,6 +516,7 @@
             this.GameUpdateAllPlatforms.Location = new System.Drawing.Point(6, 32);
             this.GameUpdateAllPlatforms.Name = "GameUpdateAllPlatforms";
             this.GameUpdateAllPlatforms.Size = new System.Drawing.Size(140, 95);
+            this.GameUpdateAllPlatforms.Sorted = true;
             this.GameUpdateAllPlatforms.TabIndex = 4;
             // 
             // groupBox25
@@ -537,6 +542,7 @@
             this.button29.TabIndex = 5;
             this.button29.Text = "Remove";
             this.button29.UseVisualStyleBackColor = true;
+            this.button29.Click += new System.EventHandler(this.removeUpdateGenre);
             // 
             // label65
             // 
@@ -562,6 +568,7 @@
             this.GameUpdateGenre.Location = new System.Drawing.Point(298, 47);
             this.GameUpdateGenre.Name = "GameUpdateGenre";
             this.GameUpdateGenre.Size = new System.Drawing.Size(140, 95);
+            this.GameUpdateGenre.Sorted = true;
             this.GameUpdateGenre.TabIndex = 2;
             // 
             // button30
@@ -572,6 +579,7 @@
             this.button30.TabIndex = 1;
             this.button30.Text = "Add to Game";
             this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.updateAddGenre);
             // 
             // GameUpdateAllGenre
             // 
@@ -718,9 +726,9 @@
             this.groupBox8.Controls.Add(this.button17);
             this.groupBox8.Controls.Add(this.groupBox16);
             this.groupBox8.Controls.Add(this.groupBox11);
-            this.groupBox8.Controls.Add(this.comboBox4);
+            this.groupBox8.Controls.Add(this.GameAddFranchise);
             this.groupBox8.Controls.Add(this.label42);
-            this.groupBox8.Controls.Add(this.comboBox3);
+            this.groupBox8.Controls.Add(this.GameAddCompany);
             this.groupBox8.Controls.Add(this.label26);
             this.groupBox8.Controls.Add(this.textBox68);
             this.groupBox8.Controls.Add(this.label25);
@@ -766,6 +774,7 @@
             this.button17.TabIndex = 18;
             this.button17.Text = "Add Game";
             this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.addGame);
             // 
             // groupBox16
             // 
@@ -901,14 +910,14 @@
             this.GameAddAllGenre.Size = new System.Drawing.Size(140, 95);
             this.GameAddAllGenre.TabIndex = 0;
             // 
-            // comboBox4
+            // GameAddFranchise
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(344, 110);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 21);
-            this.comboBox4.TabIndex = 15;
+            this.GameAddFranchise.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GameAddFranchise.FormattingEnabled = true;
+            this.GameAddFranchise.Location = new System.Drawing.Point(344, 110);
+            this.GameAddFranchise.Name = "GameAddFranchise";
+            this.GameAddFranchise.Size = new System.Drawing.Size(121, 21);
+            this.GameAddFranchise.TabIndex = 15;
             // 
             // label42
             // 
@@ -919,14 +928,14 @@
             this.label42.TabIndex = 14;
             this.label42.Text = "Franchise ID";
             // 
-            // comboBox3
+            // GameAddCompany
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(344, 45);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 13;
+            this.GameAddCompany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.GameAddCompany.FormattingEnabled = true;
+            this.GameAddCompany.Location = new System.Drawing.Point(344, 45);
+            this.GameAddCompany.Name = "GameAddCompany";
+            this.GameAddCompany.Size = new System.Drawing.Size(121, 21);
+            this.GameAddCompany.TabIndex = 13;
             // 
             // label26
             // 
@@ -2939,9 +2948,9 @@
         private System.Windows.Forms.ListBox listBox8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.ListBox GameAddAllGenre;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox GameAddFranchise;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox GameAddCompany;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox textBox68;
         private System.Windows.Forms.Label label25;

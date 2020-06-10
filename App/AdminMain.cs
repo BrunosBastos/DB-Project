@@ -1178,6 +1178,7 @@ namespace App
                     listBox6.Items.Add(reader["IDGame"].ToString() + " " + reader["Name"].ToString());
                 }
                 reader.Close();
+                setGame();
             }
         }
 
@@ -1197,7 +1198,7 @@ namespace App
                     GameUpdateAllGenre.Items.Add(reader["GenName"].ToString());
                 }
                 reader.Close();
-                cmd = new SqlCommand("Select PlatformName from Project.Platform");
+                cmd = new SqlCommand("Select PlatformName from Project.Platform",Program.cn);
                 reader = cmd.ExecuteReader();
                 GameAddAllPlatforms.Items.Clear();
                 GameUpdateAllPlatforms.Items.Clear();
@@ -1205,6 +1206,30 @@ namespace App
                 {
                     GameAddAllPlatforms.Items.Add(reader["PlatformName"].ToString());
                     GameUpdateAllPlatforms.Items.Add(reader["PlatformName"].ToString());
+                }
+                reader.Close();
+
+                cmd = new SqlCommand("Select IDCompany,CompanyName from Project.Company",Program.cn);
+                reader = cmd.ExecuteReader();
+                GameUpdateCompany.Items.Clear();
+                GameAddCompany.Items.Clear();
+
+                while (reader.Read())
+                {
+                    GameUpdateCompany.Items.Add(reader["IDCompany"].ToString() + " " + reader["CompanyName"].ToString());
+                    GameAddCompany.Items.Add(reader["IDCompany"].ToString() + " " + reader["CompanyName"].ToString());
+                }
+
+                reader.Close();
+
+                cmd = new SqlCommand("Select IDFranchise,Name From Project.Franchise",Program.cn);
+                reader = cmd.ExecuteReader();
+                GameUpdateFranchise.Items.Clear();
+                GameAddFranchise.Items.Clear();
+                while (reader.Read())
+                {
+                    GameUpdateFranchise.Items.Add(reader["IDFranchise"].ToString() + " " + reader["Name"].ToString());
+                    GameAddFranchise.Items.Add(reader["IDFranchise"].ToString() + " " + reader["Name"].ToString());
                 }
                 reader.Close();
             }
@@ -1219,11 +1244,13 @@ namespace App
                     return;
                 }
                 int id =int.Parse( listBox6.SelectedItem.ToString().Split(' ').ToArray()[0]);
+                setGame();
 
                 SqlCommand cmd = new SqlCommand("Select * From Project.udf_getGameDetails("+id+")",Program.cn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 reader.Read();
-
+                GameUpdateID.Text = reader["IDGame"].ToString();
+                GameUpdateName.Text = reader["Name"].ToString();
                 GameUpdateAge.Text = reader["AgeRestriction"].ToString();
                 GameUpdateDescription.Text = reader["Description"].ToString();
                 string date = reader["ReleaseDate"].ToString().Split(' ').ToArray()[0];
@@ -1235,17 +1262,220 @@ namespace App
                 }
                 GameUpdatePrice.Text = reader["Price"].ToString();
                 GameUpdateImage.Text = reader["CoverImg"].ToString();
+                GameUpdateCompany.SelectedIndex = int.Parse(reader["IDCompany"].ToString())-1;
+                if (reader["IDFranchise"].ToString().Length != 0)
+                {
+                    GameUpdateFranchise.SelectedIndex = int.Parse(reader["IDFranchise"].ToString())-1; 
+                }
+                reader.Close();
+                cmd = new SqlCommand("Select GenName from Project.GameGenre where IDGame="+id,Program.cn);
+                reader = cmd.ExecuteReader();
+                GameUpdateGenre.Items.Clear();
+                while (reader.Read())
+                {
+                    GameUpdateGenre.Items.Add(reader["GenName"].ToString());
+                    GameUpdateAllGenre.Items.Remove(reader["GenName"].ToString());
+
+                }
+                reader.Close();
+
+                cmd = new SqlCommand("Select PlatformName From Project.PlatformReleasesGame where IDGame="+id,Program.cn);
+                reader = cmd.ExecuteReader();
+                GameUpdatePlatform.Items.Clear();
+                while (reader.Read())
+                {
+                    GameUpdatePlatform.Items.Add(reader["PlatformName"].ToString());
+                    GameUpdateAllPlatforms.Items.Remove(reader["PlatformName"].ToString());
+                }
 
                 reader.Close();
 
 
+            }
+        }
 
+        private void updateAddGenre(object sender, EventArgs e)
+        {
+            int index = GameUpdateAllGenre.SelectedIndex;
+            if(index<0 || index > GameUpdateAllGenre.Items.Count)
+            {
+                MessageBox.Show("Select a genre");
+                return;
+            }
+            string genre = GameUpdateAllGenre.SelectedItem.ToString();
+            GameUpdateGenre.Items.Add(genre);
+            GameUpdateAllGenre.Items.Remove(genre);
+        }
 
+        private void removeUpdateGenre(object sender, EventArgs e)
+        {
+            int index = GameUpdateGenre.SelectedIndex;
+            if (index < 0 || index > GameUpdateGenre.Items.Count)
+            {
+                MessageBox.Show("Select a genre");
+                return;
+            }
+
+            string genre = GameUpdateGenre.SelectedItem.ToString();
+            GameUpdateGenre.Items.Remove(genre);
+            GameUpdateAllGenre.Items.Add(genre);
+            GameUpdateAllGenre.Sorted = true;
+        }
+
+        private void updateAddPlatform(object sender, EventArgs e)
+        {
+            int index = GameUpdateAllPlatforms.SelectedIndex;
+            if (index < 0 || index > GameUpdateAllPlatforms.Items.Count)
+            {
+                MessageBox.Show("Select a genre");
+                return;
+            }
+            string genre = GameUpdateAllPlatforms.SelectedItem.ToString();
+            GameUpdatePlatform.Items.Add(genre);
+            GameUpdateAllPlatforms.Items.Remove(genre);
+        }
+
+        private void updateGame(object sender, EventArgs e)
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                int id = int.Parse(GameUpdateID.Text);
+                string name = GameUpdateName.Text;
+                string description = GameUpdateDescription.Text;
+                string price = GameUpdatePrice.Text;
+                string age = GameUpdateAge.Text;
+                string date = GameUpdateYear.Text + "-" + GameUpdateMonth.Text + "-" + GameUpdateDay.Text;
+                string company = GameUpdateCompany.Text.Split(' ').ToArray()[0];
+                string franchise = GameUpdateFranchise.Text.Split(' ').ToArray()[0];
+                string image = GameUpdateImage.Text;
+
+                if (name.Length > 50 || name.Length == 0)
+                {
+                    MessageBox.Show("Name must be between 0 and 50 chars long");
+                    return;
+                }
+                if (!decimal.TryParse(price, out decimal p))
+                {
+                    MessageBox.Show("Price must be a decimal");
+                    return;
+                }
+                if (!int.TryParse(age, out int n) || n > 18 || n < 0)
+                {
+                    MessageBox.Show("Age Restriction must be a number between 0 and 18");
+                    return;
+                }
+                if (!ValidateDate(date))
+                {
+                    MessageBox.Show("Date is not valid.");
+                    return;
+                }
+                if (image.Length > 8 && image.Substring(0, 8).Equals("https://"))
+                {
+                    image = image.Substring(8, image.Length - 8);
+                }
+                SqlCommand cmd = new SqlCommand("Project.pd_updateGame", Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@Price", p);
+                cmd.Parameters.AddWithValue("@AgeRestriction", n);
+                cmd.Parameters.AddWithValue("@ReleaseDate", DateTime.Parse(date));
+                cmd.Parameters.AddWithValue("@IDCompany", int.Parse(company));
+                if (franchise.Length != 0)
+                {
+                    cmd.Parameters.AddWithValue("@IDFranchise", int.Parse(franchise));
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@IDFranchise", DBNull.Value);
+                }
+                if (image.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@CoverImg", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@CoverImg", image);
+                }
+                if (description.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@Description", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Description", description);
+                }
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                cmd.ExecuteNonQuery();
+
+                if (!cmd.Parameters["@res"].Value.ToString().Equals("Success updating Game Info!"))
+                {
+                    MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                    return;
+                }
+                LinkedList<string> genres = new LinkedList<string>();
+                cmd = new SqlCommand("Select GenName From Project.GameGenre where IDGame=" + id, Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    genres.AddLast(reader["GenName"].ToString());
+                }
+                reader.Close();
+                for (int i = 0; i < GameUpdateGenre.Items.Count; i++)
+                {
+                    if (!genres.Contains(GameUpdateGenre.Items[i].ToString()))
+                    {
+                        //Procedure para adicionar genero na tabela
+                    }
+                }
+
+                for (int j = 0; j < genres.Count; j++)
+                {
+                    if (!GameUpdateGenre.Items.Contains(genres.ElementAt(j)))
+                    {
+                        //Procedure para remover genero da tabela
+                    }
+                }
+
+                LinkedList<string> platforms = new LinkedList<string>();
+                cmd = new SqlCommand("Select PlatformName From Project.PlatformReleasesGame where IDGame=" + id, Program.cn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    platforms.AddLast(reader["PlatformName"].ToString());
+                }
+                reader.Close();
+                for (int i = 0; i < GameUpdatePlatform.Items.Count; i++)
+                {
+                    if (!genres.Contains(GameUpdatePlatform.Items[i].ToString()))
+                    {
+                        //Procedure para adicionar Platform na tabela
+                    }
+                }
 
 
             }
 
 
+
+
+
+        }
+
+        private void addGame(object sender, EventArgs e)
+        {
+            if (Program.verifySGBDConnection())
+            {
+
+        
+
+
+
+
+            }
 
         }
     }
