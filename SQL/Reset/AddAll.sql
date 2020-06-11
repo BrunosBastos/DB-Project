@@ -1018,7 +1018,15 @@ AS
 		JOIN  Project.Game ON [Copy].IDGame = Game.IDGame ) 
 		WHERE Purchase.IDClient = @IDClient )
 GO
-
+CREATE FUNCTION Project.[udf_countuserGames] (@IDClient INT) RETURNS INT
+AS 
+	begin
+			DECLARE @counter AS INT;
+			SELECT @counter= COUNT( IDGame) FROM Project.[udf_checkusersgames] (@IDClient);
+	
+				RETURN @counter
+	end
+GO
 
 CREATE FUNCTION Project.udf_userfollowers (@IDClient INT) RETURNS TABLE
 AS
@@ -1026,7 +1034,13 @@ AS
 
 GO
 
-SELECT * FROM Project.[udf_userfollowers] (2)
+create FUNCTION Project.[udf_countuserFollowers] (@IDClient INT) RETURNS INT
+AS 
+	begin
+			DECLARE @counter AS INT;
+			SELECT @counter= COUNT( IDFollower) FROM Project.[udf_userfollowers] (@IDClient);
+			RETURN @counter
+	end
 
 GO
 
@@ -1124,6 +1138,13 @@ AS
 	where Reviews.IDGame=@IDGame);
 go
 
+CREATE FUNCTION Project.[udf_getNumberOfReviews] (@IDGame INT) RETURNS INT
+AS
+	Begin
+		DECLARE @ret as int;
+		SELECT @ret=COUNT(IDReview) From Project.Reviews where Reviews.IDGame=@IDGame;
+		return @ret;
+	end
 
 GO
 
@@ -1143,6 +1164,14 @@ AS
 	RETURN (SELECT Game.[Name] FROM Project.Franchise JOIN Project.Game ON Game.IDFranchise = Franchise.IDFranchise WHERE Franchise.IDFranchise=@IDFranchise) 
 GO
 
+CREATE FUNCTION Project.[udf_getNumberGameFranchises] (@IDFranchise INT) RETURNS INT
+AS
+	BEGIN
+		DECLARE @counter INT;
+		SElECT @counter = COUNT([Name]) FROM Project.[udf_getGamesFranchise] (@IDFranchise);
+		RETURN @counter;
+	END
+GO
 
 
 CREATE FUNCTION Project.udf_getCompGames (@IDCompany INT) RETURNS TABLE
@@ -1150,6 +1179,26 @@ AS
 	RETURN ( SELECT Game.[Name] FROM Project.Game JOIN Project.Company ON Game.IDCompany = Company.IDCompany WHERE Company.IDCompany=@IDCompany)
 
 
+GO
+
+CREATE FUNCTION Project.[udf_getNumberCompGames] (@IDCompany INT) RETURNS INT
+AS
+	BEGIN
+		DECLARE @counter INT;
+		SElECT @counter = COUNT([Name]) FROM Project.udf_getCompGames (@IDCompany);
+		RETURN @counter;
+	END
+
+GO
+
+
+CREATE FUNCTION Project.[udf_getNumberFranchiseComp] (@IDCompany INT) RETURNS INT
+AS
+	BEGIN
+		DECLARE @counter INT;
+		SElECT @counter = COUNT(IDFranchise) FROM Project.[udf_getFranchisesComp] (@IDCompany);
+		RETURN @counter;
+	END
 GO
 
 
@@ -1192,22 +1241,23 @@ create Function Project.udf_getGenreDetails(@GenName Varchar(25)) Returns Table
 as
 	Return( Select * From Project.Genre where Genre.GenName=@GenName);
 go
-go
+
+
 Create Function Project.udf_getGenreGames(@GenName Varchar(25)) Returns Table
 as
 	Return ( Select Name From Project.GameGenre Join Project.Game ON GameGenre.IDGame=Game.IDGame where GenName=@GenName);
 
 go
-go
-Create Function Project.udf_getNumberGenreGames(@GenName Varchar(25)) Returns int
+Create Function Project.[udf_getNumberGenreGames](@GenName Varchar(25)) Returns int
 as
 	begin
 	declare @temp as int
 	SELECT @temp=COUNT(Name) FROM Project.udf_getGenreGames(@GenName);
 	return @temp;
 	end
-go
 
+
+go
 create FUNCTION Project.udf_getPlatformDetails(@platformName Varchar(30)) returns table
 as
 	RETURN( SELECT * FROM Project.[Platform] where [Platform].PlatformName=@platformName);
@@ -1220,6 +1270,14 @@ as
 	JOIN Project.Game ON Game.IDGame=PlatformReleasesGame.IDGame
 	where PlatformReleasesGame.PlatformName=@platformName)
 
+go
+Create Function Project.[udf_getNumberPlatformGames](@platformName Varchar(30)) returns int
+as
+begin
+	Declare @temp as int
+	Select @temp = COUNT(Name) From Project.udf_getPlatformGames(@platformName);
+	return @temp;
+end
 go
 
 CREATE FUNCTION Project.[udf_checkUserPurchase] (@IDClient INT,@IDGame INT) RETURNS INT
@@ -2336,14 +2394,14 @@ AS
 
 	go
 
-
+go
 Create Procedure Project.pd_removeGameDiscount(
 @IDGame as int,
 @PromoCode as int,
 @res as varchar(255) output)
 as
 	begin
-	
+
 			if exists ( select Top 1 * From Project.DiscountGame where IDGame=@IDGame and PromoCode=@PromoCode)
 				begin
 					DELETE FROM Project.DiscountGame where IDGame=@IDGame and PromoCode=@PromoCode;
@@ -2353,4 +2411,78 @@ as
 				set @res = 'This Game does not have this discount'
 	end
 go
+go
+Create Procedure Project.pd_addGameGenre(
+	@IDGame int,
+	@GenName varchar(25),
+	@res varchar(255) output)
+as
+	begin
+		begin try
+			If(Select IDGame From Project.Game where IDGame=@IDGame) is not null and (Select GenName From Project.Genre where GenName=@GenName) is not null
+				begin
+					insert into Project.GameGenre values(@IDGame,@GenName)
+					set @res = 'Success adding genre'
+				end
+			else
+				set @res = 'GenName or GameID do not exist'
+		end try
+		begin catch
+			set @res = 'Genre is already applied to this game'
+		end catch
+	end
 
+go
+Create Procedure Project.pd_addPlatformToGame(
+	@IDGame int,
+	@PlatformName varchar(30),
+	@res varchar(255) output
+	)
+as
+	begin
+		begin try
+			if(Select IDGame From Project.Game where IDGame=@IDGame) is not null and (Select PlatformName from Project.[Platform] where PlatformName=@PlatformName) is not null
+				begin
+					insert into Project.PlatformReleasesGame values(@IDGame,@PlatformName)
+					set @res = 'Success adding Platform'
+				end
+			else
+				set @res = 'Platform or Game do not exist'
+		end try
+		begin catch
+			set @res = 'Platform is already applied to this game'
+		end catch
+	end
+
+
+go
+CREATE FUNCTION Project.udf_favComp( @IDClient INT) RETURNS TABLE
+AS
+    RETURN (SELECT TOP 1 CompanyName, COUNT(CompanyName)  as totComp 
+    FROM ( ( SELECT IDCompany as IDComp  FROM Project.udf_checkusersgames (@IDClient) )
+    as p  JOIN   Project.Company on Company.IDCompany = IDComp) GROUP BY CompanyName ORDER BY totComp DESC )
+GO
+
+CREATE FUNCTION Project.udf_favGenre( @IDClient INT) RETURNS TABLE
+AS
+    RETURN (SELECT TOP 1 GenName, COUNT(GenName) as totGen 
+    FROM ( ( SELECT IDGame as IDGameTemp  FROM Project.udf_checkusersgames (@IDClient) )
+    as p  JOIN   Project.GameGenre on GameGenre.IDGame = IDGameTemp) GROUP BY GenName ORDER BY totGen DESC )
+GO
+
+
+CREATE FUNCTION Project.udf_favPlatform( @IDClient INT) RETURNS TABLE
+AS
+    RETURN ( SELECT TOP 1 PlatformName,COUNT(PlatformName) AS totPlat 
+    FROM Project.[Copy] JOIN Project.[Purchase] ON [Copy].SerialNum = [Purchase].SerialNum 
+    WHERE Purchase.IDClient = @IDClient 
+    GROUP BY PlatformName ORDER BY totPlat DESC )
+GO
+
+
+CREATE FUNCTION Project.udf_favFran( @IDClient INT) RETURNS TABLE
+AS
+    RETURN (SELECT TOP 1 Franchise.[Name], COUNT(Franchise.[Name])  as totComp 
+    FROM ( ( SELECT IDFranchise as IDFran  FROM Project.udf_checkusersgames (@IDClient) )
+    AS p  JOIN Project.Franchise on Franchise.IDFranchise = IDFran) GROUP BY Franchise.[Name] ORDER BY totComp DESC )
+GO
