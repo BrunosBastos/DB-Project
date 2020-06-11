@@ -386,18 +386,8 @@ namespace App
                 cmd.ExecuteNonQuery();
                 Console.WriteLine(cmd.Parameters["@res"].Value.ToString());
                 string output = cmd.Parameters["@res"].Value.ToString();
-                if (output.Equals("Success!"))
-                {
-                    MessageBox.Show("Purchase Completed.");
-                    UpdateBalanceStore();
-                }else if (output.Equals("User Already Contains that Game"))
-                {
-                    MessageBox.Show("Already have this game for this platform");
-                }else if(output.Equals("Not enough balance to buy this"))
-                {
-                    MessageBox.Show("Not enough balance to buy this");
-                }
-
+                MessageBox.Show(output);
+                UpdateBalanceStore();
 
             }
         }
@@ -868,7 +858,7 @@ namespace App
 
 
                 Console.WriteLine(startdate);
-                string enddate = PHEndYear.Text + "-" + PHEndMonth.Text + "-" + PHEndYear.Text;
+                string enddate = PHEndYear.Text + "-" + PHEndMonth.Text + "-" + PHEndDay.Text;
                 if (ValidateDate(enddate)){
                     cmd.Parameters.AddWithValue("@MaxDate", DateTime.Parse(enddate));
                 }

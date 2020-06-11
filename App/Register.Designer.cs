@@ -160,6 +160,7 @@
             // 
             this.RegisterCPassword.Location = new System.Drawing.Point(135, 121);
             this.RegisterCPassword.Name = "RegisterCPassword";
+            this.RegisterCPassword.PasswordChar = '*';
             this.RegisterCPassword.Size = new System.Drawing.Size(100, 20);
             this.RegisterCPassword.TabIndex = 24;
             // 
@@ -167,6 +168,7 @@
             // 
             this.RegisterPassword.Location = new System.Drawing.Point(135, 78);
             this.RegisterPassword.Name = "RegisterPassword";
+            this.RegisterPassword.PasswordChar = '*';
             this.RegisterPassword.Size = new System.Drawing.Size(100, 20);
             this.RegisterPassword.TabIndex = 23;
             // 

@@ -1497,6 +1497,7 @@ namespace App
                     }
                 }
                 MessageBox.Show("Success updating the game");
+                LoadGame();
             }
 
 
@@ -1599,6 +1600,7 @@ namespace App
 
                 cmd.ExecuteNonQuery();
                 MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadGame();
             }
 
         }
@@ -1681,6 +1683,6 @@ namespace App
             }
         }
 
-
+       
     }
 }

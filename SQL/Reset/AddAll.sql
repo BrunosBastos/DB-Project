@@ -367,7 +367,7 @@ INSERT INTO Project.Follows(IDFollowed,IDFollower) VALUES(5,6);
 
 
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany,IDFranchise,CoverImg) 
-VALUES('Super Mario 64','Super Mario 64 is a 1996 platform video game for the Nintendo 64.','1996-06-23',3,3.99, 12 ,1,'i.ya-webdesign.com/images/super-mario-64-png-8.png')
+VALUES('Super Mario 64','Super Mario 64 is a 1996 platform video game for the Nintendo 64.','1996-06-23',3,3.99, 12 ,1,'gbatemp.net/attachments/super-mario-64-land-png.187279/')
 
 INSERT INTO Project.Game(Name,Description,ReleaseDate,AgeRestriction,Price,IDCompany, IDFranchise,CoverImg) 
 VALUES('New Super Mario Bros.','New Super Mario Bros. is a side-scrolling video game.',
@@ -970,11 +970,13 @@ BEGIN
 END
 GO
 
-CREATE FUNCTION Project.udf_check_username(@username VARCHAR(50)) RETURNS INT
+Create FUNCTION Project.udf_check_username(@username VARCHAR(50)) RETURNS INT
 AS
 BEGIN
 	declare @temp as int
 	set @temp = ( SELECT UserID FROM Project.Client AS C WHERE C.Username = @username);
+	if @temp is null
+		return 0;
 	return @temp;
 END
 GO
@@ -2328,6 +2330,7 @@ Create Procedure Project.pd_deleteFollows(
 		END CATCH
 	END
 go
+
 Create PROCEDURE Project.pd_updateGame(
 	@IDGame INT,
 	@Name  VARCHAR(50),
@@ -2355,9 +2358,12 @@ Create PROCEDURE Project.pd_updateGame(
 			IF ((SELECT IDCompany FROM Project.udf_getCompanyDetails(@IDCompany)) is not   null ) UPDATE Project.Game	set IDCompany=@IDCompany where IDGame =@IDGame
 			ELSE
 				raiserror('Company not found!',16,1);
-			IF ((SELECT IDCompany FROM Project.udf_getFranchiseDetails(@IDFranchise)) is not   null ) UPDATE Project.Game	set IDCompany=@IDCompany where IDGame =@IDGame
-			ELSE
-				raiserror('Franchise not found!',16,1);
+			if @IDFranchise is not null
+			begin
+				IF ((SELECT IDFranchise FROM Project.udf_getFranchiseDetails(@IDFranchise)) is not   null ) UPDATE Project.Game	set IDFranchise=@IDFranchise where IDGame =@IDGame
+				ELSE
+					raiserror('Franchise not found!',16,1);
+			end
 			UPDATE Project.Game SET [Description]=@Description,ReleaseDate=@ReleaseDate,AgeRestriction=@AgeRestriction,CoverImg=@CoverImg,Price=@Price WHERE IDGame=@IDGame
 			SET @res='Success updating Game Info!'
 					
@@ -2479,10 +2485,31 @@ AS
     GROUP BY PlatformName ORDER BY totPlat DESC )
 GO
 
-
+go
 CREATE FUNCTION Project.udf_favFran( @IDClient INT) RETURNS TABLE
 AS
     RETURN (SELECT TOP 1 Franchise.[Name], COUNT(Franchise.[Name])  as totComp 
     FROM ( ( SELECT IDFranchise as IDFran  FROM Project.udf_checkusersgames (@IDClient) )
     AS p  JOIN Project.Franchise on Franchise.IDFranchise = IDFran) GROUP BY Franchise.[Name] ORDER BY totComp DESC )
 GO
+Create Procedure Project.pd_updateDiscount(
+	@PromoCode as int,
+	@Percentage as int,
+	@Begin as Date,
+	@End as Date,
+	@res as Varchar(255) output)
+
+as
+	begin
+		begin try
+
+			Update Project.Discount
+			set Percentage=@Percentage, DateBegin=@Begin, DateEnd=@End where PromoCode=@PromoCode
+			set @res = 'Success updating Discount'
+
+
+		end try
+		begin catch
+			set @res = 'Could not update discount'
+		end catch
+	end

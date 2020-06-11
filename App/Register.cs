@@ -118,7 +118,7 @@ namespace App
                 cm.Parameters.AddWithValue("@fullName", SqlDbType.VarChar).Value=fullname.Trim();
                 cm.Parameters.AddWithValue("@sex", SqlDbType.Char).Value=Char.Parse(sex);
                 cm.Parameters.AddWithValue("@birth", SqlDbType.Date).Value = DateTime.Parse(birth);
-                cm.Parameters.Add(new SqlParameter("@response", SqlDbType.Int, 10));
+                cm.Parameters.Add(new SqlParameter("@response", SqlDbType.VarChar, 255));
                 cm.Parameters["@response"].Direction = ParameterDirection.Output;
                 cm.Connection = Program.cn;
                 cm.ExecuteNonQuery();
@@ -126,7 +126,7 @@ namespace App
                 Console.WriteLine(cm.Parameters["@response"].Value);
                 
                 
-                if ((int)cm.Parameters["@response"].Value == 1)
+                if (cm.Parameters["@response"].Value.ToString().Equals("Success"))
                 {
 
                     SqlCommand cmd = new SqlCommand("Select Project.udf_isclient ('"+ email +"')",Program.cn);
