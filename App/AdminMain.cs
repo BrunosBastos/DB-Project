@@ -28,6 +28,7 @@ namespace App
             }
             else if(tabControl1.SelectedIndex==1)
             {
+                LoadStatistics();
                 Console.WriteLine("Inside Statistics");
             }
         }
@@ -1406,9 +1407,9 @@ namespace App
                 {
                     cmd.Parameters.AddWithValue("@Description", description);
                 }
+                cmd.Parameters.AddWithValue("@IDGame",id);
                 cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
                 cmd.Parameters["@res"].Direction = ParameterDirection.Output;
-
                 cmd.ExecuteNonQuery();
 
                 if (!cmd.Parameters["@res"].Value.ToString().Equals("Success updating Game Info!"))
@@ -1437,6 +1438,19 @@ namespace App
                     if (!GameUpdateGenre.Items.Contains(genres.ElementAt(j)))
                     {
                         //Procedure para remover genero da tabela
+                        cmd = new SqlCommand("Project.pd_removeGameGenre",Program.cn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@IDGame",id);
+                        cmd.Parameters.AddWithValue("@GenName",genres.ElementAt(j));
+                        cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                        cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                        cmd.ExecuteNonQuery();
+                        if (!cmd.Parameters["@res"].Value.ToString().Equals("Success"))
+                        {
+                            MessageBox.Show("Error updating the genres");
+                            return;
+                        }
                     }
                 }
 
@@ -1455,8 +1469,7 @@ namespace App
                         //Procedure para adicionar Platform na tabela
                     }
                 }
-
-
+                MessageBox.Show("Success updating the game");
             }
 
 
@@ -1469,14 +1482,178 @@ namespace App
         {
             if (Program.verifySGBDConnection())
             {
+                string name = GameAddName.Text;
+                string description = GameAddDescription.Text;
+                string price = GameAddPrice.Text;
+                string age = GameAddAge.Text;
+                string date = GameAddYear.Text + "-" + GameAddMonth.Text + "-" + GameAddDay.Text;
+                string company = GameAddCompany.Text.Split(' ').ToArray()[0];
+                string franchise = GameAddFranchise.Text.Split(' ').ToArray()[0];
+                string image = GameAddImage.Text;
 
-        
+                if (name.Length > 50 || name.Length == 0)
+                {
+                    MessageBox.Show("Name must be between 0 and 50 chars long");
+                    return;
+                }
+                if (!decimal.TryParse(price, out decimal p))
+                {
+                    MessageBox.Show("Price must be a decimal");
+                    return;
+                }
+                if (!int.TryParse(age, out int n) || n > 18 || n < 0)
+                {
+                    MessageBox.Show("Age Restriction must be a number between 0 and 18");
+                    return;
+                }
+                if (!ValidateDate(date))
+                {
+                    MessageBox.Show("Date is not valid.");
+                    return;
+                }
+                if (image.Length > 8 && image.Substring(0, 8).Equals("https://"))
+                {
+                    image = image.Substring(8, image.Length - 8);
+                }
+
+                SqlCommand cmd = new SqlCommand("Project.pd_insert_Games",Program.cn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@Price", p);
+                cmd.Parameters.AddWithValue("@AgeRestriction", n);
+                cmd.Parameters.AddWithValue("@ReleaseDate", DateTime.Parse(date));
+                cmd.Parameters.AddWithValue("@IDCompany", int.Parse(company));
+
+                if (franchise.Length != 0)
+                {
+                    cmd.Parameters.AddWithValue("@IDFranchise", int.Parse(franchise));
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@IDFranchise", DBNull.Value);
+                }
+                if (image.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@CoverImg", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@CoverImg", image);
+                }
+                if (description.Length == 0)
+                {
+                    cmd.Parameters.AddWithValue("@Description", DBNull.Value);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@Description", description);
+                }
+
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(new SqlParameter("@addedGameID", SqlDbType.Int));
+                cmd.Parameters["@addedGameID"].Direction = ParameterDirection.Output;
+
+                string genres = "";
+                string platforms = "";
+
+                for(int i = 0; i < GameAddGenre.Items.Count; i++)
+                {
+                    genres +=GameAddGenre.Items[i].ToString() +",";
+                }
+
+                for (int i = 0; i < GameAddPlatform.Items.Count; i++)
+                {
+                    platforms += GameAddPlatform.Items[i].ToString() + ",";
+                }
+                cmd.Parameters.AddWithValue("@platforms",platforms);
+                cmd.Parameters.AddWithValue("@genres", genres);
 
 
-
-
+                cmd.ExecuteNonQuery();
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
             }
 
         }
+
+        private void addAddGenre(object sender, EventArgs e)
+        {
+            int index = GameAddAllGenre.SelectedIndex;
+            if (index < 0 || index > GameAddAllGenre.Items.Count)
+            {
+                MessageBox.Show("Select a genre");
+                return;
+            }
+            string genre = GameAddAllGenre.SelectedItem.ToString();
+            GameAddGenre.Items.Add(genre);
+            GameAddAllGenre.Items.Remove(genre);
+        }
+
+        private void addAddPlatform(object sender, EventArgs e)
+        {
+            int index = GameAddAllPlatforms.SelectedIndex;
+            if (index < 0 || index > GameAddAllPlatforms.Items.Count)
+            {
+                MessageBox.Show("Select a genre");
+                return;
+            }
+            string genre = GameAddAllPlatforms.SelectedItem.ToString();
+            GameAddPlatform.Items.Add(genre);
+            GameAddAllPlatforms.Items.Remove(genre);
+        }
+
+
+        //Statistics
+        private void LoadStatistics()
+        {
+
+            if (Program.verifySGBDConnection())
+            {
+                //most sold Platforms
+                SqlDataAdapter adapter = new SqlDataAdapter("Select * from Project.udf_most_Sold_Platforms()", Program.cn);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView1.DataSource = dt;
+                dataGridView1.Columns[0].Width = 180;
+                dataGridView1.Columns[1].Width = 50;
+                dataGridView1.Columns[0].Name = "Platform";
+                dataGridView1.Columns[1].Name = "Count";
+
+
+
+                //Project.udf_most_Sold_Genres()
+                adapter = new SqlDataAdapter("Select * from Project.udf_most_Sold_Genres()", Program.cn);
+                DataTable dt2 = new DataTable();
+                adapter.Fill(dt2);
+                dataGridView2.DataSource = dt2;
+
+                // udf_mostMoneySpent()
+                adapter = new SqlDataAdapter("Select * from Project.udf_mostMoneySpent()", Program.cn);
+                DataTable dt3 = new DataTable();
+                adapter.Fill(dt3);
+                dataGridView3.DataSource = dt3;
+
+                //[udf_leastSoldGames]()
+                adapter = new SqlDataAdapter("Select * from Project.[udf_leastSoldGames]()", Program.cn);
+                DataTable dt4 = new DataTable();
+                adapter.Fill(dt4);
+                dataGridView4.DataSource = dt4;
+
+               
+                //[udf_mostSoldGames]()
+                adapter = new SqlDataAdapter("Select * from Project.[udf_mostSoldGames]()", Program.cn);
+                DataTable dt5 = new DataTable();
+                adapter.Fill(dt5);
+                dataGridView5.DataSource = dt5;
+
+                SqlCommand cmd = new SqlCommand("Select * From Project.udf_getTotalMoney()", Program.cn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                TotalMoney.Text = reader["totMoney"].ToString();
+                reader.Close();
+            }
+        }
+
+
     }
 }

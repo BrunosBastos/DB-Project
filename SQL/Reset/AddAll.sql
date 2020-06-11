@@ -1330,7 +1330,7 @@ CREATE PROCEDURE Project.pd_insertCredit(
 GO
 
 go
-CREATE PROCEDURE Project.pd_insertPurchase(
+Create PROCEDURE Project.pd_insertPurchase(
 	@PurchaseDate DATE,
 	@IDClient INT,
 	@IDGame INT,
@@ -1343,7 +1343,7 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 			DECLARE @Price DECIMAL(5,2)
 			DECLARE @countDispCopies INT;
 			DECLARE @SerialNum INT;
-			DECLARE @tempPer INT;
+			DECLARE @tempPer decimal(5,2);
 			BEGIN TRY
 			IF ( (SELECT Project.udf_checkUserPurchase(@IDClient,@IDGame)) = 1)
 				raiserror ('User Already Contains that Game',16,1);
@@ -1356,12 +1356,15 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 					SET @SerialNum =( SELECT TOP 1 Copy.SerialNum FROM Project.[Copy] WHERE Copy.IDGame=@IDGame AND Copy.PlatformName=@PlatformName ORDER BY SerialNum DESC  )
 				END
 			
-			SET @tempPer = (SELECT TOP 1 * FROM Project.[udf_checkGameDiscount](@IDGame))
+			SET @tempPer = (SELECT TOP 1 Percentage FROM Project.[udf_checkGameDiscount](@IDGame))
 				IF @tempPer is not null 
 					BEGIN
-						SET @Price-=@Price*(@tempPer/100)
+						Print @tempPer
+						SET @Price=@Price-(@Price*(@tempPer/100))
+						Print @Price
 					END
 			INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) VALUES (@Price,@PurchaseDate,@IDClient,@SerialNum)
+			Print @Price
 			SET @res ='Success!'
 			END TRY
 			BEGIN CATCH
@@ -1373,7 +1376,6 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 		END
 
 go
-
 
 GO
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
@@ -1723,7 +1725,7 @@ AS
 GO
 
 CREATE PROCEDURE Project.pd_insert_Games (
-	@Name  VARCHAR(50),
+	@Name VARCHAR(50),
 	@Description VARCHAR(max),
 	@ReleaseDate DATE,
 	@AgeRestriction INT,
@@ -1959,7 +1961,7 @@ INSTEAD OF INSERT
 			INSERT INTO Project.Company(Contact,CompanyName,Website,Logo,FoundationDate,City,Country) VALUES (@Contact,@CompanyName,@Website,@Logo,@FoundationDate,@City,@Country)
 		END
 GO
-create PROCEDURE Project.pd_insertDiscount(
+Create PROCEDURE Project.pd_insertDiscount(
 	@PromoCode INT,
 	@Percentage INT,
 	@DateBegin DATE,
@@ -1970,18 +1972,14 @@ create PROCEDURE Project.pd_insertDiscount(
 )
 AS
 	BEGIN
-	BEGIN TRAN
 		BEGIN TRY
 		INSERT INTO Project.Discount (PromoCode,[Percentage],DateBegin,DateEnd) VALUES (@PromoCode,@Percentage,@DateBegin,@DateEnd)
 		SET @res='Success Inserting new  Discount'
 		END TRY
 		BEGIN CATCH
 			set @res=ERROR_MESSAGE()
-			Rollback
 		END CATCH
-	IF @@TRANCOUNT>0
-	COMMIT TRAN
-END
+	END
 
 
 GO
@@ -2272,7 +2270,7 @@ Create Procedure Project.pd_deleteFollows(
 		END CATCH
 	END
 go
-CREATE PROCEDURE Project.pd_updateGame(
+Create PROCEDURE Project.pd_updateGame(
 	@IDGame INT,
 	@Name  VARCHAR(50),
 	@Description VARCHAR(max),
@@ -2289,8 +2287,11 @@ CREATE PROCEDURE Project.pd_updateGame(
 		BEGIN TRY
 			IF @Name is not null
 			BEGIN
-				IF NOT EXISTS( SELECT TOP 1 [Name] FROM Project.Game WHERE Game.[Name] =@Name) UPDATE Project.Game	set [Name]=@Name where IDGame =@IDGame
-				ELSE
+				IF NOT EXISTS( SELECT TOP 1 [Name] FROM Project.Game WHERE Game.[Name] =@Name)
+					UPDATE Project.Game	set [Name]=@Name where IDGame =@IDGame
+				ELSE IF @Name=(Select TOP 1 Name From Project.Game where IDGame=@IDGame)
+					UPDATE Project.Game	set [Name]=@Name where IDGame =@IDGame
+				ELSe
 					raiserror('Game Name already exists!',16,1);
 			END
 			IF ((SELECT IDCompany FROM Project.udf_getCompanyDetails(@IDCompany)) is not   null ) UPDATE Project.Game	set IDCompany=@IDCompany where IDGame =@IDGame

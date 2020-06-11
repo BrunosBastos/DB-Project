@@ -779,9 +779,11 @@ namespace App
                 cmd.Parameters.AddWithValue("@DateCredit", DateTime.Now);
                 cmd.Parameters.AddWithValue("@ValueCredit", n);
                 cmd.Parameters.AddWithValue("@IDClient", Program.currentUser);
+                cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                cmd.Parameters["@res"].Direction = ParameterDirection.Output;
                 cmd.Connection = Program.cn;
                 cmd.ExecuteNonQuery();
-                MessageBox.Show("Your Credit has been added to your account.");
+                MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
             }
 
             CreditAddAmount.Text = "";

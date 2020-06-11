@@ -70,37 +70,37 @@
             this.label73 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.textBox71 = new System.Windows.Forms.TextBox();
+            this.GameAddDescription = new System.Windows.Forms.TextBox();
             this.button17 = new System.Windows.Forms.Button();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.button22 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.label46 = new System.Windows.Forms.Label();
-            this.listBox10 = new System.Windows.Forms.ListBox();
+            this.GameAddPlatform = new System.Windows.Forms.ListBox();
             this.label45 = new System.Windows.Forms.Label();
             this.GameAddAllPlatforms = new System.Windows.Forms.ListBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.button18 = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.listBox8 = new System.Windows.Forms.ListBox();
+            this.GameAddGenre = new System.Windows.Forms.ListBox();
             this.button9 = new System.Windows.Forms.Button();
             this.GameAddAllGenre = new System.Windows.Forms.ListBox();
             this.GameAddFranchise = new System.Windows.Forms.ComboBox();
             this.label42 = new System.Windows.Forms.Label();
             this.GameAddCompany = new System.Windows.Forms.ComboBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.textBox68 = new System.Windows.Forms.TextBox();
+            this.GameAddPrice = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.textBox51 = new System.Windows.Forms.TextBox();
+            this.GameAddAge = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBox46 = new System.Windows.Forms.TextBox();
+            this.GameAddImage = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox26 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.GameAddYear = new System.Windows.Forms.TextBox();
+            this.GameAddMonth = new System.Windows.Forms.TextBox();
+            this.GameAddDay = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.GameAddName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -270,13 +270,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.AdminAddEmail = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.label75 = new System.Windows.Forms.Label();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.TotalMoney = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -314,7 +320,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -722,7 +727,7 @@
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.label47);
-            this.groupBox8.Controls.Add(this.textBox71);
+            this.groupBox8.Controls.Add(this.GameAddDescription);
             this.groupBox8.Controls.Add(this.button17);
             this.groupBox8.Controls.Add(this.groupBox16);
             this.groupBox8.Controls.Add(this.groupBox11);
@@ -730,17 +735,17 @@
             this.groupBox8.Controls.Add(this.label42);
             this.groupBox8.Controls.Add(this.GameAddCompany);
             this.groupBox8.Controls.Add(this.label26);
-            this.groupBox8.Controls.Add(this.textBox68);
+            this.groupBox8.Controls.Add(this.GameAddPrice);
             this.groupBox8.Controls.Add(this.label25);
-            this.groupBox8.Controls.Add(this.textBox51);
+            this.groupBox8.Controls.Add(this.GameAddAge);
             this.groupBox8.Controls.Add(this.label24);
-            this.groupBox8.Controls.Add(this.textBox46);
+            this.groupBox8.Controls.Add(this.GameAddImage);
             this.groupBox8.Controls.Add(this.label16);
-            this.groupBox8.Controls.Add(this.textBox26);
-            this.groupBox8.Controls.Add(this.textBox20);
-            this.groupBox8.Controls.Add(this.textBox9);
+            this.groupBox8.Controls.Add(this.GameAddYear);
+            this.groupBox8.Controls.Add(this.GameAddMonth);
+            this.groupBox8.Controls.Add(this.GameAddDay);
             this.groupBox8.Controls.Add(this.label9);
-            this.groupBox8.Controls.Add(this.textBox6);
+            this.groupBox8.Controls.Add(this.GameAddName);
             this.groupBox8.Controls.Add(this.label6);
             this.groupBox8.Location = new System.Drawing.Point(7, 7);
             this.groupBox8.Name = "groupBox8";
@@ -758,13 +763,13 @@
             this.label47.TabIndex = 20;
             this.label47.Text = "Description";
             // 
-            // textBox71
+            // GameAddDescription
             // 
-            this.textBox71.Location = new System.Drawing.Point(15, 517);
-            this.textBox71.Multiline = true;
-            this.textBox71.Name = "textBox71";
-            this.textBox71.Size = new System.Drawing.Size(444, 77);
-            this.textBox71.TabIndex = 19;
+            this.GameAddDescription.Location = new System.Drawing.Point(15, 517);
+            this.GameAddDescription.Multiline = true;
+            this.GameAddDescription.Name = "GameAddDescription";
+            this.GameAddDescription.Size = new System.Drawing.Size(444, 77);
+            this.GameAddDescription.TabIndex = 19;
             // 
             // button17
             // 
@@ -781,7 +786,7 @@
             this.groupBox16.Controls.Add(this.button22);
             this.groupBox16.Controls.Add(this.button12);
             this.groupBox16.Controls.Add(this.label46);
-            this.groupBox16.Controls.Add(this.listBox10);
+            this.groupBox16.Controls.Add(this.GameAddPlatform);
             this.groupBox16.Controls.Add(this.label45);
             this.groupBox16.Controls.Add(this.GameAddAllPlatforms);
             this.groupBox16.Location = new System.Drawing.Point(15, 345);
@@ -808,6 +813,7 @@
             this.button12.TabIndex = 8;
             this.button12.Text = "Add to Game";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.addAddPlatform);
             // 
             // label46
             // 
@@ -818,13 +824,13 @@
             this.label46.TabIndex = 7;
             this.label46.Text = "Game Platforms";
             // 
-            // listBox10
+            // GameAddPlatform
             // 
-            this.listBox10.FormattingEnabled = true;
-            this.listBox10.Location = new System.Drawing.Point(298, 32);
-            this.listBox10.Name = "listBox10";
-            this.listBox10.Size = new System.Drawing.Size(140, 95);
-            this.listBox10.TabIndex = 6;
+            this.GameAddPlatform.FormattingEnabled = true;
+            this.GameAddPlatform.Location = new System.Drawing.Point(298, 32);
+            this.GameAddPlatform.Name = "GameAddPlatform";
+            this.GameAddPlatform.Size = new System.Drawing.Size(140, 95);
+            this.GameAddPlatform.TabIndex = 6;
             // 
             // label45
             // 
@@ -848,7 +854,7 @@
             this.groupBox11.Controls.Add(this.button18);
             this.groupBox11.Controls.Add(this.label44);
             this.groupBox11.Controls.Add(this.label43);
-            this.groupBox11.Controls.Add(this.listBox8);
+            this.groupBox11.Controls.Add(this.GameAddGenre);
             this.groupBox11.Controls.Add(this.button9);
             this.groupBox11.Controls.Add(this.GameAddAllGenre);
             this.groupBox11.Location = new System.Drawing.Point(15, 191);
@@ -885,13 +891,13 @@
             this.label43.TabIndex = 3;
             this.label43.Text = "All Genre";
             // 
-            // listBox8
+            // GameAddGenre
             // 
-            this.listBox8.FormattingEnabled = true;
-            this.listBox8.Location = new System.Drawing.Point(298, 47);
-            this.listBox8.Name = "listBox8";
-            this.listBox8.Size = new System.Drawing.Size(140, 95);
-            this.listBox8.TabIndex = 2;
+            this.GameAddGenre.FormattingEnabled = true;
+            this.GameAddGenre.Location = new System.Drawing.Point(298, 47);
+            this.GameAddGenre.Name = "GameAddGenre";
+            this.GameAddGenre.Size = new System.Drawing.Size(140, 95);
+            this.GameAddGenre.TabIndex = 2;
             // 
             // button9
             // 
@@ -901,6 +907,7 @@
             this.button9.TabIndex = 1;
             this.button9.Text = "Add to Game";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.addAddGenre);
             // 
             // GameAddAllGenre
             // 
@@ -946,12 +953,12 @@
             this.label26.TabIndex = 12;
             this.label26.Text = "Company ID";
             // 
-            // textBox68
+            // GameAddPrice
             // 
-            this.textBox68.Location = new System.Drawing.Point(270, 45);
-            this.textBox68.Name = "textBox68";
-            this.textBox68.Size = new System.Drawing.Size(48, 20);
-            this.textBox68.TabIndex = 11;
+            this.GameAddPrice.Location = new System.Drawing.Point(270, 45);
+            this.GameAddPrice.Name = "GameAddPrice";
+            this.GameAddPrice.Size = new System.Drawing.Size(48, 20);
+            this.GameAddPrice.TabIndex = 11;
             // 
             // label25
             // 
@@ -962,12 +969,12 @@
             this.label25.TabIndex = 10;
             this.label25.Text = "Price";
             // 
-            // textBox51
+            // GameAddAge
             // 
-            this.textBox51.Location = new System.Drawing.Point(213, 111);
-            this.textBox51.Name = "textBox51";
-            this.textBox51.Size = new System.Drawing.Size(100, 20);
-            this.textBox51.TabIndex = 9;
+            this.GameAddAge.Location = new System.Drawing.Point(213, 111);
+            this.GameAddAge.Name = "GameAddAge";
+            this.GameAddAge.Size = new System.Drawing.Size(100, 20);
+            this.GameAddAge.TabIndex = 9;
             // 
             // label24
             // 
@@ -978,12 +985,12 @@
             this.label24.TabIndex = 8;
             this.label24.Text = "Age Restriction";
             // 
-            // textBox46
+            // GameAddImage
             // 
-            this.textBox46.Location = new System.Drawing.Point(21, 165);
-            this.textBox46.Name = "textBox46";
-            this.textBox46.Size = new System.Drawing.Size(280, 20);
-            this.textBox46.TabIndex = 7;
+            this.GameAddImage.Location = new System.Drawing.Point(21, 165);
+            this.GameAddImage.Name = "GameAddImage";
+            this.GameAddImage.Size = new System.Drawing.Size(280, 20);
+            this.GameAddImage.TabIndex = 7;
             // 
             // label16
             // 
@@ -994,26 +1001,26 @@
             this.label16.TabIndex = 6;
             this.label16.Text = "Cover Image Url";
             // 
-            // textBox26
+            // GameAddYear
             // 
-            this.textBox26.Location = new System.Drawing.Point(121, 111);
-            this.textBox26.Name = "textBox26";
-            this.textBox26.Size = new System.Drawing.Size(58, 20);
-            this.textBox26.TabIndex = 5;
+            this.GameAddYear.Location = new System.Drawing.Point(121, 111);
+            this.GameAddYear.Name = "GameAddYear";
+            this.GameAddYear.Size = new System.Drawing.Size(58, 20);
+            this.GameAddYear.TabIndex = 5;
             // 
-            // textBox20
+            // GameAddMonth
             // 
-            this.textBox20.Location = new System.Drawing.Point(72, 111);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(43, 20);
-            this.textBox20.TabIndex = 4;
+            this.GameAddMonth.Location = new System.Drawing.Point(72, 111);
+            this.GameAddMonth.Name = "GameAddMonth";
+            this.GameAddMonth.Size = new System.Drawing.Size(43, 20);
+            this.GameAddMonth.TabIndex = 4;
             // 
-            // textBox9
+            // GameAddDay
             // 
-            this.textBox9.Location = new System.Drawing.Point(21, 111);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(42, 20);
-            this.textBox9.TabIndex = 3;
+            this.GameAddDay.Location = new System.Drawing.Point(21, 111);
+            this.GameAddDay.Name = "GameAddDay";
+            this.GameAddDay.Size = new System.Drawing.Size(42, 20);
+            this.GameAddDay.TabIndex = 3;
             // 
             // label9
             // 
@@ -1024,12 +1031,12 @@
             this.label9.TabIndex = 2;
             this.label9.Text = "Release Date";
             // 
-            // textBox6
+            // GameAddName
             // 
-            this.textBox6.Location = new System.Drawing.Point(21, 46);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(223, 20);
-            this.textBox6.TabIndex = 1;
+            this.GameAddName.Location = new System.Drawing.Point(21, 46);
+            this.GameAddName.Name = "GameAddName";
+            this.GameAddName.Size = new System.Drawing.Size(223, 20);
+            this.GameAddName.TabIndex = 1;
             // 
             // label6
             // 
@@ -2612,7 +2619,13 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView6);
+            this.tabPage2.Controls.Add(this.TotalMoney);
+            this.tabPage2.Controls.Add(this.label80);
+            this.tabPage2.Controls.Add(this.label79);
+            this.tabPage2.Controls.Add(this.label78);
+            this.tabPage2.Controls.Add(this.label77);
+            this.tabPage2.Controls.Add(this.label76);
+            this.tabPage2.Controls.Add(this.label75);
             this.tabPage2.Controls.Add(this.dataGridView5);
             this.tabPage2.Controls.Add(this.dataGridView4);
             this.tabPage2.Controls.Add(this.dataGridView3);
@@ -2626,52 +2639,44 @@
             this.tabPage2.Text = "Statistics";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView6
-            // 
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Location = new System.Drawing.Point(595, 279);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView6.TabIndex = 5;
-            // 
             // dataGridView5
             // 
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(326, 279);
+            this.dataGridView5.Location = new System.Drawing.Point(591, 373);
             this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView5.Size = new System.Drawing.Size(407, 267);
             this.dataGridView5.TabIndex = 4;
             // 
             // dataGridView4
             // 
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(55, 279);
+            this.dataGridView4.Location = new System.Drawing.Point(51, 373);
             this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView4.Size = new System.Drawing.Size(428, 267);
             this.dataGridView4.TabIndex = 3;
             // 
             // dataGridView3
             // 
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(595, 69);
+            this.dataGridView3.Location = new System.Drawing.Point(687, 69);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView3.Size = new System.Drawing.Size(287, 244);
             this.dataGridView3.TabIndex = 2;
             // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(326, 69);
+            this.dataGridView2.Location = new System.Drawing.Point(359, 69);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(283, 244);
             this.dataGridView2.TabIndex = 1;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(55, 69);
+            this.dataGridView1.Location = new System.Drawing.Point(39, 69);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(281, 244);
             this.dataGridView1.TabIndex = 0;
             // 
             // button1
@@ -2682,6 +2687,68 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Log Out";
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(48, 39);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(100, 13);
+            this.label75.TabIndex = 6;
+            this.label75.Text = "Most Sold Platforms";
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(356, 39);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(91, 13);
+            this.label76.TabIndex = 7;
+            this.label76.Text = "Most Sold Genres";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(684, 39);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(96, 13);
+            this.label77.TabIndex = 8;
+            this.label77.Text = "Most Money Spent";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(55, 342);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(93, 13);
+            this.label78.TabIndex = 9;
+            this.label78.Text = "Least Sold Games";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(588, 342);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(90, 13);
+            this.label79.TabIndex = 10;
+            this.label79.Text = "Most Sold Games";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(1032, 69);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(95, 13);
+            this.label80.TabIndex = 11;
+            this.label80.Text = "Total Money spent";
+            // 
+            // TotalMoney
+            // 
+            this.TotalMoney.Location = new System.Drawing.Point(1035, 100);
+            this.TotalMoney.Name = "TotalMoney";
+            this.TotalMoney.ReadOnly = true;
+            this.TotalMoney.Size = new System.Drawing.Size(100, 20);
+            this.TotalMoney.TabIndex = 12;
             // 
             // AdminMain
             // 
@@ -2748,7 +2815,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
@@ -2763,7 +2830,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView6;
         private System.Windows.Forms.DataGridView dataGridView5;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.DataGridView dataGridView3;
@@ -2934,35 +3000,35 @@
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.TextBox textBox71;
+        private System.Windows.Forms.TextBox GameAddDescription;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.ListBox listBox10;
+        private System.Windows.Forms.ListBox GameAddPlatform;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.ListBox GameAddAllPlatforms;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.ListBox listBox8;
+        private System.Windows.Forms.ListBox GameAddGenre;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.ListBox GameAddAllGenre;
         private System.Windows.Forms.ComboBox GameAddFranchise;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.ComboBox GameAddCompany;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox68;
+        private System.Windows.Forms.TextBox GameAddPrice;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TextBox textBox51;
+        private System.Windows.Forms.TextBox GameAddAge;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBox46;
+        private System.Windows.Forms.TextBox GameAddImage;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox26;
-        private System.Windows.Forms.TextBox textBox20;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox GameAddYear;
+        private System.Windows.Forms.TextBox GameAddMonth;
+        private System.Windows.Forms.TextBox GameAddDay;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox GameAddName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button3;
@@ -3009,5 +3075,12 @@
         private System.Windows.Forms.DataGridView dataGridView7;
         private System.Windows.Forms.ComboBox DiscountGameList;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.TextBox TotalMoney;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.Label label79;
     }
 }
