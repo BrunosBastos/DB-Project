@@ -39,7 +39,12 @@ namespace App
                 FoundationDate.Text = reader["FoundationDate"].ToString().Split(' ').ToArray()[0];
                 if (!reader.IsDBNull(4))
                 {
-                    Logo.LoadAsync(reader["logo"].ToString());
+                    Console.WriteLine("https://"+reader["logo"].ToString());
+                    Logo.LoadAsync("https://"+reader["logo"].ToString());
+                }
+                else
+                {
+                    Logo.LoadAsync("https://lh3.googleusercontent.com/proxy/EyPq4EEmV1x0bWYRfIF9c8j0L2mE2GI5jJ_8D45ZbZn-eFiAQh8Q5td74dQYMzqV8llxG_l-a51zetbqqZ-e-tJBxUu3yqHPBwLQ14-20jxcW2Jq");
                 }
                 reader.Close();
                 cmd = new SqlCommand("Select Project.udf_getNumberCompGames(" + IDCompany + ")", Program.cn);

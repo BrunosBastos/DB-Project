@@ -39,7 +39,6 @@
             this.GameUpdateDescription = new System.Windows.Forms.TextBox();
             this.button25 = new System.Windows.Forms.Button();
             this.groupBox23 = new System.Windows.Forms.GroupBox();
-            this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.label53 = new System.Windows.Forms.Label();
             this.GameUpdatePlatform = new System.Windows.Forms.ListBox();
@@ -270,19 +269,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.AdminAddEmail = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.TotalMoney = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label77 = new System.Windows.Forms.Label();
+            this.label76 = new System.Windows.Forms.Label();
+            this.label75 = new System.Windows.Forms.Label();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label76 = new System.Windows.Forms.Label();
-            this.label77 = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.label79 = new System.Windows.Forms.Label();
-            this.label80 = new System.Windows.Forms.Label();
-            this.TotalMoney = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -456,7 +455,6 @@
             // 
             // groupBox23
             // 
-            this.groupBox23.Controls.Add(this.button27);
             this.groupBox23.Controls.Add(this.button28);
             this.groupBox23.Controls.Add(this.label53);
             this.groupBox23.Controls.Add(this.GameUpdatePlatform);
@@ -469,18 +467,9 @@
             this.groupBox23.TabStop = false;
             this.groupBox23.Text = "Platform";
             // 
-            // button27
-            // 
-            this.button27.Location = new System.Drawing.Point(179, 84);
-            this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(89, 23);
-            this.button27.TabIndex = 9;
-            this.button27.Text = "Remove";
-            this.button27.UseVisualStyleBackColor = true;
-            // 
             // button28
             // 
-            this.button28.Location = new System.Drawing.Point(179, 43);
+            this.button28.Location = new System.Drawing.Point(179, 58);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(89, 23);
             this.button28.TabIndex = 8;
@@ -1103,9 +1092,12 @@
             // 
             // dataGridView7
             // 
+            this.dataGridView7.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView7.Location = new System.Drawing.Point(475, 17);
             this.dataGridView7.Name = "dataGridView7";
+            this.dataGridView7.ReadOnly = true;
+            this.dataGridView7.RowHeadersVisible = false;
             this.dataGridView7.Size = new System.Drawing.Size(420, 292);
             this.dataGridView7.TabIndex = 4;
             // 
@@ -2639,43 +2631,130 @@
             this.tabPage2.Text = "Statistics";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // TotalMoney
+            // 
+            this.TotalMoney.Location = new System.Drawing.Point(1035, 100);
+            this.TotalMoney.Name = "TotalMoney";
+            this.TotalMoney.ReadOnly = true;
+            this.TotalMoney.Size = new System.Drawing.Size(100, 20);
+            this.TotalMoney.TabIndex = 12;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(1032, 69);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(95, 13);
+            this.label80.TabIndex = 11;
+            this.label80.Text = "Total Money spent";
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(588, 342);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(90, 13);
+            this.label79.TabIndex = 10;
+            this.label79.Text = "Most Sold Games";
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(55, 342);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(93, 13);
+            this.label78.TabIndex = 9;
+            this.label78.Text = "Least Sold Games";
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(684, 39);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(96, 13);
+            this.label77.TabIndex = 8;
+            this.label77.Text = "Most Money Spent";
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(356, 39);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(91, 13);
+            this.label76.TabIndex = 7;
+            this.label76.Text = "Most Sold Genres";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(48, 39);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(100, 13);
+            this.label75.TabIndex = 6;
+            this.label75.Text = "Most Sold Platforms";
+            // 
             // dataGridView5
             // 
+            this.dataGridView5.AllowUserToResizeColumns = false;
+            this.dataGridView5.AllowUserToResizeRows = false;
+            this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView5.Location = new System.Drawing.Point(591, 373);
             this.dataGridView5.Name = "dataGridView5";
+            this.dataGridView5.ReadOnly = true;
+            this.dataGridView5.RowHeadersVisible = false;
             this.dataGridView5.Size = new System.Drawing.Size(407, 267);
             this.dataGridView5.TabIndex = 4;
             // 
             // dataGridView4
             // 
+            this.dataGridView4.AllowUserToResizeColumns = false;
+            this.dataGridView4.AllowUserToResizeRows = false;
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Location = new System.Drawing.Point(51, 373);
             this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.RowHeadersVisible = false;
             this.dataGridView4.Size = new System.Drawing.Size(428, 267);
             this.dataGridView4.TabIndex = 3;
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AllowUserToResizeColumns = false;
+            this.dataGridView3.AllowUserToResizeRows = false;
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(687, 69);
             this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.Size = new System.Drawing.Size(287, 244);
             this.dataGridView3.TabIndex = 2;
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(359, 69);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.Size = new System.Drawing.Size(283, 244);
             this.dataGridView2.TabIndex = 1;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(39, 69);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(281, 244);
             this.dataGridView1.TabIndex = 0;
             // 
@@ -2687,68 +2766,6 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "Log Out";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(48, 39);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(100, 13);
-            this.label75.TabIndex = 6;
-            this.label75.Text = "Most Sold Platforms";
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(356, 39);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(91, 13);
-            this.label76.TabIndex = 7;
-            this.label76.Text = "Most Sold Genres";
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(684, 39);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(96, 13);
-            this.label77.TabIndex = 8;
-            this.label77.Text = "Most Money Spent";
-            // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.Location = new System.Drawing.Point(55, 342);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(93, 13);
-            this.label78.TabIndex = 9;
-            this.label78.Text = "Least Sold Games";
-            // 
-            // label79
-            // 
-            this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(588, 342);
-            this.label79.Name = "label79";
-            this.label79.Size = new System.Drawing.Size(90, 13);
-            this.label79.TabIndex = 10;
-            this.label79.Text = "Most Sold Games";
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(1032, 69);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(95, 13);
-            this.label80.TabIndex = 11;
-            this.label80.Text = "Total Money spent";
-            // 
-            // TotalMoney
-            // 
-            this.TotalMoney.Location = new System.Drawing.Point(1035, 100);
-            this.TotalMoney.Name = "TotalMoney";
-            this.TotalMoney.ReadOnly = true;
-            this.TotalMoney.Size = new System.Drawing.Size(100, 20);
-            this.TotalMoney.TabIndex = 12;
             // 
             // AdminMain
             // 
@@ -3042,7 +3059,6 @@
         private System.Windows.Forms.TextBox GameUpdateDescription;
         private System.Windows.Forms.Button button25;
         private System.Windows.Forms.GroupBox groupBox23;
-        private System.Windows.Forms.Button button27;
         private System.Windows.Forms.Button button28;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.ListBox GameUpdatePlatform;

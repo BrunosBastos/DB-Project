@@ -59,7 +59,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(326, 416);
+            this.button1.Location = new System.Drawing.Point(326, 477);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 36);
             this.button1.TabIndex = 3;
@@ -86,7 +86,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(746, 398);
+            this.groupBox1.Size = new System.Drawing.Size(746, 450);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Details";
@@ -96,7 +96,7 @@
             this.groupBox3.Controls.Add(this.label8);
             this.groupBox3.Controls.Add(this.listBox2);
             this.groupBox3.Controls.Add(this.NGames);
-            this.groupBox3.Location = new System.Drawing.Point(28, 242);
+            this.groupBox3.Location = new System.Drawing.Point(28, 286);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(312, 150);
             this.groupBox3.TabIndex = 18;
@@ -133,7 +133,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.listBox1);
             this.groupBox2.Controls.Add(this.NFranchises);
-            this.groupBox2.Location = new System.Drawing.Point(419, 242);
+            this.groupBox2.Location = new System.Drawing.Point(419, 286);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(304, 150);
             this.groupBox2.TabIndex = 16;
@@ -184,9 +184,9 @@
             // 
             // Logo
             // 
-            this.Logo.Location = new System.Drawing.Point(490, 33);
+            this.Logo.Location = new System.Drawing.Point(467, 19);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(206, 140);
+            this.Logo.Size = new System.Drawing.Size(256, 256);
             this.Logo.TabIndex = 10;
             this.Logo.TabStop = false;
             // 
@@ -279,7 +279,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(777, 456);
+            this.ClientSize = new System.Drawing.Size(777, 512);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Name = "CompanyDetails";

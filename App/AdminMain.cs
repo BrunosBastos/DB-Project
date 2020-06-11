@@ -1430,6 +1430,19 @@ namespace App
                     if (!genres.Contains(GameUpdateGenre.Items[i].ToString()))
                     {
                         //Procedure para adicionar genero na tabela
+                        cmd = new SqlCommand("Project.pd_addGameGenre", Program.cn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@IDGame", id);
+                        cmd.Parameters.AddWithValue("@GenName", GameUpdateGenre.Items[i].ToString());
+                        cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                        cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                        cmd.ExecuteNonQuery();
+                        if (!cmd.Parameters["@res"].Value.ToString().Equals("Success adding genre"))
+                        {
+                            MessageBox.Show("Error updating the genres");
+                            return;
+                        }
                     }
                 }
 
@@ -1464,9 +1477,23 @@ namespace App
                 reader.Close();
                 for (int i = 0; i < GameUpdatePlatform.Items.Count; i++)
                 {
-                    if (!genres.Contains(GameUpdatePlatform.Items[i].ToString()))
+                    if (!platforms.Contains(GameUpdatePlatform.Items[i].ToString()))
                     {
                         //Procedure para adicionar Platform na tabela
+                        cmd = new SqlCommand("Project.pd_addPlatformToGame", Program.cn);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@IDGame", id);
+                        cmd.Parameters.AddWithValue("@PlatformName", GameUpdatePlatform.Items[i].ToString());
+                        cmd.Parameters.Add(new SqlParameter("@res", SqlDbType.VarChar, 255));
+                        cmd.Parameters["@res"].Direction = ParameterDirection.Output;
+
+                        cmd.ExecuteNonQuery();
+                        if (!cmd.Parameters["@res"].Value.ToString().Equals("Success adding Platform"))
+                        {
+                            MessageBox.Show("Error updating the genres");
+                            return;
+                        }
+
                     }
                 }
                 MessageBox.Show("Success updating the game");

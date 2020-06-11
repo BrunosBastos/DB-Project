@@ -73,7 +73,7 @@
             // 
             this.Logo.Location = new System.Drawing.Point(431, 33);
             this.Logo.Name = "Logo";
-            this.Logo.Size = new System.Drawing.Size(223, 209);
+            this.Logo.Size = new System.Drawing.Size(256, 256);
             this.Logo.TabIndex = 8;
             this.Logo.TabStop = false;
             // 
