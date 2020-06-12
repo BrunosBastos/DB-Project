@@ -1813,7 +1813,7 @@ AS
 	END
 
 go
-CREATE PROCEDURE.pd_updateGenre(
+CREATE PROCEDURE Project.pd_updateGenre(
 	@GenName as Varchar(25),
 	@Description as Varchar(MAX),
 	@res as Varchar(MAX) output
@@ -1833,6 +1833,37 @@ as
 	end
 
 go
+Create Procedure Project.pd_getUserFilter(@IDClient as int, @email as varchar(50),
+@username as varchar(50),@orderby as varchar(30))
+as
+	begin
+		--email,username,orderby
+		declare @temp as table(
+			Username	varchar(50),
+			Email		varchar(50)
+		);
+
+		INSERT INTO @temp Select Username,Email 
+		From Project.Client JOIN Project.[User] on Client.UserID=[User].UserID 
+		where Client.UserID<>@IDClient;
+
+		if @email is not null
+			DELETE FROM @temp where Email not like @email+'%'
+		
+		if @username is not null
+			DELETE FROM @temp where Username not like @username+'%'
+
+		if @orderby='UsernameAsc' or @orderby is null
+			Select * From @temp ORDER BY Username Asc
+		if @orderby='UsernameDesc'
+			Select * From @temp ORDER BY Username Desc
+		if @orderby='EmailDesc'
+			Select * From @temp ORDER BY Email Desc
+		if @orderby='EmailAsc'
+			Select * From @temp ORDER BY Email 
+	end
+go
+
 
 
 CREATE PROCEDURE Project.pd_UpdateUser(
