@@ -1683,6 +1683,13 @@ namespace App
             }
         }
 
-       
+        private void logout(object sender, EventArgs e)
+        {
+            Program.currentUser = 0;
+            this.Hide();
+            Login l = new Login();
+            l.ShowDialog();
+            this.Close();
+        }
     }
 }

@@ -362,20 +362,20 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.listgameowner);
-            this.groupBox5.Location = new System.Drawing.Point(862, 178);
+            this.groupBox5.Location = new System.Drawing.Point(862, 159);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(187, 76);
+            this.groupBox5.Size = new System.Drawing.Size(187, 95);
             this.groupBox5.TabIndex = 89;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Follows";
             // 
             // listgameowner
             // 
-            this.listgameowner.Location = new System.Drawing.Point(43, 28);
+            this.listgameowner.Location = new System.Drawing.Point(43, 30);
             this.listgameowner.Name = "listgameowner";
-            this.listgameowner.Size = new System.Drawing.Size(105, 23);
+            this.listgameowner.Size = new System.Drawing.Size(105, 49);
             this.listgameowner.TabIndex = 0;
-            this.listgameowner.Text = "List Game Owners";
+            this.listgameowner.Text = "List Following Users That Own This Game";
             this.listgameowner.UseVisualStyleBackColor = true;
             this.listgameowner.Click += new System.EventHandler(this.goToListGameOwner);
             // 
