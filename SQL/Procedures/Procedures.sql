@@ -1,4 +1,3 @@
----- PROCEDURES---
 create procedure Project.pd_Login(
 	@Loginemail varchar(50),
 	@password varchar(20),
@@ -13,7 +12,6 @@ create procedure Project.pd_Login(
 	  set @response=1
 	end		
 go
-
 
 go
 create procedure Project.pd_sign_up
@@ -41,6 +39,20 @@ begin
 end
 go
 
+
+
+CREATE PROCEDURE Project.pd_insertReview(
+	@Title VARCHAR(50),
+	@Text VARCHAR(280),
+	@Rating DECIMAL (2,1),
+	@DateReview DATE,
+	@UserID INT ,
+	@IDGame INT
+	)
+	AS
+		BEGIN
+				INSERT INTO Project.Reviews(Title,[Text],Rating,DateReview,UserID,IDGame) VALUES (@Title,@Text,@Rating,@DateReview,@UserID,@IDGame)
+		END
 GO
 CREATE PROCEDURE Project.pd_insertCredit(
 	@MetCredit varchar(20),
@@ -67,7 +79,7 @@ CREATE PROCEDURE Project.pd_insertCredit(
 GO
 
 go
-CREATE PROCEDURE Project.pd_insertPurchase(
+Create PROCEDURE Project.pd_insertPurchase(
 	@PurchaseDate DATE,
 	@IDClient INT,
 	@IDGame INT,
@@ -80,7 +92,7 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 			DECLARE @Price DECIMAL(5,2)
 			DECLARE @countDispCopies INT;
 			DECLARE @SerialNum INT;
-			DECLARE @tempPer INT;
+			DECLARE @tempPer decimal(5,2);
 			BEGIN TRY
 			IF ( (SELECT Project.udf_checkUserPurchase(@IDClient,@IDGame)) = 1)
 				raiserror ('User Already Contains that Game',16,1);
@@ -93,12 +105,15 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 					SET @SerialNum =( SELECT TOP 1 Copy.SerialNum FROM Project.[Copy] WHERE Copy.IDGame=@IDGame AND Copy.PlatformName=@PlatformName ORDER BY SerialNum DESC  )
 				END
 			
-			SET @tempPer = (SELECT TOP 1 * FROM Project.[udf_checkGameDiscount](@IDGame))
+			SET @tempPer = (SELECT TOP 1 Percentage FROM Project.[udf_checkGameDiscount](@IDGame))
 				IF @tempPer is not null 
 					BEGIN
-						SET @Price-=@Price*(@tempPer/100)
+						Print @tempPer
+						SET @Price=@Price-(@Price*(@tempPer/100))
+						Print @Price
 					END
 			INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) VALUES (@Price,@PurchaseDate,@IDClient,@SerialNum)
+			Print @Price
 			SET @res ='Success!'
 			END TRY
 			BEGIN CATCH
@@ -111,8 +126,173 @@ CREATE PROCEDURE Project.pd_insertPurchase(
 
 go
 
+CREATE PROCEDURE Project.pd_insert_Games (
+	@Name VARCHAR(50),
+	@Description VARCHAR(max),
+	@ReleaseDate DATE,
+	@AgeRestriction INT,
+	@CoverImg VARCHAR(max),
+	@Price DECIMAL (5,2),
+	@IDCompany INT,
+	@IDFranchise INT,
+	@platforms VARCHAR(max),
+	@genres VARCHAR(max),
+	@res VARCHAR(35) output,
+	@addedGameID INT output
+)
+AS
+	BEGIN 
+		BEGIN TRAN
+			BEGIN TRY
+			    DECLARE @tempcounter INT;
+				INSERT INTO Project.Game([Name],[Description],ReleaseDate,AgeRestriction,CoverImg,Price,IDCompany,IDFranchise) 
+				VALUES(@Name,@Description,@ReleaseDate,@AgeRestriction,@CoverImg,@Price,@IDCompany,@IDFranchise)
+				SELECT TOP 1 @addedGameID=IDGame FROM Project.Game ORDER BY IDGame DESC
+				PRINT @addedGameID
+				--insert Game Genres
+					DECLARE @SP INT
+					DECLARE @VALUE VARCHAR(1000)
+					WHILE PATINDEX('%' + ',' + '%', @genres ) <> 0
+					BEGIN
+					SELECT  @SP = PATINDEX('%' + ','  + '%',@genres)
+					SELECT  @VALUE = LEFT(@genres , @SP - 1)
+					SELECT  @genres = STUFF(@genres, 1, @SP, '')
+					INSERT INTO Project.GameGenre(IDGame,GenName) VALUES (@addedGameID,@VALUE)
+					END
+				--insert Game Platforms
+					SET  @SP=0;
+					SET @VALUE=''
+					WHILE PATINDEX('%' + ',' + '%', @platforms ) <> 0
+					BEGIN
+					SELECT  @SP = PATINDEX('%' + ','  + '%',@platforms)
+					SELECT  @VALUE = LEFT(@platforms , @SP - 1)
+					SELECT  @platforms = STUFF(@platforms, 1, @SP, '')
+					INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (@addedGameID,@VALUE)
+					END
+						
+				-- Insert Copies of the Game depending on the number of platforms passed ( 1 copy for each platform)
+					SET @tempcounter=1
+					WHILE (SELECT COUNT(PlatformName) FROM Project.PlatformReleasesGame WHERE PlatformReleasesGame.IDGame=@addedGameID) >= @tempcounter
+					BEGIN
+						SET @platforms= (SELECT  PlatformName From (SELECT *,ROW_NUMBER() OVER(ORDER BY PlatformName  DESC) AS mRow FROM Project.PlatformReleasesGame  WHERE @addedGameID=IDGame) as TT WHERE TT.mRow=@tempcounter)
+						INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES (@addedGameID,@platforms);
+						SET	@tempcounter+=1
+					END
+					SET @res='Success inserting Games'
+			END TRY
+			BEGIN CATCH
+					SET @res=ERROR_MESSAGE();
+					ROLLBACK TRAN
+			END CATCH
+		IF @@TRANCOUNT>0
+		COMMIT TRAN
+	END
 
 GO
+
+CREATE PROCEDURE Project.pd_insertGenres (
+	@GenName VARCHAR(50),
+	@Description VARCHAR(MAX),
+	@res VARCHAR(35) OUTPUT
+)AS 
+	BEGIN
+		BEGIN TRY
+				INSERT INTO Project.Genre VALUES(@GenName,@Description)
+				SET @res='Sucess inserting Genre'
+		END TRY
+		BEGIN CATCH
+				SET @res= ERROR_MESSAGE()
+		END CATCH
+ END
+ 
+GO
+
+
+CREATE PROCEDURE Project.pd_insertFranchise(
+	@Name VARCHAR(30),
+	@Logo VARCHAR(MAX),
+	@IDCompany INT,
+	@res VARCHAR(MAX) OUTPUT
+)
+AS
+	BEGIN
+		BEGIN TRY
+			INSERT INTO Project.Franchise ([Name],Logo,IDCompany) VALUES (@Name,@Logo,@IDCompany)
+			SET @res='Success inserting a new Franchise!'
+		END TRY
+		BEGIN CATCH
+			SET @res=ERROR_MESSAGE()
+		END CATCH
+	END
+GO
+
+CREATE PROCEDURE Project.pd_insertCompany (
+	@Contact VARCHAR(50),
+	@CompanyName VARCHAR(30),
+	@Website VARCHAR(50),
+	@Logo VARCHAR(MAX),
+	@FoundationDate DATE,
+	@City VARCHAR(50),
+	@Country VARCHAR(50),
+	@res VARCHAR(255) OUTPUT
+)
+AS
+	BEGIN
+		BEGIN TRY
+			INSERT INTO Project.Company (Contact,CompanyName,Website,Logo,FoundationDate,City,Country) VALUES (@Contact,@CompanyName,@Website,@Logo,@FoundationDate,@City,@Country)
+			SET @res='Success inserting New Company!'
+		END TRY
+		BEGIN CATCH
+			SET @res=ERROR_MESSAGE()
+		END CATCH
+	END
+
+GO
+
+CREATE PROCEDURE Project.pd_insertPlatforms (	
+		 @PlatformName VARCHAR(30),
+		 @ReleaseDate DATE,
+		 @Producer VARCHAR(30),
+		 @res VARCHAR(255) OUTPUT
+)
+AS
+	BEGIN
+		 BEGIN TRY
+			INSERT INTO Project.[Platform] VALUES(@PlatformName,@ReleaseDate,@Producer)
+			set @res='Success Inserting new Platform!'
+		 END TRY
+		 BEGIN CATCH
+			set @res=ERROR_MESSAGE()
+		 END CATCH
+	END
+GO
+
+CREATE PROCEDURE Project.pd_insertDiscount(
+	@PromoCode INT,
+	@Percentage INT,
+	@DateBegin DATE,
+	@DateEnd DATE,
+
+	@res VARCHAR(50)output
+
+)
+AS
+	BEGIN
+		BEGIN TRY
+		INSERT INTO Project.Discount (PromoCode,[Percentage],DateBegin,DateEnd) VALUES (@PromoCode,@Percentage,@DateBegin,@DateEnd)
+		SET @res='Success Inserting new  Discount'
+		END TRY
+		BEGIN CATCH
+			set @res=ERROR_MESSAGE()
+		END CATCH
+	END
+
+
+GO
+
+
+
+
 CREATE PROCEDURE Project.pd_filter_PurchaseHistory(
 		@IDClient INT,
 		@MinValue DECIMAL (5,2) =NULL,
@@ -264,9 +444,29 @@ AS
 	END
 
 go
+CREATE PROCEDURE.pd_updateGenre(
+	@GenName as Varchar(25),
+	@Description as Varchar(MAX),
+	@res as Varchar(MAX) output
+)
+as
+	begin
+		begin try
+			
+			update Project.Genre
+			set Description=@Description where GenName=@GenName;
+
+			set @res = 'Success updating the Genre'
+		end try
+		begin catch
+			set @res = 'There was an error updating the Genre'
+		end catch
+	end
 
 go
-Create PROCEDURE Project.pd_UpdateUser(
+
+
+CREATE PROCEDURE Project.pd_UpdateUser(
 	      @UserID AS INT,
 		  @Email AS VARCHAR(50),
 		  @Password AS VARCHAR(20),
@@ -322,183 +522,12 @@ AS
 				SET @responseMsg='Success On Updating Account!'
 			END TRY
 			BEGIN CATCH
-				raiserror('Could not Update Account',16,1)
-				set @responseMsg=error_message()
+				set @responseMsg='Could not Update Account'
 			END CATCH
 			PRINT @responseMsg
 	END
 go
-
-CREATE PROCEDURE Project.pd_insert_Games (
-	@Name  VARCHAR(50),
-	@Description VARCHAR(max),
-	@ReleaseDate DATE,
-	@AgeRestriction INT,
-	@CoverImg VARCHAR(max),
-	@Price DECIMAL (5,2),
-	@IDCompany INT,
-	@IDFranchise INT,
-	@platforms VARCHAR(max),
-	@genres VARCHAR(max),
-	@res VARCHAR(35) output,
-	@addedGameID INT output
-)
-AS
-	BEGIN 
-		BEGIN TRAN
-			BEGIN TRY
-			    DECLARE @tempcounter INT;
-				INSERT INTO Project.Game([Name],[Description],ReleaseDate,AgeRestriction,CoverImg,Price,IDCompany,IDFranchise) 
-				VALUES(@Name,@Description,@ReleaseDate,@AgeRestriction,@CoverImg,@Price,@IDCompany,@IDFranchise)
-				SELECT TOP 1 @addedGameID=IDGame FROM Project.Game ORDER BY IDGame DESC
-				PRINT @addedGameID
-				--insert Game Genres
-					DECLARE @SP INT
-					DECLARE @VALUE VARCHAR(1000)
-					WHILE PATINDEX('%' + ',' + '%', @genres ) <> 0
-					BEGIN
-					SELECT  @SP = PATINDEX('%' + ','  + '%',@genres)
-					SELECT  @VALUE = LEFT(@genres , @SP - 1)
-					SELECT  @genres = STUFF(@genres, 1, @SP, '')
-					INSERT INTO Project.GameGenre(IDGame,GenName) VALUES (@addedGameID,@VALUE)
-					END
-				--insert Game Platforms
-					SET  @SP=0;
-					SET @VALUE=''
-					WHILE PATINDEX('%' + ',' + '%', @platforms ) <> 0
-					BEGIN
-					SELECT  @SP = PATINDEX('%' + ','  + '%',@platforms)
-					SELECT  @VALUE = LEFT(@platforms , @SP - 1)
-					SELECT  @platforms = STUFF(@platforms, 1, @SP, '')
-					INSERT INTO Project.PlatformReleasesGame(IDGame,PlatformName) VALUES (@addedGameID,@VALUE)
-					END
-						
-				-- Insert 4 Copies of the Game
-					SET @tempcounter=1
-					WHILE (SELECT COUNT(PlatformName) FROM Project.PlatformReleasesGame WHERE PlatformReleasesGame.IDGame=@addedGameID) >= @tempcounter
-					BEGIN
-						SET @platforms= (SELECT  PlatformName From (SELECT *,ROW_NUMBER() OVER(ORDER BY PlatformName  DESC) AS mRow FROM Project.PlatformReleasesGame  WHERE @addedGameID=IDGame) as TT WHERE TT.mRow=@tempcounter)
-						INSERT INTO Project.[Copy](IDGame,PlatformName) VALUES (@addedGameID,@platforms);
-						SET	@tempcounter+=1
-					END
-					SET @res='Success inserting Games'
-			END TRY
-			BEGIN CATCH
-					SET @res=ERROR_MESSAGE();
-					ROLLBACK TRAN
-			END CATCH
-		IF @@TRANCOUNT>0
-		COMMIT TRAN
-	END
-
-GO
-
-
-CREATE PROCEDURE Project.pd_insertGenres (
-	@GenName VARCHAR(50),
-	@Description VARCHAR(MAX),
-	@res VARCHAR(35) OUTPUT
-)AS 
-	BEGIN
-		BEGIN TRY
-				INSERT INTO Project.Genre VALUES(@GenName,@Description)
-				SET @res='Sucess inserting Genre'
-		END TRY
-		BEGIN CATCH
-				SET @res= ERROR_MESSAGE()
-		END CATCH
- END
- GO
-
-CREATE PROCEDURE Project.pd_insertFranchise(
-	@Name VARCHAR(30),
-	@Logo VARCHAR(MAX),
-	@IDCompany INT,
-	@res VARCHAR(MAX) OUTPUT
-)
-AS
-	BEGIN
-		BEGIN TRY
-			INSERT INTO Project.Franchise ([Name],Logo,IDCompany) VALUES (@Name,@Logo,@IDCompany)
-			SET @res='Success inserting a new Franchise!'
-		END TRY
-		BEGIN CATCH
-			SET @res=ERROR_MESSAGE()
-		END CATCH
-	END
-GO
-
-
 go
-CREATE PROCEDURE Project.pd_insertPlatforms (	
-		 @PlatformName VARCHAR(30),
-		 @ReleaseDate DATE,
-		 @Producer VARCHAR(30),
-		 @res VARCHAR(255) OUTPUT
-)
-AS
-	BEGIN
-		 BEGIN TRY
-			INSERT INTO Project.[Platform] VALUES(@PlatformName,@ReleaseDate,@Producer)
-			set @res='Success Inserting new Platform!'
-		 END TRY
-		 BEGIN CATCH
-			set @res=ERROR_MESSAGE()
-		 END CATCH
-	END
-GO
-
-CREATE PROCEDURE Project.pd_insertCompany (
-	@Contact VARCHAR(50),
-	@CompanyName VARCHAR(30),
-	@Website VARCHAR(50),
-	@Logo VARCHAR(MAX),
-	@FoundationDate DATE,
-	@City VARCHAR(50),
-	@Country VARCHAR(50),
-	@res VARCHAR(255) OUTPUT
-)
-AS
-	BEGIN
-		BEGIN TRY
-			INSERT INTO Project.Company (Contact,CompanyName,Website,Logo,FoundationDate,City,Country) VALUES (@Contact,@CompanyName,@Website,@Logo,@FoundationDate,@City,@Country)
-			SET @res='Success inserting New Company!'
-		END TRY
-		BEGIN CATCH
-			SET @res=ERROR_MESSAGE()
-		END CATCH
-	END
-
-GO
-
-GO
-create PROCEDURE Project.pd_insertDiscount(
-	@PromoCode INT,
-	@Percentage INT,
-	@DateBegin DATE,
-	@DateEnd DATE,
-
-	@res VARCHAR(50)output
-
-)
-AS
-	BEGIN
-	BEGIN TRAN
-		BEGIN TRY
-		INSERT INTO Project.Discount (PromoCode,[Percentage],DateBegin,DateEnd) VALUES (@PromoCode,@Percentage,@DateBegin,@DateEnd)
-		SET @res='Success Inserting new  Discount'
-		END TRY
-		BEGIN CATCH
-			set @res=ERROR_MESSAGE()
-			Rollback
-		END CATCH
-	IF @@TRANCOUNT>0
-	COMMIT TRAN
-END
-
-
-GO
-
 CREATE PROCEDURE Project.pd_insertDiscountGame(
 	@PromoCode INT,
 	@IDGame INT,
@@ -522,7 +551,6 @@ AS
 	END CATCH
 	END
 GO
-
 GO
 CREATE PROCEDURE Project.pd_insertAdmin(
 	@Email VARCHAR(50),
@@ -548,8 +576,7 @@ CREATE PROCEDURE Project.pd_insertAdmin(
 		COMMIT TRAN
 		END
 go
-
-
+go
 CREATE PROCEDURE Project.pd_insertFollows(
 	@IDFollower INT,
 	@IDFollowed INT,
@@ -567,39 +594,112 @@ CREATE PROCEDURE Project.pd_insertFollows(
 	END
 go
 
-
-Create Procedure Project.pd_getUserFilter(@IDClient as int, @email as varchar(50),
-@username as varchar(50),@orderby as varchar(30))
-as
+Create Procedure Project.pd_deleteFollows(
+	@IDFollower INT,
+	@IDFollowed INT,
+	@res VARCHAR(255) output
+	)
+	as
 	begin
-		--email,username,orderby
-		declare @temp as table(
-			Username	varchar(50),
-			Email		varchar(50)
-		);
-
-		INSERT INTO @temp Select Username,Email 
-		From Project.Client JOIN Project.[User] on Client.UserID=[User].UserID 
-		where Client.UserID<>@IDClient;
-
-		if @email is not null
-			DELETE FROM @temp where Email not like @email+'%'
-		
-		if @username is not null
-			DELETE FROM @temp where Username not like @username+'%'
-
-		if @orderby='UsernameAsc' or @orderby is null
-			Select * From @temp ORDER BY Username Asc
-		if @orderby='UsernameDesc'
-			Select * From @temp ORDER BY Username Desc
-		if @orderby='EmailDesc'
-			Select * From @temp ORDER BY Email Desc
-		if @orderby='EmailAsc'
-			Select * From @temp ORDER BY Email 
-	end
+		begin try
+			delete from Project.Follows where IDFollowed=@IDFollowed and IDFollower=@IDFollower
+			set @res='Success'
+		end try
+		begin catch
+			set @res='Cannot unfollow this Client'
+		END CATCH
+	END
 go
 
+CREATE PROCEDURE Project.pd_removeGameGenre (
+@IDGame INT,
+@GenName VARCHAR(25),
+@res VARCHAR(255) OUTPUT
+)
+AS
+	BEGIN
+	BEGIN TRY
+		IF (( SELECT IDGame FROM Project.GameGenre WHERE GenName=@GenName AND IDGame=@IDGame) IS NOT NULL)
+		BEGIN
+			DELETE FROM Project.GameGenre WHERE IDGame=@IDGame AND GenName=@GenName
+			SET @res='Success'
+		END
+		ELSE
+			RAISERROR('Could not remove the Genre associated within this Game',16,1)
+	END TRY
+	BEGIN CATCH
+		SET @res=ERROR_MESSAGE();
+	END CATCH
+	END	
 
+
+	go
+
+go
+Create Procedure Project.pd_removeGameDiscount(
+@IDGame as int,
+@PromoCode as int,
+@res as varchar(255) output)
+as
+	begin
+	begin try
+			if exists ( select Top 1 * From Project.DiscountGame where IDGame=@IDGame and PromoCode=@PromoCode)
+				begin
+					DELETE FROM Project.DiscountGame where IDGame=@IDGame and PromoCode=@PromoCode;
+				end
+			else
+				raiserror('This Game does not have this discount',16,1);
+	set @res = 'Success removing Discount from game'
+	end try
+	begin catch
+			set @res = error_message();
+	end catch				
+	end
+go
+go
+Create Procedure Project.pd_addGameGenre(
+	@IDGame int,
+	@GenName varchar(25),
+	@res varchar(255) output)
+as
+	begin
+		begin try
+			If(Select IDGame From Project.Game where IDGame=@IDGame) is not null and (Select GenName From Project.Genre where GenName=@GenName) is not null
+				begin
+					insert into Project.GameGenre values(@IDGame,@GenName)
+					set @res = 'Success adding genre'
+				end
+			else
+				set @res = 'Game or Genre do not exist'
+		end try
+		begin catch
+			set @res = 'Genre is already applied to this game'
+		end catch
+	end
+
+go
+Create Procedure Project.pd_addPlatformToGame(
+	@IDGame int,
+	@PlatformName varchar(30),
+	@res varchar(255) output
+	)
+as
+	begin
+		begin try
+			if(Select IDGame From Project.Game where IDGame=@IDGame) is not null and (Select PlatformName from Project.[Platform] where PlatformName=@PlatformName) is not null
+				begin
+					insert into Project.PlatformReleasesGame values(@IDGame,@PlatformName)
+					set @res = 'Success adding Platform'
+				end
+			else
+				set @res = 'Platform or Game do not exist'
+		end try
+		begin catch
+			set @res = 'Platform is already applied to this game'
+		end catch
+	end
+
+GO
 CREATE PROCEDURE Project.pd_updateCompany (
 @IDCompany INT,
 @Contact VARCHAR(50),
@@ -680,24 +780,8 @@ as
 		end catch
 	end
 GO
-Create Procedure Project.pd_deleteFollows(
-	@IDFollower INT,
-	@IDFollowed INT,
-	@res VARCHAR(255) output
-	)
-	as
-	begin
-		begin try
-			delete from Project.Follows where IDFollowed=@IDFollowed and IDFollower=@IDFollower
-			set @res='Success'
-		end try
-		begin catch
-			set @res=ERROR_MESSAGE()
-		END CATCH
-	END
 
-go
-CREATE PROCEDURE Project.pd_updateGame(
+Create PROCEDURE Project.pd_updateGame(
 	@IDGame INT,
 	@Name  VARCHAR(50),
 	@Description VARCHAR(max),
@@ -714,16 +798,22 @@ CREATE PROCEDURE Project.pd_updateGame(
 		BEGIN TRY
 			IF @Name is not null
 			BEGIN
-				IF NOT EXISTS( SELECT TOP 1 [Name] FROM Project.Game WHERE Game.[Name] =@Name) UPDATE Project.Game	set [Name]=@Name where IDGame =@IDGame
-				ELSE
+				IF NOT EXISTS( SELECT TOP 1 [Name] FROM Project.Game WHERE Game.[Name] =@Name)
+					UPDATE Project.Game	set [Name]=@Name where IDGame =@IDGame
+				ELSE IF @Name=(Select TOP 1 Name From Project.Game where IDGame=@IDGame)
+					UPDATE Project.Game	set [Name]=@Name where IDGame =@IDGame
+				ELSe
 					raiserror('Game Name already exists!',16,1);
 			END
 			IF ((SELECT IDCompany FROM Project.udf_getCompanyDetails(@IDCompany)) is not   null ) UPDATE Project.Game	set IDCompany=@IDCompany where IDGame =@IDGame
 			ELSE
 				raiserror('Company not found!',16,1);
-			IF ((SELECT IDCompany FROM Project.udf_getFranchiseDetails(@IDFranchise)) is not   null ) UPDATE Project.Game	set IDCompany=@IDCompany where IDGame =@IDGame
-			ELSE
-				raiserror('Franchise not found!',16,1);
+			if @IDFranchise is not null
+			begin
+				IF ((SELECT IDFranchise FROM Project.udf_getFranchiseDetails(@IDFranchise)) is not   null ) UPDATE Project.Game	set IDFranchise=@IDFranchise where IDGame =@IDGame
+				ELSE
+					raiserror('Franchise not found!',16,1);
+			end
 			UPDATE Project.Game SET [Description]=@Description,ReleaseDate=@ReleaseDate,AgeRestriction=@AgeRestriction,CoverImg=@CoverImg,Price=@Price WHERE IDGame=@IDGame
 			SET @res='Success updating Game Info!'
 					
@@ -735,75 +825,31 @@ CREATE PROCEDURE Project.pd_updateGame(
 
 
 GO
-CREATE PROCEDURE Project.pd_removeGameGenre (
-@IDGame INT,
-@GenName VARCHAR(25),
-@res VARCHAR(255) OUTPUT
-)
-AS
-	BEGIN
-	BEGIN TRY
-		IF (( SELECT IDGame FROM Project.GameGenre WHERE GenName=@GenName AND IDGame=@IDGame) IS NOT NULL)
-		BEGIN
-			DELETE FROM Project.GameGenre WHERE IDGame=@IDGame AND GenName=@GenName
-			SET @res='Success'
-		END
-		ELSE
-			RAISERROR('Could not remove the Genre associated within this Game',16,1)
-	END TRY
-	BEGIN CATCH
-		SET @res=ERROR_MESSAGE();
-	END CATCH
-	END	
 
 
-	go
 
-Create Procedure Project.pd_removeGameDiscount(
-	@IDGame as int,
+
+GO
+Create Procedure Project.pd_updateDiscount(
 	@PromoCode as int,
-	@res as varchar(255) output)
+	@Percentage as int,
+	@Begin as Date,
+	@End as Date,
+	@res as Varchar(255) output)
+
 as
 	begin
-	
-			if exists ( select Top 1 * From Project.DiscountGame where IDGame=@IDGame and PromoCode=@PromoCode)
-				begin
-					DELETE FROM Project.DiscountGame where IDGame=@IDGame and PromoCode=@PromoCode;
-					set @res = 'Success removing Discount from game'
-				end
-			else
-				set @res = 'This Game does not have this discount'
+		begin try
+
+			Update Project.Discount
+			set Percentage=@Percentage, DateBegin=@Begin, DateEnd=@End where PromoCode=@PromoCode
+			set @res = 'Success updating Discount'
+
+
+		end try
+		begin catch
+			set @res = 'Could not update discount'
+		end catch
 	end
-go
 
 
-Create Procedure Project.pd_getUserFilter(@IDClient as int, @email as varchar(50),
-@username as varchar(50),@orderby as varchar(30))
-as
-	begin
-		--email,username,orderby
-		declare @temp as table(
-			Username	varchar(50),
-			Email		varchar(50)
-		);
-
-		INSERT INTO @temp Select Username,Email 
-		From Project.Client JOIN Project.[User] on Client.UserID=[User].UserID 
-		where Client.UserID<>@IDClient;
-
-		if @email is not null
-			DELETE FROM @temp where Email not like @email+'%'
-		
-		if @username is not null
-			DELETE FROM @temp where Username not like @username+'%'
-
-		if @orderby='UsernameAsc' or @orderby is null
-			Select * From @temp ORDER BY Username Asc
-		if @orderby='UsernameDesc'
-			Select * From @temp ORDER BY Username Desc
-		if @orderby='EmailDesc'
-			Select * From @temp ORDER BY Email Desc
-		if @orderby='EmailAsc'
-			Select * From @temp ORDER BY Email 
-	end
-go

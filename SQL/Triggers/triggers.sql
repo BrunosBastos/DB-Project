@@ -1,44 +1,4 @@
-create TRIGGER Project.trigger_Client ON Project.Client
-INSTEAD OF INSERT
-	AS
-		BEGIN
-				DECLARE	@UserID VARCHAR(50);
-				DECLARE	@userName VARCHAR(50);
-				DECLARE	@fullName VARCHAR(max);
-				DECLARE @sex        CHAR;
-				DECLARE	@birth      DATE;
-				SELECT @UserID=UserID,@userName=Username,@fullName=FullName,@sex=Sex,@birth=Birth from inserted
-				IF ((SELECT Project.udf_check_username(@userName))>0)
-					raiserror('Username already taken!',16,1)
-				IF EXISTS (SELECT  TOP 1 UserID from Project.Client WHERE UserID = @UserID)
-					raiserror('ID already in use!',16,1)
-				ELSE
-					INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance)  VALUES(@UserID,@userName,@fullName,@sex, @birth,0.0)
-		END
-
 go
-
-
-create TRIGGER Project.trigger_Client ON Project.Client
-INSTEAD OF INSERT
-	AS
-		BEGIN
-				DECLARE	@UserID VARCHAR(50);
-				DECLARE	@userName VARCHAR(50);
-				DECLARE	@fullName VARCHAR(max);
-				DECLARE @sex        CHAR;
-				DECLARE	@birth      DATE;
-				SELECT @UserID=UserID,@userName=Username,@fullName=FullName,@sex=Sex,@birth=Birth from inserted
-				IF ((SELECT Project.udf_check_username(@userName))>0)
-					raiserror('Username already taken!',16,1)
-				IF EXISTS (SELECT  TOP 1 UserID from Project.Client WHERE UserID = @UserID)
-					raiserror('ID already in use!',16,1)
-				ELSE
-					INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance)  VALUES(@UserID,@userName,@fullName,@sex, @birth,0.0)
-		END
-
-go
-
 CREATE TRIGGER Project.trigger_review ON Project.[Reviews]
 instead of insert
 AS
@@ -111,7 +71,6 @@ AS
 				END
 				ELSE
 					BEGIN TRY
-						PRINT 'OLA'
 						UPDATE Project.Client 
 						SET Balance-=@Price WHERE Project.Client.UserID=@IDClient
 						INSERT INTO Project.Purchase(Price,PurchaseDate,IDClient,SerialNum) VALUES (@Price,@PurchaseDate,@IDClient,@SerialNum)
@@ -119,12 +78,12 @@ AS
 					END TRY
 					BEGIN CATCH
 					 PRINT 'Error on line ' + CAST(ERROR_LINE() AS VARCHAR(10))
-					 --PRINT ERROR_MESSAGE()
 					 raiserror ('Error while inserting purchase values', 16, 1);
 					END CATCH
 	END
 
 GO
+
 
 
 CREATE TRIGGER Project.trigger_insertGames ON Project.Game
@@ -152,6 +111,27 @@ AS
 
 
 go
+go
+CREATE TRIGGER Project.trigger_Client ON Project.Client
+INSTEAD OF INSERT
+	AS
+		BEGIN
+				DECLARE	@UserID VARCHAR(50);
+				DECLARE	@userName VARCHAR(50);
+				DECLARE	@fullName VARCHAR(max);
+				DECLARE @sex        CHAR;
+				DECLARE	@birth      DATE;
+				SELECT @UserID=UserID,@userName=Username,@fullName=FullName,@sex=Sex,@birth=Birth from inserted
+				IF ((SELECT Project.udf_check_username(@userName))>0)
+					raiserror('Username already taken!',16,1)
+				IF EXISTS (SELECT  TOP 1 UserID from Project.Client WHERE UserID = @UserID)
+					raiserror('ID already in use!',16,1)
+				ELSE
+					INSERT INTO Project.Client(UserID,Username,FullName,Sex,Birth,Balance)  VALUES(@UserID,@userName,@fullName,@sex, @birth,0.0)
+		END
+
+go
+ 
 
  CREATE TRIGGER Project.trigger_Genres ON Project.Genre
  INSTEAD OF INSERT
@@ -167,6 +147,7 @@ go
 	END
 
 go
+
 
 CREATE TRIGGER Project.trigger_Franchise ON Project.Franchise
 INSTEAD OF INSERT
@@ -230,7 +211,6 @@ INSTEAD OF INSERT
 		END
 GO
 
-GO
 CREATE TRIGGER Project.trigger_Discount ON Project.Discount
 INSTEAD OF INSERT
 AS
@@ -247,8 +227,7 @@ AS
 			INSERT INTO Project.Discount (PromoCode,[Percentage],DateBegin,DateEnd) VALUES (@PromoCode,@Percentage,@DateBegin,@DateEnd)
 	END
 GO
-
-GO
+go
 CREATE TRIGGER Project.trigger_DiscountGame ON Project.DiscountGame
 INSTEAD OF INSERT
 	AS
@@ -267,6 +246,7 @@ INSTEAD OF INSERT
 		END
 
 GO
+
 
 
 GO
@@ -301,6 +281,8 @@ INSTEAD OF INSERT
 		END
 go
 
+
+
 CREATE TRIGGER Project.trigger_insertFollows on Project.Follows
 instead of insert
 AS
@@ -324,5 +306,6 @@ AS
 		else if @temp=1
 			raiserror('User is already being followed',16,1);
 	END
+
 go
 
