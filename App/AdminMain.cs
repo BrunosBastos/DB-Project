@@ -210,7 +210,7 @@ namespace App
 
                 AdminUpdatePassword.Text = "";
                 AdminUpdateCPassword.Text = "";
-
+                LoadAdmin();
 
 
             }
@@ -363,7 +363,7 @@ namespace App
                 cmd.Parameters["@res"].Direction = ParameterDirection.Output;
                 cmd.ExecuteNonQuery();
                 MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
-                
+                LoadPlatform();
             }
 
         }
@@ -518,7 +518,7 @@ namespace App
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
-
+                LoadFranchise();
             }
         }
 
@@ -651,6 +651,7 @@ namespace App
                 LoadGenre();
                 GenreAddDescription.Text = "";
                 GenreAddName.Text = "";
+                LoadGenre();
             }
         }
 
@@ -670,6 +671,7 @@ namespace App
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
+                LoadGenre();
             }
         }
 
@@ -1052,7 +1054,7 @@ namespace App
                 cmd.ExecuteNonQuery();
 
                 MessageBox.Show(cmd.Parameters["@res"].Value.ToString());
-
+                LoadCompany();
             }
         }
 
