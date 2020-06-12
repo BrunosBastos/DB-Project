@@ -2555,6 +2555,7 @@
             // 
             this.AdminAddCPassword.Location = new System.Drawing.Point(26, 188);
             this.AdminAddCPassword.Name = "AdminAddCPassword";
+            this.AdminAddCPassword.PasswordChar = '*';
             this.AdminAddCPassword.Size = new System.Drawing.Size(151, 20);
             this.AdminAddCPassword.TabIndex = 8;
             // 
@@ -2581,6 +2582,7 @@
             // 
             this.AdminAddPassword.Location = new System.Drawing.Point(26, 115);
             this.AdminAddPassword.Name = "AdminAddPassword";
+            this.AdminAddPassword.PasswordChar = '*';
             this.AdminAddPassword.Size = new System.Drawing.Size(151, 20);
             this.AdminAddPassword.TabIndex = 3;
             // 
