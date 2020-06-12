@@ -2122,7 +2122,7 @@ AS
 		update Project.Company
 		set Logo=@Logo,Contact=@Contact,CompanyName=@CompanyName, Website=@Website,FoundationDate=@FoundationDate,City=@City,Country=@Country where IDCompany = @IDCompany
 
-		set @res = 'Success updating the Franchise.'
+		set @res = 'Success updating the Company.'
 		END TRY
 		BEGIN CATCH
 			set @res = 'There was an error trying to update the Company.'

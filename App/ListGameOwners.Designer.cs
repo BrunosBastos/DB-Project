@@ -48,7 +48,7 @@
             this.groupBox1.Size = new System.Drawing.Size(561, 385);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "List of Owners";
+            this.groupBox1.Text = "Users that you follow";
             // 
             // button2
             // 

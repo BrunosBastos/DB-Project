@@ -1,3 +1,4 @@
+---UDFS-----
 go 
 CREATE FUNCTION Project.udf_check_email(@email VARCHAR(50)) RETURNS INT
 AS

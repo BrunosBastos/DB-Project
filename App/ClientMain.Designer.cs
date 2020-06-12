@@ -373,9 +373,9 @@
             // 
             this.listgameowner.Location = new System.Drawing.Point(43, 30);
             this.listgameowner.Name = "listgameowner";
-            this.listgameowner.Size = new System.Drawing.Size(105, 49);
+            this.listgameowner.Size = new System.Drawing.Size(105, 33);
             this.listgameowner.TabIndex = 0;
-            this.listgameowner.Text = "List Following Users That Own This Game";
+            this.listgameowner.Text = "List Game Owners";
             this.listgameowner.UseVisualStyleBackColor = true;
             this.listgameowner.Click += new System.EventHandler(this.goToListGameOwner);
             // 

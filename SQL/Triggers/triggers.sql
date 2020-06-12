@@ -1,3 +1,4 @@
+--TRIGGERS
 go
 CREATE TRIGGER Project.trigger_review ON Project.[Reviews]
 instead of insert
@@ -308,4 +309,6 @@ AS
 	END
 
 go
+
+
 
