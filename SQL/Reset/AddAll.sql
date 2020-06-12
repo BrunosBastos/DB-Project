@@ -1,4 +1,4 @@
-USE LocalDB
+USE p6g2;
 go
 CREATE SCHEMA Project;
 go

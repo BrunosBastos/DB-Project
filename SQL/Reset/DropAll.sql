@@ -1,4 +1,4 @@
-use LocalDB;
+use p6g2;
 
 
 DROP TRIGGER Project.trigger_Admin;
